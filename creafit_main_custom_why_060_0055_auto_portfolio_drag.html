@@ -1,0 +1,1399 @@
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>CREAFIT MARKETING</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<style>
+:root{
+  --orange:#ff9230;
+  --black:#050505;
+  --paper:#f1eee7;
+  --white:#f7f5f1;
+  --muted:#858585;
+  --line:rgba(255,255,255,.11);
+  --darkline:rgba(0,0,0,.14);
+  --container:1320px;
+  --header-max:1780px;
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"Pretendard Variable","Pretendard",sans-serif;background:var(--black);color:var(--white);overflow-x:hidden;word-break:keep-all}
+a{text-decoration:none;color:inherit}
+img{display:block;width:100%}
+.container{width:min(calc(100% - 48px),var(--container));margin:0 auto}
+.label{display:inline-flex;align-items:center;gap:10px;font-size:11px;font-weight:850;letter-spacing:.18em;text-transform:uppercase}
+.label:before{content:"";width:28px;height:1px;background:currentColor}
+.display{font-size:clamp(43px,5.8vw,86px);font-weight:930;line-height:1.02;letter-spacing:-.06em}
+.accent{color:var(--orange)}
+.progress{position:fixed;left:0;top:0;width:100%;height:3px;z-index:9999;pointer-events:none}
+.progress span{display:block;width:0;height:100%;background:var(--orange)}
+
+
+/* HEADER */
+.site-header{position:fixed;left:0;top:0;width:100%;z-index:9900;padding:0 44px;transition:.45s var(--ease);pointer-events:none}
+.header-shell{width:min(100%,var(--header-max));height:92px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:46px;transition:.45s var(--ease);pointer-events:auto}
+.header-logo{font-size:24px;font-weight:950;letter-spacing:-.055em;color:#fff;line-height:1;flex:0 0 auto}
+.header-logo span{color:var(--orange)}
+.main-nav{height:100%;display:flex;align-items:center;margin-left:auto}
+.main-nav>ul{height:100%;display:flex;align-items:center;gap:10px;list-style:none}
+.menu-item{height:100%;position:relative;display:flex;align-items:center}
+.menu-link{height:100%;display:flex;align-items:center;gap:7px;padding:0 21px;color:rgba(255,255,255,.82);font-size:14px;font-weight:750;letter-spacing:-.02em;position:relative;transition:.3s}
+.menu-link:after{content:"";position:absolute;left:21px;right:21px;bottom:24px;height:2px;background:var(--orange);transform:scaleX(0);transform-origin:right;transition:transform .35s var(--ease)}
+.menu-link i{font-size:14px;color:#666;transition:.3s}
+.menu-item:hover>.menu-link,.menu-item:focus-within>.menu-link{color:#fff}
+.menu-item:hover>.menu-link:after,.menu-item:focus-within>.menu-link:after{transform:scaleX(1);transform-origin:left}
+.menu-item:hover>.menu-link i,.menu-item:focus-within>.menu-link i{color:var(--orange);transform:rotate(180deg)}
+.submenu{position:absolute;left:50%;top:calc(100% - 8px);width:240px;padding:12px;list-style:none;background:rgba(9,9,9,.94);border:1px solid rgba(255,255,255,.12);border-radius:16px;box-shadow:0 28px 70px rgba(0,0,0,.38);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);opacity:0;visibility:hidden;transform:translate(-50%,14px) scale(.97);transform-origin:50% 0;transition:opacity .28s,visibility .28s,transform .4s var(--ease);overflow:hidden}
+.submenu:before{content:"";position:absolute;left:0;top:0;width:100%;height:2px;background:linear-gradient(90deg,transparent,var(--orange),transparent);transform:translateX(-100%);transition:.6s var(--ease)}
+.menu-item:hover>.submenu,.menu-item:focus-within>.submenu{opacity:1;visibility:visible;transform:translate(-50%,0) scale(1)}
+.menu-item:hover>.submenu:before,.menu-item:focus-within>.submenu:before{transform:translateX(0)}
+.submenu li+li{margin-top:4px}
+.submenu a{display:grid;grid-template-columns:28px 1fr 18px;align-items:center;gap:8px;padding:13px 12px;border-radius:10px;color:#aaa;font-size:13px;transition:.28s}
+.submenu a .sub-no{font-size:9px;font-weight:900;letter-spacing:.12em;color:#555;transition:.28s}
+.submenu a i{font-size:14px;opacity:0;transform:translateX(-6px);transition:.28s}
+.submenu a:hover{background:rgba(255,146,48,.08);color:#fff;padding-left:16px}
+.submenu a:hover .sub-no{color:var(--orange)}
+.submenu a:hover i{opacity:1;transform:none;color:var(--orange)}
+.header-cta{height:42px;padding:0 18px;border:1px solid rgba(255,255,255,.22);border-radius:999px;display:inline-flex;align-items:center;gap:9px;color:#fff;font-size:11px;font-weight:850;letter-spacing:.08em;transition:.35s var(--ease);flex:0 0 auto}
+.header-cta:hover{background:var(--orange);border-color:var(--orange);color:#111;transform:translateY(-2px)}
+.header-cta i{font-size:15px}
+.site-header.is-scrolled{padding-top:12px}
+.site-header.is-scrolled .header-shell{height:68px;padding:0 18px 0 22px;background:rgba(7,7,7,.82);border:1px solid rgba(255,255,255,.10);border-radius:18px;box-shadow:0 16px 50px rgba(0,0,0,.26);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+.site-header.is-scrolled .menu-link:after{bottom:15px}
+.mobile-menu-btn{display:none;width:44px;height:44px;border:1px solid rgba(255,255,255,.18);border-radius:50%;background:rgba(0,0,0,.18);color:#fff;cursor:pointer;position:relative;z-index:2}
+.mobile-menu-btn span{position:absolute;left:12px;width:18px;height:1px;background:currentColor;transition:.35s var(--ease)}
+.mobile-menu-btn span:first-child{top:17px}.mobile-menu-btn span:last-child{top:25px}
+body.menu-open .mobile-menu-btn span:first-child{top:21px;transform:rotate(45deg)}
+body.menu-open .mobile-menu-btn span:last-child{top:21px;transform:rotate(-45deg)}
+
+/* Ultra-wide policy: keep sections full-bleed; constrain only readable content.
+   No global body max-width is used, so 2560/3840px displays do not get dead side gutters. */
+@media(min-width:2560px){
+  .header-shell,.hero>.container{max-width:1780px}
+}
+
+@media(max-width:1180px){
+  .site-header{padding-left:28px;padding-right:28px}.header-shell{gap:24px}.main-nav>ul{gap:2px}.menu-link{padding:0 12px;font-size:13px}.menu-link:after{left:12px;right:12px}.header-cta{padding:0 14px}
+}
+@media(max-width:900px){
+  .site-header{padding:0 15px}.header-shell{height:76px}.site-header.is-scrolled{padding-top:8px}.site-header.is-scrolled .header-shell{height:62px;padding:0 10px 0 18px;border-radius:15px}
+  .mobile-menu-btn{display:block}.header-cta{display:none}
+  .main-nav{position:fixed;inset:0 0 0 auto;width:min(88vw,420px);height:100dvh;margin:0;padding:104px 24px 32px;background:rgba(6,6,6,.985);border-left:1px solid rgba(255,255,255,.1);transform:translateX(105%);transition:.55s var(--ease);overflow-y:auto;box-shadow:-30px 0 80px rgba(0,0,0,.35)}
+  body.menu-open{overflow:hidden}body.menu-open .main-nav{transform:none}
+  .main-nav>ul{height:auto;width:100%;display:block}.menu-item{height:auto;display:block;border-bottom:1px solid rgba(255,255,255,.1)}
+  .menu-link{height:auto;padding:20px 0;font-size:21px;font-weight:850;justify-content:space-between}.menu-link:after{display:none}.menu-link i{font-size:18px}
+  .submenu{position:static;width:100%;padding:0 0 18px 12px;background:transparent;border:0;border-radius:0;box-shadow:none;backdrop-filter:none;opacity:1;visibility:visible;transform:none;display:grid;grid-template-columns:1fr 1fr;gap:7px}
+  .submenu:before{display:none}.submenu li+li{margin:0}.submenu a{background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.07);padding:12px 10px;grid-template-columns:24px 1fr}.submenu a i{display:none}
+}
+
+/* HERO */
+.hero{
+  height:100svh;min-height:760px;position:relative;overflow:hidden;display:flex;align-items:flex-end;
+  background:#050505;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:
+    linear-gradient(90deg,rgba(5,5,5,.95) 0%,rgba(5,5,5,.64) 48%,rgba(5,5,5,.28) 100%),
+    url("https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2200&auto=format&fit=crop") center/cover no-repeat;
+  transform:scale(1.06);will-change:transform;transition:filter .5s;
+  filter:grayscale(1) contrast(1.15) brightness(.5);
+  z-index:0;
+}
+.hero-bg:after{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(circle at var(--mx,70%) var(--my,35%),rgba(255,146,48,.22),transparent 20%);
+  mix-blend-mode:screen;
+}
+.hero-noise{
+  position:absolute;inset:0;opacity:.25;pointer-events:none;z-index:1;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.15'/%3E%3C/svg%3E");
+}
+
+#heroCanvas{
+  position:absolute;inset:0;width:100%;height:100%;z-index:2;
+  pointer-events:none;opacity:1;mix-blend-mode:screen;
+  filter:drop-shadow(0 0 5px rgba(255,146,48,.24));
+}
+.hero-orbit{
+  position:absolute;right:-5vw;top:-8vw;width:min(53vw,790px);aspect-ratio:1;
+  border:1px solid rgba(255,255,255,.22);border-radius:50%;z-index:2;
+  pointer-events:none;will-change:transform;
+  box-shadow:0 0 90px rgba(255,146,48,.055),inset 0 0 70px rgba(255,146,48,.03);
+}
+.hero-orbit:before,.hero-orbit:after{
+  content:"";position:absolute;border-radius:50%;
+  border:1px solid rgba(255,146,48,.30);
+  box-shadow:0 0 35px rgba(255,146,48,.045);
+}
+.hero-orbit:before{inset:14%}
+.hero-orbit:after{inset:31%;border-color:rgba(255,255,255,.18)}
+.hero-orbit-dot{
+  position:absolute;left:50%;top:-8px;width:16px;height:16px;border-radius:50%;
+  background:var(--orange);box-shadow:0 0 18px #ff9230,0 0 46px rgba(255,146,48,.9),0 0 90px rgba(255,146,48,.45);
+}
+.hero-orbit-dot:after{
+  content:"";position:absolute;width:8px;height:8px;border-radius:50%;
+  background:#fff;right:-41%;top:45%;box-shadow:0 0 18px rgba(255,255,255,.85);
+}
+.hero-outline{
+  position:absolute;right:-2vw;bottom:-5vw;z-index:1;
+  font-size:clamp(150px,25vw,420px);font-weight:950;letter-spacing:-.09em;line-height:.8;
+  color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.08);pointer-events:none;will-change:transform;
+}
+.hero-inner{position:relative;z-index:3;padding:115px 0 42px;width:100%}
+.hero>.container{width:min(calc(100% - 48px),1780px)}
+.hero-top{display:flex;justify-content:space-between;gap:20px;margin-bottom:38px;font-size:11px;color:#777;letter-spacing:.14em}
+.hero h1{font-size:clamp(54px,7.7vw,116px);font-weight:950;line-height:.91;letter-spacing:-.075em;max-width:1180px}
+.hero h1 .hero-line{display:block;overflow:hidden;padding-bottom:.06em}
+.hero h1 .hero-line > span{display:block}
+.hero h1 .stroke{color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.72)}
+.hero-sub{display:flex;justify-content:space-between;align-items:end;gap:50px;margin-top:26px;padding-top:20px;border-top:1px solid var(--line)}
+.hero-sub p{max-width:620px;font-size:16px;color:#aaa;line-height:1.7}
+.hero-sub small{font-size:11px;color:#8b8b8b;letter-spacing:.12em}
+.scroll-mark{position:absolute;right:32px;bottom:36px;z-index:3;writing-mode:vertical-rl;font-size:9px;color:#8a8a8a;letter-spacing:.2em}
+
+/* KPI COUNT - HERO FIRST VIEW */
+.metrics{margin-top:26px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:rgba(5,5,5,.28);backdrop-filter:blur(8px)}
+.metrics-grid{display:grid;grid-template-columns:repeat(3,1fr)}
+.metric{min-height:132px;padding:20px 28px;border-right:1px solid var(--line);display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}
+.metric:last-child{border-right:0}
+.metric:after{content:"";position:absolute;left:0;bottom:0;width:0;height:2px;background:var(--orange)}
+.metric-label{font-size:11px;color:#9b9b9b;font-weight:750}
+.metric-number{display:flex;align-items:flex-end;gap:5px;line-height:.86}
+.metric-number strong{font-size:clamp(44px,4.8vw,72px);font-weight:950;letter-spacing:-.065em;font-variant-numeric:tabular-nums}
+.metric-number em{font-style:normal;color:var(--orange);font-size:clamp(19px,1.8vw,28px);font-weight:900;padding-bottom:6px}
+.metric small{font-size:9px;color:#6f6f6f;letter-spacing:.12em}
+
+/* INTRO */
+.manifesto{padding:170px 0;background:#080808}
+.manifesto .container{display:grid;grid-template-columns:240px 1fr;gap:90px}
+.manifesto-side{font-size:12px;color:#606060;line-height:1.8}
+.manifesto h2{font-size:clamp(40px,5.3vw,78px);line-height:1.15;letter-spacing:-.055em}
+.manifesto p{margin-top:28px;color:#8a8a8a;font-size:17px;max-width:660px;line-height:1.75}
+
+/* SERVICES */
+.services{height:330vh;background:var(--paper);position:relative}.services-sticky{position:sticky;top:0;height:100vh;overflow:hidden;transition:.6s var(--ease)}.services-sticky[data-step="0"]{background:var(--paper);color:#111}.services-sticky[data-step="1"]{background:#101010;color:#fff}.services-sticky[data-step="2"]{background:var(--orange);color:#111}.services-shell{height:100%;display:grid;grid-template-columns:340px 1fr;gap:80px;align-items:center}.service-index{border-top:1px solid currentColor;border-color:color-mix(in srgb,currentColor 18%,transparent)}.service-index div{padding:23px 0;border-bottom:1px solid currentColor;border-color:color-mix(in srgb,currentColor 18%,transparent);opacity:.25;transition:.4s}.service-index div.active{opacity:1;padding-left:14px}.service-index small{display:block;font-size:10px;font-weight:900;letter-spacing:.16em;margin-bottom:6px}.service-index strong{font-size:19px}.service-stage{position:relative;height:70vh}.service{position:absolute;inset:0;display:grid;grid-template-columns:1fr .92fr;gap:55px;align-items:center;opacity:0;transform:translateY(60px) scale(.97);transition:.7s var(--ease);pointer-events:none}.service.active{opacity:1;transform:none;pointer-events:auto}.service h3{font-size:clamp(46px,5.8vw,82px);line-height:1.01;letter-spacing:-.06em}.service p{margin-top:20px;font-size:16px;opacity:.6;max-width:460px;line-height:1.65}.more{display:inline-flex;align-items:center;gap:9px;margin-top:28px;font-size:13px;font-weight:900}.more i{transition:.3s}.more:hover i{transform:translate(5px,-5px)}.visual{height:70%;min-height:400px;display:flex;align-items:center;justify-content:center;position:relative}.browser{width:96%;aspect-ratio:1.3/1;background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 35px 80px rgba(0,0,0,.28);transform:perspective(1000px) rotateY(-10deg);transition:.8s var(--ease)}.active .browser{transform:none}.browser-top{height:34px;background:#ececec;padding:0 12px;display:flex;align-items:center;gap:6px}.browser-top i{width:8px;height:8px;border-radius:50%;background:#bbb}.browser img{height:calc(100% - 34px);object-fit:cover}.cards{position:relative;width:80%;height:72%}.cards img{position:absolute;inset:0;height:100%;object-fit:cover;border-radius:22px;box-shadow:0 30px 70px rgba(0,0,0,.27);transition:.8s var(--ease)}.cards img:nth-child(1){transform:rotate(-7deg) translate(-8%,3%);opacity:.45}.cards img:nth-child(2){transform:rotate(7deg) translate(8%,2%);opacity:.65}.cards img:nth-child(3){transform:none}.active .cards img:nth-child(1){transform:rotate(-12deg) translate(-14%,4%)}.active .cards img:nth-child(2){transform:rotate(11deg) translate(13%,2%)}.radar{width:75%;aspect-ratio:1;position:relative;display:grid;place-items:center}.radar span{position:absolute;border:1px solid rgba(0,0,0,.25);border-radius:50%;animation:pulse 2.6s infinite ease-in-out}.radar span:nth-child(1){inset:0}.radar span:nth-child(2){inset:18%;animation-delay:.2s}.radar span:nth-child(3){inset:36%;animation-delay:.4s}.radar i{font-size:48px;width:110px;height:110px;background:#111;color:#fff;border-radius:50%;display:grid;place-items:center;z-index:2}@keyframes pulse{50%{transform:scale(1.05);opacity:.5}}
+
+/* WORK / AUTO FLOW */
+.work{height:auto;min-height:100svh;padding:120px 0 92px;background:#070707;position:relative;overflow:hidden}
+.work-sticky{position:relative;height:auto;min-height:calc(100svh - 212px);overflow:hidden;display:flex;flex-direction:column;justify-content:center}
+.work-head{position:relative;left:auto;top:auto;width:min(calc(100% - 48px),var(--container));margin:0 auto 52px;z-index:5}
+.work-head p{margin-top:13px;color:#737373;font-size:14px;max-width:500px}
+.work-marquee{width:100%;overflow:hidden;padding-left:max(24px,calc((100vw - var(--container))/2));touch-action:pan-y}
+.work-track{display:flex;width:max-content;gap:38px;padding:0;will-change:transform;transform:translate3d(0,0,0)}
+.project{flex:0 0 min(68vw,900px)}
+.project.work-clone{pointer-events:none}
+.project-media{aspect-ratio:16/9;overflow:hidden;border-radius:24px;background:#111;position:relative;clip-path:inset(0 0 0 0 round 24px)}
+.project-media img{height:100%;object-fit:cover;transform:scale(1.045);transition:1s var(--ease)}
+.project:hover img{transform:scale(1)}
+.project-no{position:absolute;right:22px;top:13px;z-index:2;font-size:clamp(60px,8vw,110px);font-weight:950;color:rgba(255,255,255,.2)}
+.project-caption{padding-top:20px;display:grid;grid-template-columns:120px 1fr;gap:18px}
+.project-caption small{font-size:10px;color:#646464;font-weight:900;letter-spacing:.14em}
+.project-caption h3{font-size:30px}.project-caption p{grid-column:2;color:#777;font-size:14px}
+@media(max-width:1024px){
+  .work{padding:110px 0 84px}.work-sticky{min-height:0}.work-head{margin-bottom:46px}.work-track{gap:26px}.project{flex-basis:min(74vw,720px)}
+}
+
+/* LATE-PAGE INTERACTION LAYERS */
+.why-aurora{
+  position:absolute;width:760px;height:760px;border-radius:50%;
+  right:-260px;top:10%;z-index:0;pointer-events:none;
+  background:radial-gradient(circle,rgba(255,146,48,.28) 0%,rgba(255,146,48,.12) 31%,transparent 69%);
+  filter:blur(12px);will-change:transform,opacity;
+}
+.why-orbit{
+  position:absolute;left:-18vw;bottom:-24vw;width:min(64vw,900px);aspect-ratio:1;
+  border:1px solid rgba(255,255,255,.12);border-radius:50%;z-index:0;pointer-events:none;box-shadow:0 0 90px rgba(255,146,48,.08);
+  will-change:transform;
+}
+.why-orbit:before,.why-orbit:after{content:"";position:absolute;border-radius:50%;border:1px solid rgba(255,146,48,.085)}
+.why-orbit:before{inset:17%}.why-orbit:after{inset:35%}
+.why-scan{
+  position:absolute;left:0;right:0;top:-12%;height:170px;z-index:1;pointer-events:none;
+  background:linear-gradient(to bottom,transparent,rgba(255,146,48,.04),rgba(255,146,48,.15),rgba(255,146,48,.04),transparent);
+  opacity:.7;filter:blur(1px);will-change:transform,opacity;
+}
+.why-visual{box-shadow:0 30px 100px rgba(0,0,0,.24),inset 0 1px 0 rgba(255,255,255,.025)}
+.why-visual:before{
+  content:"";position:absolute;inset:-1px;border-radius:28px;padding:1px;
+  background:linear-gradient(135deg,rgba(255,146,48,.48),transparent 25%,transparent 72%,rgba(255,146,48,.18));
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none;opacity:.55;
+}
+.cta-flare{
+  position:absolute;left:-10vw;top:-30%;width:58vw;height:130%;pointer-events:none;z-index:1;
+  background:radial-gradient(circle at center,rgba(255,255,255,.32),rgba(255,255,255,.08) 26%,transparent 65%);
+  filter:blur(18px);mix-blend-mode:soft-light;will-change:transform,opacity;
+}
+footer{position:relative;overflow:hidden}
+.footer-watermark{
+  position:absolute;right:-2vw;top:4px;z-index:0;pointer-events:none;
+  font-size:clamp(90px,15vw,230px);font-weight:950;line-height:.8;letter-spacing:-.075em;
+  color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.035);will-change:transform;
+}
+.footer-sweep{
+  position:absolute;left:-35%;top:0;width:35%;height:1px;z-index:2;pointer-events:none;
+  background:linear-gradient(90deg,transparent,var(--orange),transparent);box-shadow:0 0 18px rgba(255,146,48,.45);
+}
+.footer-top,.footer-bottom{position:relative;z-index:1}
+
+/* WHY CREAFIT */
+.why{padding:180px 0 150px;background:#0d0d0d;position:relative;overflow:hidden}
+.why-word{position:absolute;left:-2vw;top:20px;font-size:clamp(150px,28vw,430px);font-weight:950;line-height:.8;letter-spacing:-.09em;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.035);pointer-events:none;will-change:transform}
+.why-head{position:relative;z-index:2;margin-bottom:85px}
+.why-head h2{margin-top:18px;max-width:1050px}
+.why-head p{margin-top:24px;color:#777;font-size:16px}
+.why-stage{position:relative;z-index:2;display:grid;grid-template-columns:.8fr 1.2fr;gap:95px;align-items:start}
+.why-visual{position:sticky;top:15vh;min-height:520px;border:1px solid var(--line);border-radius:28px;padding:42px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;background:linear-gradient(145deg,rgba(255,146,48,.07),rgba(255,255,255,.015))}
+.why-visual:after{content:"";position:absolute;width:370px;height:370px;border-radius:50%;right:-140px;bottom:-150px;background:radial-gradient(circle,rgba(255,146,48,.22),transparent 68%)}
+.why-visual small{font-size:11px;letter-spacing:.16em;color:#686868;font-weight:800}
+.why-big{font-size:clamp(145px,18vw,260px);font-weight:950;line-height:.75;letter-spacing:-.09em;color:transparent;-webkit-text-stroke:1px rgba(255,146,48,.58);will-change:transform}
+.why-visual p{font-size:13px;color:#777;letter-spacing:.1em}
+.why-list{border-top:1px solid var(--line)}
+.why-item{min-height:245px;padding:38px 0;border-bottom:1px solid var(--line);position:relative}
+.why-item small{display:block;color:var(--orange);font-size:10px;font-weight:900;letter-spacing:.15em;margin-bottom:25px}
+.why-item h3{font-size:clamp(30px,3vw,44px);line-height:1.15;letter-spacing:-.04em;margin-bottom:13px}
+.why-item p{max-width:630px;color:#7d7d7d;font-size:15px;line-height:1.7}
+.why-item .why-line{position:absolute;left:0;bottom:-1px;width:0;height:2px;background:var(--orange)}
+
+
+/* === V8 / WHY CREAFIT CENTER-SHUTTER REVEAL === */
+.why > .container{position:relative;z-index:3}
+.why-reveal-sentinel{position:absolute;left:0;top:38%;width:1px;height:1px;pointer-events:none;opacity:0}
+.why-reveal-curtain{display:none;position:absolute;inset:0;z-index:6;pointer-events:none;overflow:hidden}
+.why-reveal-panel{position:absolute;top:0;bottom:0;width:50.15%;background:rgba(13,13,13,.91);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);will-change:transform}
+.why-reveal-panel.left{left:0}
+.why-reveal-panel.right{right:0}
+.why-reveal-line{position:absolute;left:50%;top:12%;bottom:12%;width:2px;transform:translateX(-50%) scaleY(0);transform-origin:center;background:linear-gradient(to bottom,transparent,var(--orange) 18%,#ffd0a4 50%,var(--orange) 82%,transparent);box-shadow:0 0 18px rgba(255,146,48,.9),0 0 55px rgba(255,146,48,.35);opacity:0}
+.why-reveal-flash{position:absolute;left:50%;top:50%;width:min(44vw,680px);aspect-ratio:1;border-radius:50%;transform:translate(-50%,-50%) scale(.45);background:radial-gradient(circle,rgba(255,177,99,.32) 0%,rgba(255,146,48,.16) 28%,rgba(255,146,48,0) 70%);filter:blur(12px);opacity:0;will-change:transform,opacity}
+@media(prefers-reduced-motion:reduce){.why-reveal-curtain{display:none!important}.why>.container{opacity:1!important;visibility:visible!important;filter:none!important;clip-path:none!important;transform:none!important}}
+
+
+
+/* === V5 / WHY -> CTA CINEMATIC PARALLAX TRANSITION === */
+.late-transition{
+  position:relative;height:100vh;min-height:720px;overflow:hidden;background:#090909;color:#fff;
+}
+.late-transition-stage{position:absolute;inset:0;overflow:hidden;background:#090909}
+.late-transition-grid{
+  position:absolute;inset:-12%;opacity:.18;
+  background-image:linear-gradient(rgba(255,255,255,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.08) 1px,transparent 1px);
+  background-size:82px 82px;transform:perspective(900px) rotateX(54deg) scale(1.25);transform-origin:center 72%;will-change:transform,opacity;
+}
+.late-transition-glow{
+  position:absolute;width:58vw;height:58vw;min-width:620px;min-height:620px;left:50%;top:50%;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,146,48,.42) 0%,rgba(255,146,48,.14) 26%,transparent 67%);
+  transform:translate(-50%,-50%);filter:blur(16px);will-change:transform,opacity;
+}
+.late-transition-ring{
+  position:absolute;left:50%;top:50%;width:min(52vw,760px);aspect-ratio:1;border-radius:50%;border:1px solid rgba(255,255,255,.2);
+  transform:translate(-50%,-50%);will-change:transform,opacity;
+}
+.late-transition-ring:before,.late-transition-ring:after{content:"";position:absolute;border-radius:50%;border:1px solid rgba(255,146,48,.3)}
+.late-transition-ring:before{inset:17%}.late-transition-ring:after{inset:34%;border-style:dashed}
+.late-transition-dot{position:absolute;width:16px;height:16px;left:50%;top:-8px;border-radius:50%;background:var(--orange);box-shadow:0 0 32px rgba(255,146,48,1),0 0 70px rgba(255,146,48,.55)}
+.late-transition-brand{
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-size:clamp(100px,18vw,300px);font-weight:950;line-height:.8;letter-spacing:-.085em;
+  color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.18);white-space:nowrap;will-change:transform,opacity;
+}
+.late-transition-copy{position:absolute;inset:0;display:grid;place-items:center;z-index:3;pointer-events:none}
+.late-transition-word{
+  position:absolute;font-size:clamp(64px,10vw,160px);font-weight:950;line-height:.9;letter-spacing:-.075em;white-space:nowrap;will-change:transform,opacity;
+}
+.late-transition-word.web{color:#fff}
+.late-transition-word.blog{color:#111;opacity:0}
+.late-transition-word.marketing{color:#111;opacity:0}
+.late-transition-paper,.late-transition-orange{
+  position:absolute;inset:0;will-change:clip-path,transform;background:var(--paper);
+}
+.late-transition-paper{clip-path:inset(100% 0 0 0);z-index:1}
+.late-transition-orange{background:var(--orange);clip-path:inset(0 100% 0 0);z-index:2}
+.late-transition-side{
+  position:absolute;z-index:4;left:max(25px,calc((100vw - var(--container))/2));bottom:44px;font-size:10px;font-weight:900;letter-spacing:.18em;color:rgba(255,255,255,.5)
+}
+@media(max-width:760px){
+  .late-transition{height:100vh;height:100svh;min-height:0}.late-transition-grid{background-size:54px 54px}.late-transition-ring{width:86vw}.late-transition-side{bottom:26px}
+}
+
+
+
+/* === V6 / WHAT WE DO DIRECTIONAL REVEAL === */
+.manifesto{overflow:hidden}
+.manifesto-side{overflow:visible}
+.manifesto-label{display:block;font-size:11px;font-weight:850;letter-spacing:.18em;color:#606060;margin-bottom:34px}
+.manifesto-motion{display:flex;flex-direction:column;gap:4px;width:max-content}
+.manifesto-fly{display:block;font-size:clamp(22px,2.25vw,36px);font-weight:900;line-height:1.12;letter-spacing:-.045em;color:#f2efe9;white-space:nowrap;will-change:transform,opacity}
+.manifesto-fly.fly-right{color:var(--orange)}
+.manifesto-main{overflow:hidden}
+.manifesto-title{will-change:transform,clip-path,opacity}
+
+/* CTA */
+.cta{min-height:72vh;display:flex;align-items:center;background:var(--orange);color:#111;position:relative;overflow:hidden}
+.cta-grid{position:absolute;inset:0;opacity:.12;background-image:linear-gradient(rgba(0,0,0,.24) 1px,transparent 1px),linear-gradient(90deg,rgba(0,0,0,.24) 1px,transparent 1px);background-size:72px 72px;will-change:transform}
+.cta-ring{position:absolute;right:-8vw;top:50%;width:min(48vw,700px);aspect-ratio:1;border:1px solid rgba(0,0,0,.18);border-radius:50%;transform:translateY(-50%);will-change:transform}
+.cta-ring:before,.cta-ring:after{content:"";position:absolute;border-radius:50%;border:1px solid rgba(0,0,0,.14)}
+.cta-ring:before{inset:15%}.cta-ring:after{inset:33%}
+.cta-word{position:absolute;right:-4vw;bottom:-8vw;font-size:clamp(160px,27vw,430px);font-weight:950;letter-spacing:-.09em;color:rgba(0,0,0,.065);line-height:.8;will-change:transform}
+.cta .container{position:relative;z-index:2}
+.cta h2{font-size:clamp(54px,7.2vw,106px);line-height:.97;letter-spacing:-.067em}
+.cta p{margin-top:24px;font-size:17px;color:rgba(0,0,0,.6)}
+.cta a{display:inline-flex;align-items:center;gap:10px;margin-top:30px;padding:16px 27px;border-radius:999px;background:#111;color:#fff;font-weight:900;font-size:13px;transform-origin:center}
+.cta a i{transition:transform .3s}.cta a:hover i{transform:translate(4px,-4px)}
+
+
+/* === V4 / LATE PAGE MOTION BOOST === */
+.why-aurora{animation:whyAuroraDrift 8s ease-in-out infinite alternate}
+.why-orbit{animation:whyOrbitAuto 26s linear infinite}
+.why-scan{animation:whyScanAuto 5.6s linear infinite;opacity:.8}
+.why-word{animation:whyWordBreath 5s ease-in-out infinite alternate}
+@keyframes whyAuroraDrift{
+  0%{transform:translate3d(0,-4%,0) scale(.92);opacity:.48}
+  55%{transform:translate3d(-9%,6%,0) scale(1.12);opacity:.9}
+  100%{transform:translate3d(-16%,-1%,0) scale(1.02);opacity:.62}
+}
+@keyframes whyOrbitAuto{to{transform:rotate(360deg)}}
+@keyframes whyScanAuto{
+  0%{transform:translate3d(0,-180%,0);opacity:0}
+  16%{opacity:.75}
+  72%{opacity:.55}
+  100%{transform:translate3d(0,700%,0);opacity:0}
+}
+@keyframes whyWordBreath{from{opacity:.52}to{opacity:1}}
+.why-item:before{
+  content:"";position:absolute;left:-18px;top:50%;width:7px;height:7px;border-radius:50%;
+  background:var(--orange);box-shadow:0 0 0 0 rgba(255,146,48,.38);opacity:0;transition:.35s
+}
+.why-item:hover:before{opacity:1;box-shadow:0 0 0 12px rgba(255,146,48,0)}
+.why-item{transition:background .35s,padding-left .35s}
+.why-item:hover{padding-left:18px;background:linear-gradient(90deg,rgba(255,146,48,.045),transparent 70%)}
+
+.cta{min-height:78vh;padding:95px 0 60px}
+.cta .container.cta-layout{display:grid;grid-template-columns:1.05fr .95fr;gap:60px;align-items:center}
+.cta-copy{position:relative;z-index:3}
+.cta-kicker{display:inline-flex;align-items:center;gap:10px;font-size:11px;font-weight:900;letter-spacing:.16em;margin-bottom:22px}
+.cta-kicker:before{content:"";width:28px;height:1px;background:#111}
+.cta-visual{position:relative;z-index:3;min-height:430px;display:flex;align-items:center;justify-content:center}
+.cta-orbit-system{position:relative;width:min(34vw,470px);aspect-ratio:1;display:grid;place-items:center}
+.cta-orbit-system .ring{position:absolute;border-radius:50%;border:1px solid rgba(0,0,0,.24)}
+.cta-orbit-system .ring.r1{inset:0;animation:ctaSpin 18s linear infinite}
+.cta-orbit-system .ring.r2{inset:16%;border-style:dashed;animation:ctaSpinBack 13s linear infinite}
+.cta-orbit-system .ring.r3{inset:33%;border-color:rgba(255,255,255,.64);animation:ctaPulseRing 2.4s ease-in-out infinite}
+.cta-orbit-system .ring.r1:before,.cta-orbit-system .ring.r2:before{content:"";position:absolute;width:14px;height:14px;border-radius:50%;background:#111;box-shadow:0 0 0 7px rgba(0,0,0,.07)}
+.cta-orbit-system .ring.r1:before{left:50%;top:-7px}
+.cta-orbit-system .ring.r2:before{right:13%;bottom:3%}
+.cta-core{width:34%;aspect-ratio:1;border-radius:50%;background:#111;color:#fff;display:grid;place-items:center;text-align:center;font-size:11px;font-weight:900;letter-spacing:.12em;box-shadow:0 25px 70px rgba(0,0,0,.22);animation:ctaCoreFloat 3.5s ease-in-out infinite}
+.cta-core i{display:block;font-size:34px;margin-bottom:5px;color:var(--orange)}
+.cta-mini{position:absolute;padding:12px 15px;border:1px solid rgba(0,0,0,.18);background:rgba(255,255,255,.16);backdrop-filter:blur(9px);border-radius:999px;font-size:10px;font-weight:850;letter-spacing:.1em;white-space:nowrap}
+.cta-mini.m1{left:-3%;top:19%;animation:miniFloat 4.1s ease-in-out infinite}
+.cta-mini.m2{right:-7%;top:43%;animation:miniFloat 4.7s .5s ease-in-out infinite}
+.cta-mini.m3{left:7%;bottom:10%;animation:miniFloat 3.9s .9s ease-in-out infinite}
+.cta-ticker{position:absolute;left:0;right:0;bottom:0;z-index:4;overflow:hidden;border-top:1px solid rgba(0,0,0,.15);padding:15px 0;background:rgba(255,255,255,.07)}
+.cta-ticker-track{display:flex;width:max-content;animation:ctaTicker 11s linear infinite;will-change:transform}
+.cta-ticker-track span{white-space:nowrap;padding-right:52px;font-size:11px;font-weight:900;letter-spacing:.16em;color:rgba(0,0,0,.55)}
+.cta-ticker-track b{color:#111}
+@keyframes ctaSpin{to{transform:rotate(360deg)}}
+@keyframes ctaSpinBack{to{transform:rotate(-360deg)}}
+@keyframes ctaPulseRing{50%{transform:scale(1.08);opacity:.35}}
+@keyframes ctaCoreFloat{50%{transform:translateY(-10px) scale(1.025)}}
+@keyframes miniFloat{50%{transform:translateY(-12px)}}
+@keyframes ctaTicker{to{transform:translateX(-25%)}}
+.cta-btn{position:relative;overflow:hidden}
+.cta-btn:before{content:"";position:absolute;top:-30%;left:-45%;width:26%;height:170%;background:rgba(255,255,255,.24);transform:skewX(-18deg);animation:ctaButtonShine 3.4s ease-in-out infinite}
+@keyframes ctaButtonShine{0%,55%{left:-45%}78%,100%{left:125%}}
+
+footer{display:block!important;visibility:visible!important;opacity:1!important;background:#080808!important}
+
+footer .footer-grid > div,footer .footer-bottom,footer .footer-copy,footer .footer-title,footer .footer-logo,footer .sns{
+  opacity:1!important;visibility:visible!important;transform:none!important;
+}
+
+.footer-top{min-height:290px}
+.footer-watermark{transform:none!important;opacity:1!important}
+
+@media(max-width:1024px){
+  .cta .container.cta-layout{grid-template-columns:1fr;gap:36px}
+  .cta-visual{min-height:330px}.cta-orbit-system{width:min(58vw,410px)}
+}
+@media(max-width:760px){
+  .cta{padding:90px 0 68px}.cta-visual{min-height:300px}.cta-orbit-system{width:min(76vw,350px)}
+  .cta-mini{font-size:9px}.why-item:before{display:none}
+  /* Keep the WHY shutter dramatic on mobile without overloading the GPU. */
+  .why-reveal-panel{backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px)}
+  .why-reveal-flash{width:min(82vw,520px);filter:blur(10px)}
+}
+
+/* FOOTER */
+footer{background:#080808;color:#777;border-top:1px solid var(--line)}
+.footer-top{padding:78px 0 62px}
+.footer-grid{display:grid;grid-template-columns:1.2fr .8fr 1.25fr;gap:70px}
+.footer-logo{font-size:35px;font-weight:950;color:#fff;letter-spacing:-.05em;margin-bottom:25px}.footer-logo span{color:var(--orange)}
+.footer-title{font-size:11px;font-weight:900;letter-spacing:.16em;color:#fff;text-transform:uppercase;margin-bottom:19px}
+.footer-copy p{font-size:13px;line-height:1.75;margin-bottom:6px}.footer-copy strong{color:#aaa}
+.sns{display:flex;gap:9px;margin-top:24px}.sns a{width:42px;height:42px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;font-size:18px;transition:.3s}.sns a:hover{color:var(--orange);border-color:var(--orange);transform:translateY(-3px)}
+.footer-bottom{min-height:84px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:30px;font-size:12px;color:#555}.footer-links{display:flex;gap:22px;flex-wrap:wrap}
+
+@media(max-width:1024px){
+  .manifesto .container,.why-stage{grid-template-columns:1fr}
+  .service-shell{grid-template-columns:290px 1fr;gap:35px}.visual{display:none}.service{grid-template-columns:1fr}
+  .why-visual{position:relative;top:auto;min-height:380px}.why-big{font-size:180px}
+  .footer-grid{grid-template-columns:1fr 1fr}.footer-grid>div:last-child{grid-column:1/-1}
+}
+@media(max-width:760px){
+  .container{width:min(calc(100% - 30px),var(--container))}
+  .hero>.container{width:min(calc(100% - 36px),1480px)}
+  .hero{height:auto;min-height:860px}.hero-inner{padding:110px 0 48px}.hero-top{margin-bottom:42px}.hero-sub{display:block}.hero-sub small{display:block;margin-top:18px}.hero-outline{right:-30vw;bottom:3vw}.hero-bg{background-position:62% center}
+  .metrics-grid{grid-template-columns:1fr 1fr 1fr}.metric{min-height:112px;padding:18px 12px}.metric-number strong{font-size:36px}.metric-number em{font-size:16px}.metric small{display:none}
+  .manifesto{padding:100px 0}.manifesto .container{gap:35px}
+  .services{height:auto}.services-sticky{position:relative;height:auto;background:var(--paper)!important;color:#111!important}.services-shell{display:block;padding:100px 0}.service-index{display:none}.service-stage{height:auto}.service{position:relative;opacity:1!important;visibility:visible!important;transform:none!important;pointer-events:auto;padding:45px 0;border-top:1px solid var(--darkline)}.service h3{font-size:42px}
+  .work{height:auto;min-height:0;padding:90px 0 72px}.work-sticky{position:relative;height:auto;min-height:0;display:block;overflow:hidden}.work-head{position:relative;left:auto;top:auto;width:min(calc(100% - 30px),var(--container));margin:0 auto 38px}.work-marquee{padding-left:15px}.work-track{display:flex;gap:16px;padding:0}.project{flex:0 0 82vw;margin-bottom:0}.project-caption{grid-template-columns:1fr;gap:8px;padding-top:16px}.project-caption p{grid-column:auto}.project-caption h3{font-size:clamp(22px,6.8vw,28px)}
+  .why{padding:110px 0 90px}.why-head{margin-bottom:55px}.why-stage{gap:40px}.why-visual{min-height:330px;padding:30px}.why-big{font-size:145px}.why-item{min-height:auto;padding:34px 0}.why-word{top:70px}
+  .cta{min-height:62vh;padding:95px 0}.cta-ring{width:90vw;right:-48vw}.cta-grid{background-size:54px 54px}
+  .footer-grid{grid-template-columns:1fr;gap:42px}.footer-grid>div:last-child{grid-column:auto}.footer-bottom{padding:24px 0;flex-direction:column;align-items:flex-start}
+}
+@media(max-width:760px){
+  .hero-orbit{width:86vw;right:-42vw;top:-4vw;opacity:.72}
+  #heroCanvas{opacity:.62}
+  .why-aurora{width:520px;height:520px;right:-330px;top:18%}
+  .why-orbit{width:110vw;left:-65vw;bottom:-25vw}
+  .footer-watermark{font-size:100px;right:-22px;top:22px}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.hero-bg,.hero-outline,.hero-orbit,.why-word,.why-big,.why-aurora,.why-orbit,.why-scan,.cta-grid,.cta-ring,.cta-word,.cta-flare,.footer-watermark,.footer-sweep{transform:none!important}#heroCanvas{display:none}}
+
+
+/* === V10 POLISH / RESPONSIVE TYPOGRAPHY + VIEWPORT FIT ONLY === */
+@media(max-width:760px){
+  /* Keep the existing layouts; only prevent type/mask clipping on narrow screens. */
+  .hero h1{font-size:clamp(40px,11.3vw,54px);line-height:.96;letter-spacing:-.065em;max-width:100%}
+  .hero h1 .hero-line{padding-bottom:.12em}
+  .hero-top{font-size:10px;letter-spacing:.11em;gap:12px;flex-wrap:wrap}
+  .hero-sub p{font-size:15px;line-height:1.6}
+  .metric{padding-left:10px;padding-right:10px}
+  .metric-label{font-size:11px;white-space:normal;line-height:1.25}
+  .metric-number strong{font-size:clamp(29px,9vw,36px)}
+  .metric-number em{font-size:14px}
+
+  .late-transition-word{font-size:clamp(42px,12.8vw,78px);line-height:.92;max-width:92vw;text-align:center;letter-spacing:-.065em}
+  .late-transition-brand{font-size:clamp(88px,24vw,150px)}
+  .late-transition-side{left:18px;right:18px;max-width:calc(100vw - 36px);white-space:normal;line-height:1.4}
+
+  .manifesto-motion{max-width:100%;width:100%}
+  .manifesto-fly{font-size:clamp(24px,7.7vw,34px);white-space:normal;line-height:1.1}
+  .manifesto h2{font-size:clamp(34px,9.8vw,44px);line-height:1.12}
+
+  .service h3{font-size:clamp(34px,10vw,42px);line-height:1.06;letter-spacing:-.05em}
+  .service p{font-size:15px;line-height:1.6}
+
+  .display{font-size:clamp(36px,10.5vw,50px);line-height:1.06;letter-spacing:-.052em}
+  .work-head p{line-height:1.55}
+  .project-caption h3{font-size:clamp(23px,7vw,30px);line-height:1.15}
+
+  .why-head h2{font-size:clamp(34px,9.8vw,48px);line-height:1.08}
+  .why-head p{font-size:15px;line-height:1.65}
+  .why-item h3{font-size:clamp(27px,8vw,36px);line-height:1.16}
+  .why-item p{font-size:14px;line-height:1.65}
+  .why-visual{overflow:hidden}
+  .why-big{line-height:.8}
+
+  .cta h2,.cta-title{font-size:clamp(42px,12vw,60px);line-height:1;letter-spacing:-.06em}
+  .cta-desc{font-size:15px;line-height:1.6}
+  .cta-ticker-track span{white-space:nowrap}
+
+  .footer-copy p{overflow-wrap:anywhere}
+}
+
+@media(max-width:420px){
+  .container{width:min(calc(100% - 24px),var(--container))}
+  .hero>.container{width:calc(100% - 28px)}
+  .hero h1{font-size:clamp(37px,11.6vw,48px)}
+  .hero-top span:last-child{max-width:58%;text-align:right}
+  .metrics-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .metric{min-width:0;padding:16px 6px}
+  .metric-label{font-size:10px;letter-spacing:-.02em}
+  .metric-number{gap:2px}
+  .metric-number strong{font-size:clamp(26px,8.5vw,33px)}
+  .metric-number em{font-size:12px}
+  .late-transition-word{font-size:clamp(38px,12.4vw,52px);max-width:94vw}
+  .service h3{font-size:clamp(31px,9.5vw,38px)}
+  .why-head h2{font-size:clamp(31px,9.3vw,40px)}
+  .cta h2,.cta-title{font-size:clamp(38px,11.2vw,50px)}
+}
+
+@media(max-height:680px) and (min-width:761px){
+  /* Short laptop/landscape screens: preserve layouts while fitting vertical content. */
+  .hero{min-height:680px}
+  .hero-inner{padding-bottom:28px}
+  .hero-top{margin-bottom:24px}
+  .hero h1{font-size:clamp(48px,9vh,82px);line-height:.92}
+  .hero-sub{margin-top:18px;padding-top:14px}
+  .metrics{margin-top:18px}
+  .metric{min-height:102px;padding-top:14px;padding-bottom:14px}
+  .late-transition-word{font-size:clamp(54px,15vh,105px)}
+  .service-stage{height:74vh}
+  .visual{min-height:300px}
+  .why-visual{min-height:430px}
+  .cta-visual{min-height:360px}
+}
+
+@media(max-width:900px) and (max-height:560px){
+  .late-transition-word{font-size:clamp(36px,14vh,62px)}
+  .late-transition-brand{font-size:clamp(72px,24vh,120px)}
+  .late-transition-side{bottom:14px;font-size:8px}
+}
+
+@media(prefers-reduced-motion:reduce){.work-marquee{overflow-x:auto}.work-track{transform:none!important}}
+
+</style>
+
+<div class="progress"><span></span></div>
+
+<header class="site-header" id="siteHeader">
+  <div class="header-shell">
+    <a class="header-logo" href="#top" aria-label="CREAFIT 메인으로">CREAFIT<span>.</span></a>
+
+    <nav class="main-nav" id="mainNav" aria-label="주요 메뉴">
+      <ul>
+        <li class="menu-item">
+          <a class="menu-link" href="#">회사소개 <i class="ri-arrow-down-s-line"></i></a>
+          <ul class="submenu">
+            <li><a href="#"><span class="sub-no">01</span><span>sub1</span><i class="ri-arrow-right-up-line"></i></a></li>
+            <li><a href="#"><span class="sub-no">02</span><span>sub2</span><i class="ri-arrow-right-up-line"></i></a></li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <a class="menu-link" href="#">홈페이지 <i class="ri-arrow-down-s-line"></i></a>
+          <ul class="submenu">
+            <li><a href="#"><span class="sub-no">01</span><span>sub1</span><i class="ri-arrow-right-up-line"></i></a></li>
+            <li><a href="#"><span class="sub-no">02</span><span>sub2</span><i class="ri-arrow-right-up-line"></i></a></li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <a class="menu-link" href="#">블로그 <i class="ri-arrow-down-s-line"></i></a>
+          <ul class="submenu">
+            <li><a href="#"><span class="sub-no">01</span><span>sub1</span><i class="ri-arrow-right-up-line"></i></a></li>
+            <li><a href="#"><span class="sub-no">02</span><span>sub2</span><i class="ri-arrow-right-up-line"></i></a></li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <a class="menu-link" href="#">마케팅 <i class="ri-arrow-down-s-line"></i></a>
+          <ul class="submenu">
+            <li><a href="#"><span class="sub-no">01</span><span>sub1</span><i class="ri-arrow-right-up-line"></i></a></li>
+            <li><a href="#"><span class="sub-no">02</span><span>sub2</span><i class="ri-arrow-right-up-line"></i></a></li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <a class="menu-link" href="#">고객지원 <i class="ri-arrow-down-s-line"></i></a>
+          <ul class="submenu">
+            <li><a href="#"><span class="sub-no">01</span><span>sub1</span><i class="ri-arrow-right-up-line"></i></a></li>
+            <li><a href="#"><span class="sub-no">02</span><span>sub2</span><i class="ri-arrow-right-up-line"></i></a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+
+    <a class="header-cta" href="/shop_contents/myreg_form.htm?myreg_code=inquiry">PROJECT REQUEST <i class="ri-arrow-right-up-line"></i></a>
+    <button class="mobile-menu-btn" type="button" aria-label="메뉴 열기" aria-controls="mainNav" aria-expanded="false"><span></span><span></span></button>
+  </div>
+</header>
+
+<main>
+
+<section class="hero" id="top">
+  <div class="hero-bg"></div>
+  <div class="hero-noise"></div>
+  <canvas id="heroCanvas" aria-hidden="true"></canvas>
+  <div class="hero-orbit" aria-hidden="true"><i class="hero-orbit-dot"></i></div>
+  <div class="hero-outline">CREAFIT</div>
+  <div class="container hero-inner">
+    <div class="hero-top"><span>CREAFIT MARKETING</span><span>WEB · BRAND BLOG · MARKETING</span></div>
+    <h1>
+      <span class="hero-line"><span>13년의 경험.</span></span>
+      <span class="hero-line"><span class="stroke">웹을 만들고,</span></span>
+      <span class="hero-line"><span>브랜드를 <em class="accent" style="font-style:normal">키웁니다.</em></span></span>
+    </h1>
+    <div class="hero-sub"><p>홈페이지부터 브랜드 블로그, 검색 마케팅까지.</p><small>13 YEARS OF DIGITAL EXPERIENCE</small></div>
+
+    <div class="metrics" aria-label="크레아핏 실적">
+      <div class="metrics-grid">
+        <div class="metric">
+          <div class="metric-label">누적 파트너사</div>
+          <div class="metric-number"><strong class="count" data-value="2064">0</strong><em>곳</em></div>
+          <small>PARTNERS</small>
+        </div>
+        <div class="metric">
+          <div class="metric-label">광고 재계약률</div>
+          <div class="metric-number"><strong class="count" data-value="88">0</strong><em>%</em></div>
+          <small>RENEWAL RATE</small>
+        </div>
+        <div class="metric">
+          <div class="metric-label">홈페이지 제작</div>
+          <div class="metric-number"><strong class="count" data-value="228">0</strong><em>건</em></div>
+          <small>WEBSITE PROJECTS</small>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-mark">SCROLL TO EXPLORE</div>
+</section>
+
+<section class="manifesto">
+  <div class="container">
+    <div class="manifesto-side">
+      <span class="manifesto-label" data-aos="fade-up" data-aos-duration="750">WHAT WE DO</span>
+      <div class="manifesto-motion">
+        <span class="manifesto-fly fly-left">만드는 것부터</span>
+        <span class="manifesto-fly fly-right">알리는 것까지.</span>
+      </div>
+    </div>
+    <div class="manifesto-main">
+      <h2 class="manifesto-title">좋은 브랜드는<br><span class="accent">보이는 곳</span>에서 시작됩니다.</h2>
+      <p data-aos="fade-up" data-aos-delay="120" data-aos-duration="900">홈페이지로 보여주고, 콘텐츠로 알리고, 검색에서 만나게 합니다.</p>
+    </div>
+  </div>
+</section>
+
+<section class="late-transition" aria-hidden="true">
+  <div class="late-transition-stage">
+    <div class="late-transition-grid"></div>
+    <div class="late-transition-glow"></div>
+    <div class="late-transition-ring"><i class="late-transition-dot"></i></div>
+    <div class="late-transition-brand">CREAFIT</div>
+    <div class="late-transition-paper"></div>
+    <div class="late-transition-orange"></div>
+    <div class="late-transition-copy">
+      <div class="late-transition-word web">WEBSITE</div>
+      <div class="late-transition-word blog">BRAND BLOG</div>
+      <div class="late-transition-word marketing">MARKETING</div>
+    </div>
+    <div class="late-transition-side">SCROLL / CREAFIT MARKETING</div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="services-sticky" data-step="0">
+    <div class="container services-shell">
+      <div>
+        <span class="label">SERVICES</span>
+        <div class="service-index" style="margin-top:38px">
+          <div class="active"><small>01 / WEBSITE</small><strong>홈페이지</strong></div>
+          <div><small>02 / BRAND BLOG</small><strong>브랜드 블로그</strong></div>
+          <div><small>03 / MARKETING</small><strong>마케팅</strong></div>
+        </div>
+      </div>
+      <div class="service-stage">
+        <article class="service active">
+          <div><small class="label">WEBSITE</small><h3 style="margin-top:20px">브랜드를 제대로<br>보여주는 홈페이지</h3><p>기획부터 디자인, 운영까지 브랜드에 맞게 만듭니다.</p><a class="more" href="#">자세히 보기 <i class="ri-arrow-right-up-line"></i></a></div>
+          <div class="visual"><div class="browser"><div class="browser-top"><i></i><i></i><i></i></div><img src="/img_up/shop_pds/ewebstory/design/2026_renewal/sub_web/dashboard.png" alt="홈페이지 제작"></div></div>
+        </article>
+        <article class="service">
+          <div><small class="label">BRAND BLOG</small><h3 style="margin-top:20px">검색할수록 쌓이는<br>브랜드 콘텐츠</h3><p>디자인과 콘텐츠를 함께 관리합니다.</p><a class="more" href="#">자세히 보기 <i class="ri-arrow-right-up-line"></i></a></div>
+          <div class="visual"><div class="cards"><img src="/img_up/shop_pds/ewebstory/design/2026_renewal/sub_blog/em_bl_pf_05.png" alt=""><img src="/img_up/shop_pds/ewebstory/design/2026_renewal/sub_blog/em_bl_pf_04.png" alt=""><img src="/img_up/shop_pds/ewebstory/design/2026_renewal/sub_blog/em_bl_pf_04.png" alt="브랜드 블로그"></div></div>
+        </article>
+        <article class="service">
+          <div><small class="label">MARKETING</small><h3 style="margin-top:20px">필요한 고객에게<br>먼저 보이도록</h3><p>플레이스와 검색광고를 데이터 기반으로 운영합니다.</p><a class="more" href="#">자세히 보기 <i class="ri-arrow-right-up-line"></i></a></div>
+          <div class="visual"><div class="radar"><span></span><span></span><span></span><i class="ri-search-eye-line"></i></div></div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="work">
+  <div class="work-sticky">
+    <div class="work-head gs-reveal">
+      <span class="label">SELECTED WORK</span>
+      <h2 class="display" style="margin-top:18px">브랜드에 맞는<br><span class="accent">답을 만듭니다.</span></h2>
+      <p>업종도 목적도 다르기에, 같은 방식으로 만들지 않습니다.</p>
+    </div>
+    <div class="work-marquee">
+      <div class="work-track">
+      <article class="project"><div class="project-media"><div class="project-no">01</div><img src="/img_up/shop_pds/ewebstory/design/2026_renewal/sub_web/pf_5.jpg" alt="노무법인 로율"></div><div class="project-caption"><small>PROFESSIONAL</small><h3>노무법인 로율</h3><p>전문직 웹사이트</p></div></article>
+      <article class="project"><div class="project-media"><div class="project-no">02</div><img src="/img_up/shop_pds/ewebstory/design/2026_renewal/sub_web/pf_2.png" alt="코이디자인"></div><div class="project-caption"><small>ARCHITECTURE</small><h3>코이디자인</h3><p>건축·인테리어 웹사이트</p></div></article>
+      <article class="project"><div class="project-media"><div class="project-no">03</div><img src="/img_up/shop_pds/ewebstory/design/2026_renewal/sub_web/pf_7.png" alt="한국시험공사"></div><div class="project-caption"><small>MANUFACTURING</small><h3>(주)한국시험공사</h3><p>제조업 웹사이트</p></div></article>
+            <article class="project"><div class="project-media"><div class="project-no">01</div><img src="/img_up/shop_pds/ewebstory/design/2026_renewal/sub_web/pf_5.jpg" alt="노무법인 로율"></div><div class="project-caption"><small>PROFESSIONAL</small><h3>노무법인 로율</h3><p>전문직 웹사이트</p></div></article>
+      <article class="project"><div class="project-media"><div class="project-no">02</div><img src="/img_up/shop_pds/ewebstory/design/2026_renewal/sub_web/pf_2.png" alt="코이디자인"></div><div class="project-caption"><small>ARCHITECTURE</small><h3>코이디자인</h3><p>건축·인테리어 웹사이트</p></div></article>
+      <article class="project"><div class="project-media"><div class="project-no">03</div><img src="/img_up/shop_pds/ewebstory/design/2026_renewal/sub_web/pf_7.png" alt="한국시험공사"></div><div class="project-caption"><small>MANUFACTURING</small><h3>(주)한국시험공사</h3><p>제조업 웹사이트</p></div></article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="why">
+  <i class="why-reveal-sentinel" aria-hidden="true"></i>
+  <div class="why-reveal-curtain" aria-hidden="true">
+    <div class="why-reveal-panel left"></div>
+    <div class="why-reveal-panel right"></div>
+    <div class="why-reveal-line"></div>
+    <div class="why-reveal-flash"></div>
+  </div>
+  <div class="why-aurora" aria-hidden="true"></div>
+  <div class="why-orbit" aria-hidden="true"></div>
+  <div class="why-scan" aria-hidden="true"></div>
+  <div class="why-word">WHY</div>
+  <div class="container">
+    <div class="why-head">
+      <span class="label gs-reveal">WHY CREAFIT</span>
+      <h2 class="display gs-reveal">제작만 잘하는 회사는 많습니다.<br><span class="accent">크레아핏은 그 다음까지 봅니다.</span></h2>
+      <p class="gs-reveal">만드는 순간보다, 실제로 쓰이는 시간을 더 오래 봅니다.</p>
+    </div>
+    <div class="why-stage">
+      <div class="why-visual">
+        <small>CREAFIT EXPERIENCE</small>
+        <div class="why-big">13</div>
+        <p>YEARS / WEB · CONTENT · MARKETING</p>
+      </div>
+      <div class="why-list">
+        <article class="why-item">
+          <small>01 / EXPERIENCE</small>
+          <h3>13년의 제작·운영 경험</h3>
+          <p>보기에 좋은 화면보다 실제 운영에 필요한 구조를 먼저 봅니다.</p>
+          <i class="why-line"></i>
+        </article>
+        <article class="why-item">
+          <small>02 / CONNECT</small>
+          <h3>웹·블로그·마케팅을 한 흐름으로</h3>
+          <p>각 채널이 따로 놀지 않도록 역할과 고객 동선을 함께 맞춥니다.</p>
+          <i class="why-line"></i>
+        </article>
+        <article class="why-item">
+          <small>03 / AFTER OPEN</small>
+          <h3>오픈 후 운영까지</h3>
+          <p>수정·콘텐츠·검색 노출까지 계속 활용할 수 있게 만듭니다.</p>
+          <i class="why-line"></i>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="cta">
+  <div class="cta-flare" aria-hidden="true"></div>
+  <div class="cta-grid"></div>
+  <div class="cta-ring"></div>
+  <div class="cta-word">CREAFIT</div>
+  <div class="container cta-layout">
+    <div class="cta-copy">
+      <div class="cta-kicker">START A PROJECT</div>
+      <h2 class="cta-title">브랜드가<br>더 잘 보이도록.</h2>
+      <p class="cta-desc">지금 필요한 것부터 함께 정리해보세요.</p>
+      <a class="cta-btn" href="/shop_contents/myreg_form.htm?myreg_code=inquiry">프로젝트 문의하기 <i class="ri-arrow-right-up-line"></i></a>
+    </div>
+    <div class="cta-visual" aria-hidden="true">
+      <div class="cta-orbit-system">
+        <span class="ring r1"></span><span class="ring r2"></span><span class="ring r3"></span>
+        <div class="cta-core"><div><i class="ri-arrow-right-up-line"></i>CREAFIT<br>PROJECT</div></div>
+        <span class="cta-mini m1">WEBSITE</span>
+        <span class="cta-mini m2">BRAND BLOG</span>
+        <span class="cta-mini m3">SEARCH MARKETING</span>
+      </div>
+    </div>
+  </div>
+  <div class="cta-ticker" aria-hidden="true"><div class="cta-ticker-track">
+    <span><b>WEBSITE</b> · BRAND BLOG · SEARCH MARKETING · CREAFIT MARKETING · </span>
+    <span><b>WEBSITE</b> · BRAND BLOG · SEARCH MARKETING · CREAFIT MARKETING · </span>
+    <span><b>WEBSITE</b> · BRAND BLOG · SEARCH MARKETING · CREAFIT MARKETING · </span>
+    <span><b>WEBSITE</b> · BRAND BLOG · SEARCH MARKETING · CREAFIT MARKETING · </span>
+  </div></div>
+</section>
+</main>
+
+<footer>
+  <div class="footer-watermark" aria-hidden="true">CREAFIT</div>
+  <div class="footer-sweep" aria-hidden="true"></div>
+  <div class="footer-top">
+    <div class="container footer-grid">
+      <div><div class="footer-logo">CREAFIT<span>.</span></div><div class="footer-copy"><p><strong>상호</strong> 크레아핏마케팅 &nbsp; / &nbsp; <strong>대표</strong> 임채경</p><p><strong>사업자등록번호</strong> 701-54-00940</p><p><strong>통신판매신고번호</strong> 2014-서울구로-0642</p></div><div class="sns"><a href="https://blog.naver.com/crearkr" target="_blank" rel="noopener"><i class="ri-pages-line"></i></a><a href="#" target="_blank" rel="noopener"><i class="ri-youtube-fill"></i></a><a href="https://pf.kakao.com/_xbxlSrn" target="_blank" rel="noopener"><i class="ri-chat-smile-2-fill"></i></a></div></div>
+      <div><div class="footer-title">Contact</div><div class="footer-copy"><p><strong>Tel.</strong> 031-8049-0828</p><p><strong>Fax.</strong> 033-655-9103</p><p style="margin-top:14px"><strong>대표 이메일</strong><br>creafit@naver.com</p><p><strong>디자인팀</strong><br>creafit_marketing@naver.com</p></div></div>
+      <div><div class="footer-title">Office & Server</div><div class="footer-copy"><p><strong>사업장소재지</strong><br>경기도 김포시 태장로 795번길 23, r동 4층 408호<br>(장기동, 김포마스터비즈파크)</p><p style="margin-top:14px"><strong>서버소재지</strong><br>서울시 서초구 서초동 1710-1 SK 브로드밴드 IDC 1층</p></div></div>
+    </div>
+  </div>
+  <div class="container footer-bottom"><div class="footer-links"><a href="#">회사소개</a><a href="/shop_info/agree.htm">이용약관</a><a href="/shop_info/privacy.htm">개인정보취급방침</a><a href="/admin">ADMIN</a></div><div>© 2026 크레아핏마케팅. All Rights Reserved.</div></div>
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+AOS.init({
+  duration: 850,
+  easing: 'ease-out-cubic',
+  once: true,
+  offset: 70
+});
+</script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+<script>
+(() => {
+  if (!window.gsap || !window.ScrollTrigger) return;
+  gsap.registerPlugin(ScrollTrigger);
+
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const progress = document.querySelector('.progress span');
+  const services = document.querySelector('.services');
+  const sticky = document.querySelector('.services-sticky');
+  const serviceEls = services ? [...services.querySelectorAll('.service')] : [];
+  const indexEls = services ? [...services.querySelectorAll('.service-index > div')] : [];
+  const work = document.querySelector('.work');
+  const track = document.querySelector('.work-track');
+
+  function setService(index) {
+    if (!services || !sticky) return;
+    index = Math.max(0, Math.min(2, index));
+    sticky.dataset.step = String(index);
+    serviceEls.forEach((el, i) => el.classList.toggle('active', i === index));
+    indexEls.forEach((el, i) => el.classList.toggle('active', i === index));
+  }
+
+  /* SERVICES is intentionally independent from the GSAP PIN showcase above it.
+     Use the same viewport calculation as creafit_main_final.html so pin-spacers,
+     AOS and other ScrollTriggers cannot overwrite the service step state. */
+  let serviceRaf = 0;
+  function updateServiceStory() {
+    serviceRaf = 0;
+    if (!services || !sticky || window.innerWidth <= 760) return;
+    const rect = services.getBoundingClientRect();
+    const range = Math.max(1, services.offsetHeight - window.innerHeight);
+    const progress = Math.min(1, Math.max(0, -rect.top / range));
+    setService(Math.min(2, Math.floor(progress * 3)));
+  }
+  function requestServiceStoryUpdate() {
+    if (!serviceRaf) serviceRaf = requestAnimationFrame(updateServiceStory);
+  }
+
+  /* SELECTED WORK moves autonomously; keep old compatibility hooks inert so
+     scroll/resize listeners never overwrite the marquee transform. */
+  function updateWorkStory() {}
+  function requestWorkStoryUpdate() {}
+
+
+  /* HEADER: transparent over hero, compact glass header after scroll */
+  const siteHeader = document.querySelector('#siteHeader');
+  const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+  const mainNav = document.querySelector('#mainNav');
+  const syncHeader = () => siteHeader?.classList.toggle('is-scrolled', window.scrollY > 28);
+  syncHeader();
+  window.addEventListener('scroll', syncHeader, { passive: true });
+
+  mobileMenuBtn?.addEventListener('click', () => {
+    const open = document.body.classList.toggle('menu-open');
+    mobileMenuBtn.setAttribute('aria-expanded', String(open));
+    mobileMenuBtn.setAttribute('aria-label', open ? '메뉴 닫기' : '메뉴 열기');
+  });
+  mainNav?.addEventListener('click', e => {
+    if (window.innerWidth <= 900 && e.target.closest('.submenu a')) {
+      document.body.classList.remove('menu-open');
+      mobileMenuBtn?.setAttribute('aria-expanded', 'false');
+      mobileMenuBtn?.setAttribute('aria-label', '메뉴 열기');
+    }
+  });
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 900) {
+      document.body.classList.remove('menu-open');
+      mobileMenuBtn?.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  if (reduceMotion) {
+    document.querySelectorAll('.count').forEach(el => {
+      const value = Number(el.dataset.value || 0);
+      el.textContent = value.toLocaleString('ko-KR');
+    });
+    return;
+  }
+
+  /* hero orbit + floating dust particles (restored from creafit_main_final.html) */
+  gsap.to('.hero-orbit', { rotation: 360, duration: 24, repeat: -1, ease: 'none' });
+
+  const heroCanvas = document.querySelector('#heroCanvas');
+  const heroCtx = heroCanvas?.getContext('2d');
+  let heroParticles = [];
+  let heroDpr = 1;
+
+  function resizeHeroCanvas() {
+    if (!heroCanvas || !heroCtx) return;
+    const rect = heroCanvas.getBoundingClientRect();
+    heroDpr = Math.min(window.devicePixelRatio || 1, 2);
+    heroCanvas.width = Math.max(1, Math.round(rect.width * heroDpr));
+    heroCanvas.height = Math.max(1, Math.round(rect.height * heroDpr));
+    heroCtx.setTransform(heroDpr, 0, 0, heroDpr, 0, 0);
+    const count = Math.min(175, Math.max(82, Math.round(rect.width / 10)));
+    heroParticles = Array.from({ length: count }, () => ({
+      x: Math.random() * rect.width,
+      y: Math.random() * rect.height,
+      r: Math.random() * 2.6 + .55,
+      vx: (Math.random() - .5) * .24,
+      vy: -(Math.random() * .42 + .08),
+      alpha: Math.random() * .58 + .24,
+      warm: Math.random() > .22,
+      glow: Math.random() > .76
+    }));
+  }
+
+  function drawHeroParticles() {
+    if (!heroCanvas || !heroCtx) return;
+    const rect = heroCanvas.getBoundingClientRect();
+    heroCtx.clearRect(0, 0, rect.width, rect.height);
+    heroParticles.forEach(p => {
+      p.x += p.vx;
+      p.y += p.vy;
+      if (p.y < -8) p.y = rect.height + 8;
+      if (p.x < -8) p.x = rect.width + 8;
+      if (p.x > rect.width + 8) p.x = -8;
+      heroCtx.save();
+      if (p.glow) {
+        heroCtx.shadowBlur = 14;
+        heroCtx.shadowColor = p.warm ? 'rgba(255,146,48,.9)' : 'rgba(255,255,255,.75)';
+      }
+      const grad = heroCtx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 2.4);
+      grad.addColorStop(0, p.warm ? `rgba(255,210,150,${Math.min(1,p.alpha+.2)})` : `rgba(255,255,255,${Math.min(1,p.alpha+.12)})`);
+      grad.addColorStop(.45, p.warm ? `rgba(255,146,48,${p.alpha})` : `rgba(255,255,255,${p.alpha*.78})`);
+      grad.addColorStop(1, 'rgba(255,146,48,0)');
+      heroCtx.beginPath();
+      heroCtx.arc(p.x, p.y, p.r * 2.4, 0, Math.PI * 2);
+      heroCtx.fillStyle = grad;
+      heroCtx.fill();
+      heroCtx.restore();
+    });
+    requestAnimationFrame(drawHeroParticles);
+  }
+
+  resizeHeroCanvas();
+  drawHeroParticles();
+  window.addEventListener('resize', resizeHeroCanvas);
+
+  /* global progress */
+  ScrollTrigger.create({
+    start: 0,
+    end: 'max',
+    onUpdate: self => gsap.set(progress, { width: (self.progress * 100) + '%' })
+  });
+
+  /* hero entrance */
+  const heroTl = gsap.timeline({ defaults: { ease: 'power4.out' } });
+  heroTl
+    .from('.hero-top', { y: -22, autoAlpha: 0, duration: .75 })
+    .from('.hero-line > span', { yPercent: 115, duration: 1.05, stagger: .11 }, '-=.35')
+    .from('.hero-sub > *', { y: 28, autoAlpha: 0, duration: .7, stagger: .08 }, '-=.55');
+
+  const hero = document.querySelector('.hero');
+  const heroBg = document.querySelector('.hero-bg');
+
+  hero?.addEventListener('pointermove', e => {
+    const r = hero.getBoundingClientRect();
+    hero.style.setProperty('--mx', ((e.clientX - r.left) / r.width * 100) + '%');
+    hero.style.setProperty('--my', ((e.clientY - r.top) / r.height * 100) + '%');
+  });
+
+  gsap.to('.hero-bg', {
+    yPercent: 8,
+    scale: 1.11,
+    ease: 'none',
+    scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: 1.15 }
+  });
+  gsap.to('.hero-outline', {
+    xPercent: -10,
+    yPercent: -7,
+    ease: 'none',
+    scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: 1 }
+  });
+
+  gsap.to('.hero-orbit', {
+    xPercent: -12,
+    yPercent: 14,
+    scale: .9,
+    ease: 'none',
+    scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: 1.05 }
+  });
+
+
+  /* count-up KPI - hero first view */
+  document.querySelectorAll('.metric').forEach((metric, index) => {
+    const number = metric.querySelector('.count');
+    const target = Number(number.dataset.value || 0);
+    const proxy = { value: 0 };
+    const line = document.createElement('span');
+    line.style.cssText = 'position:absolute;left:0;bottom:0;height:2px;width:0;background:#ff9230;';
+    metric.appendChild(line);
+
+    gsap.from(metric, {
+      y: 22,
+      autoAlpha: 0,
+      duration: .65,
+      delay: .72 + (index * .08),
+      ease: 'power3.out'
+    });
+    gsap.to(proxy, {
+      value: target,
+      duration: 1.75,
+      delay: .9 + (index * .08),
+      ease: 'power3.out',
+      onUpdate: () => { number.textContent = Math.round(proxy.value).toLocaleString('ko-KR'); }
+    });
+    gsap.to(line, {
+      width: '100%',
+      duration: 1.05,
+      delay: 1 + (index * .08),
+      ease: 'power3.out'
+    });
+  });
+
+
+  /* WHAT WE DO: fast directional fly-in + masked headline reveal */
+  const manifestoTl = gsap.timeline({
+    scrollTrigger: { trigger: '.manifesto', start: 'top 72%', toggleActions: 'play none none reverse' }
+  });
+  manifestoTl
+    .from('.manifesto-fly.fly-left', { x: -190, autoAlpha: 0, skewX: 8, duration: .82, ease: 'expo.out' }, 0)
+    .from('.manifesto-fly.fly-right', { x: 190, autoAlpha: 0, skewX: -8, duration: .82, ease: 'expo.out' }, .08)
+    .fromTo('.manifesto-title',
+      { clipPath: 'inset(100% 0 0 0)', y: 46, autoAlpha: 0 },
+      { clipPath: 'inset(0% 0 0 0)', y: 0, autoAlpha: 1, duration: .95, ease: 'power4.out' }, .18
+    );
+
+  /* generic section reveals */
+  gsap.utils.toArray('.gs-reveal').filter(el => !el.closest('.why')).forEach(el => {
+    gsap.from(el, {
+      y: 65,
+      autoAlpha: 0,
+      duration: .9,
+      ease: 'power3.out',
+      scrollTrigger: { trigger: el, start: 'top 84%', toggleActions: 'play none none reverse' }
+    });
+  });
+
+  /* service scroll story - original source behavior, isolated from PIN showcase */
+  setService(0);
+  updateServiceStory();
+  updateWorkStory();
+  window.addEventListener('scroll', () => {
+    requestServiceStoryUpdate();
+    requestWorkStoryUpdate();
+  }, { passive: true });
+  window.addEventListener('resize', () => {
+    requestServiceStoryUpdate();
+    requestWorkStoryUpdate();
+  }, { passive: true });
+
+  gsap.to('.radar span:nth-child(1)', { scale: 1.08, opacity: .35, duration: 1.6, repeat: -1, yoyo: true, ease: 'sine.inOut' });
+  gsap.to('.radar span:nth-child(2)', { scale: 1.08, opacity: .4, duration: 1.6, delay: .15, repeat: -1, yoyo: true, ease: 'sine.inOut' });
+  gsap.to('.radar span:nth-child(3)', { scale: 1.08, opacity: .45, duration: 1.6, delay: .3, repeat: -1, yoyo: true, ease: 'sine.inOut' });
+
+  /* SELECTED WORK: up to six original cards flow continuously without scroll control.
+     The cloned set is visual-only and makes the loop seamless. */
+  let workMarqueeTween = null;
+  let workMarqueeResizeRaf = 0;
+  let workMarqueeDistance = 0;
+  let workMarqueeDragging = false;
+  let workMarqueeLastX = 0;
+
+  function initWorkMarquee() {
+    if (!work || !track) return;
+    workMarqueeTween?.kill();
+    workMarqueeTween = null;
+    gsap.set(track, { x: 0 });
+    track.querySelectorAll('.work-clone').forEach(el => el.remove());
+
+    const allOriginals = [...track.querySelectorAll('.project')];
+    allOriginals.forEach((card, index) => { card.style.display = index < 6 ? '' : 'none'; });
+    const originals = allOriginals.slice(0, 6);
+    if (!originals.length) return;
+
+    originals.forEach(card => {
+      const clone = card.cloneNode(true);
+      clone.classList.add('work-clone');
+      clone.setAttribute('aria-hidden', 'true');
+      clone.querySelectorAll('a').forEach(a => a.setAttribute('tabindex', '-1'));
+      track.appendChild(clone);
+    });
+
+    const firstClone = track.querySelector('.work-clone');
+    if (!firstClone) return;
+    const distance = firstClone.offsetLeft - originals[0].offsetLeft;
+    if (distance <= 0) return;
+    workMarqueeDistance = distance;
+
+    const duration = window.innerWidth <= 760 ? 30 : window.innerWidth <= 1024 ? 34 : 38;
+    workMarqueeTween = gsap.to(track, { x: -distance, duration, ease: 'none', repeat: -1 });
+  }
+
+  const workMarquee = document.querySelector('.work-marquee');
+  const workObserver = work && 'IntersectionObserver' in window ? new IntersectionObserver(entries => {
+    entries.forEach(entry => entry.isIntersecting ? workMarqueeTween?.resume() : workMarqueeTween?.pause());
+  }, { threshold: .08 }) : null;
+  if (workObserver && work) workObserver.observe(work);
+
+  /* Mouse drag changes the current marquee position without pausing autoplay. */
+  workMarquee?.addEventListener('pointerdown', e => {
+    if (e.pointerType !== 'mouse' || !workMarqueeTween || workMarqueeDistance <= 0) return;
+    workMarqueeDragging = true;
+    workMarqueeLastX = e.clientX;
+    workMarquee.setPointerCapture?.(e.pointerId);
+    e.preventDefault();
+  });
+  workMarquee?.addEventListener('pointermove', e => {
+    if (!workMarqueeDragging || e.pointerType !== 'mouse' || !workMarqueeTween || workMarqueeDistance <= 0) return;
+    const deltaX = e.clientX - workMarqueeLastX;
+    workMarqueeLastX = e.clientX;
+    const duration = workMarqueeTween.duration();
+    let nextTime = workMarqueeTween.time() - (deltaX / workMarqueeDistance) * duration;
+    nextTime = ((nextTime % duration) + duration) % duration;
+    workMarqueeTween.time(nextTime);
+  });
+  const endWorkMarqueeDrag = e => {
+    if (!workMarqueeDragging) return;
+    workMarqueeDragging = false;
+    if (e?.pointerId != null && workMarquee?.hasPointerCapture?.(e.pointerId)) {
+      workMarquee.releasePointerCapture(e.pointerId);
+    }
+  };
+  workMarquee?.addEventListener('pointerup', endWorkMarqueeDrag);
+  workMarquee?.addEventListener('pointercancel', endWorkMarqueeDrag);
+  workMarquee?.addEventListener('lostpointercapture', () => { workMarqueeDragging = false; });
+
+  window.addEventListener('resize', () => {
+    cancelAnimationFrame(workMarqueeResizeRaf);
+    workMarqueeResizeRaf = requestAnimationFrame(initWorkMarquee);
+  }, { passive: true });
+
+  const mm = gsap.matchMedia();
+  mm.add('(min-width: 761px)', () => {
+    gsap.from('.work-track > .project:not(.work-clone)', {
+      y: 70,
+      autoAlpha: 0,
+      scale: .96,
+      stagger: .08,
+      duration: .8,
+      ease: 'power3.out',
+      scrollTrigger: { trigger: work, start: 'top 78%' }
+    });
+  });
+  requestAnimationFrame(initWorkMarquee);
+
+  /* WHY CREAFIT: unmistakable center-shutter reveal.
+     Do not depend on ScrollTrigger positions here. Earlier pinned scenes can alter
+     document geometry, so a real in-section sentinel triggers the reveal only when
+     it physically crosses the middle of the viewport. The full foreground scene
+     appears at once: no sentence/item stagger. */
+  const whySection = document.querySelector('.why');
+  const whyScene = document.querySelector('.why > .container');
+  const whySentinel = document.querySelector('.why-reveal-sentinel');
+  const whyCurtain = document.querySelector('.why-reveal-curtain');
+  const whyLeftPanel = document.querySelector('.why-reveal-panel.left');
+  const whyRightPanel = document.querySelector('.why-reveal-panel.right');
+  const whyRevealLine = document.querySelector('.why-reveal-line');
+  const whyRevealFlash = document.querySelector('.why-reveal-flash');
+  let whyRevealPlayed = false;
+
+  if (whySection && whyScene && whySentinel && whyCurtain) {
+    gsap.set(whyCurtain, { display: 'block' });
+    gsap.set(whyScene, {
+      scale: .92,
+      autoAlpha: 0,
+      filter: 'blur(18px)',
+      clipPath: 'inset(46% 0% 46% 0% round 26px)',
+      transformOrigin: '50% 50%',
+      force3D: true
+    });
+    gsap.set([whyLeftPanel, whyRightPanel], { xPercent: 0 });
+    gsap.set(whyRevealLine, { scaleY: 0, autoAlpha: 0 });
+    gsap.set(whyRevealFlash, { scale: .45, autoAlpha: 0 });
+
+    const playWhyReveal = () => {
+      if (whyRevealPlayed) return;
+      whyRevealPlayed = true;
+
+      const tl = gsap.timeline({
+        defaults: { overwrite: 'auto' },
+        onComplete: () => {
+          gsap.set(whyCurtain, { display: 'none' });
+          /* Clear the temporary transform so the sticky 13 YEARS panel keeps
+             exactly the same behavior as the V7 source after the reveal. */
+          gsap.set(whyScene, { clearProps: 'transform,filter,clipPath,willChange' });
+        }
+      });
+
+      /* Stage 1: a short orange flash clearly fires first. */
+      tl.to(whyRevealLine, {
+          scaleY: 1,
+          autoAlpha: 1,
+          duration: .06,
+          ease: 'power4.out'
+        }, 0)
+        .to(whyRevealFlash, {
+          scale: 1.28,
+          autoAlpha: 1,
+          duration: .12,
+          ease: 'power4.out'
+        }, .01)
+        /* Stage 2: after the flash peaks, the shutter opens quickly and cleanly. */
+        .to(whyLeftPanel, {
+          xPercent: -102,
+          duration: .60,
+          ease: 'power4.inOut'
+        }, .055)
+        .to(whyRightPanel, {
+          xPercent: 102,
+          duration: .60,
+          ease: 'power4.inOut'
+        }, .055)
+        .to(whyScene, {
+          scale: 1,
+          autoAlpha: 1,
+          filter: 'blur(0px)',
+          clipPath: 'inset(0% 0% 0% 0% round 0px)',
+          duration: .36,
+          ease: 'power4.out'
+        }, .075)
+        .to(whyRevealFlash, {
+          scale: 1.82,
+          autoAlpha: 0,
+          duration: .22,
+          ease: 'power2.out'
+        }, .07)
+        .to(whyRevealLine, {
+          scaleY: .12,
+          autoAlpha: 0,
+          duration: .12,
+          ease: 'power2.in'
+        }, .24);
+    };
+
+    const checkWhyReveal = () => {
+      if (whyRevealPlayed) return;
+      const sectionRect = whySection.getBoundingClientRect();
+      const vh = window.innerHeight || document.documentElement.clientHeight;
+
+      /* Open BEFORE the foreground copy reaches the viewport center.
+         This keeps the top of the WHY content visible instead of revealing it late. */
+      if (sectionRect.top <= vh * .82 && sectionRect.bottom > 0) {
+        const visibleCenterY = Math.max(150, Math.min(whySection.offsetHeight - 150, (vh * .52) - sectionRect.top));
+        const lineHeight = Math.min(vh * .58, 560);
+        gsap.set(whyRevealFlash, { top: visibleCenterY });
+        gsap.set(whyRevealLine, {
+          top: visibleCenterY - lineHeight / 2,
+          bottom: 'auto',
+          height: lineHeight
+        });
+        playWhyReveal();
+      }
+    };
+
+    window.addEventListener('scroll', checkWhyReveal, { passive: true });
+    window.addEventListener('resize', checkWhyReveal, { passive: true });
+    requestAnimationFrame(checkWhyReveal);
+  }
+
+  /* WHY background motion stays autonomous; do not tween transforms that CSS animations own. */
+  gsap.to('.why-word', {
+    xPercent: 24,
+    ease: 'none',
+    scrollTrigger: { trigger: '.why', start: 'top bottom', end: 'bottom top', scrub: 1.2 }
+  });
+  gsap.to('.why-big', {
+    scale: 1.14,
+    rotation: -4,
+    ease: 'none',
+    scrollTrigger: { trigger: '.why-stage', start: 'top 75%', end: 'bottom 35%', scrub: 1 }
+  });
+
+  /* richer late-page momentum: automatic motion + scroll depth */
+  gsap.to('.why-visual', {
+    boxShadow: '0 40px 120px rgba(255,146,48,.15), inset 0 1px 0 rgba(255,255,255,.055)',
+    borderColor: 'rgba(255,146,48,.28)',
+    ease: 'none',
+    scrollTrigger: { trigger: '.why-stage', start: 'top 82%', end: 'bottom 42%', scrub: .8 }
+  });
+  gsap.to('.why-stage', {
+    y: -26,
+    ease: 'none',
+    scrollTrigger: { trigger: '.why', start: 'top bottom', end: 'bottom top', scrub: 1.1 }
+  });
+
+
+  /* WHAT WE DO -> SERVICES: pinned cinematic service showcase */
+  const lateTl = gsap.timeline({
+    scrollTrigger: {
+      trigger: '.late-transition',
+      start: 'top top',
+      end: '+=2400',
+      pin: true,
+      scrub: 1,
+      anticipatePin: 1
+    }
+  });
+  lateTl
+    .fromTo('.late-transition-word.web', { xPercent: -125, autoAlpha: 0 }, { xPercent: 0, autoAlpha: 1, ease: 'power3.out' }, 0)
+    .to('.late-transition-ring', { rotation: 170, scale: 1.18, ease: 'none' }, 0)
+    .to('.late-transition-grid', { y: 130, scale: 1.42, opacity: .32, ease: 'none' }, 0)
+    .to('.late-transition-glow', { scale: 1.38, xPercent: -8, opacity: .95, ease: 'none' }, 0)
+    .to('.late-transition-brand', { xPercent: -10, scale: 1.12, opacity: .42, ease: 'none' }, 0)
+    .to('.late-transition-word.web', { xPercent: 135, autoAlpha: 0, ease: 'power2.in' }, .72)
+    .to('.late-transition-paper', { clipPath: 'inset(0% 0 0 0)', ease: 'power2.inOut' }, .75)
+    .fromTo('.late-transition-word.blog', { xPercent: -120, autoAlpha: 0 }, { xPercent: 0, autoAlpha: 1, ease: 'power3.out' }, .86)
+    .to('.late-transition-word.blog', { yPercent: -105, autoAlpha: 0, ease: 'power2.in' }, 1.48)
+    .to('.late-transition-orange', { clipPath: 'inset(0 0% 0 0)', ease: 'power3.inOut' }, 1.5)
+    .fromTo('.late-transition-word.marketing', { yPercent: 115, autoAlpha: 0, scale: .85 }, { yPercent: 0, autoAlpha: 1, scale: 1, ease: 'power4.out' }, 1.68)
+    .to('.late-transition-word.marketing', { letterSpacing: '.02em', scale: 1.08, ease: 'none' }, 2.05);
+
+  gsap.to('.late-transition-dot', { boxShadow: '0 0 45px rgba(255,146,48,1),0 0 110px rgba(255,146,48,.9)', scale: 1.35, duration: 1.1, repeat: -1, yoyo: true, ease: 'sine.inOut' });
+
+
+
+
+  /* CTA - scroll entrance + always-on visual motion */
+  const ctaTl = gsap.timeline({
+    scrollTrigger: { trigger: '.cta', start: 'top 82%', end: 'bottom 80%', scrub: .7 }
+  });
+  ctaTl
+    .from('.cta-title', { y: 120, autoAlpha: 0, scale: .88, rotationX: 12, transformOrigin: '50% 100%', ease: 'power4.out' }, 0)
+    .from('.cta-desc', { y: 38, autoAlpha: 0, ease: 'power3.out' }, .1)
+    .from('.cta-btn', { y: 30, autoAlpha: 0, scale: .9, ease: 'back.out(1.7)' }, .18)
+    .from('.cta-visual', { x: 95, scale: .94, ease: 'power4.out' }, .05)
+    .to('.cta-word', { xPercent: -18, ease: 'none' }, 0)
+    .to('.cta-grid', { x: 72, y: 72, ease: 'none' }, 0)
+    .to('.cta-ring', { rotation: 70, scale: 1.08, ease: 'none' }, 0);
+
+  /* CTA orbit: visible entrance after WHY, then continuous autonomous ring motion */
+  gsap.fromTo('.cta-orbit-system',
+    { scale: .28, rotation: -125, autoAlpha: 0 },
+    {
+      scale: 1, rotation: 0, autoAlpha: 1, duration: 1.3, ease: 'back.out(1.35)',
+      scrollTrigger: { trigger: '.cta', start: 'top 80%', toggleActions: 'play none none reverse', invalidateOnRefresh: true }
+    }
+  );
+  gsap.fromTo('.cta-orbit-system .ring',
+    { autoAlpha: 0, filter: 'blur(7px)' },
+    {
+      autoAlpha: 1, filter: 'blur(0px)', duration: .72, stagger: .1, ease: 'power3.out',
+      scrollTrigger: { trigger: '.cta', start: 'top 78%', toggleActions: 'play none none reverse', invalidateOnRefresh: true }
+    }
+  );
+  gsap.fromTo('.cta-core',
+    { autoAlpha: 0, filter: 'blur(8px)' },
+    {
+      autoAlpha: 1, filter: 'blur(0px)', duration: .72, ease: 'power3.out',
+      scrollTrigger: { trigger: '.cta', start: 'top 74%', toggleActions: 'play none none reverse', invalidateOnRefresh: true }
+    }
+  );
+
+  gsap.to('.cta-btn', { boxShadow: '0 12px 32px rgba(0,0,0,.24)', duration: 1.35, repeat: -1, yoyo: true, ease: 'sine.inOut', delay: .65 });
+  gsap.to('.cta-flare', { xPercent: 38, scale: 1.16, opacity: .82, duration: 5.6, repeat: -1, yoyo: true, ease: 'sine.inOut' });
+  gsap.to('.cta-orbit-system', { y: -9, duration: 3.8, repeat: -1, yoyo: true, ease: 'sine.inOut' });
+
+  ScrollTrigger.refresh();
+  window.addEventListener('load', () => {
+    updateServiceStory();
+    updateWorkStory();
+    ScrollTrigger.refresh();
+    requestAnimationFrame(() => {
+      updateServiceStory();
+      updateWorkStory();
+    });
+  }, { once: true });
+  if (window.AOS) AOS.refreshHard();
+})();
+</script>
