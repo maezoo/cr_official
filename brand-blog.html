@@ -52,7 +52,7 @@ footer{background:#050505;color:#fff;padding:74px 0 26px;border-top:1px solid va
 
   const hero=document.querySelector(".editorial-hero");
   const media=document.querySelector(".hero-media");
-  const heroTl=gsap.timeline({delay:.78});
+  const heroTl=gsap.timeline({delay:.95});
   heroTl.from(".breadcrumb",{y:18,opacity:0,duration:.55})
         .from(".hero-copy h1",{y:90,opacity:0,duration:1.05,ease:"power4.out"},"-=.2")
         .from(".hero-copy p,.hero-scroll",{y:30,opacity:0,duration:.7,stagger:.1},"-=.55")
@@ -104,7 +104,6 @@ footer{background:#050505;color:#fff;padding:74px 0 26px;border-top:1px solid va
   document.querySelectorAll(".works-grid").forEach(grid=>gsap.from(grid.querySelectorAll(".work-card"),{y:80,opacity:0,duration:.85,stagger:.08,scrollTrigger:{trigger:grid,start:"top 84%"}}));
   document.querySelectorAll(".cta").forEach(cta=>{
     gsap.from(cta,{clipPath:"inset(100% 0 0 0)",duration:1.15,ease:"power4.inOut",scrollTrigger:{trigger:cta,start:"top 88%"}});
-    gsap.to(cta.querySelector(":scope:before"),{});
     const button=cta.querySelector("a");
     button?.addEventListener("pointermove",e=>{const r=button.getBoundingClientRect();gsap.to(button,{x:(e.clientX-r.left-r.width/2)*.12,y:(e.clientY-r.top-r.height/2)*.18,duration:.35})});
     button?.addEventListener("pointerleave",()=>gsap.to(button,{x:0,y:0,duration:.55,ease:"elastic.out(1,.4)"}));
