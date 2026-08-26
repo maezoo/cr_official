@@ -1,0 +1,43 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css">
+<style>
+footer,footer *,footer *:before,footer *:after{box-sizing:border-box}
+footer a{text-decoration:none;color:inherit}
+footer{position:relative;overflow:hidden;background:#080808;color:#777;padding:0;border-top:1px solid var(--wline,rgba(255,255,255,.13));font-family:inherit}
+.footer-watermark{position:absolute;right:-2vw;top:4px;z-index:0;pointer-events:none;font-size:clamp(90px,15vw,230px);font-weight:950;line-height:.8;letter-spacing:-.075em;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.035)}
+.footer-sweep{position:absolute;left:-35%;top:0;width:35%;height:1px;z-index:2;pointer-events:none;background:linear-gradient(90deg,transparent,var(--orange,#ff9230),transparent);box-shadow:0 0 18px rgba(255,146,48,.45)}
+.footer-top,.footer-bottom{position:relative;z-index:1}.footer-top{min-height:290px;padding:78px 0 62px}
+.footer-top>.container,footer>.footer-bottom{width:min(calc(100% - clamp(24px,3vw,48px)),1560px);margin-inline:auto}
+.footer-grid{display:grid;grid-template-columns:1.2fr .8fr 1.25fr;gap:70px}
+.footer-logo{font-size:35px;font-weight:950;color:#fff;letter-spacing:-.05em;margin-bottom:25px}.footer-logo span{color:var(--orange,#ff9230)}
+.footer-title{font-size:11px;font-weight:900;letter-spacing:.16em;color:#fff;text-transform:uppercase;margin-bottom:19px}
+.footer-copy{margin-top:0;color:#777;font-size:13px;line-height:1.75}.footer-copy p{font-size:13px;line-height:1.75;margin:0 0 6px}.footer-copy strong{color:#aaa}
+.sns{display:flex;gap:9px;margin-top:24px}.sns a{width:42px;height:42px;border:1px solid var(--wline,rgba(255,255,255,.13));border-radius:50%;display:grid;place-items:center;font-size:18px;transition:.3s}.sns a:hover{color:var(--orange,#ff9230);border-color:var(--orange,#ff9230);transform:translateY(-3px)}
+.footer-bottom{min-height:84px;border-top:1px solid var(--wline,rgba(255,255,255,.13));display:flex;justify-content:space-between;align-items:center;gap:30px;font-size:12px;color:#555}.footer-links{display:flex;gap:22px;flex-wrap:wrap}
+@media(max-width:1024px){footer .footer-grid{grid-template-columns:1fr 1fr}footer .footer-grid>div:last-child{grid-column:1/-1}}
+@media(max-width:760px){footer .footer-grid{grid-template-columns:1fr;gap:42px}footer .footer-grid>div:last-child{grid-column:auto}footer .footer-bottom{padding:24px 0;flex-direction:column;align-items:flex-start}.footer-watermark{font-size:100px;right:-22px;top:22px}}
+@media(prefers-reduced-motion:reduce){footer,footer *{animation:none!important;transition:none!important}}
+</style>
+<footer id="contact">
+  <div class="footer-watermark" aria-hidden="true">CREAFIT</div>
+  <div class="footer-sweep" aria-hidden="true"></div>
+  <div class="footer-top">
+    <div class="container footer-grid">
+      <div><div class="footer-logo">CREAFIT<span>.</span></div><div class="footer-copy"><p><strong>상호</strong> 크레아핏마케팅 &nbsp; / &nbsp; <strong>대표</strong> 임채경</p><p><strong>사업자등록번호</strong> 701-54-00940</p><p><strong>통신판매신고번호</strong> 2014-서울구로-0642</p></div><div class="sns"><a href="https://blog.naver.com/crearkr" target="_blank" rel="noopener"><i class="ri-pages-line"></i></a><a href="#" target="_blank" rel="noopener"><i class="ri-youtube-fill"></i></a><a href="https://pf.kakao.com/_xbxlSrn" target="_blank" rel="noopener"><i class="ri-chat-smile-2-fill"></i></a></div></div>
+      <div><div class="footer-title">Contact</div><div class="footer-copy"><p><strong>Tel.</strong> 031-8049-0828</p><p><strong>Fax.</strong> 033-655-9103</p><p style="margin-top:14px"><strong>대표 이메일</strong><br>creafit@naver.com</p><p><strong>디자인팀</strong><br>creafit_marketing@naver.com</p></div></div>
+      <div><div class="footer-title">Office &amp; Server</div><div class="footer-copy"><p><strong>사업장소재지</strong><br>경기도 김포시 태장로 795번길 23, r동 4층 408호<br>(장기동, 김포마스터비즈파크)</p><p style="margin-top:14px"><strong>서버소재지</strong><br>서울시 서초구 서초동 1710-1 SK 브로드밴드 IDC 1층</p></div></div>
+    </div>
+  </div>
+  <div class="container footer-bottom"><div class="footer-links"><a href="creafit_main_custom_why_060_0055_auto_portfolio_drag.html#about">회사소개</a><a href="portfolio.html">포트폴리오</a><a href="/shop_info/agree.htm">이용약관</a><a href="/shop_info/privacy.htm">개인정보취급방침</a><a href="/admin">ADMIN</a></div><div>© 2026 크레아핏마케팅. All Rights Reserved.</div></div>
+</footer>
+<script>
+(()=>{
+  const init=()=>{
+    const footer=document.querySelector("#contact");
+    if(!footer||footer.dataset.initialized==="true")return;
+    footer.dataset.initialized="true";
+    document.dispatchEvent(new CustomEvent("site-footer:ready"));
+  };
+  document.readyState==="loading"?document.addEventListener("DOMContentLoaded",init,{once:true}):init();
+})();
+</script>
