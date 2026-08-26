@@ -97,9 +97,9 @@
 @media(prefers-reduced-motion:reduce){.why-editorial-title h2>span,.why-editorial-intro,.why-editorial-sweep,.why-editorial-panel,.why-editorial-number{opacity:1;transform:none;transition:none!important}.why-editorial-sweep{transform:scaleX(1)}}
 
 /* Requested website-only refinements: aligned sub navigation, WHY motion, after service idle motion */
-.page-website .sub-nav{top:92px;padding:8px 0;background:transparent!important;border:0;box-shadow:none;backdrop-filter:none}
-.page-website .sub-nav .container{width:min(calc(100% - 88px),var(--wide));max-width:none;padding:0 8px;background:rgba(5,5,5,.92);border:1px solid rgba(255,255,255,.11);border-radius:14px;box-shadow:0 16px 34px rgba(0,0,0,.2);backdrop-filter:blur(15px)}
-.page-website .sub-nav a{padding-top:16px;padding-bottom:16px}
+.sub-nav{top:92px;padding:8px 0;background:transparent!important;border:0;box-shadow:none;backdrop-filter:none}
+.sub-nav .container{width:min(calc(100% - 88px),var(--wide));max-width:none;padding:0 8px;background:rgba(5,5,5,.92);border:1px solid rgba(255,255,255,.11);border-radius:14px;box-shadow:0 16px 34px rgba(0,0,0,.2);backdrop-filter:blur(15px)}
+.sub-nav a{padding-top:16px;padding-bottom:16px}
 
 .why-editorial{isolation:isolate}
 .why-editorial:before{content:"";position:absolute;z-index:-1;width:clamp(420px,38vw,720px);height:clamp(420px,38vw,720px);right:-12%;top:18%;border-radius:50%;background:radial-gradient(circle,rgba(255,146,48,.12),rgba(255,146,48,.035) 44%,transparent 70%);filter:blur(5px);animation:whyAmbientDrift 11s ease-in-out infinite;pointer-events:none}
@@ -110,13 +110,13 @@
 .why-editorial.panels-visible .why-editorial-panel:nth-of-type(3) .why-editorial-number{animation:whyNumberFloat 6.2s .8s ease-in-out infinite}
 .why-editorial-panel.is-active .why-editorial-number{animation-play-state:paused!important}
 
-.page-website .support-card{isolation:isolate;will-change:transform,translate;transition:transform .55s var(--ease),translate .45s var(--ease),box-shadow .55s var(--ease),filter .55s var(--ease)}
-.page-website .support-card:nth-child(1){animation:supportIdleOne 6.4s ease-in-out infinite}
-.page-website .support-card:nth-child(2){animation:supportIdleTwo 7.1s -1.8s ease-in-out infinite}
-.page-website .support-card:nth-child(3){animation:supportIdleThree 5.9s -.7s ease-in-out infinite}
-.page-website .support-card:after{content:"";position:absolute;z-index:0;left:-65%;top:-35%;width:42%;height:175%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.3),transparent);transform:rotate(16deg) translateX(-170%);transition:transform .85s var(--ease);pointer-events:none}
-.page-website .support-card>i,.page-website .support-card>h3,.page-website .support-card>p{position:relative;z-index:1}
-.page-website .support-card>i,.page-website .support-card>h3{transition:transform .48s var(--ease),background .38s,color .38s,border-color .38s}
+.web-support .support-card{isolation:isolate;will-change:transform,translate;transition:transform .55s var(--ease),translate .45s var(--ease),box-shadow .55s var(--ease),filter .55s var(--ease)}
+.web-support .support-card:nth-child(1){animation:supportIdleOne 6.4s ease-in-out infinite}
+.web-support .support-card:nth-child(2){animation:supportIdleTwo 7.1s -1.8s ease-in-out infinite}
+.web-support .support-card:nth-child(3){animation:supportIdleThree 5.9s -.7s ease-in-out infinite}
+.web-support .support-card:after{content:"";position:absolute;z-index:0;left:-65%;top:-35%;width:42%;height:175%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.3),transparent);transform:rotate(16deg) translateX(-170%);transition:transform .85s var(--ease);pointer-events:none}
+.web-support .support-card>i,.web-support .support-card>h3,.web-support .support-card>p{position:relative;z-index:1}
+.web-support .support-card>i,.web-support .support-card>h3{transition:transform .48s var(--ease),background .38s,color .38s,border-color .38s}
 @keyframes whyAmbientDrift{0%,100%{transform:translate3d(0,0,0) scale(1)}50%{transform:translate3d(-9vw,5vh,0) scale(1.08)}}
 @keyframes whyLineTravel{0%,100%{background-position:100% 0}50%{background-position:0 0}}
 @keyframes whyNumberFloat{0%,100%{translate:0 0;opacity:.72}50%{translate:0 -13px;opacity:1}}
@@ -124,29 +124,29 @@
 @keyframes supportIdleTwo{0%,100%{translate:0 -3px}50%{translate:0 8px}}
 @keyframes supportIdleThree{0%,100%{translate:0 2px}50%{translate:0 -8px}}
 @media(hover:hover){
-.page-website .support-card:hover{animation:none;translate:0 0;box-shadow:0 28px 62px rgba(0,0,0,.17);filter:saturate(1.05)}
-.page-website .support-card:hover:after{transform:rotate(16deg) translateX(430%)}
-.page-website .support-card:hover>i{transform:scale(1.09) rotate(8deg);background:var(--orange);color:#111;border-color:var(--orange)}
-.page-website .support-card:nth-child(3):hover>i{background:#111;color:#fff;border-color:#111}
-.page-website .support-card:hover>h3{transform:translateX(8px)}
+.web-support .support-card:hover{animation:none;translate:0 0;box-shadow:0 28px 62px rgba(0,0,0,.17);filter:saturate(1.05)}
+.web-support .support-card:hover:after{transform:rotate(16deg) translateX(430%)}
+.web-support .support-card:hover>i{transform:scale(1.09) rotate(8deg);background:var(--orange);color:#111;border-color:var(--orange)}
+.web-support .support-card:nth-child(3):hover>i{background:#111;color:#fff;border-color:#111}
+.web-support .support-card:hover>h3{transform:translateX(8px)}
 }
 @media(max-width:760px){
-.page-website .sub-nav{top:69px;padding:6px 0}.page-website .sub-nav .container{width:calc(100% - 28px);padding:0 5px;border-radius:11px}.page-website .sub-nav a{padding:14px 12px}.why-editorial-inner{width:min(calc(100% - 40px),var(--wide))}
+.sub-nav{top:69px;padding:6px 0}.sub-nav .container{width:calc(100% - 28px);padding:0 5px;border-radius:11px}.sub-nav a{padding:14px 12px}.why-editorial-inner{width:min(calc(100% - 40px),var(--wide))}
 }
 @media(prefers-reduced-motion:reduce){
-.why-editorial:before,.why-editorial-sweep,.why-editorial-number,.page-website .support-card{animation:none!important;translate:0 0!important}.page-website .support-card:after{display:none}.page-website .support-card>i,.page-website .support-card>h3{transition:none!important}
+.why-editorial:before,.why-editorial-sweep,.why-editorial-number,.web-support .support-card{animation:none!important;translate:0 0!important}.web-support .support-card:after{display:none}.web-support .support-card>i,.web-support .support-card>h3{transition:none!important}
 }
 
 /* Requested motion corrections: stronger support resting angles */
-.page-website .support-card:nth-child(1){transform:rotate(-2.15deg) translateY(7px)}
-.page-website .support-card:nth-child(2){transform:rotate(1.35deg) translateY(-6px)}
-.page-website .support-card:nth-child(3){transform:rotate(-1.75deg) translateY(7px)}
+.web-support .support-card:nth-child(1){transform:rotate(-2.15deg) translateY(7px)}
+.web-support .support-card:nth-child(2){transform:rotate(1.35deg) translateY(-6px)}
+.web-support .support-card:nth-child(3){transform:rotate(-1.75deg) translateY(7px)}
 @media(max-width:760px){
-.page-website .support-card:nth-child(1){transform:rotate(-1.35deg) translateY(4px)}
-.page-website .support-card:nth-child(2){transform:rotate(.9deg) translateY(-3px)}
-.page-website .support-card:nth-child(3){transform:rotate(-1.1deg) translateY(4px)}
+.web-support .support-card:nth-child(1){transform:rotate(-1.35deg) translateY(4px)}
+.web-support .support-card:nth-child(2){transform:rotate(.9deg) translateY(-3px)}
+.web-support .support-card:nth-child(3){transform:rotate(-1.1deg) translateY(4px)}
 }
-</style></head><body class="page-website"><div class="progress"><span></span></div><div class="page-intro" aria-hidden="true"><span>WEBSITE<i>.</i></span></div><header class="site-header" id="siteHeader">
+</style></head><body><div class="progress"><span></span></div><div class="page-intro" aria-hidden="true"><span>WEBSITE<i>.</i></span></div><header class="site-header" id="siteHeader">
   <div class="header-shell">
     <a class="header-logo" href="creafit_main_custom_why_060_0055_auto_portfolio_drag.html" aria-label="CREAFIT 메인으로">CREAFIT<span>.</span></a>
     <nav class="main-nav" id="mainNav" aria-label="주요 메뉴">
