@@ -13,6 +13,112 @@
 @media(max-width:1024px){.blog-hero{min-height:auto;padding:145px 0 80px}.blog-hero-grid{grid-template-columns:1fr}.blog-copy{max-width:720px}.blog-collage{width:min(100%,820px);height:560px;margin:15px auto 0}}
 @media(max-width:760px){.blog-hero{padding:122px 0 54px}.blog-copy h1{font-size:clamp(46px,12vw,64px)}.blog-copy p{font-size:15px}.blog-collage{height:460px}.paper-note{left:23%;top:27%}}
 @media(max-width:480px){.blog-hero{padding-top:110px}.blog-copy h1{font-size:43px}.blog-copy p{margin-top:21px}.blog-collage{height:350px;margin-top:4px}.paper-card{padding:7px}.paper-card.one{width:67%;height:66%;right:0}.paper-card.two{width:61%;height:52%;left:-2%}.paper-card.three{width:45%;height:41%}.paper-note{left:16%;top:29%;padding:12px 14px;font-size:10px}}
+
+
+/* =========================================================
+   BLOG / WEBSITE FAMILY SYSTEM
+   Editorial identity preserved, shared CREAFIT rhythm added
+========================================================= */
+.blog-hero:before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(0,0,0,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(0,0,0,.045) 1px,transparent 1px);background-size:64px 64px;mask-image:linear-gradient(to bottom,#000,transparent 94%);pointer-events:none}
+.blog-hero:after{content:"";position:absolute;width:min(48vw,760px);aspect-ratio:1;right:-8%;top:4%;border-radius:50%;background:radial-gradient(circle,rgba(255,146,48,.2),rgba(255,146,48,.055) 42%,transparent 70%);filter:blur(8px);pointer-events:none}
+.blog-hero-grid{width:min(calc(100% - 56px),1560px);z-index:2}
+.blog-word{color:transparent;-webkit-text-stroke:1px rgba(0,0,0,.07);opacity:.9}
+.blog-copy h1{font-weight:950}
+.blog-copy a{position:relative;padding-bottom:8px}
+.blog-copy a:after{content:"";position:absolute;left:0;bottom:0;width:100%;height:1px;background:var(--orange);transform:scaleX(.22);transform-origin:left;transition:transform .45s var(--ease)}
+.blog-copy a:hover:after{transform:scaleX(1)}
+.paper-card{transition:box-shadow .55s var(--ease)}
+.paper-card:hover{box-shadow:0 34px 90px rgba(0,0,0,.24)}
+.paper-note{background:var(--orange);animation:blogNoteFloat 4s ease-in-out infinite}
+@keyframes blogNoteFloat{50%{transform:rotate(-3deg) translateY(-9px)}}
+
+.blog-editorial{position:relative;overflow:hidden}
+.blog-editorial:before{content:"WHY";position:absolute;right:-.025em;bottom:-.2em;color:transparent;-webkit-text-stroke:1px rgba(0,0,0,.055);font-size:clamp(150px,23vw,360px);font-weight:950;line-height:1;letter-spacing:-.08em;pointer-events:none}
+.editorial-grid{grid-template-columns:minmax(370px,.82fr) minmax(0,1.18fr);gap:clamp(70px,8vw,140px)}
+.editorial-left{top:138px}
+.editorial-left .kicker,.blog-flow-head .kicker,.blog-cases-head .kicker{color:#111}
+.editorial-right{padding-top:82px}
+.editorial-questions{position:relative;margin-top:58px;border-bottom:1px solid var(--line)}
+.editorial-question{--question-x:0px;position:relative;min-height:185px;padding:34px 64px 34px 0;border-top:1px solid var(--line);overflow:hidden;transform:translateX(var(--question-x));transition:transform .65s var(--ease),padding .65s var(--ease),background .45s var(--ease),color .45s var(--ease)}
+.editorial-question:before{content:"";position:absolute;left:0;top:-1px;width:100%;height:3px;background:var(--orange);transform:scaleX(0);transform-origin:left;transition:transform .8s var(--ease)}
+.editorial-question:after{content:"↗";position:absolute;right:4px;top:33px;width:42px;height:42px;border:1px solid rgba(0,0,0,.18);border-radius:50%;display:grid;place-items:center;font-size:15px;transition:.5s var(--ease)}
+.editorial-question h3{font-size:clamp(22px,2vw,30px);letter-spacing:-.035em}
+.editorial-question p{max-width:680px}
+.editorial-question.is-active{--question-x:18px;padding-left:24px;padding-right:72px;background:#f7f4ed}
+.editorial-question.is-active:before{transform:scaleX(1)}
+.editorial-question.is-active:after{background:var(--orange);border-color:var(--orange);transform:rotate(45deg)}
+.editorial-question.is-active h3{color:#111}
+
+.blog-panel{padding-left:max(55px,calc((100vw - 1560px)/2));padding-right:clamp(50px,5vw,86px)}
+.blog-panel:last-child{padding-left:clamp(50px,5vw,86px);padding-right:max(55px,calc((100vw - 1560px)/2))}
+.blog-panel:before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:58px 58px;mask-image:linear-gradient(to bottom,#000,transparent 85%);pointer-events:none}
+.blog-panel.content:before{background-image:linear-gradient(rgba(0,0,0,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(0,0,0,.07) 1px,transparent 1px)}
+.blog-panel>*{position:relative;z-index:2}
+.blog-panel li{position:relative;padding-right:28px;transition:padding .4s var(--ease),opacity .4s}
+.blog-panel li:after{content:"↗";position:absolute;right:2px;top:14px;opacity:0;transform:translate(-8px,8px);transition:.4s var(--ease)}
+.blog-panel:hover li{padding-left:10px}
+.blog-panel:hover li:after{opacity:1;transform:none}
+.blog-panel .panel-bg{z-index:1}
+
+.blog-flow{position:relative;overflow:hidden}
+.blog-flow:after{content:"FLOW";position:absolute;left:-.04em;bottom:-.18em;color:transparent;-webkit-text-stroke:1px rgba(0,0,0,.06);font-size:clamp(150px,23vw,360px);font-weight:950;line-height:1;letter-spacing:-.08em;pointer-events:none}
+.blog-flow>.container{position:relative;z-index:2}
+.blog-flow-head{grid-template-columns:220px 1fr;gap:clamp(50px,8vw,125px)}
+.article-flow{position:relative}
+.article-flow:before{content:"";position:absolute;left:49px;top:0;bottom:0;width:1px;background:rgba(0,0,0,.13)}
+.article-flow:after{content:"";position:absolute;left:48px;top:0;width:3px;height:var(--flow-progress,0%);background:var(--orange);transition:height .45s var(--ease)}
+.article-step{position:relative;grid-template-columns:100px .8fr 1.2fr;min-height:126px;margin:0;padding:34px 18px 34px 0}
+.article-step:before{content:"";position:absolute;left:43px;top:39px;width:13px;height:13px;border-radius:50%;background:#f4f0e8;border:2px solid #b9b2a7;z-index:2;transition:.45s var(--ease)}
+.article-step.is-active{padding-left:18px;background:rgba(255,255,255,.62)}
+.article-step.is-active:before{background:var(--orange);border-color:var(--orange);box-shadow:0 0 0 7px rgba(255,146,48,.16)}
+.article-step h3{transition:transform .45s var(--ease),color .45s}
+.article-step.is-active h3{color:#111;transform:translateX(8px)}
+
+.blog-cases{overflow:hidden}
+.blog-cases-head{display:grid;grid-template-columns:220px 1fr;gap:clamp(50px,8vw,125px);align-items:start}
+.blog-cases-head>div{display:contents}
+.blog-cases-head .kicker{grid-column:1;margin-top:12px}
+.blog-cases-head h2{grid-column:2;margin-top:0!important}
+.mag-case{gap:clamp(45px,6vw,95px)}
+.mag-case figure{position:relative;transform:rotate(var(--case-rotate,-.7deg));transition:transform .7s var(--ease),box-shadow .7s var(--ease)}
+.mag-case:nth-child(odd) figure{--case-rotate:.7deg}
+.mag-case figure:after{content:"VIEW CASE";position:absolute;right:20px;top:20px;width:76px;height:76px;border-radius:50%;display:grid;place-items:center;background:var(--orange);color:#111;font-size:9px;font-weight:900;letter-spacing:.08em;opacity:0;transform:scale(.7) rotate(-12deg);transition:.5s var(--ease)}
+.mag-case:hover figure{transform:rotate(0) translateY(-8px);box-shadow:0 32px 80px rgba(0,0,0,.18)}
+.mag-case:hover figure:after{opacity:1;transform:scale(1) rotate(0)}
+
+.blog-contact-cta{min-height:720px;background:#070707;color:#fff;position:relative;overflow:hidden;display:grid;place-items:center}
+.blog-cta-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:72px 72px;mask-image:radial-gradient(circle at center,#000,transparent 78%)}
+.blog-cta-follow{position:absolute;left:50%;top:50%;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(255,146,48,.92),rgba(255,146,48,.34) 42%,transparent 70%);filter:blur(4px);transform:translate(-50%,-50%);pointer-events:none;will-change:left,top}
+.blog-cta-ring{position:absolute;left:50%;top:50%;width:min(62vw,900px);aspect-ratio:1;border:1px solid rgba(255,255,255,.12);border-radius:50%;transform:translate(-50%,-50%);animation:blogCtaSpin 22s linear infinite}
+.blog-cta-ring:before,.blog-cta-ring:after{content:"";position:absolute;width:10px;height:10px;border-radius:50%;background:var(--orange);box-shadow:0 0 20px var(--orange)}
+.blog-cta-ring:before{left:10%;top:19%}.blog-cta-ring:after{right:7%;bottom:24%}
+.blog-cta-inner{position:relative;z-index:3;text-align:center;padding:120px 0}
+.blog-cta-inner .kicker{color:#fff}
+.blog-cta-inner h2{margin-top:28px;font-size:clamp(48px,7vw,105px);font-weight:950;line-height:.92;letter-spacing:-.07em}
+.blog-cta-inner p{max-width:580px;margin:28px auto 0;color:#aaa;font-size:16px;line-height:1.75}
+.blog-cta-actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:38px}
+.blog-cta-actions a{display:inline-flex;align-items:center;gap:10px;min-height:52px;padding:0 20px;border:1px solid rgba(255,255,255,.22);border-radius:999px;font-size:10px;font-weight:900;letter-spacing:.1em;transition:.4s var(--ease)}
+.blog-cta-actions a:first-child{background:var(--orange);border-color:var(--orange);color:#111}
+.blog-cta-actions a:hover{transform:translateY(-5px);background:#fff;border-color:#fff;color:#111}
+.blog-cta-word{position:absolute;left:50%;bottom:-.19em;transform:translateX(-50%);color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.075);font-size:clamp(170px,28vw,480px);font-weight:950;line-height:1;letter-spacing:-.09em;white-space:nowrap;pointer-events:none}
+@keyframes blogCtaSpin{to{transform:translate(-50%,-50%) rotate(360deg)}}
+
+@media(max-width:900px){
+.editorial-grid{grid-template-columns:1fr;gap:54px}.editorial-right{padding-top:0}.editorial-left{position:static}
+.blog-panel,.blog-panel:last-child{padding-left:32px;padding-right:32px}
+.blog-flow-head,.blog-cases-head{grid-template-columns:1fr;gap:30px}
+.blog-cases-head>div{display:block}.blog-cases-head .kicker,.blog-cases-head h2{grid-column:auto}.blog-cases-head h2{margin-top:24px!important}
+.article-flow:before,.article-flow:after{display:none}
+.blog-cta-ring{width:95vw}
+}
+@media(max-width:600px){
+.blog-hero-grid{width:min(calc(100% - 32px),1560px)}
+.editorial-question{min-height:0;padding:28px 52px 28px 0}.editorial-question.is-active{--question-x:0;padding-left:14px;padding-right:52px}.editorial-question:after{width:36px;height:36px;top:25px}
+.article-step,.article-step.is-active{grid-template-columns:42px 1fr;padding:25px 0;gap:9px 12px}.article-step:before{display:none}.article-step p{grid-column:2}.article-step.is-active h3{transform:none}
+.blog-contact-cta{min-height:610px}.blog-cta-inner{padding:95px 0}.blog-cta-inner h2{font-size:46px}.blog-cta-inner p{font-size:14px}.blog-cta-follow{width:340px;height:340px}.blog-cta-word{font-size:45vw}
+}
+@media(prefers-reduced-motion:reduce){.paper-note,.blog-cta-ring{animation:none}.blog-cta-follow{display:none}}
+
 </style></head><body class="page-blog"><div class="progress"><span></span></div><div class="page-intro" aria-hidden="true"><span>BRAND BLOG<i>.</i></span></div><header class="site-header" id="siteHeader">
   <div class="header-shell">
     <a class="header-logo" href="creafit_main_custom_why_060_0055_auto_portfolio_drag.html" aria-label="CREAFIT 메인으로">CREAFIT<span>.</span></a>
@@ -66,7 +172,7 @@
 <section class="blog-flow" id="flow"><div class="container"><div class="blog-flow-head"><span class="kicker">CONTENT FLOW</span><h2>한 편의 글도<br>순서대로 설계합니다.</h2></div><div class="article-flow"><article class="article-step"><small>01</small><h3>Keyword</h3><p>업종과 지역, 고객의 검색 의도를 분석합니다.</p></article><article class="article-step"><small>02</small><h3>Planning</h3><p>제목과 정보 흐름, 브랜드 메시지를 구성합니다.</p></article><article class="article-step"><small>03</small><h3>Writing</h3><p>읽기 쉽고 전문성이 전달되는 원고를 제작합니다.</p></article><article class="article-step"><small>04</small><h3>Publishing</h3><p>이미지와 본문을 검수한 후 발행합니다.</p></article><article class="article-step"><small>05</small><h3>Improve</h3><p>검색 흐름을 확인해 다음 제작 기준을 개선합니다.</p></article></div></div></section>
 <section class="blog-cases" id="cases"><div class="container"><div class="blog-cases-head"><div><span class="kicker">CASE STUDY</span><h2 style="margin-top:24px">브랜드마다 다른<br><span class="accent">편집과 표현.</span></h2></div></div><article class="mag-case"><figure><img src="/img_up/shop_pds/ewebstory/design/2026_renewal/sub_blog/em_bl_pf_04.png" alt="언어심리센터 블로그"></figure><div class="mag-copy"><small>PSYCHOLOGY CENTER</small><h3>언어심리센터</h3><p>전문성과 안정감이 전달되도록 스킨을 설계하고 서비스별 메뉴를 정리했습니다.</p><div class="mag-tags"><span>PC SKIN</span><span>MOBILE</span><span>WIDGET</span></div></div></article><article class="mag-case"><figure><img src="/img_up/shop_pds/ewebstory/design/2026_renewal/sub_blog/em_bl_pf_05.png" alt="앵글 랙 제작업체 블로그"></figure><div class="mag-copy"><small>MANUFACTURING</small><h3>앵글·랙 제작 업체</h3><p>제품군과 문의 경로를 빠르게 확인할 수 있는 홈페이지형 블로그를 구축했습니다.</p><div class="mag-tags"><span>BRAND DESIGN</span><span>PRODUCT MENU</span><span>CONTENT</span></div></div></article></div></section>
 <section class="common-faq" id="faq"><div class="container faq-layout"><div class="faq-title"><span class="kicker">FAQ</span><h2>운영 전<br>확인해 주세요.</h2></div><div class="faq-list"><details><summary>스킨과 콘텐츠 운영을 따로 신청할 수 있나요?</summary><p>현재 블로그 상태에 따라 스킨 제작, 콘텐츠 운영 또는 통합 진행으로 안내드립니다.</p></details><details><summary>모바일 스킨도 함께 제작되나요?</summary><p>PC 디자인 확정 후 같은 브랜드 톤으로 모바일 화면까지 제작합니다.</p></details><details><summary>특정 순위 노출을 보장하나요?</summary><p>검색 결과는 플랫폼 로직과 경쟁 상황에 따라 변동되므로 특정 순위를 단정하지 않습니다.</p></details></div></div></section>
-<section class="contact-gateway"><a class="gateway-panel" href="/shop_contents/myreg_form.htm?myreg_code=inquiry"><div class="gateway-top"><span class="gateway-no">01 / PROJECT REQUEST</span><i class="gateway-arrow ri-arrow-right-up-line"></i></div><div class="gateway-copy"><span class="gateway-label">BRAND BLOG PROJECT</span><h2>디자인으로 신뢰를,<br>콘텐츠로 유입을.</h2><p>현재 블로그의 디자인과 콘텐츠 상태부터 확인해보세요.</p></div><span class="gateway-word">BLOG</span></a><a class="gateway-panel" href="#contact"><div class="gateway-top"><span class="gateway-no">02 / CONTACT</span><i class="gateway-arrow ri-arrow-right-up-line"></i></div><div class="gateway-copy"><span class="gateway-label">CREAFIT OFFICE</span><h2>이야기를 나눌<br>준비가 되어 있습니다.</h2><p>연락처와 운영 시간을 확인하고 편하게 문의해 주세요.</p></div><span class="gateway-word">CONTACT</span></a></section></main><footer id="contact">
+<section class="blog-contact-cta"><div class="blog-cta-grid" aria-hidden="true"></div><div class="blog-cta-follow" aria-hidden="true"></div><div class="blog-cta-ring" aria-hidden="true"></div><div class="container blog-cta-inner"><span class="kicker">START YOUR BRAND BLOG</span><h2>디자인으로 신뢰를,<br><span class="accent">콘텐츠로 연결을.</span></h2><p>브랜드의 첫인상부터 검색되는 콘텐츠까지, 시간이 지날수록 가치가 쌓이는 블로그를 시작하세요.</p><div class="blog-cta-actions"><a href="/shop_contents/myreg_form.htm?myreg_code=inquiry">BLOG PROJECT REQUEST <i class="ri-arrow-right-up-line"></i></a><a href="#contact">CONTACT INFO <i class="ri-arrow-down-line"></i></a></div></div><span class="blog-cta-word" aria-hidden="true">BLOG</span></section></main><footer id="contact">
   <div class="footer-watermark" aria-hidden="true">CREAFIT</div>
   <div class="footer-sweep" aria-hidden="true"></div>
   <div class="footer-top">
@@ -77,4 +183,57 @@
     </div>
   </div>
   <div class="container footer-bottom"><div class="footer-links"><a href="creafit_main_custom_why_060_0055_auto_portfolio_drag.html#about">회사소개</a><a href="portfolio.html">포트폴리오</a><a href="/shop_info/agree.htm">이용약관</a><a href="/shop_info/privacy.htm">개인정보취급방침</a><a href="/admin">ADMIN</a></div><div>© 2026 크레아핏마케팅. All Rights Reserved.</div></div>
-</footer><script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script><script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script><script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script><script src="assets/creafit-sub-core.js"></script><script>gsap.registerPlugin(ScrollTrigger);if(!matchMedia("(prefers-reduced-motion: reduce)").matches){const tl=gsap.timeline({delay:.85});tl.from(".blog-copy>*",{y:65,opacity:0,stagger:.1,duration:.8,ease:"power4.out"}).from(".paper-card.one",{x:150,rotation:15,opacity:0,duration:1},"-=.65").from(".paper-card.two",{x:-140,rotation:-18,opacity:0,duration:1},"-=.8").from(".paper-card.three,.paper-note",{scale:.65,opacity:0,stagger:.12,duration:.65},"-=.55");document.querySelector(".blog-hero")?.addEventListener("pointermove",e=>{const x=e.clientX/innerWidth-.5,y=e.clientY/innerHeight-.5;gsap.to(".paper-card.one",{x:x*18,y:y*16,duration:.8});gsap.to(".paper-card.two",{x:-x*25,y:-y*18,duration:.8});gsap.to(".paper-card.three",{x:x*32,y:-y*22,duration:.8})});gsap.from(".editorial-question",{x:70,opacity:0,stagger:.14,duration:.8,scrollTrigger:{trigger:".editorial-questions",start:"top 80%"}});gsap.from(".blog-panel.design",{xPercent:-100,duration:1.1,ease:"power4.inOut",scrollTrigger:{trigger:".blog-duo",start:"top 76%"}});gsap.from(".blog-panel.content",{xPercent:100,duration:1.1,ease:"power4.inOut",scrollTrigger:{trigger:".blog-duo",start:"top 76%"}});gsap.from(".article-step",{y:55,opacity:0,stagger:.1,duration:.65,scrollTrigger:{trigger:".article-flow",start:"top 82%"}});document.querySelectorAll(".mag-case").forEach((c,i)=>gsap.from(c,{x:i%2?-100:100,opacity:0,duration:1,scrollTrigger:{trigger:c,start:"top 78%"}}));}</script></body></html>
+</footer><script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script><script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script><script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script><script src="assets/creafit-sub-core.js"></script><script>gsap.registerPlugin(ScrollTrigger);if(!matchMedia("(prefers-reduced-motion: reduce)").matches){const tl=gsap.timeline({delay:.85});tl.from(".blog-copy>*",{y:65,opacity:0,stagger:.1,duration:.8,ease:"power4.out"}).from(".paper-card.one",{x:150,rotation:15,opacity:0,duration:1},"-=.65").from(".paper-card.two",{x:-140,rotation:-18,opacity:0,duration:1},"-=.8").from(".paper-card.three,.paper-note",{scale:.65,opacity:0,stagger:.12,duration:.65},"-=.55");document.querySelector(".blog-hero")?.addEventListener("pointermove",e=>{const x=e.clientX/innerWidth-.5,y=e.clientY/innerHeight-.5;gsap.to(".paper-card.one",{x:x*18,y:y*16,duration:.8});gsap.to(".paper-card.two",{x:-x*25,y:-y*18,duration:.8});gsap.to(".paper-card.three",{x:x*32,y:-y*22,duration:.8})});gsap.from(".editorial-question",{x:70,opacity:0,stagger:.14,duration:.8,scrollTrigger:{trigger:".editorial-questions",start:"top 80%"}});gsap.from(".blog-panel.design",{clipPath:"inset(0 100% 0 0)",duration:1.15,ease:"power4.inOut",scrollTrigger:{trigger:".blog-duo",start:"top 76%"}});gsap.from(".blog-panel.content",{clipPath:"inset(0 0 0 100%)",duration:1.15,ease:"power4.inOut",scrollTrigger:{trigger:".blog-duo",start:"top 76%"}});gsap.from(".article-step",{y:55,opacity:0,stagger:.1,duration:.65,scrollTrigger:{trigger:".article-flow",start:"top 82%"}});document.querySelectorAll(".mag-case").forEach((c,i)=>gsap.from(c,{y:90,rotation:i%2?1.5:-1.5,opacity:0,duration:1.1,ease:"power3.out",scrollTrigger:{trigger:c,start:"top 80%"}}));}</script><script>
+(()=>{
+  const initBlogFamily=()=>{
+    if(document.documentElement.dataset.blogFamilyReady==="true")return;
+    document.documentElement.dataset.blogFamilyReady="true";
+
+    const questions=[...document.querySelectorAll(".editorial-question")];
+    const steps=[...document.querySelectorAll(".article-step")];
+    const flow=document.querySelector(".article-flow");
+    const cta=document.querySelector(".blog-contact-cta");
+    const follower=cta?.querySelector(".blog-cta-follow");
+
+    if(window.gsap&&window.ScrollTrigger&&!matchMedia("(prefers-reduced-motion: reduce)").matches){
+      questions.forEach((item,index)=>{
+        ScrollTrigger.create({
+          trigger:item,
+          start:"top 68%",
+          end:"bottom 42%",
+          onEnter:()=>{questions.forEach(q=>q.classList.remove("is-active"));item.classList.add("is-active")},
+          onEnterBack:()=>{questions.forEach(q=>q.classList.remove("is-active"));item.classList.add("is-active")}
+        });
+      });
+
+      steps.forEach((step,index)=>{
+        ScrollTrigger.create({
+          trigger:step,
+          start:"top 62%",
+          end:"bottom 43%",
+          onToggle:self=>{
+            if(!self.isActive)return;
+            steps.forEach(s=>s.classList.remove("is-active"));
+            step.classList.add("is-active");
+            flow?.style.setProperty("--flow-progress",((index+1)/steps.length*100)+"%");
+          }
+        });
+      });
+
+      if(cta&&follower){
+        gsap.set(follower,{xPercent:-50,yPercent:-50});
+        cta.addEventListener("pointermove",event=>{
+          const rect=cta.getBoundingClientRect();
+          gsap.to(follower,{left:event.clientX-rect.left,top:event.clientY-rect.top,duration:.8,ease:"power3.out"});
+        });
+        gsap.from(".blog-cta-inner>*",{y:70,opacity:0,stagger:.1,duration:.85,ease:"power4.out",scrollTrigger:{trigger:cta,start:"top 72%"}});
+      }
+    }else{
+      questions[0]?.classList.add("is-active");
+      steps[0]?.classList.add("is-active");
+      flow?.style.setProperty("--flow-progress","20%");
+    }
+  };
+  document.readyState==="loading"?document.addEventListener("DOMContentLoaded",initBlogFamily,{once:true}):initBlogFamily();
+})();
+</script></body></html>
