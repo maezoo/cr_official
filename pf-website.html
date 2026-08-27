@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="크레아핏이 만든 홈페이지 프로젝트를 분야별로 살펴보세요. 기획부터 디자인, 반응형 구현과 운영까지 브랜드에 맞는 웹사이트를 만듭니다.">
+  <title>Website Portfolio | CREAFIT</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+  <style>
+    :root {
+      --orange: #ff9230;
+      --black: #050505;
+      --ink: #121212;
+      --paper: #f2efe8;
+      --white: #fff;
+      --gray: #747474;
+      --line: rgba(0, 0, 0, .14);
+      --wline: rgba(255, 255, 255, .14);
+      --container: 1560px;
+      --wide: 1780px;
+      --ease: cubic-bezier(.16, 1, .3, 1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      word-break: keep-all;
+      -webkit-font-smoothing: antialiased;
+    }
+    body.menu-open { overflow: hidden; }
+    a { color: inherit; text-decoration: none; }
+    button { color: inherit; font: inherit; }
+    img { display: block; width: 100%; }
+    ::selection { color: var(--black); background: var(--orange); }
+    .container { width: min(calc(100% - 80px), var(--container)); margin-inline: auto; }
+    .wide { width: min(calc(100% - 48px), var(--wide)); margin-inline: auto; }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0;
+      font-size: 12px;
+      font-weight: 760;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+    .eyebrow::before { width: 7px; height: 7px; border-radius: 50%; background: var(--orange); content: ""; }
+    .accent { color: var(--orange); }
+
+    .progress {
+      position: fixed;
+      z-index: 1000;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 3px;
+      background: var(--orange);
+    }
+
+    .site-header {
+      position: fixed;
+      z-index: 900;
+      top: 0;
+      left: 0;
+      width: 100%;
+      color: var(--white);
+      border-bottom: 1px solid var(--wline);
+      transition: background .35s ease, color .35s ease, border-color .35s ease;
+    }
+    .site-header.scrolled {
+      color: var(--ink);
+      background: rgba(242, 239, 232, .92);
+      border-color: var(--line);
+      backdrop-filter: blur(16px);
+    }
+    .header-inner {
+      display: flex;
+      width: min(calc(100% - 48px), var(--wide));
+      height: 84px;
+      margin-inline: auto;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo { display: inline-flex; align-items: center; font-size: 22px; font-weight: 900; letter-spacing: -.055em; }
+    .logo-mark { width: 9px; height: 9px; margin: 0 0 14px 3px; border-radius: 50%; background: var(--orange); }
+    .global-nav { display: flex; align-items: center; gap: clamp(26px, 2.5vw, 52px); }
+    .global-nav a { position: relative; font-size: 13px; font-weight: 650; letter-spacing: .04em; }
+    .global-nav a::after {
+      position: absolute;
+      right: 0;
+      bottom: -7px;
+      left: 0;
+      height: 1px;
+      background: currentColor;
+      content: "";
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform .35s var(--ease);
+    }
+    .global-nav a:hover::after, .global-nav a:focus-visible::after { transform: scaleX(1); transform-origin: left; }
+    .header-contact {
+      display: inline-flex;
+      min-height: 42px;
+      padding: 0 20px;
+      align-items: center;
+      gap: 14px;
+      color: var(--black);
+      background: var(--orange);
+      font-size: 12px;
+      font-weight: 760;
+      letter-spacing: .04em;
+    }
+    .header-contact i { font-size: 17px; transition: transform .3s var(--ease); }
+    .header-contact:hover i { transform: translate(3px, -3px); }
+    .menu-toggle { display: none; width: 42px; height: 42px; padding: 0; border: 0; background: transparent; cursor: pointer; }
+    .menu-toggle span { display: block; width: 25px; height: 1px; margin: 6px auto; background: currentColor; transition: transform .3s, opacity .3s; }
+
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      overflow: hidden;
+      color: var(--white);
+      background: var(--black);
+    }
+    .hero::before {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, transparent calc(25% - 1px), rgba(255,255,255,.055) 25%, transparent calc(25% + 1px)),
+        linear-gradient(90deg, transparent calc(50% - 1px), rgba(255,255,255,.055) 50%, transparent calc(50% + 1px)),
+        linear-gradient(90deg, transparent calc(75% - 1px), rgba(255,255,255,.055) 75%, transparent calc(75% + 1px));
+      content: "";
+      pointer-events: none;
+    }
+    .hero-orbit {
+      position: absolute;
+      right: -7vw;
+      bottom: -18vw;
+      width: min(54vw, 900px);
+      aspect-ratio: 1;
+      border: 1px solid rgba(255, 146, 48, .35);
+      border-radius: 50%;
+      animation: rotate 22s linear infinite;
+    }
+    .hero-orbit::before, .hero-orbit::after { position: absolute; border: 1px solid var(--wline); border-radius: 50%; content: ""; }
+    .hero-orbit::before { inset: 15%; }
+    .hero-orbit::after { inset: 35%; background: rgba(255, 146, 48, .08); }
+    .orbit-dot { position: absolute; top: 49%; left: -7px; width: 13px; height: 13px; border-radius: 50%; background: var(--orange); box-shadow: 0 0 28px var(--orange); }
+    @keyframes rotate { to { transform: rotate(360deg); } }
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      min-height: 100svh;
+      padding-top: 150px;
+      padding-bottom: 56px;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .hero-title { max-width: 1260px; margin: 40px 0 60px; font-size: clamp(64px, 9.2vw, 164px); font-weight: 790; line-height: .82; letter-spacing: -.075em; }
+    .hero-title .line { display: block; overflow: hidden; padding-bottom: .08em; }
+    .hero-title .line > span { display: block; animation: rise 1s var(--ease) both; }
+    .hero-title .line:nth-child(2) > span { animation-delay: .1s; }
+    .hero-title .line:nth-child(3) > span { animation-delay: .2s; }
+    @keyframes rise { from { opacity: 0; transform: translateY(110%); } }
+    .hero-bottom { display: grid; padding-top: 25px; border-top: 1px solid var(--wline); grid-template-columns: 1fr 1fr; gap: 30px; }
+    .hero-copy { max-width: 520px; margin: 0; font-size: clamp(17px, 1.4vw, 23px); font-weight: 560; line-height: 1.55; letter-spacing: -.025em; }
+    .hero-index { display: flex; align-items: flex-end; justify-content: flex-end; gap: 28px; color: rgba(255,255,255,.65); font-size: 11px; letter-spacing: .1em; }
+    .scroll-cue { display: inline-flex; align-items: center; gap: 10px; color: var(--white); }
+    .scroll-cue i { font-size: 20px; animation: bounce 1.8s ease-in-out infinite; }
+    @keyframes bounce { 50% { transform: translateY(7px); } }
+
+    .portfolio { padding: 0 0 clamp(120px, 14vw, 220px); }
+    .portfolio-head { position: sticky; z-index: 20; top: 0; padding: 24px 0; border-bottom: 1px solid var(--line); background: rgba(242, 239, 232, .94); backdrop-filter: blur(14px); }
+    .portfolio-head-inner { display: flex; align-items: center; justify-content: space-between; gap: 30px; }
+    .portfolio-title { margin: 0; font-size: clamp(24px, 2.5vw, 42px); font-weight: 720; letter-spacing: -.045em; }
+    .filters { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px; }
+    .filter {
+      min-height: 38px;
+      padding: 0 17px;
+      border: 1px solid var(--line);
+      border-radius: 100px;
+      background: transparent;
+      font-size: 12px;
+      font-weight: 650;
+      cursor: pointer;
+      transition: color .25s, background .25s, border-color .25s;
+    }
+    .filter:hover, .filter:focus-visible, .filter.active { color: var(--white); border-color: var(--black); background: var(--black); }
+    .project-grid { display: grid; padding-top: 72px; grid-template-columns: repeat(12, 1fr); gap: clamp(44px, 7vw, 118px) 28px; }
+    .project { grid-column: span 6; transition: opacity .35s, transform .55s var(--ease); }
+    .project:nth-child(4n + 2), .project:nth-child(4n + 3) { margin-top: clamp(50px, 9vw, 145px); }
+    .project.is-hidden { display: none; }
+    .project-link { display: block; }
+    .project-media { position: relative; aspect-ratio: 1.27; overflow: hidden; background: #ddd8ce; }
+    .project-media::after { position: absolute; inset: 0; background: linear-gradient(135deg, transparent 55%, rgba(0,0,0,.18)); content: ""; opacity: .3; transition: opacity .5s; }
+    .project-media img { height: 100%; object-fit: cover; transition: transform 1s var(--ease), filter .5s ease; }
+    .project-link:hover .project-media img { transform: scale(1.045); }
+    .project-link:hover .project-media::after { opacity: 0; }
+    .project-no { position: absolute; z-index: 2; top: 18px; left: 18px; display: grid; width: 46px; height: 46px; place-items: center; color: var(--white); border: 1px solid rgba(255,255,255,.45); border-radius: 50%; background: rgba(5,5,5,.5); font-size: 11px; backdrop-filter: blur(8px); }
+    .project-view { display: none; }
+    .project-link:hover .project-view { transform: scale(1) rotate(0); }
+    .project-info { display: grid; padding-top: 21px; grid-template-columns: 1fr auto; align-items: start; gap: 18px; }
+    .project-name { margin: 0 0 8px; font-size: clamp(23px, 2vw, 33px); font-weight: 720; letter-spacing: -.045em; }
+    .project-type { margin: 0; color: var(--gray); font-size: 13px; line-height: 1.5; }
+    .project-year { padding-top: 7px; font-size: 12px; font-weight: 650; letter-spacing: .08em; }
+    .project-placeholder { display: flex; height: 100%; padding: 10%; flex-direction: column; justify-content: space-between; color: var(--white); }
+    .project-placeholder strong { max-width: 75%; font-size: clamp(34px, 4.4vw, 76px); line-height: .91; letter-spacing: -.07em; }
+    .project-placeholder span { align-self: flex-end; font-size: 12px; letter-spacing: .12em; }
+    .project-media[data-tone="orange"] { background: var(--orange); color: var(--black); }
+    .project-media[data-tone="green"] { background: #1f4939; }
+    .project-media[data-tone="blue"] { background: #273f68; }
+    .project-media[data-tone="red"] { background: #8d2e24; }
+
+    .site-footer { color: rgba(255,255,255,.65); background: var(--black); }
+    .footer-inner { display: grid; padding: 58px 0 42px; grid-template-columns: 1.3fr 1fr auto; gap: 50px; }
+    .footer-brand { color: var(--white); font-size: 25px; font-weight: 850; letter-spacing: -.05em; }
+    .footer-copy, .footer-contact { margin: 0; font-size: 12px; line-height: 1.8; }
+    .footer-contact { text-align: right; }
+    .footer-bottom { display: flex; padding: 24px 0; border-top: 1px solid var(--wline); justify-content: space-between; font-size: 10px; letter-spacing: .07em; text-transform: uppercase; }
+
+    .reveal { opacity: 0; transform: translateY(45px); transition: opacity .8s ease, transform .9s var(--ease); }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    @media (max-width: 960px) {
+      .container { width: min(calc(100% - 44px), var(--container)); }
+      .wide, .header-inner { width: calc(100% - 36px); }
+      .header-inner { height: 72px; }
+      .global-nav {
+        position: fixed;
+        inset: 72px 0 0;
+        display: flex;
+        padding: 44px 24px;
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 0;
+        color: var(--white);
+        background: var(--black);
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(-16px);
+        transition: opacity .3s, transform .4s var(--ease);
+      }
+      .global-nav a { width: 100%; padding: 20px 0; border-bottom: 1px solid var(--wline); font-size: 28px; letter-spacing: -.03em; }
+      .menu-open .global-nav { opacity: 1; pointer-events: auto; transform: none; }
+      .header-contact { display: none; }
+      .menu-toggle { display: block; }
+      .menu-open .menu-toggle span:first-child { transform: translateY(3.5px) rotate(45deg); }
+      .menu-open .menu-toggle span:last-child { transform: translateY(-3.5px) rotate(-45deg); }
+      .site-header.scrolled.menu-active { color: var(--white); background: var(--black); }
+      .hero-title { margin-top: auto; }
+      .hero-bottom { grid-template-columns: 1fr; }
+      .hero-index { display: none; }
+      .portfolio-head { top: 0; }
+      .portfolio-head-inner { align-items: flex-start; flex-direction: column; }
+      .filters { justify-content: flex-start; }
+      .project-grid { gap: 70px 18px; }
+      .project { grid-column: span 6; }
+      .project:nth-child(4n + 2), .project:nth-child(4n + 3) { margin-top: 60px; }
+    }
+
+    @media (max-width: 680px) {
+      .container { width: calc(100% - 36px); }
+      .hero-inner { padding-top: 125px; padding-bottom: 32px; }
+      .hero-title { font-size: clamp(57px, 20vw, 92px); }
+      .hero-copy { font-size: 16px; }
+      .portfolio-head { position: relative; top: auto; }
+      .portfolio-title { margin-bottom: 3px; }
+      .filters { flex-wrap: nowrap; width: 100%; padding-bottom: 4px; overflow-x: auto; scrollbar-width: none; }
+      .filter { flex: 0 0 auto; }
+      .project-grid { display: block; padding-top: 42px; }
+      .project, .project:nth-child(4n + 2), .project:nth-child(4n + 3) { margin: 0 0 64px; }
+      .project-media { aspect-ratio: 1.1; }
+      .project-view { display: none; }
+      .footer-inner { grid-template-columns: 1fr; gap: 24px; }
+      .footer-contact { text-align: left; }
+      .footer-bottom { align-items: flex-start; flex-direction: column; gap: 9px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="portfolio" id="portfolio">
+      <div class="portfolio-head">
+        <div class="portfolio-head-inner container">
+          <h2 class="portfolio-title">Selected Projects <span class="accent">08</span></h2>
+          <div class="filters" role="group" aria-label="포트폴리오 분야 선택">
+            <button class="filter active" type="button" data-filter="all" aria-pressed="true">ALL</button>
+            <button class="filter" type="button" data-filter="corporate" aria-pressed="false">CORPORATE</button>
+            <button class="filter" type="button" data-filter="professional" aria-pressed="false">PROFESSIONAL</button>
+            <button class="filter" type="button" data-filter="lifestyle" aria-pressed="false">LIFESTYLE</button>
+            <button class="filter" type="button" data-filter="commerce" aria-pressed="false">COMMERCE</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-grid container" aria-live="polite">
+        <article class="project reveal" data-category="professional">
+          <div class="project-link">
+            <div class="project-media"><img src="/img_up/shop_pds/ewebstory/design/2026_renewal/sub_web/pf_5.jpg" alt="노무법인 로율 웹사이트 화면" loading="lazy"><span class="project-no">01</span><span class="project-view"><i class="ri-arrow-right-up-line" aria-hidden="true"></i></span></div>
+            <div class="project-info"><div><h3 class="project-name">노무법인 로율</h3><p class="project-type">Website · Brand Experience · Responsive</p></div><span class="project-year">2025</span></div>
+          </div>
+        </article>
+
+        <article class="project reveal" data-category="lifestyle">
+          <div class="project-link">
+            <div class="project-media"><img src="/img_up/shop_pds/ewebstory/design/2026_renewal/sub_web/pf_2.png" alt="코이디자인 웹사이트 화면" loading="lazy"><span class="project-no">02</span><span class="project-view"><i class="ri-arrow-right-up-line" aria-hidden="true"></i></span></div>
+            <div class="project-info"><div><h3 class="project-name">코이디자인</h3><p class="project-type">Website · Art Direction · Portfolio</p></div><span class="project-year">2025</span></div>
+          </div>
+        </article>
+
+        <article class="project reveal" data-category="corporate">
+          <div class="project-link">
+            <div class="project-media"><img src="/img_up/shop_pds/ewebstory/design/2026_renewal/sub_web/pf_7.png" alt="한국시험공사 웹사이트 화면" loading="lazy"><span class="project-no">03</span><span class="project-view"><i class="ri-arrow-right-up-line" aria-hidden="true"></i></span></div>
+            <div class="project-info"><div><h3 class="project-name">(주)한국시험공사</h3><p class="project-type">Corporate Website · UI/UX · CMS</p></div><span class="project-year">2025</span></div>
+          </div>
+        </article>
+
+        <article class="project reveal" data-category="professional">
+          <div class="project-link">
+            <div class="project-media"><img src="/img_up/shop_pds/ewebstory/design/2026_renewal/sub_web/pf_3.png" alt="원필준치과교정과 웹사이트 화면" loading="lazy"><span class="project-no">04</span><span class="project-view"><i class="ri-arrow-right-up-line" aria-hidden="true"></i></span></div>
+            <div class="project-info"><div><h3 class="project-name">원필준치과교정과</h3><p class="project-type">Medical Website · Contents · Responsive</p></div><span class="project-year">2024</span></div>
+          </div>
+        </article>
+
+        <article class="project reveal" data-category="lifestyle">
+          <div class="project-link">
+            <div class="project-media"><img src="/img_up/shop_pds/ewebstory/design/2026_renewal/sub_web/pf_1.jpg" alt="녹야원 추모관 웹사이트 화면" loading="lazy"><span class="project-no">05</span><span class="project-view"><i class="ri-arrow-right-up-line" aria-hidden="true"></i></span></div>
+            <div class="project-info"><div><h3 class="project-name">녹야원 추모관</h3><p class="project-type">Website · Content Strategy · UI/UX</p></div><span class="project-year">2024</span></div>
+          </div>
+        </article>
+
+        <article class="project reveal" data-category="commerce">
+          <div class="project-link">
+            <div class="project-media"><img src="/img_up/shop_pds/ewebstory/design/2026_renewal/sub_web/pf_6.jpg" alt="게박사네 착한게장 웹사이트 화면" loading="lazy"><span class="project-no">06</span><span class="project-view"><i class="ri-arrow-right-up-line" aria-hidden="true"></i></span></div>
+            <div class="project-info"><div><h3 class="project-name">게박사네 착한게장</h3><p class="project-type">E-Commerce · Brand Story · Product UX</p></div><span class="project-year">2024</span></div>
+          </div>
+        </article>
+
+        <article class="project reveal" data-category="lifestyle">
+          <div class="project-link">
+            <div class="project-media" data-tone="green"><div class="project-placeholder"><strong>FRIEND DOG PARK</strong><span>BRAND WEBSITE</span></div><span class="project-no">07</span><span class="project-view"><i class="ri-arrow-right-up-line" aria-hidden="true"></i></span></div>
+            <div class="project-info"><div><h3 class="project-name">프렌드도그파크</h3><p class="project-type">Website · Reservation · Responsive</p></div><span class="project-year">2023</span></div>
+          </div>
+        </article>
+
+        <article class="project reveal" data-category="lifestyle">
+          <div class="project-link">
+            <div class="project-media"><img src="/img_up/shop_pds/ewebstory/design/2026_renewal/sub_web/pf_8.png" alt="오브레펜션 웹사이트 화면" loading="lazy"><span class="project-no">08</span><span class="project-view"><i class="ri-arrow-right-up-line" aria-hidden="true"></i></span></div>
+            <div class="project-info"><div><h3 class="project-name">오브레펜션</h3><p class="project-type">Website · Visual Direction · Booking</p></div><span class="project-year">2023</span></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    (() => {
+      const revealObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: .12 });
+      document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+      const filters = document.querySelectorAll('.filter');
+      const projects = document.querySelectorAll('.project');
+      filters.forEach(button => button.addEventListener('click', () => {
+        const category = button.dataset.filter;
+        filters.forEach(item => {
+          const active = item === button;
+          item.classList.toggle('active', active);
+          item.setAttribute('aria-pressed', String(active));
+        });
+        projects.forEach(project => {
+          const show = category === 'all' || project.dataset.category === category;
+          project.classList.toggle('is-hidden', !show);
+        });
+      }));
+
+    })();
+  </script>
+</body>
+</html>
