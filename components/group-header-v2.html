@@ -34,7 +34,80 @@
 	<div class="header-shell">
 		<a class="header-logo" href="creafit_main_custom_why_060_0055_auto_portfolio_drag.html" aria-label="CREAFIT 메인으로">CREAFIT<span>.</span></a>
 		<nav class="main-nav" id="mainNav" aria-label="주요 메뉴">
-			{GROUP_re_lnb_ha}
+			{@
+	$program_set[start_code] = ($var_set[code]) ? $var_set[code] : "00000000"; // 네비게이션 출력 위치
+	$navi_category_menu = program_load(NAVI_CATEGORY_MENU);
+@}
+<style>
+	#pm2-{$this_group_code} {
+		position: relative;
+		width: 100%;
+		height: 100%;
+		z-index: 10;
+	}
+
+	#pm2-{$this_group_code},
+	#pm2-{$this_group_code} *,
+	#pm2-{$this_group_code} *::before,
+	#pm2-{$this_group_code} *::after {
+		box-sizing: border-box;
+	}
+
+	#pm2-{$this_group_code} ul {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	#pm2-{$this_group_code} a {
+		text-decoration: none;
+	}
+
+	#pm2-{$this_group_code} a > img {
+		vertical-align: top;
+	}
+</style>
+<div id="pm2-{$this_group_code}">
+	<ul class="dep1">
+	<!--@foreach($navi_category_menu[sub_menu] as $k => $v)-->
+		<li cond="$v[visible]" class="on"|cond="$v[code]==$NAVI_INFO[parent]||$v[code]==$NAVI_INFO[code]">
+			<a href="{$v[link_url]}" target="{$v[link_target]}"|cond="$v[link_target]" class="bt_img"|cond="$v[bt1_img_url]">
+				<!--@if($v[bt1_img_url])-->
+					<img
+						src="{$v[bt1_img_url]}"
+						onmouseover="this.src='{$v[bt2_img_url]}'"|cond="$v[bt2_img_url]"
+						onmouseout="this.src='{$v[bt1_img_url]}'"|cond="$v[bt2_img_url]"
+						alt="{$v[subject]}"
+					>
+				<!--@else-->
+					{$v[subject]}
+				<!--@end-->
+			</a>
+
+			<div cond="$v[sub_menu]">
+				<ul class="dep2">
+				<!--@foreach($v[sub_menu] as $k2 => $v2)-->
+					<li cond="$v2[visible]" class="on"|cond="$v2[code]==$NAVI_INFO[code]">
+						<a href="{$v2[link_url]}" target="{$v2[link_target]}"|cond="$v2[link_target]" class="bt_img"|cond="$v2[bt1_img_url]">
+							<!--@if($v2[bt1_img_url])-->
+								<img
+									src="{$v2[bt1_img_url]}"
+									onmouseover="this.src='{$v2[bt2_img_url]}'"|cond="$v2[bt2_img_url]"
+									onmouseout="this.src='{$v2[bt1_img_url]}'"|cond="$v2[bt2_img_url]"
+									alt="{$v2[subject]}"
+								>
+							<!--@else-->
+								{$v2[subject]}
+							<!--@end-->
+						</a>
+					</li>
+				<!--@end-->
+				</ul>
+			</div>
+		</li>
+	<!--@end-->
+	</ul>
+</div>
 		</nav>
 		<a class="header-cta" href="/shop_contents/myreg_form.htm?myreg_code=inquiry">PROJECT REQUEST <i class="ri-arrow-right-up-line"></i></a>
 		<button class="mobile-menu-btn" type="button" aria-label="메뉴 열기" aria-controls="mainNav" aria-expanded="false"><span></span><span></span></button>
