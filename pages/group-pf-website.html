@@ -72,7 +72,7 @@
 
 .page-portfolio .gallery { padding: 0 0 140px; background: var(--portfolio-bg); }
 .page-portfolio .gallery-wide { width: 100%; padding: 0 22px; }
-.page-portfolio .gallery-filter-wrap { position: sticky; top: 92px; z-index: 90; display: flex; width: calc(100% - 44px); min-height: 64px; padding: 8px max(10px,1.2vw); margin: 0 auto 42px; align-items: center; justify-content: space-between; gap: 24px; border: 1px solid rgba(255,255,255,.11); border-radius: 14px; background: rgba(5,5,5,.92); box-shadow: 0 16px 34px rgba(0,0,0,.24); backdrop-filter: blur(15px); }
+.page-portfolio .gallery-filter-wrap { position: sticky; top: 92px; z-index: 100; display: flex; width: calc(100% - 44px); min-height: 64px; padding: 8px max(10px,1.2vw); margin: 0 auto 42px; align-items: center; justify-content: space-between; gap: 24px; border: 1px solid rgba(255,255,255,.11); border-radius: 14px; background: rgba(5,5,5,.92); box-shadow: 0 16px 34px rgba(0,0,0,.24); backdrop-filter: blur(15px); }
 .page-portfolio .glores-A-cate-list-wrap { min-width: 0; }
 .page-portfolio .glores-A-cate-list-wrap .btn_category { display: none; }
 .page-portfolio .glores-A-cate-list { position: relative; display: inline-flex; flex-wrap: wrap; gap: 8px; }
@@ -107,7 +107,7 @@
 .page-portfolio .pagenav strong { color: #111; border-color: var(--orange); background: var(--orange); }
 
 .page-portfolio .portfolio-cta { padding: 0 24px 24px; background: var(--portfolio-bg); }
-.page-portfolio .portfolio-cta a { position: relative; display: grid; width: min(1752px,100%); min-height: 360px; padding: 58px 64px; margin: 0 auto; grid-template-columns: minmax(0,1fr) auto; align-items: end; gap: 50px; overflow: hidden; color: #111; border: 1px solid var(--orange); background: var(--orange); transition: color .4s,border-color .4s; }
+.page-portfolio .portfolio-cta a { position: relative; display: grid; width: min(1752px,100%); min-height: 360px; padding: 58px 64px; margin: 0 auto; grid-template-columns: minmax(0,1fr) auto; align-items: end; gap: 50px; overflow: hidden; color: #111; background: var(--orange); transition: color .4s,border-color .4s; }
 .page-portfolio .portfolio-cta a::before { position: absolute; inset: 0; background: #f3f0e9; content: ""; transform: translateY(101%); transition: transform .58s var(--ease); }
 .page-portfolio .portfolio-cta-copy,
 .page-portfolio .portfolio-cta-action { position: relative; z-index: 1; }
@@ -121,7 +121,7 @@
 .page-portfolio .portfolio-cta a:hover .portfolio-cta-action i { transform: translate(4px,-4px); }
 
 .page-portfolio .portfolio-pointer-glow { position: fixed; top: 0; left: 0; z-index: 0; width: 560px; height: 560px; border-radius: 50%; opacity: 0; pointer-events: none; background: radial-gradient(circle,rgba(255,104,34,.15) 0,rgba(255,104,34,.055) 38%,transparent 72%); filter: blur(14px); transform: translate(-50%,-50%); }
-.page-portfolio .portfolio-cursor { position: fixed; top: 0; left: 0; z-index: 11000; display: grid; width: 82px; height: 82px; place-items: center; color: #111; border-radius: 50%; opacity: 0; pointer-events: none; background: var(--orange); font-size: 9px; font-weight: 950; line-height: 1.15; letter-spacing: .08em; text-align: center; transform: translate(-50%,-50%) scale(.65); will-change: transform,left,top; }
+.page-portfolio .portfolio-cursor { position: fixed; top: 0; left: 0; z-index: 80; display: grid; width: 82px; height: 82px; place-items: center; color: #111; border-radius: 50%; opacity: 0; pointer-events: none; background: var(--orange); font-size: 9px; font-weight: 950; line-height: 1.15; letter-spacing: .08em; text-align: center; transform: translate(-50%,-50%) scale(.65); will-change: transform,left,top; }
 
 @media (max-width: 1200px) {
     .page-portfolio .portfolio-hero-main { grid-template-columns: 1fr 300px; gap: 50px; }
@@ -151,7 +151,8 @@
     .page-portfolio .glores-A-cate-list-wrap .glores-A-cate-list { display: none; width: 100%; margin-top: 8px; gap: 6px; }
     .page-portfolio .glores-A-cate-list-wrap .glores-A-cate-list.on { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); }
     .page-portfolio .glores-A-cate-list li { width: auto; min-width: 0; }
-    .page-portfolio .glores-A-cate-list li a { display: flex; min-height: 44px; padding: 10px 5px; align-items: center; justify-content: center; border-radius: 9px; font-size: 10px; line-height: 1.25; white-space: normal; text-align: center; }
+    .page-portfolio .glores-A-cate-list li a { display: flex; min-height: 44px; padding: 10px 5px; align-items: center; justify-content: center; border-radius: 9px; font-size: 10px; line-height: 1.25; white-space: normal; overflow-wrap: anywhere; text-align: center; }
+    .page-portfolio .glores-A-cate-list li.on a { color: #111; border-color: var(--orange); background: var(--orange); box-shadow: 0 6px 16px rgba(255,146,48,.2); }
     .page-portfolio .filter-indicator { display: none; }
     .page-portfolio .project-count { margin-top: 12px; text-align: right; }
 }
@@ -177,6 +178,9 @@
 @media (max-width: 390px) {
     .page-portfolio .portfolio-grid { grid-template-columns: 1fr; }
     .page-portfolio .portfolio-media { aspect-ratio: 4 / 3; }
+    .page-portfolio .portfolio-cta a { padding: 28px 18px; }
+    .page-portfolio .portfolio-cta h2 { font-size: 34px; }
+    .page-portfolio .portfolio-cta-action { min-height: 52px; padding: 0 17px; font-size: 10px; }
 }
 @media (pointer: coarse) {
     .page-portfolio .portfolio-cursor,
@@ -268,9 +272,9 @@
         <section class="portfolio-cta">
             <a href="/shop_contents/myreg_form.htm?myreg_code=inquiry">
                 <div class="portfolio-cta-copy">
-                    <small>START A WEBSITE PROJECT</small>
-                    <h2>좋은 홈페이지는<br>좋은 대화에서 시작됩니다.</h2>
-                    <p>필요한 기능과 원하는 분위기부터 편하게 알려주세요.</p>
+                    <small>START YOUR WEBSITE</small>
+                    <h2>보여드린 결과를,<br>이제 귀사의 홈페이지로.</h2>
+                    <p>브랜드의 목적과 필요한 기능을 알려주시면 적합한 제작 방향부터 함께 정리해드립니다.</p>
                 </div>
                 <span class="portfolio-cta-action">홈페이지 제작 상담하기 <i class="ri-arrow-right-up-line"></i></span>
             </a>
@@ -291,6 +295,7 @@ const heroCount = portfolioRoot?.querySelector('#heroProjectCount');
 const visibleCount = portfolioRoot?.querySelector('#visibleProjectCount');
 const portfolioCursor = portfolioRoot?.querySelector('.portfolio-cursor');
 const pointerGlow = portfolioRoot?.querySelector('.portfolio-pointer-glow');
+const filterWrap = portfolioRoot?.querySelector('.gallery-filter-wrap');
 
 if(heroCount) heroCount.textContent = projectCards.length;
 if(visibleCount) visibleCount.textContent = projectCards.length;
@@ -355,6 +360,10 @@ if(!reduceMotion && matchMedia('(pointer:fine)').matches && portfolioCursor && p
         glowX(event.clientX);
         glowY(event.clientY);
         gsap.to(pointerGlow, { opacity: 1, duration: .5 });
+    });
+
+    filterWrap?.addEventListener('pointerenter', () => {
+        gsap.to(portfolioCursor, { opacity: 0, scale: .65, duration: .18, overwrite: true });
     });
 
     projectCards.forEach(card => {
