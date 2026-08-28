@@ -2,16 +2,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
 <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-<load target="/img_up/shop_pds/ewebstory/src_css/em_global.css">
-
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
-<load target="/img_up/shop_pds/ewebstory/design/js/jquery-hover-effect.js">
-<load target="/img_up/shop_pds/ewebstory/src_css/pf_hover.css">
-
 <style>
 .page-portfolio {
     --portfolio-bg: #050505;
@@ -21,6 +11,10 @@
     --orange: #ff9230;
     --ease: cubic-bezier(.16, 1, .3, 1);
     position: relative;
+    left: 50%;
+    width: 100vw;
+    max-width: none;
+    margin-left: -50vw;
     overflow: clip;
     color: var(--portfolio-text);
     background: var(--portfolio-bg);
@@ -47,6 +41,8 @@
 .page-portfolio .page-intro::after { background: #080808; clip-path: inset(0 0 50% 0); }
 .page-portfolio .page-intro span { position: relative; z-index: 2; color: #fff; font-size: clamp(38px, 7vw, 100px); font-weight: 950; letter-spacing: -.06em; animation: pfGroupIntroWord .92s var(--ease) forwards; }
 .page-portfolio .page-intro i { color: var(--orange); font-style: normal; }
+.crpf-skip-intro #cr-pf-website .page-intro,
+.crpf-skip-intro #cr-pf-website .portfolio-hero-curtain { display: none !important; }
 @keyframes pfGroupIntroWord {
     0% { opacity: 0; transform: translateY(100%); }
     28%, 62% { opacity: 1; transform: none; }
@@ -87,11 +83,10 @@
 .page-portfolio .project-count { flex: 0 0 auto; color: #666; font-size: 10px; font-weight: 800; letter-spacing: .12em; }
 .page-portfolio .project-count strong { color: #fff; font-size: 12px; }
 
-.page-portfolio .image_grid,
-.page-portfolio .portfolio_4col { width: 100%; }
+.page-portfolio .crpf-grid-wrap { width: 100%; max-width: none; margin: 0; padding: 0; }
 .page-portfolio .portfolio-grid { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 54px 12px; }
-.page-portfolio .portfolio-card { min-width: 0; }
-.page-portfolio .portfolio-card > a { display: block; }
+.page-portfolio .portfolio-card { float: none !important; width: auto !important; min-width: 0; max-width: none !important; height: auto !important; margin: 0 !important; padding: 0 !important; }
+.page-portfolio .portfolio-card > a { display: block; width: 100%; height: auto; }
 .page-portfolio .portfolio-media { position: relative; aspect-ratio: 1 / 1.12; overflow: hidden; isolation: isolate; background: var(--portfolio-panel); }
 .page-portfolio .portfolio-media > img,
 .page-portfolio .portfolio-media > a > img,
@@ -101,10 +96,6 @@
 .page-portfolio .portfolio-card p { margin: 5px 0 0; color: #666; font-size: 12px; }
 .page-portfolio .portfolio-card-wipe { position: absolute; inset: -1px; z-index: 4; background: #080808; pointer-events: none; will-change: transform; }
 .page-portfolio .portfolio-card-line { display: block; width: 0; height: 1px; margin-top: 15px; background: var(--orange); }
-.page-portfolio .portfolio-card .da-animate { position: absolute; inset: 0; z-index: 2; display: flex !important; padding: 24px; align-items: flex-end; justify-content: space-between; color: #fff; background: linear-gradient(180deg,transparent 28%,rgba(0,0,0,.76)); pointer-events: none; }
-.page-portfolio .portfolio-card .da-animate h3 { margin: 0; color: #fff; font-size: clamp(18px,1.4vw,26px); font-weight: 760; }
-.page-portfolio .portfolio-card .link_post { color: var(--orange); font-size: 10px; font-weight: 850; letter-spacing: .08em; }
-.page-portfolio .portfolio-card .link_post i { margin-left: 5px; }
 .page-portfolio .portfolio-card:hover .portfolio-media img { transform: none; }
 
 .page-portfolio .pagenav { padding-top: 70px; margin: 0 0 30px !important; color: #777; }
@@ -174,8 +165,6 @@
     .page-portfolio .portfolio-name { font-size: 15px; }
     .page-portfolio .portfolio-card p { font-size: 11px; }
     .page-portfolio .portfolio-card small { margin-top: 11px; }
-    .page-portfolio .portfolio-card .da-animate { padding: 15px; }
-    .page-portfolio .portfolio-card .link_post { display: none; }
     .page-portfolio .portfolio-cta { padding: 0 10px 10px; }
     .page-portfolio .portfolio-cta a { min-height: 220px; padding: 30px 22px; }
     .page-portfolio .portfolio-cta i { font-size: 34px; }
@@ -198,7 +187,20 @@
 }
 </style>
 
-<div class="page-portfolio">
+<script>
+(function(){
+    try {
+        const introKey = 'crPfWebsiteIntroSeen';
+        if(sessionStorage.getItem(introKey) === '1'){
+            document.documentElement.classList.add('crpf-skip-intro');
+        }else{
+            sessionStorage.setItem(introKey, '1');
+        }
+    } catch(error) {}
+})();
+</script>
+
+<div class="page-portfolio" id="cr-pf-website">
     <div class="progress"><span></span></div>
     <div class="page-intro" aria-hidden="true"><span>PORTFOLIO<i>.</i></span></div>
     <div class="portfolio-pointer-glow" aria-hidden="true"></div>
@@ -238,16 +240,12 @@
                 </div>
 
                 <!-- {GROUP_pf_nav} -->
-                <div class="image_grid portfolio_4col">
-                    <ul id="list" class="portfolio-grid portfolio_list da-thumbs">
+                <div class="crpf-grid-wrap">
+                    <ul id="list" class="portfolio-grid">
                         <li class="portfolio-card" loop="$myboard_mylist_row as $k => $v">
                             <a href="{$v[s_v2]}" target="_blank" rel="noopener">
                                 <div class="portfolio-media">
                                     {$v[s_v3]}
-                                    <article class="da-animate da-slideFromRight" style="display:block;">
-                                        <h3>{$v[s_v1]}</h3>
-                                        <span class="link_post">자세히보기 <i class="fa fa-search" aria-hidden="true"></i></span>
-                                    </article>
                                 </div>
                                 <small>WEBSITE PROJECT</small>
                                 <h3 class="portfolio-name">{$v[s_v1]}</h3>
@@ -273,36 +271,6 @@
         </section>
     </main>
 </div>
-
-<!--@if(count($myboard_category_row))-->
-<script>
-jQuery(function($){
-    $('.glores-A-cate-list-wrap .btn_category').on('click', function(){
-        $(this).toggleClass('on');
-        $(this).parent().find('.glores-A-cate-list').toggleClass('on');
-    });
-});
-</script>
-<!--@end-->
-
-<script type="text/javascript">
-jQuery(document).ready(function(){
-    jQuery(function(){
-        if(jQuery.fn.hoverdir){
-            jQuery('ul.da-thumbs > li').hoverdir();
-        }
-    });
-});
-</script>
-
-<script>
-AOS.init({
-    duration: 800,
-    easing: 'ease-out',
-    once: true,
-    offset: 100
-});
-</script>
 
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
@@ -332,7 +300,14 @@ projectCards.forEach(card => {
     card.appendChild(line);
 });
 
+const categoryButton = portfolioRoot?.querySelector('.glores-A-cate-list-wrap .btn_category');
 const categoryList = portfolioRoot?.querySelector('.glores-A-cate-list');
+if(categoryButton && categoryList){
+    categoryButton.addEventListener('click', () => {
+        categoryButton.classList.toggle('on');
+        categoryList.classList.toggle('on');
+    });
+}
 if(categoryList){
     const activeLink = categoryList.querySelector('li.on a') || categoryList.querySelector('li a');
     const indicator = document.createElement('span');
@@ -453,13 +428,16 @@ function startPortfolioMotion(){
 }
 
 if(!reduceMotion){
+    const skipIntro = document.documentElement.classList.contains('crpf-skip-intro');
     gsap.set(projectCards, { y: 55, opacity: 0 });
     gsap.set('.page-portfolio .portfolio-card .portfolio-media img', { scale: 1.09 });
     gsap.set('.page-portfolio .portfolio-card small, .page-portfolio .portfolio-name, .page-portfolio .portfolio-card p', { y: 18, opacity: 0 });
     gsap.set('.page-portfolio .portfolio-eyebrow, .page-portfolio .portfolio-hero h1, .page-portfolio .portfolio-hero-copy', { opacity: 0 });
     if(heroCount) heroCount.textContent = '0';
 
-    if(pageIntro){
+    if(skipIntro){
+        startPortfolioMotion();
+    }else if(pageIntro){
         const handleIntroEnd = event => {
             if(event.target === pageIntro && event.animationName === 'pfGroupIntroRemove'){
                 pageIntro.removeEventListener('animationend', handleIntroEnd);
