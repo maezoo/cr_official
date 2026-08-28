@@ -35,27 +35,6 @@
 .page-portfolio .progress { position: fixed; top: 0; left: 0; z-index: 11900; width: 100%; height: 3px; pointer-events: none; }
 .page-portfolio .progress span { display: block; width: 0; height: 100%; background: var(--orange); }
 
-.page-portfolio .page-intro { position: fixed; inset: 0; z-index: 12000; display: grid; place-items: center; overflow: hidden; pointer-events: none; animation: pfGroupIntroRemove .1s 1.1s forwards; }
-.page-portfolio .page-intro::before,
-.page-portfolio .page-intro::after { position: absolute; inset: 0; background: var(--orange); content: ""; transform-origin: top; animation: pfGroupIntroPanel 1.05s var(--ease) forwards; }
-.page-portfolio .page-intro::after { background: #080808; clip-path: inset(0 0 50% 0); }
-.page-portfolio .page-intro span { position: relative; z-index: 2; color: #fff; font-size: clamp(38px, 7vw, 100px); font-weight: 950; letter-spacing: -.06em; animation: pfGroupIntroWord .92s var(--ease) forwards; }
-.page-portfolio .page-intro i { color: var(--orange); font-style: normal; }
-.crpf-skip-intro #cr-pf-website .page-intro,
-.crpf-skip-intro #cr-pf-website .portfolio-hero-curtain { display: none !important; }
-.crpf-skip-intro #cr-pf-website .portfolio-hero { min-height: 300px; padding: 125px 0 52px; }
-.crpf-skip-intro #cr-pf-website .portfolio-hero h1 { font-size: clamp(54px,6.5vw,96px); }
-@keyframes pfGroupIntroWord {
-    0% { opacity: 0; transform: translateY(100%); }
-    28%, 62% { opacity: 1; transform: none; }
-    100% { opacity: 0; transform: translateY(-100%); }
-}
-@keyframes pfGroupIntroPanel {
-    0%, 60% { transform: scaleY(1); }
-    100% { transform: scaleY(0); }
-}
-@keyframes pfGroupIntroRemove { to { visibility: hidden; } }
-
 .page-portfolio .portfolio-hero { position: relative; display: flex; min-height: 470px; padding: 158px 0 72px; align-items: flex-end; overflow: hidden; background: var(--portfolio-bg); }
 .page-portfolio .portfolio-hero::after { position: absolute; right: 0; bottom: 0; left: 0; height: 1px; background: rgba(255,255,255,.12); content: ""; }
 .page-portfolio .portfolio-hero > .container { position: relative; z-index: 2; }
@@ -189,28 +168,13 @@
     .page-portfolio *,
     .page-portfolio *::before,
     .page-portfolio *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
-    .page-portfolio .page-intro,
     .page-portfolio .portfolio-hero-curtain,
     .page-portfolio .portfolio-card-wipe { display: none; }
 }
 </style>
 
-<script>
-(function(){
-    try {
-        const introKey = 'crPfWebsiteIntroSeen';
-        if(sessionStorage.getItem(introKey) === '1'){
-            document.documentElement.classList.add('crpf-skip-intro');
-        }else{
-            sessionStorage.setItem(introKey, '1');
-        }
-    } catch(error) {}
-})();
-</script>
-
 <div class="page-portfolio" id="cr-pf-website">
     <div class="progress"><span></span></div>
-    <div class="page-intro" aria-hidden="true"><span>PORTFOLIO<i>.</i></span></div>
     <div class="portfolio-pointer-glow" aria-hidden="true"></div>
     <div class="portfolio-cursor" aria-hidden="true">VIEW<br>PROJECT</div>
 
@@ -289,12 +253,23 @@ gsap.registerPlugin(ScrollTrigger);
 const portfolioRoot = document.querySelector('.page-portfolio');
 const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const projectCards = gsap.utils.toArray('.page-portfolio .portfolio-card');
-const pageIntro = portfolioRoot?.querySelector('.page-intro');
 const heroCount = portfolioRoot?.querySelector('#heroProjectCount');
 const visibleCount = portfolioRoot?.querySelector('#visibleProjectCount');
 const portfolioCursor = portfolioRoot?.querySelector('.portfolio-cursor');
 const pointerGlow = portfolioRoot?.querySelector('.portfolio-pointer-glow');
 const filterWrap = portfolioRoot?.querySelector('.gallery-filter-wrap');
+const projectFocusKey = 'crPfWebsiteFocusProjects';
+let focusProjectsAfterLoad = false;
+try {
+    focusProjectsAfterLoad = sessionStorage.getItem(projectFocusKey) === '1';
+    if(focusProjectsAfterLoad) sessionStorage.removeItem(projectFocusKey);
+} catch(error) {}
+
+portfolioRoot?.querySelectorAll('.glores-A-cate-list a, .pagenav a').forEach(link => {
+    link.addEventListener('click', () => {
+        try { sessionStorage.setItem(projectFocusKey, '1'); } catch(error) {}
+    });
+});
 
 if(heroCount) heroCount.textContent = projectCards.length;
 if(visibleCount) visibleCount.textContent = projectCards.length;
@@ -442,39 +417,28 @@ function startPortfolioMotion(){
 }
 
 if(!reduceMotion){
-    const skipIntro = document.documentElement.classList.contains('crpf-skip-intro');
     gsap.set(projectCards, { y: 55, opacity: 0 });
     gsap.set('.page-portfolio .portfolio-card .portfolio-media img', { scale: 1.09 });
     gsap.set('.page-portfolio .portfolio-card small, .page-portfolio .portfolio-name, .page-portfolio .portfolio-card p', { y: 18, opacity: 0 });
     gsap.set('.page-portfolio .portfolio-eyebrow, .page-portfolio .portfolio-hero h1, .page-portfolio .portfolio-hero-copy', { opacity: 0 });
     if(heroCount) heroCount.textContent = '0';
 
-    if(skipIntro){
-        if('scrollRestoration' in history) history.scrollRestoration = 'manual';
-        startPortfolioMotion();
-        const projectsSection = portfolioRoot?.querySelector('#projects');
-        if(projectsSection){
-            setTimeout(() => {
-                const top = projectsSection.getBoundingClientRect().top + scrollY - 78;
-                scrollTo({ top, behavior: 'auto' });
-                ScrollTrigger.refresh();
-            }, 80);
-        }
-    }else if(pageIntro){
-        const handleIntroEnd = event => {
-            if(event.target === pageIntro && event.animationName === 'pfGroupIntroRemove'){
-                pageIntro.removeEventListener('animationend', handleIntroEnd);
-                startPortfolioMotion();
-            }
-        };
-        pageIntro.addEventListener('animationend', handleIntroEnd);
-        setTimeout(startPortfolioMotion, 1400);
-    }else{
-        startPortfolioMotion();
-    }
+    startPortfolioMotion();
 }else{
     portfolioRoot?.querySelector('.portfolio-hero-curtain')?.remove();
     portfolioRoot?.querySelectorAll('.portfolio-card-wipe').forEach(element => element.remove());
+}
+
+if(focusProjectsAfterLoad){
+    if('scrollRestoration' in history) history.scrollRestoration = 'manual';
+    const projectsSection = portfolioRoot?.querySelector('#projects');
+    if(projectsSection){
+        setTimeout(() => {
+            const top = projectsSection.getBoundingClientRect().top + scrollY - 78;
+            scrollTo({ top, behavior: 'auto' });
+            ScrollTrigger.refresh();
+        }, 80);
+    }
 }
 
 const progressBar = portfolioRoot?.querySelector('.progress span');
