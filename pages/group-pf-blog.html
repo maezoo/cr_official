@@ -82,6 +82,52 @@
 .page-portfolio .portfolio-card-line { display: block; width: 0; height: 1px; margin-top: 15px; background: var(--orange); }
 .page-portfolio .portfolio-card:hover .portfolio-media img { transform: none; }
 
+
+/* BLOG PORTFOLIO BOARD — 기존 게시판 마크업을 형제 페이지 그리드로 표현 */
+.page-portfolio .st_mybd_page { display: none; }
+.page-portfolio .st_mybd_list { display: block; width: 100%; margin: 0; border: 0; border-collapse: separate; border-spacing: 0; background: transparent; }
+.page-portfolio .st_mybd_list colgroup,
+.page-portfolio .st_mybd_list thead { display: none; }
+.page-portfolio .st_mybd_list tbody { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 54px 24px; width: 100%; }
+.page-portfolio .st_mybd_list tbody tr.portfolio-card { position: relative; display: flex; min-width: 0; flex-direction: column; }
+.page-portfolio .st_mybd_list tbody tr td { display: none; height: auto; padding: 0; border: 0; background: transparent; }
+.page-portfolio .st_mybd_list tbody tr td.st_mybd_subject { display: block; order: 1; overflow: hidden; padding: 0; text-align: left; }
+.page-portfolio .st_mybd_list .st_mybd_m_title { display: block; margin: 0; }
+.page-portfolio .st_mybd_list .st_mybd_m_title > a { display: block; width: 100%; height: 100%; }
+.page-portfolio .st_mybd_list .portfolio-media { display: block; aspect-ratio: 12 / 5; overflow: hidden; isolation: isolate; background: var(--portfolio-panel); }
+.page-portfolio .st_mybd_list .portfolio-media > a > img,
+.page-portfolio .st_mybd_list .portfolio-media img:not([alt="secret"]) { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .75s var(--ease); }
+.page-portfolio .st_mybd_list .portfolio-media img[alt="secret"] { position: absolute; right: 14px; bottom: 14px; z-index: 5; width: auto; height: 12px; object-fit: initial; }
+.page-portfolio .st_mybd_list tbody tr td:first-child { display: flex; order: 2; min-height: 58px; padding: 0 4px; align-items: center; justify-content: space-between; color: #f4f4f1; border-bottom: 1px solid rgba(255,255,255,.14); font-size: 13px; font-weight: 850; }
+.page-portfolio .st_mybd_list tbody tr td:first-child::before { color: #666; content: "PROJECT"; font-size: 9px; font-weight: 900; letter-spacing: .12em; }
+.page-portfolio .st_mybd_list tbody tr td:nth-child(3),
+.page-portfolio .st_mybd_list tbody tr td:nth-child(4),
+.page-portfolio .st_mybd_list tbody tr td:nth-child(5),
+.page-portfolio .st_mybd_list tbody tr td:nth-child(6),
+.page-portfolio .st_mybd_list .st_mybd_m_show { display: none !important; }
+.page-portfolio .st_mybd_list tbody tr:not(.portfolio-card) { grid-column: 1 / -1; }
+.page-portfolio .st_mybd_list tbody tr td.st_mybd_none_data { display: grid; min-height: 260px; place-items: center; color: #777; border: 1px solid rgba(255,255,255,.14); }
+.page-portfolio .st_mybd_list .portfolio-card-line { position: absolute; bottom: 0; left: 0; margin: 0; }
+.page-portfolio .st_mybd_list_btn { margin: 24px 0 0; text-align: right; }
+.page-portfolio .st_mybd_btn_type1 { display: inline-flex; min-height: 44px; padding: 0 22px; align-items: center; justify-content: center; color: #111; border: 1px solid var(--orange); border-radius: 999px; background: var(--orange); font-size: 11px; font-weight: 900; text-decoration: none; }
+.page-portfolio .st_mybd_search_form { display: flex; padding: 22px; margin-top: 30px; align-items: center; justify-content: center; gap: 8px; border: 1px solid rgba(255,255,255,.12); border-radius: 14px; background: #0d0d0d; }
+.page-portfolio .st_mybd_search_form select,
+.page-portfolio .st_mybd_search_form input { box-sizing: border-box; height: 44px; color: #aaa; border: 1px solid rgba(255,255,255,.16); border-radius: 8px; outline: 0; background: #151515; }
+.page-portfolio .st_mybd_search_form select { width: 170px; padding: 0 12px; }
+.page-portfolio .st_mybd_search_form .search_input { display: flex; }
+.page-portfolio .st_mybd_search_form input { width: 280px; padding: 0 14px; border-radius: 8px 0 0 8px; }
+.page-portfolio .st_mybd_search_form .st_mybd_btn_search { height: 44px; padding: 0 20px; color: #111; border: 0; border-radius: 0 8px 8px 0; background: var(--orange); font-weight: 900; cursor: pointer; }
+@media (max-width: 900px) {
+    .page-portfolio .st_mybd_list tbody { gap: 38px 14px; }
+}
+@media (max-width: 600px) {
+    .page-portfolio .st_mybd_list tbody { grid-template-columns: 1fr; gap: 30px; }
+    .page-portfolio .st_mybd_search_form { display: block; padding: 14px; }
+    .page-portfolio .st_mybd_search_form select { width: 100%; }
+    .page-portfolio .st_mybd_search_form .search_input { width: 100%; margin-top: 8px; }
+    .page-portfolio .st_mybd_search_form input { flex: 1; width: auto; min-width: 0; }
+}
+
 .page-portfolio .pagenav { padding-top: 70px; margin: 0 0 30px !important; color: #777; }
 .page-portfolio .pagenav a,
 .page-portfolio .pagenav strong { display: inline-grid; min-width: 38px; height: 38px; margin: 0 3px; padding: 0 9px; place-items: center; border: 1px solid rgba(255,255,255,.16); color: #aaa; transition: .25s; }
@@ -177,6 +223,10 @@
 }
 </style>
 
+{@
+$myboard_lan1 = lan('kr', '등록일');
+@}
+
 <div class="page-portfolio" id="cr-pf-blog">
     <div class="progress"><span></span></div>
     <div class="portfolio-pointer-glow" aria-hidden="true"></div>
@@ -203,9 +253,10 @@
         <section class="gallery" id="projects">
             <div class="gallery-wide">
                 <div class="gallery-filter-wrap">
-                    <div class="glores-A-cate-list-wrap" cond="$myboard_category_row">
+                    <div class="st_cate_list_wrap glores-A-cate-list-wrap" cond="$myboard_category_row">
                         <button type="button" class="btn_category"><span class="icon"></span>CATEGORY</button>
-                        <ul class="glores-A-cate-list">
+
+                        <ul class="st_cate_list glores-A-cate-list">
                             <li class="on"|cond="!$_GET[category_idx]"><a href="/shop_contents/myboard_list.htm?myboard_code={$_GET[myboard_code]}">ALL</a></li>
                             <!--@foreach($myboard_category_row as $k => $v)-->
                                 <li class="on"|cond="$_GET[category_idx]==$v[category_idx]"><a href="{$v[url]}">{$v[subject]}</a></li>
@@ -216,24 +267,84 @@
                 </div>
 
                 <!-- {GROUP_pf_nav} -->
-                <div class="crpf-grid-wrap">
-                    <ul id="list" class="portfolio-grid">
-                        <li class="portfolio-card" loop="$myboard_mylist_row as $k => $v">
-                            <a href="{$v[read_url]}">
-                                <div class="portfolio-media">
-                                    {$v[s_v1]}
-                                    <img src="/img_up/tmp_img/service/board_tpl/8/pc/img/ico_secret.png" height="12" alt="secret" cond="$v[secret]">
-                                </div>
-                                <div class="portfolio-card-meta">
-                                    <span>PROJECT</span>
-                                    <strong>{$v[numbering]}</strong>
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+
+                <p class="st_mybd_page">
+                    {@
+                        $lan_arr = array();
+                        $lan_arr[0] = $total_record;
+                        $lan_arr[1] = $page;
+                        $lan_arr[2] = $total_page;
+                        echo lan("kr", "총 [0]건, [1]/[2] 페이지", $lan_arr);
+                    @}
+                </p>
+
+                <table class="st_mybd_list">
+                    <colgroup>
+                        <col style="width:60px;">
+                        <col>
+                        <col style="width:100px;">
+                        <col style="width:100px;">
+                        <col style="width:100px;">
+                        <col style="width:90px;">
+                    </colgroup>
+
+                    <thead>
+                        <tr>
+                            <th scope="col">No</th>
+                            <th scope="col">{$s_v1_name}</th>
+                            <th scope="col">{$s_v2_name}</th>
+                            <th scope="col">{$s_v3_name}</th>
+                            <th scope="col">{$s_v4_name}</th>
+                            <th scope="col" data-lan="kr">등록일</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr class="portfolio-card" loop="$myboard_mylist_row as $k => $v">
+                            <td>{$v[numbering]}</td>
+                            <td class="st_mybd_subject st_mybd_m_show_td">
+                                <span class="st_mybd_m_title portfolio-media"><a href="{$v[read_url]}">{$v[s_v1]} <img src="/img_up/tmp_img/service/board_tpl/8/pc/img/ico_secret.png" height="12" alt="secret" cond="$v[secret]"></a></span>
+                                <span class="st_mybd_m_show" cond="$v[s_v2]">{$s_v2_name} : {$v[s_v2]}</span>
+                                <span class="st_mybd_m_show" cond="$v[s_v3]">{$s_v3_name} : {$v[s_v3]}</span>
+                                <span class="st_mybd_m_show" cond="$v[s_v4]">{$s_v4_name} : {$v[s_v4]}</span>
+                                <span class="st_mybd_m_show">{$myboard_lan1} : {$v[reg_date]|date:Y-m-d}</span>
+                            </td>
+                            <td>{$v[s_v2]}</td>
+                            <td>{$v[s_v3]}</td>
+                            <td>{$v[s_v4]}</td>
+                            <td>{$v[reg_date]|date:Y-m-d}</td>
+                        </tr>
+
+                        <tr cond="!count($myboard_mylist_row)">
+                            <td colspan="6" class="st_mybd_none_data" data-lan="kr">등록된 데이터가 없습니다.</td>
+                        </tr>
+                    </tbody>
+                </table>
 
                 <div class="pagenav" style="text-align:center;margin-bottom:30px;">{$page_block}</div>
+
+                <div class="st_mybd_list_btn">
+                    <a href="{$write_url}" class="st_mybd_btn_type1 st_mybd_medium st_mybd_highlight" data-lan="kr">등록</a>
+                </div>
+
+                <div class="st_mybd_search_form">
+                    {$s_form}
+                    <select name="keyfield" cond="$s_v1_name || $s_v2_name || $s_v3_name || $s_v4_name ||$s_v5_name">
+                        <option value="" data-lan="kr">검색 조건 선택</option>
+                        <option value="s_v1" cond="$s_v1_name">{$s_v1_name}</option>
+                        <option value="s_v2" cond="$s_v2_name">{$s_v2_name}</option>
+                        <option value="s_v3" cond="$s_v3_name">{$s_v3_name}</option>
+                        <option value="s_v4" cond="$s_v4_name">{$s_v4_name}</option>
+                        <option value="s_v5" cond="$s_v5_name">{$s_v5_name}</option>
+                    </select>
+
+                    <span class="search_input">
+                        <input type="text" name="key" value="">
+                        <button type="submit" class="st_mybd_btn_search" data-lan="kr">검색</button>
+                    </span>
+                    {$e_form}
+                </div>
+
                 <div class="clear"></div>
             </div>
         </section>
@@ -288,15 +399,17 @@ projectCards.forEach(card => {
     media.appendChild(wipe);
     const line = document.createElement('span');
     line.className = 'portfolio-card-line';
-    card.appendChild(line);
+    card.querySelector('td:first-child')?.appendChild(line);
 });
 
 const categoryButton = portfolioRoot?.querySelector('.glores-A-cate-list-wrap .btn_category');
 const categoryList = portfolioRoot?.querySelector('.glores-A-cate-list');
 if(categoryButton && categoryList){
-    categoryButton.addEventListener('click', () => {
-        categoryButton.classList.toggle('on');
-        categoryList.classList.toggle('on');
+    jQuery(function($){
+        $('.st_cate_list_wrap .btn_category').on('click', function(){
+            $(this).toggleClass('on');
+            $(this).parent().find('.st_cate_list').toggleClass('on');
+        });
     });
 }
 if(categoryList){
@@ -373,7 +486,7 @@ function revealCards(batch){
         const media = card.querySelector('.portfolio-media');
         const image = media?.querySelector('img');
         const wipe = card.querySelector('.portfolio-card-wipe');
-        const texts = [card.querySelector('.portfolio-card-meta')].filter(Boolean);
+        const texts = [card.querySelector('td:first-child')].filter(Boolean);
         const line = card.querySelector('.portfolio-card-line');
         const timeline = gsap.timeline({ delay: index * .13 });
 
@@ -425,7 +538,7 @@ function startPortfolioMotion(){
 if(!reduceMotion){
     gsap.set(projectCards, { y: 55, opacity: 0 });
     gsap.set('.page-portfolio .portfolio-card .portfolio-media img', { scale: 1.09 });
-    gsap.set('.page-portfolio .portfolio-card-meta', { y: 18, opacity: 0 });
+    gsap.set('.page-portfolio .st_mybd_list .portfolio-card td:first-child', { y: 18, opacity: 0 });
     gsap.set('.page-portfolio .portfolio-eyebrow, .page-portfolio .portfolio-hero h1, .page-portfolio .portfolio-hero-copy', { opacity: 0 });
     if(heroCount) heroCount.textContent = '0';
 
