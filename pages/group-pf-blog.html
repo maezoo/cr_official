@@ -4,8 +4,8 @@
 <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
 <style>
 .page-portfolio {
-    --portfolio-bg: #050505;
-    --portfolio-panel: #161616;
+    --portfolio-bg: #0b0907;
+    --portfolio-panel: #1a1511;
     --portfolio-text: #f4f4f1;
     --portfolio-muted: #777;
     --orange: #ff9230;
@@ -50,7 +50,7 @@
 
 .page-portfolio .gallery { padding: 0 0 140px; background: var(--portfolio-bg); }
 .page-portfolio .gallery-wide { width: 100%; padding: 0 22px; }
-.page-portfolio .gallery-filter-wrap { position: sticky; top: 92px; z-index: 100; display: flex; width: calc(100% - 44px); min-height: 64px; padding: 8px max(10px,1.2vw); margin: 0 auto 42px; align-items: center; justify-content: space-between; gap: 24px; border: 1px solid rgba(255,255,255,.11); border-radius: 14px; background: rgba(5,5,5,.92); box-shadow: 0 16px 34px rgba(0,0,0,.24); backdrop-filter: blur(15px); }
+.page-portfolio .gallery-filter-wrap { position: sticky; top: 92px; z-index: 100; display: flex; width: calc(100% - 44px); min-height: 64px; padding: 8px max(10px,1.2vw); margin: 0 auto 42px; align-items: center; justify-content: space-between; gap: 24px; border: 1px solid rgba(255,255,255,.11); border-radius: 14px; background: rgba(11,9,7,.92); box-shadow: 0 16px 34px rgba(0,0,0,.24); backdrop-filter: blur(15px); }
 .page-portfolio .glores-A-cate-list-wrap { min-width: 0; }
 .page-portfolio .glores-A-cate-list-wrap .btn_category { display: none; }
 .page-portfolio .glores-A-cate-list { position: relative; display: inline-flex; flex-wrap: wrap; gap: 8px; }
@@ -78,7 +78,7 @@
 .page-portfolio .portfolio-card-meta span { color: #666; font-size: 9px; font-weight: 900; letter-spacing: .12em; }
 .page-portfolio .portfolio-card-meta strong { color: #f4f4f1; font-size: 13px; font-weight: 850; }
 .page-portfolio .portfolio-media img[alt="secret"] { position: absolute; right: 14px; bottom: 14px; z-index: 5; width: auto; height: 12px; object-fit: initial; }
-.page-portfolio .portfolio-card-wipe { position: absolute; inset: -1px; z-index: 4; background: #080808; pointer-events: none; will-change: transform; }
+.page-portfolio .portfolio-card-wipe { position: absolute; inset: -1px; z-index: 4; background: #0b0907; pointer-events: none; will-change: transform; }
 .page-portfolio .portfolio-card-line { display: block; width: 0; height: 1px; margin-top: 15px; background: var(--orange); }
 .page-portfolio .portfolio-card:hover .portfolio-media img { transform: none; }
 
@@ -108,7 +108,7 @@
 .page-portfolio .st_mybd_list tbody tr:not(.portfolio-card) { grid-column: 1 / -1; }
 .page-portfolio .st_mybd_list tbody tr td.st_mybd_none_data { display: grid; min-height: 260px; place-items: center; color: #777; border: 1px solid rgba(255,255,255,.14); }
 .page-portfolio .st_mybd_list .portfolio-card-line { position: absolute; bottom: 0; left: 0; margin: 0; }
-.page-portfolio .st_mybd_list_btn { margin: 24px 0 0; text-align: right; }
+.page-portfolio .st_mybd_list_btn { display: none !important; }
 .page-portfolio .st_mybd_btn_type1 { display: inline-flex; min-height: 44px; padding: 0 22px; align-items: center; justify-content: center; color: #111; border: 1px solid var(--orange); border-radius: 999px; background: var(--orange); font-size: 11px; font-weight: 900; text-decoration: none; }
 .page-portfolio .st_mybd_search_form { display: none !important; }
 .page-portfolio .st_mybd_search_form select,
