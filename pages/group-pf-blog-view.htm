@@ -159,45 +159,83 @@
 	.page-blog-view .farm-A-title {display:none !important;}
 
 	.page-blog-view .farm-A-category-table {
-		display:table;
-		width:100%;
+		display:table !important;
+		visibility:visible !important;
+		opacity:1 !important;
+		width:100% !important;
 		margin:0 0 84px !important;
-		border-top:1px solid var(--view-text);
-		border-bottom:1px solid var(--view-line);
+		border:0;
+		background:transparent;
 	}
 
 	.page-blog-view .farm-A-category-table colgroup,
 	.page-blog-view .farm-A-category-table th {display:none !important;}
 
-	.page-blog-view .farm-A-category-table tbody,
+	.page-blog-view .farm-A-category-table tbody {
+		display:table-row-group !important;
+		visibility:visible !important;
+	}
+
 	.page-blog-view .farm-A-category-table tr {
-		display:block;
-		width:100%;
+		display:table-row !important;
+		visibility:visible !important;
 	}
 
 	.page-blog-view .farm-A-category-table td {
-		display:flex;
+		display:table-cell !important;
+		visibility:visible !important;
 		width:100%;
-		min-height:82px;
-		padding:0;
+		padding:0 !important;
+		border:0;
+	}
+
+	.page-blog-view .view-category-content {
+		display:flex;
+		position:relative;
+		min-height:104px;
+		padding:28px 34px;
 		align-items:center;
 		justify-content:space-between;
 		gap:30px;
-		border:0;
-		color:var(--view-text);
-		font-size:15px;
-		font-weight:750;
-		letter-spacing:-.02em;
-		text-align:right;
+		overflow:hidden;
+		color:#fff;
+		background:var(--view-text);
 	}
 
-	.page-blog-view .farm-A-category-table td::before {
-		flex:0 0 auto;
+	.page-blog-view .view-category-content::before {
+		position:absolute;
+		top:0;
+		left:0;
+		width:100%;
+		height:3px;
+		background:var(--orange);
+		content:"";
+	}
+
+	.page-blog-view .view-category-label {
+		display:flex;
+		align-items:center;
+		gap:10px;
 		color:var(--orange);
-		content:"BLOG SKIN PROJECT";
 		font-size:10px;
 		font-weight:900;
 		letter-spacing:.16em;
+	}
+
+	.page-blog-view .view-category-label::before {
+		width:6px;
+		height:6px;
+		border-radius:50%;
+		background:var(--orange);
+		content:"";
+	}
+
+	.page-blog-view .view-category-content strong {
+		color:#fff;
+		font-size:22px;
+		font-weight:800;
+		letter-spacing:-.035em;
+		text-align:right;
 	}
 
 	.page-blog-view .farm-A-mgt {margin-top:0;}
@@ -374,14 +412,15 @@
 	.page-blog-view .view-project-notice p {
 		margin:0;
 		color:var(--view-muted);
-		font-size:13px;
+		font-size:16px;
 		line-height:1.8;
 		word-break:keep-all;
 	}
 
 	/* 등록일·상태·추천 데이터는 유지하고 화면에서 숨김 */
 	.page-blog-view .farm-A-system-table,
-	.page-blog-view .farm-A-recommend-wrap {display:none !important;}
+	.page-blog-view .farm-A-recommend-wrap,
+	.page-blog-view .farm-A-admin-btn {display:none !important;}
 
 	/* 상세 이동 버튼 */
 	.page-blog-view .farm-A-btn-wrap {
@@ -590,14 +629,20 @@
 		.page-blog-view .portfolio-cta-action {width:100%;justify-content:space-between;}
 		.page-blog-view .farm-A-project-table tbody {gap:68px;}
 		.page-blog-view .farm-A-category-table {margin-bottom:58px !important;}
-		.page-blog-view .farm-A-category-table td {
-			min-height:68px;
-			gap:16px;
-			font-size:13px;
+		.page-blog-view .view-category-content {
+			min-height:94px;
+			padding:24px 20px;
+			align-items:flex-start;
+			flex-direction:column;
+			gap:12px;
 		}
-		.page-blog-view .farm-A-category-table td::before {
+		.page-blog-view .view-category-label {
 			font-size:9px;
-			letter-spacing:.11em;
+			letter-spacing:.12em;
+		}
+		.page-blog-view .view-category-content strong {
+			font-size:18px;
+			text-align:left;
 		}
 		.page-blog-view .view-project-notice {
 			grid-template-columns:1fr;
@@ -605,7 +650,7 @@
 			padding:24px 0;
 			margin-top:68px;
 		}
-		.page-blog-view .view-project-notice p {font-size:12px;}
+		.page-blog-view .view-project-notice p {font-size:14px;}
 		.page-blog-view .farm-A-project-table > tbody > tr:first-child,
 		.page-blog-view .farm-A-project-table > tbody > tr:nth-child(2) {padding-top:44px;}
 		.page-blog-view .farm-A-project-table > tbody > tr:first-child::before,
@@ -681,7 +726,12 @@
 						<tbody>
 							<tr>
 								<th>카테고리</th>
-								<td>{$category_subject}</td>
+								<td>
+									<div class="view-category-content">
+										<span class="view-category-label">PROJECT CATEGORY</span>
+										<strong>{$category_subject}</strong>
+									</div>
+								</td>
 							</tr>
 						</tbody>
 					</table>
@@ -737,8 +787,8 @@
 						<a href="{$back_url}" class="farm-A-btn-type1 farm-A-medium">이전글</a>
 						<a href="{$next_url}" class="farm-A-btn-type1 farm-A-medium">다음글</a>
 						<a href="{$list_url}" class="farm-A-btn-type1 farm-A-medium">목록</a>
-						<a href="{$edit_url}" cond="$edit_url" class="farm-A-btn-type1 farm-A-medium farm-A-highlight">수정</a>
-						<a href="{$del_url}" cond="$del_url" class="farm-A-btn-type1 farm-A-medium">삭제</a>
+						<a href="{$edit_url}" cond="$edit_url" class="farm-A-btn-type1 farm-A-medium farm-A-highlight farm-A-admin-btn">수정</a>
+						<a href="{$del_url}" cond="$del_url" class="farm-A-btn-type1 farm-A-medium farm-A-admin-btn">삭제</a>
 					</div>
 				</div>
 			</div>
