@@ -110,7 +110,7 @@
 .page-portfolio .st_mybd_list .portfolio-card-line { position: absolute; bottom: 0; left: 0; margin: 0; }
 .page-portfolio .st_mybd_list_btn { margin: 24px 0 0; text-align: right; }
 .page-portfolio .st_mybd_btn_type1 { display: inline-flex; min-height: 44px; padding: 0 22px; align-items: center; justify-content: center; color: #111; border: 1px solid var(--orange); border-radius: 999px; background: var(--orange); font-size: 11px; font-weight: 900; text-decoration: none; }
-.page-portfolio .st_mybd_search_form { display: flex; padding: 22px; margin-top: 30px; align-items: center; justify-content: center; gap: 8px; border: 1px solid rgba(255,255,255,.12); border-radius: 14px; background: #0d0d0d; }
+.page-portfolio .st_mybd_search_form { display: none !important; }
 .page-portfolio .st_mybd_search_form select,
 .page-portfolio .st_mybd_search_form input { box-sizing: border-box; height: 44px; color: #aaa; border: 1px solid rgba(255,255,255,.16); border-radius: 8px; outline: 0; background: #151515; }
 .page-portfolio .st_mybd_search_form select { width: 170px; padding: 0 12px; }
@@ -392,6 +392,16 @@ if(heroCount) heroCount.textContent = projectCards.length;
 if(visibleCount) visibleCount.textContent = projectCards.length;
 
 projectCards.forEach(card => {
+    const numberCell = card.querySelector('td:first-child');
+    const numberNode = numberCell?.firstChild;
+
+    if(numberNode && numberNode.nodeType === Node.TEXT_NODE){
+        const number = numberNode.nodeValue.trim();
+        if(/^\d+$/.test(number)){
+            numberNode.nodeValue = number.padStart(3, '0');
+        }
+    }
+
     const media = card.querySelector('.portfolio-media');
     if(!media) return;
     const wipe = document.createElement('span');
