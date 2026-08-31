@@ -88,7 +88,7 @@
 .page-portfolio .st_mybd_list { display: block; width: 100%; margin: 0; border: 0; border-collapse: separate; border-spacing: 0; background: transparent; }
 .page-portfolio .st_mybd_list colgroup,
 .page-portfolio .st_mybd_list thead { display: none; }
-.page-portfolio .st_mybd_list tbody { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 54px 24px; width: 100%; }
+.page-portfolio .st_mybd_list tbody { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 54px 18px; width: 100%; }
 .page-portfolio .st_mybd_list tbody tr.portfolio-card { position: relative; display: flex; min-width: 0; flex-direction: column; }
 .page-portfolio .st_mybd_list tbody tr td { display: none; height: auto; padding: 0; border: 0; background: transparent; }
 .page-portfolio .st_mybd_list tbody tr td.st_mybd_subject { display: block; order: 1; overflow: hidden; padding: 0; text-align: left; }
@@ -118,7 +118,7 @@
 .page-portfolio .st_mybd_search_form input { width: 280px; padding: 0 14px; border-radius: 8px 0 0 8px; }
 .page-portfolio .st_mybd_search_form .st_mybd_btn_search { height: 44px; padding: 0 20px; color: #111; border: 0; border-radius: 0 8px 8px 0; background: var(--orange); font-weight: 900; cursor: pointer; }
 @media (max-width: 900px) {
-    .page-portfolio .st_mybd_list tbody { gap: 38px 14px; }
+    .page-portfolio .st_mybd_list tbody { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 38px 14px; }
 }
 @media (max-width: 600px) {
     .page-portfolio .st_mybd_list tbody { grid-template-columns: 1fr; gap: 30px; }
@@ -241,7 +241,7 @@ $myboard_lan1 = lan('kr', '등록일');
                     <strong><span id="heroProjectCount">0</span> PROJECTS</strong>
                 </div>
                 <div class="portfolio-hero-main">
-                    <h1>PORTFOLIO<span>.</span></h1>
+                    <h1>BLOG<br>PORTFOLIO<span>.</span></h1>
                     <div class="portfolio-hero-copy">
                         <p>브랜드의 첫인상을 담아<br>더 선명한 신뢰로 연결합니다.</p>
                         <a href="#projects">VIEW PROJECTS <i class="ri-arrow-down-line"></i></a>
