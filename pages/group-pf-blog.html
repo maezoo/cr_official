@@ -1,0 +1,458 @@
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
+<link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+<style>
+.page-portfolio {
+    --portfolio-bg: #050505;
+    --portfolio-panel: #161616;
+    --portfolio-text: #f4f4f1;
+    --portfolio-muted: #777;
+    --orange: #ff9230;
+    --ease: cubic-bezier(.16, 1, .3, 1);
+    position: relative;
+    left: 50%;
+    width: 100vw;
+    max-width: none;
+    margin-left: -50vw;
+    overflow: clip;
+    color: var(--portfolio-text);
+    background: var(--portfolio-bg);
+    font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    word-break: keep-all;
+    -webkit-font-smoothing: antialiased;
+}
+.page-portfolio *,
+.page-portfolio *::before,
+.page-portfolio *::after { box-sizing: border-box; }
+.page-portfolio a { color: inherit; text-decoration: none; }
+.page-portfolio button { color: inherit; font: inherit; }
+.page-portfolio img { display: block; width: 100%; }
+.page-portfolio ul { margin: 0; padding: 0; list-style: none; }
+.page-portfolio ::selection { color: #111; background: var(--orange); }
+.page-portfolio .container { width: min(1560px, calc(100% - 48px)); margin-inline: auto; }
+
+.page-portfolio .progress { position: fixed; top: 0; left: 0; z-index: 11900; width: 100%; height: 3px; pointer-events: none; }
+.page-portfolio .progress span { display: block; width: 0; height: 100%; background: var(--orange); }
+
+.page-portfolio .portfolio-hero { position: relative; display: flex; min-height: 470px; padding: 158px 0 72px; align-items: flex-end; overflow: hidden; background: var(--portfolio-bg); }
+.page-portfolio .portfolio-hero::after { position: absolute; right: 0; bottom: 0; left: 0; height: 1px; background: rgba(255,255,255,.12); content: ""; }
+.page-portfolio .portfolio-hero > .container { position: relative; z-index: 2; }
+.page-portfolio .portfolio-hero-curtain { position: absolute; inset: 0; z-index: 1; background: var(--orange); pointer-events: none; transform-origin: bottom; }
+.page-portfolio .portfolio-eyebrow { display: flex; padding-bottom: 22px; margin-bottom: 34px; align-items: center; justify-content: space-between; color: #8a8a8a; border-bottom: 1px solid rgba(255,255,255,.18); font-size: 10px; font-weight: 800; letter-spacing: .16em; }
+.page-portfolio .portfolio-eyebrow strong { color: var(--orange); font-weight: 900; }
+.page-portfolio .portfolio-hero-main { display: grid; grid-template-columns: minmax(0,1fr) 370px; gap: 80px; align-items: end; }
+.page-portfolio .portfolio-hero h1 { margin: 0; overflow: hidden; font-size: clamp(66px,8.2vw,132px); font-weight: 950; line-height: .78; letter-spacing: -.085em; }
+.page-portfolio .portfolio-hero h1 span { color: var(--orange); }
+.page-portfolio .portfolio-hero-copy p { margin: 0; color: #aaa; font-size: 16px; line-height: 1.75; }
+.page-portfolio .portfolio-hero-copy a { display: inline-flex; margin-top: 28px; align-items: center; gap: 10px; color: #fff; font-size: 10px; font-weight: 850; letter-spacing: .14em; }
+.page-portfolio .portfolio-hero-copy a i { color: var(--orange); }
+
+.page-portfolio .gallery { padding: 0 0 140px; background: var(--portfolio-bg); }
+.page-portfolio .gallery-wide { width: 100%; padding: 0 22px; }
+.page-portfolio .gallery-filter-wrap { position: sticky; top: 92px; z-index: 100; display: flex; width: calc(100% - 44px); min-height: 64px; padding: 8px max(10px,1.2vw); margin: 0 auto 42px; align-items: center; justify-content: space-between; gap: 24px; border: 1px solid rgba(255,255,255,.11); border-radius: 14px; background: rgba(5,5,5,.92); box-shadow: 0 16px 34px rgba(0,0,0,.24); backdrop-filter: blur(15px); }
+.page-portfolio .glores-A-cate-list-wrap { min-width: 0; }
+.page-portfolio .glores-A-cate-list-wrap .btn_category { display: none; }
+.page-portfolio .glores-A-cate-list { position: relative; display: inline-flex; flex-wrap: wrap; gap: 8px; }
+.page-portfolio .glores-A-cate-list li { position: relative; z-index: 2; }
+.page-portfolio .glores-A-cate-list li::before { display: none; }
+.page-portfolio .glores-A-cate-list li a { display: block; padding: 10px 17px; color: #777; border: 1px solid rgba(255,255,255,.18); border-radius: 999px; font-size: 10px; font-weight: 850; letter-spacing: .06em; white-space: nowrap; transition: color .25s, border-color .25s; }
+.page-portfolio .glores-A-cate-list li a:hover { color: #fff; border-color: rgba(255,255,255,.42); }
+.page-portfolio .glores-A-cate-list li.on a { color: #111; border-color: transparent; }
+.page-portfolio .filter-indicator { position: absolute; top: 0; left: 0; z-index: 1; border-radius: 999px; background: var(--orange); pointer-events: none; }
+.page-portfolio .project-count { flex: 0 0 auto; color: #666; font-size: 10px; font-weight: 800; letter-spacing: .12em; }
+.page-portfolio .project-count strong { color: #fff; font-size: 12px; }
+
+.page-portfolio .crpf-grid-wrap { width: 100%; max-width: none; margin: 0; padding: 0; }
+.page-portfolio .portfolio-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 54px 24px; }
+.page-portfolio .portfolio-card { float: none !important; width: auto !important; min-width: 0; max-width: none !important; height: auto !important; margin: 0 !important; padding: 0 !important; }
+.page-portfolio .portfolio-card > a { display: block; width: 100%; height: auto; }
+.page-portfolio .portfolio-media { position: relative; aspect-ratio: 12 / 5; overflow: hidden; isolation: isolate; background: var(--portfolio-panel); }
+.page-portfolio .portfolio-media > img,
+.page-portfolio .portfolio-media > a > img,
+.page-portfolio .portfolio-media img { width: 100%; height: 100%; object-fit: cover; transition: transform .75s var(--ease); }
+.page-portfolio .portfolio-card small { display: block; margin-top: 16px; color: var(--orange); font-size: 9px; font-weight: 900; letter-spacing: .04em; }
+.page-portfolio .portfolio-name { margin: 7px 0 0; color: #f2f2ef; font-size: 18px; font-weight: 700; }
+.page-portfolio .portfolio-card p { margin: 5px 0 0; color: #666; font-size: 12px; }
+.page-portfolio .portfolio-card-meta { display: flex; min-height: 58px; padding: 0 4px; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,.14); }
+.page-portfolio .portfolio-card-meta span { color: #666; font-size: 9px; font-weight: 900; letter-spacing: .12em; }
+.page-portfolio .portfolio-card-meta strong { color: #f4f4f1; font-size: 13px; font-weight: 850; }
+.page-portfolio .portfolio-media img[alt="secret"] { position: absolute; right: 14px; bottom: 14px; z-index: 5; width: auto; height: 12px; object-fit: initial; }
+.page-portfolio .portfolio-card-wipe { position: absolute; inset: -1px; z-index: 4; background: #080808; pointer-events: none; will-change: transform; }
+.page-portfolio .portfolio-card-line { display: block; width: 0; height: 1px; margin-top: 15px; background: var(--orange); }
+.page-portfolio .portfolio-card:hover .portfolio-media img { transform: none; }
+
+.page-portfolio .pagenav { padding-top: 70px; margin: 0 0 30px !important; color: #777; }
+.page-portfolio .pagenav a,
+.page-portfolio .pagenav strong { display: inline-grid; min-width: 38px; height: 38px; margin: 0 3px; padding: 0 9px; place-items: center; border: 1px solid rgba(255,255,255,.16); color: #aaa; transition: .25s; }
+.page-portfolio .pagenav a:hover,
+.page-portfolio .pagenav strong { color: #111; border-color: var(--orange); background: var(--orange); }
+
+.page-portfolio .portfolio-cta { padding: 0 24px 24px; background: var(--portfolio-bg); }
+.page-portfolio .portfolio-cta a { position: relative; display: grid; width: min(1752px,100%); min-height: 360px; padding: 58px 64px; margin: 0 auto; grid-template-columns: minmax(0,1fr) auto; align-items: end; gap: 50px; overflow: hidden; color: #111; background: var(--orange); transition: color .4s,border-color .4s; }
+.page-portfolio .portfolio-cta a::before { position: absolute; inset: 0; background: #f3f0e9; content: ""; transform: translateY(101%); transition: transform .58s var(--ease); }
+.page-portfolio .portfolio-cta-copy,
+.page-portfolio .portfolio-cta-action { position: relative; z-index: 1; }
+.page-portfolio .portfolio-cta small { display: block; margin-bottom: 21px; color: #111; font-size: 10px; font-weight: 950; letter-spacing: .17em; }
+.page-portfolio .portfolio-cta h2 { margin: 0; font-size: clamp(42px,5.3vw,82px); font-weight: 900; line-height: .98; letter-spacing: -.06em; }
+.page-portfolio .portfolio-cta p { margin: 24px 0 0; color: rgba(17,17,17,.62); font-size: 14px; line-height: 1.7; }
+.page-portfolio .portfolio-cta-action { display: inline-flex; min-height: 58px; padding: 0 22px; align-items: center; gap: 28px; border: 1px solid rgba(17,17,17,.28); border-radius: 999px; font-size: 11px; font-weight: 900; letter-spacing: .04em; white-space: nowrap; transition: background .35s,color .35s,transform .35s; }
+.page-portfolio .portfolio-cta-action i { font-size: 22px; transition: transform .35s; }
+.page-portfolio .portfolio-cta a:hover::before { transform: translateY(0); }
+.page-portfolio .portfolio-cta a:hover .portfolio-cta-action { color: #fff; background: #111; transform: translateY(-4px); }
+.page-portfolio .portfolio-cta a:hover .portfolio-cta-action i { transform: translate(4px,-4px); }
+
+.page-portfolio .portfolio-pointer-glow { position: fixed; top: 0; left: 0; z-index: 0; width: 560px; height: 560px; border-radius: 50%; opacity: 0; pointer-events: none; background: radial-gradient(circle,rgba(255,104,34,.15) 0,rgba(255,104,34,.055) 38%,transparent 72%); filter: blur(14px); transform: translate(-50%,-50%); }
+.page-portfolio .portfolio-cursor { position: fixed; top: 0; left: 0; z-index: 80; display: grid; width: 82px; height: 82px; place-items: center; color: #111; border-radius: 50%; opacity: 0; pointer-events: none; background: var(--orange); font-size: 9px; font-weight: 950; line-height: 1.15; letter-spacing: .08em; text-align: center; transform: translate(-50%,-50%) scale(.65); will-change: transform,left,top; }
+
+@media (max-width: 1200px) {
+    .page-portfolio .portfolio-hero-main { grid-template-columns: 1fr 300px; gap: 50px; }
+}
+@media (max-width: 900px) {
+    .page-portfolio .portfolio-hero { min-height: 0; padding: 150px 0 75px; }
+    .page-portfolio .container { width: min(100% - 32px,1560px); }
+    .page-portfolio .portfolio-hero-main { grid-template-columns: 1fr; gap: 42px; }
+    .page-portfolio .portfolio-hero-copy { max-width: 420px; }
+    .page-portfolio .gallery-wide { padding: 0 14px; }
+    .page-portfolio .gallery-filter-wrap { top: 69px; width: calc(100% - 28px); padding: 6px 10px; border-radius: 11px; }
+    .page-portfolio .portfolio-grid { grid-template-columns: repeat(2,1fr); gap: 38px 10px; }
+    .page-portfolio .portfolio-media { aspect-ratio: 12 / 5; }
+    .page-portfolio .portfolio-cursor,
+    .page-portfolio .portfolio-pointer-glow { display: none; }
+    .page-portfolio .portfolio-cta { padding: 0 16px 16px; }
+    .page-portfolio .portfolio-cta a { min-height: 300px; padding: 42px; }
+}
+@media (max-width: 767px) {
+    .page-portfolio .gallery-filter-wrap { display: block; padding: 8px; }
+    .page-portfolio .glores-A-cate-list-wrap .btn_category { display: flex; width: 100%; height: 50px; align-items: center; justify-content: center; gap: 10px; color: #fff; border: 1px solid rgba(255,255,255,.18); border-radius: 10px; background: #101010; font-size: 13px; font-weight: 800; letter-spacing: .08em; cursor: pointer; }
+    .page-portfolio .glores-A-cate-list-wrap .btn_category .icon { position: relative; display: inline-block; width: 18px; height: 2px; background: currentColor; }
+    .page-portfolio .glores-A-cate-list-wrap .btn_category .icon::before,
+    .page-portfolio .glores-A-cate-list-wrap .btn_category .icon::after { position: absolute; left: 0; width: 100%; height: 2px; background: currentColor; content: ""; }
+    .page-portfolio .glores-A-cate-list-wrap .btn_category .icon::before { top: -6px; }
+    .page-portfolio .glores-A-cate-list-wrap .btn_category .icon::after { top: 6px; }
+    .page-portfolio .glores-A-cate-list-wrap .glores-A-cate-list { display: none; width: 100%; margin-top: 8px; gap: 6px; }
+    .page-portfolio .glores-A-cate-list-wrap .glores-A-cate-list.on { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); }
+    .page-portfolio .glores-A-cate-list li { width: auto; min-width: 0; }
+    .page-portfolio .glores-A-cate-list li a { display: flex; min-height: 44px; padding: 10px 5px; align-items: center; justify-content: center; border-radius: 9px; font-size: 10px; line-height: 1.25; white-space: normal; overflow-wrap: anywhere; text-align: center; }
+    .page-portfolio .glores-A-cate-list li.on a { color: #111; border-color: var(--orange); background: var(--orange); box-shadow: 0 6px 16px rgba(255,146,48,.2); }
+    .page-portfolio .filter-indicator { display: none; }
+    .page-portfolio .project-count { margin-top: 12px; text-align: right; }
+}
+@media (max-width: 600px) {
+    .page-portfolio .portfolio-hero { padding: 125px 0 58px; }
+    .page-portfolio .container { width: calc(100% - 24px); }
+    .page-portfolio .portfolio-eyebrow { margin-bottom: 26px; }
+    .page-portfolio .portfolio-hero h1 { font-size: 16.5vw; }
+    .page-portfolio .portfolio-hero-copy { max-width: 310px; }
+    .page-portfolio .portfolio-hero-copy p { font-size: 14px; }
+    .page-portfolio .gallery-wide { padding: 0 10px; }
+    .page-portfolio .gallery-filter-wrap { top: 64px; margin-bottom: 28px; }
+    .page-portfolio .portfolio-grid { grid-template-columns: 1fr; gap: 30px; }
+    .page-portfolio .portfolio-name { font-size: 15px; }
+    .page-portfolio .portfolio-card p { font-size: 11px; }
+    .page-portfolio .portfolio-card small { margin-top: 11px; }
+    .page-portfolio .portfolio-cta { padding: 0 10px 10px; }
+    .page-portfolio .portfolio-cta a { min-height: 300px; padding: 34px 22px; grid-template-columns: 1fr; gap: 34px; }
+    .page-portfolio .portfolio-cta h2 { font-size: 40px; }
+    .page-portfolio .portfolio-cta p { font-size: 13px; }
+    .page-portfolio .portfolio-cta-action { width: 100%; justify-content: space-between; }
+}
+@media (max-width: 390px) {
+    .page-portfolio .portfolio-grid { grid-template-columns: 1fr; }
+    .page-portfolio .portfolio-media { aspect-ratio: 12 / 5; }
+    .page-portfolio .portfolio-cta a { padding: 28px 18px; }
+    .page-portfolio .portfolio-cta h2 { font-size: 34px; }
+    .page-portfolio .portfolio-cta-action { min-height: 52px; padding: 0 17px; font-size: 10px; }
+}
+@media (pointer: coarse) {
+    .page-portfolio .portfolio-cursor,
+    .page-portfolio .portfolio-pointer-glow { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .page-portfolio *,
+    .page-portfolio *::before,
+    .page-portfolio *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+    .page-portfolio .portfolio-hero-curtain,
+    .page-portfolio .portfolio-card-wipe { display: none; }
+}
+</style>
+
+<div class="page-portfolio" id="cr-pf-blog">
+    <div class="progress"><span></span></div>
+    <div class="portfolio-pointer-glow" aria-hidden="true"></div>
+    <div class="portfolio-cursor" aria-hidden="true">VIEW<br>PROJECT</div>
+
+    <main>
+        <section class="portfolio-hero">
+            <div class="portfolio-hero-curtain" aria-hidden="true"></div>
+            <div class="container">
+                <div class="portfolio-eyebrow">
+                    <span>CREAFIT / BLOG SKIN ARCHIVE</span>
+                    <strong><span id="heroProjectCount">0</span> PROJECTS</strong>
+                </div>
+                <div class="portfolio-hero-main">
+                    <h1>PORTFOLIO<span>.</span></h1>
+                    <div class="portfolio-hero-copy">
+                        <p>브랜드의 첫인상을 담아<br>더 선명한 신뢰로 연결합니다.</p>
+                        <a href="#projects">VIEW PROJECTS <i class="ri-arrow-down-line"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="gallery" id="projects">
+            <div class="gallery-wide">
+                <div class="gallery-filter-wrap">
+                    <div class="glores-A-cate-list-wrap" cond="$myboard_category_row">
+                        <button type="button" class="btn_category"><span class="icon"></span>CATEGORY</button>
+                        <ul class="glores-A-cate-list">
+                            <li class="on"|cond="!$_GET[category_idx]"><a href="/shop_contents/myboard_list.htm?myboard_code={$_GET[myboard_code]}">ALL</a></li>
+                            <!--@foreach($myboard_category_row as $k => $v)-->
+                                <li class="on"|cond="$_GET[category_idx]==$v[category_idx]"><a href="{$v[url]}">{$v[subject]}</a></li>
+                            <!--@end-->
+                        </ul>
+                    </div>
+                    <div class="project-count"><strong id="visibleProjectCount">0</strong> PROJECTS</div>
+                </div>
+
+                <!-- {GROUP_pf_nav} -->
+                <div class="crpf-grid-wrap">
+                    <ul id="list" class="portfolio-grid">
+                        <li class="portfolio-card" loop="$myboard_mylist_row as $k => $v">
+                            <a href="{$v[read_url]}">
+                                <div class="portfolio-media">
+                                    {$v[s_v1]}
+                                    <img src="/img_up/tmp_img/service/board_tpl/8/pc/img/ico_secret.png" height="12" alt="secret" cond="$v[secret]">
+                                </div>
+                                <div class="portfolio-card-meta">
+                                    <span>PROJECT</span>
+                                    <strong>{$v[numbering]}</strong>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="pagenav" style="text-align:center;margin-bottom:30px;">{$page_block}</div>
+                <div class="clear"></div>
+            </div>
+        </section>
+
+        <section class="portfolio-cta">
+            <a href="/shop_contents/myreg_form.htm?myreg_code=inquiry">
+                <div class="portfolio-cta-copy">
+                    <small>START A PROJECT</small>
+                    <h2>좋은 결과는,<br>정확한 방향에서 시작됩니다.</h2>
+                    <p>브랜드의 목표와 현재 고민을 알려주시면 필요한 전략과 실행 방향을 함께 정리해드립니다.</p>
+                </div>
+                <span class="portfolio-cta-action">프로젝트 상담하기 <i class="ri-arrow-right-up-line"></i></span>
+            </a>
+        </section>
+    </main>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+<script>
+gsap.registerPlugin(ScrollTrigger);
+
+const portfolioRoot = document.querySelector('.page-portfolio');
+const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const projectCards = gsap.utils.toArray('.page-portfolio .portfolio-card');
+const heroCount = portfolioRoot?.querySelector('#heroProjectCount');
+const visibleCount = portfolioRoot?.querySelector('#visibleProjectCount');
+const portfolioCursor = portfolioRoot?.querySelector('.portfolio-cursor');
+const pointerGlow = portfolioRoot?.querySelector('.portfolio-pointer-glow');
+const filterWrap = portfolioRoot?.querySelector('.gallery-filter-wrap');
+const projectFocusKey = 'crPfBlogFocusProjects';
+let focusProjectsAfterLoad = false;
+try {
+    focusProjectsAfterLoad = sessionStorage.getItem(projectFocusKey) === '1';
+    if(focusProjectsAfterLoad) sessionStorage.removeItem(projectFocusKey);
+} catch(error) {}
+
+portfolioRoot?.querySelectorAll('.glores-A-cate-list a, .pagenav a').forEach(link => {
+    link.addEventListener('click', () => {
+        try { sessionStorage.setItem(projectFocusKey, '1'); } catch(error) {}
+    });
+});
+
+if(heroCount) heroCount.textContent = projectCards.length;
+if(visibleCount) visibleCount.textContent = projectCards.length;
+
+projectCards.forEach(card => {
+    const media = card.querySelector('.portfolio-media');
+    if(!media) return;
+    const wipe = document.createElement('span');
+    wipe.className = 'portfolio-card-wipe';
+    media.appendChild(wipe);
+    const line = document.createElement('span');
+    line.className = 'portfolio-card-line';
+    card.appendChild(line);
+});
+
+const categoryButton = portfolioRoot?.querySelector('.glores-A-cate-list-wrap .btn_category');
+const categoryList = portfolioRoot?.querySelector('.glores-A-cate-list');
+if(categoryButton && categoryList){
+    categoryButton.addEventListener('click', () => {
+        categoryButton.classList.toggle('on');
+        categoryList.classList.toggle('on');
+    });
+}
+if(categoryList){
+    const activeLink = categoryList.querySelector('li.on a') || categoryList.querySelector('li a');
+    const indicator = document.createElement('span');
+    indicator.className = 'filter-indicator';
+    categoryList.prepend(indicator);
+
+    const moveIndicator = (link, immediate = false) => {
+        if(!link || innerWidth <= 767) return;
+        const item = link.closest('li');
+        gsap.to(indicator, {
+            x: item.offsetLeft,
+            y: item.offsetTop,
+            width: link.offsetWidth,
+            height: link.offsetHeight,
+            duration: immediate ? 0 : .42,
+            ease: 'power3.inOut',
+            overwrite: true
+        });
+    };
+
+    moveIndicator(activeLink, true);
+    categoryList.querySelectorAll('li a').forEach(link => {
+        link.addEventListener('pointerenter', () => moveIndicator(link));
+        link.addEventListener('focus', () => moveIndicator(link));
+    });
+    categoryList.addEventListener('pointerleave', () => moveIndicator(activeLink));
+    addEventListener('resize', () => moveIndicator(activeLink, true));
+}
+
+if(!reduceMotion && matchMedia('(pointer:fine)').matches && portfolioCursor && pointerGlow){
+    const cursorX = gsap.quickTo(portfolioCursor, 'x', { duration: .18, ease: 'power3.out' });
+    const cursorY = gsap.quickTo(portfolioCursor, 'y', { duration: .18, ease: 'power3.out' });
+    const glowX = gsap.quickTo(pointerGlow, 'x', { duration: .8, ease: 'power3.out' });
+    const glowY = gsap.quickTo(pointerGlow, 'y', { duration: .8, ease: 'power3.out' });
+
+    addEventListener('pointermove', event => {
+        cursorX(event.clientX);
+        cursorY(event.clientY);
+        glowX(event.clientX);
+        glowY(event.clientY);
+        gsap.to(pointerGlow, { opacity: 1, duration: .5 });
+    });
+
+    filterWrap?.addEventListener('pointerenter', () => {
+        gsap.to(portfolioCursor, { opacity: 0, scale: .65, duration: .18, overwrite: true });
+    });
+
+    projectCards.forEach(card => {
+        const media = card.querySelector('.portfolio-media');
+        const image = media?.querySelector('img');
+        if(!media) return;
+
+        media.addEventListener('pointerenter', () => {
+            gsap.to(portfolioCursor, { opacity: 1, scale: 1, duration: .3, ease: 'back.out(1.8)' });
+        });
+        media.addEventListener('pointerleave', () => {
+            gsap.to(portfolioCursor, { opacity: 0, scale: .65, duration: .22 });
+            if(image) gsap.to(image, { x: 0, y: 0, scale: 1, duration: .7, ease: 'power3.out' });
+        });
+        media.addEventListener('pointermove', event => {
+            if(!image) return;
+            const rect = media.getBoundingClientRect();
+            const x = (event.clientX - rect.left) / rect.width - .5;
+            const y = (event.clientY - rect.top) / rect.height - .5;
+            gsap.to(image, { x: x * 14, y: y * 14, scale: 1.045, duration: .55, ease: 'power3.out' });
+        });
+    });
+}
+
+function revealCards(batch){
+    batch.forEach((card, index) => {
+        const media = card.querySelector('.portfolio-media');
+        const image = media?.querySelector('img');
+        const wipe = card.querySelector('.portfolio-card-wipe');
+        const texts = [card.querySelector('.portfolio-card-meta')].filter(Boolean);
+        const line = card.querySelector('.portfolio-card-line');
+        const timeline = gsap.timeline({ delay: index * .13 });
+
+        timeline
+            .to(card, { opacity: 1, y: 0, duration: .01 })
+            .to(wipe, { yPercent: -102, duration: .82, ease: 'power4.inOut' });
+
+        if(image) timeline.to(image, { scale: 1, duration: 1.05, ease: 'power3.out' }, '<');
+        timeline
+            .to(texts, { opacity: 1, y: 0, stagger: .07, duration: .48, ease: 'power3.out' }, '-=.38')
+            .to(line, { width: '100%', duration: .55, ease: 'power3.out' }, '-=.3');
+    });
+}
+
+let motionStarted = false;
+function startPortfolioMotion(){
+    if(motionStarted || reduceMotion) return;
+    motionStarted = true;
+
+    gsap.to('.page-portfolio .portfolio-hero-curtain', { yPercent: -101, duration: .9, ease: 'power4.inOut' });
+
+    const counter = { value: 0 };
+    gsap.to(counter, {
+        value: projectCards.length,
+        duration: 1.15,
+        ease: 'power3.out',
+        onUpdate: () => {
+            const value = Math.round(counter.value);
+            if(heroCount) heroCount.textContent = value;
+        }
+    });
+
+    const heroTimeline = gsap.timeline({ delay: .12 });
+    heroTimeline
+        .fromTo('.page-portfolio .portfolio-eyebrow', { y: 18, opacity: 0 }, { y: 0, opacity: 1, duration: .6, ease: 'power3.out' })
+        .fromTo('.page-portfolio .portfolio-hero h1', { yPercent: 105, opacity: 0 }, { yPercent: 0, opacity: 1, duration: .95, ease: 'power4.out' }, '-=.25')
+        .fromTo('.page-portfolio .portfolio-hero-copy', { y: 25, opacity: 0 }, { y: 0, opacity: 1, duration: .65, ease: 'power3.out' }, '-=.55');
+
+    ScrollTrigger.batch(projectCards, {
+        start: 'top 91%',
+        once: true,
+        interval: .12,
+        batchMax: 4,
+        onEnter: revealCards
+    });
+    ScrollTrigger.refresh();
+}
+
+if(!reduceMotion){
+    gsap.set(projectCards, { y: 55, opacity: 0 });
+    gsap.set('.page-portfolio .portfolio-card .portfolio-media img', { scale: 1.09 });
+    gsap.set('.page-portfolio .portfolio-card-meta', { y: 18, opacity: 0 });
+    gsap.set('.page-portfolio .portfolio-eyebrow, .page-portfolio .portfolio-hero h1, .page-portfolio .portfolio-hero-copy', { opacity: 0 });
+    if(heroCount) heroCount.textContent = '0';
+
+    startPortfolioMotion();
+}else{
+    portfolioRoot?.querySelector('.portfolio-hero-curtain')?.remove();
+    portfolioRoot?.querySelectorAll('.portfolio-card-wipe').forEach(element => element.remove());
+}
+
+if(focusProjectsAfterLoad){
+    if('scrollRestoration' in history) history.scrollRestoration = 'manual';
+    const projectsSection = portfolioRoot?.querySelector('#projects');
+    if(projectsSection){
+        setTimeout(() => {
+            const top = projectsSection.getBoundingClientRect().top + scrollY - 78;
+            scrollTo({ top, behavior: 'auto' });
+            ScrollTrigger.refresh();
+        }, 80);
+    }
+}
+
+const progressBar = portfolioRoot?.querySelector('.progress span');
+const syncProgress = () => {
+    if(!progressBar) return;
+    const max = document.documentElement.scrollHeight - innerHeight;
+    progressBar.style.width = (max > 0 ? scrollY / max * 100 : 0) + '%';
+};
+syncProgress();
+addEventListener('scroll', syncProgress, { passive: true });
+</script>
