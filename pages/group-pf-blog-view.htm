@@ -155,9 +155,50 @@
 		margin:0 !important;
 	}
 
-	/* 관리자용 제목과 카테고리명 숨김 */
-	.page-blog-view .farm-A-title,
-	.page-blog-view .farm-A-category-table {display:none !important;}
+	/* 기본정보 제목은 숨기고 카테고리 값만 표시 */
+	.page-blog-view .farm-A-title {display:none !important;}
+
+	.page-blog-view .farm-A-category-table {
+		display:table;
+		width:100%;
+		margin:0 0 84px !important;
+		border-top:1px solid var(--view-text);
+		border-bottom:1px solid var(--view-line);
+	}
+
+	.page-blog-view .farm-A-category-table colgroup,
+	.page-blog-view .farm-A-category-table th {display:none !important;}
+
+	.page-blog-view .farm-A-category-table tbody,
+	.page-blog-view .farm-A-category-table tr {
+		display:block;
+		width:100%;
+	}
+
+	.page-blog-view .farm-A-category-table td {
+		display:flex;
+		width:100%;
+		min-height:82px;
+		padding:0;
+		align-items:center;
+		justify-content:space-between;
+		gap:30px;
+		border:0;
+		color:var(--view-text);
+		font-size:15px;
+		font-weight:750;
+		letter-spacing:-.02em;
+		text-align:right;
+	}
+
+	.page-blog-view .farm-A-category-table td::before {
+		flex:0 0 auto;
+		color:var(--orange);
+		content:"BLOG SKIN PROJECT";
+		font-size:10px;
+		font-weight:900;
+		letter-spacing:.16em;
+	}
 
 	.page-blog-view .farm-A-mgt {margin-top:0;}
 	.page-blog-view .farm-A-mgb {margin-bottom:0;}
@@ -310,6 +351,32 @@
 	.page-blog-view .farm-A-project-table > tbody > tr:nth-child(2) > td a img {
 		width:auto;
 		max-width:100%;
+	}
+
+	/* 포트폴리오 주의 문구 */
+	.page-blog-view .view-project-notice {
+		display:grid;
+		grid-template-columns:180px minmax(0,1fr);
+		gap:40px;
+		padding:32px 0;
+		margin-top:96px;
+		border-top:1px solid var(--view-text);
+		border-bottom:1px solid var(--view-line);
+	}
+
+	.page-blog-view .view-project-notice strong {
+		color:var(--orange);
+		font-size:10px;
+		font-weight:900;
+		letter-spacing:.16em;
+	}
+
+	.page-blog-view .view-project-notice p {
+		margin:0;
+		color:var(--view-muted);
+		font-size:13px;
+		line-height:1.8;
+		word-break:keep-all;
 	}
 
 	/* 등록일·상태·추천 데이터는 유지하고 화면에서 숨김 */
@@ -522,6 +589,23 @@
 		.page-blog-view .portfolio-cta p {font-size:13px;}
 		.page-blog-view .portfolio-cta-action {width:100%;justify-content:space-between;}
 		.page-blog-view .farm-A-project-table tbody {gap:68px;}
+		.page-blog-view .farm-A-category-table {margin-bottom:58px !important;}
+		.page-blog-view .farm-A-category-table td {
+			min-height:68px;
+			gap:16px;
+			font-size:13px;
+		}
+		.page-blog-view .farm-A-category-table td::before {
+			font-size:9px;
+			letter-spacing:.11em;
+		}
+		.page-blog-view .view-project-notice {
+			grid-template-columns:1fr;
+			gap:13px;
+			padding:24px 0;
+			margin-top:68px;
+		}
+		.page-blog-view .view-project-notice p {font-size:12px;}
 		.page-blog-view .farm-A-project-table > tbody > tr:first-child,
 		.page-blog-view .farm-A-project-table > tbody > tr:nth-child(2) {padding-top:44px;}
 		.page-blog-view .farm-A-project-table > tbody > tr:first-child::before,
@@ -618,6 +702,11 @@
 						</tbody>
 					</table>
 					<!--@end-->
+
+					<div class="view-project-notice">
+						<strong>PLEASE NOTE</strong>
+						<p>본 포트폴리오의 디자인 및 이미지는 크레아핏마케팅의 제작 사례로, 무단 복제·사용 및 2차 가공을 금합니다. 일부 정보는 클라이언트 보호를 위해 변경 또는 비공개 처리될 수 있습니다.</p>
+					</div>
 
 					<table class="farm-A-table farm-A-row farm-A-system-table" cellpadding="0" cellspacing="0" border="0">
 						<colgroup>
