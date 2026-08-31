@@ -54,50 +54,37 @@
 	.page-blog-view .view-hero {
 		position:relative;
 		display:flex;
-		min-height:420px;
-		padding:150px 0 64px;
+		min-height:470px;
+		padding:158px 0 72px;
 		align-items:flex-end;
 		overflow:hidden;
-		border-bottom:1px solid var(--view-line);
 		background:var(--view-bg);
 	}
 
-	.page-blog-view .view-hero::before {
-		position:absolute;
-		top:-220px;
-		right:-150px;
-		width:600px;
-		height:600px;
-		border:1px solid rgba(23,23,23,.07);
-		border-radius:50%;
-		content:"";
-		pointer-events:none;
-	}
+	.page-blog-view .view-hero::before {display:none;}
 
 	.page-blog-view .view-hero::after {
 		position:absolute;
-		top:-90px;
-		right:-25px;
-		width:310px;
-		height:310px;
-		border:1px solid rgba(255,146,48,.35);
-		border-radius:50%;
+		right:0;
+		bottom:0;
+		left:0;
+		height:1px;
+		background:var(--view-line);
 		content:"";
-		pointer-events:none;
 	}
 
-	.page-blog-view .view-hero .view-container {position:relative;z-index:1;}
+	.page-blog-view .view-hero > .view-container {position:relative;z-index:2;}
 
 	.page-blog-view .view-eyebrow {
 		display:flex;
-		padding-bottom:19px;
-		margin-bottom:31px;
+		padding-bottom:22px;
+		margin-bottom:34px;
 		align-items:center;
 		justify-content:space-between;
-		color:#8d8982;
+		color:#8a8a8a;
 		border-bottom:1px solid var(--view-line);
 		font-size:10px;
-		font-weight:850;
+		font-weight:800;
 		letter-spacing:.16em;
 	}
 
@@ -112,10 +99,11 @@
 
 	.page-blog-view .view-hero h1 {
 		margin:0;
-		font-size:clamp(62px,7.5vw,122px);
+		overflow:hidden;
+		font-size:clamp(66px,8.2vw,132px);
 		font-weight:950;
-		line-height:.82;
-		letter-spacing:-.078em;
+		line-height:.78;
+		letter-spacing:-.085em;
 	}
 
 	.page-blog-view .view-hero h1 span {color:var(--orange);}
@@ -123,19 +111,19 @@
 	.page-blog-view .view-hero-copy p {
 		margin:0;
 		color:var(--view-muted);
-		font-size:15px;
+		font-size:16px;
 		line-height:1.75;
 	}
 
 	.page-blog-view .view-hero-copy a {
 		display:inline-flex;
-		margin-top:24px;
+		margin-top:28px;
 		align-items:center;
-		gap:9px;
+		gap:10px;
 		color:var(--view-text);
 		font-size:10px;
 		font-weight:850;
-		letter-spacing:.13em;
+		letter-spacing:.14em;
 	}
 
 	.page-blog-view .view-hero-copy a i {
@@ -149,13 +137,19 @@
 	/* 프로젝트 본문 */
 	.page-blog-view .view-content {
 		position:relative;
-		padding:104px 0 140px;
+		padding:106px 0 140px;
 		background:var(--view-bg);
 	}
 
+	.page-blog-view .view-content > .view-container {
+		width:100%;
+		max-width:none;
+		padding:0 22px;
+	}
+
 	.page-blog-view .farm-A-customize-board {
-		width:min(1380px,100%);
-		margin:0 auto;
+		width:100%;
+		margin:0;
 	}
 
 	/* 관리자용 제목과 카테고리명 숨김 */
@@ -404,12 +398,103 @@
 		background:var(--view-text);
 	}
 
+	/* 목록 페이지와 동일한 위치·크기의 하단 CTA */
+	.page-blog-view .portfolio-cta {
+		padding:0 24px 24px;
+		background:var(--view-bg);
+	}
+
+	.page-blog-view .portfolio-cta > a {
+		position:relative;
+		display:grid;
+		width:min(1752px,100%);
+		min-height:360px;
+		padding:58px 64px;
+		margin:0 auto;
+		grid-template-columns:minmax(0,1fr) auto;
+		align-items:end;
+		gap:50px;
+		overflow:hidden;
+		color:#fff;
+		background:var(--view-text);
+	}
+
+	.page-blog-view .portfolio-cta > a::before {
+		position:absolute;
+		inset:0;
+		background:var(--orange);
+		content:"";
+		transform:translateY(101%);
+		transition:transform .58s var(--ease);
+	}
+
+	.page-blog-view .portfolio-cta-copy,
+	.page-blog-view .portfolio-cta-action {position:relative;z-index:1;}
+
+	.page-blog-view .portfolio-cta small {
+		display:block;
+		margin-bottom:21px;
+		color:var(--orange);
+		font-size:10px;
+		font-weight:950;
+		letter-spacing:.17em;
+	}
+
+	.page-blog-view .portfolio-cta h2 {
+		margin:0;
+		font-size:clamp(42px,5.3vw,82px);
+		font-weight:900;
+		line-height:.98;
+		letter-spacing:-.06em;
+	}
+
+	.page-blog-view .portfolio-cta p {
+		margin:24px 0 0;
+		color:rgba(255,255,255,.62);
+		font-size:14px;
+		line-height:1.7;
+	}
+
+	.page-blog-view .portfolio-cta-action {
+		display:inline-flex;
+		min-height:58px;
+		padding:0 22px;
+		align-items:center;
+		gap:28px;
+		border:1px solid rgba(255,255,255,.28);
+		border-radius:999px;
+		font-size:11px;
+		font-weight:900;
+		letter-spacing:.04em;
+		white-space:nowrap;
+		transition:background .35s,color .35s,transform .35s;
+	}
+
+	.page-blog-view .portfolio-cta-action i {
+		font-size:22px;
+		transition:transform .35s;
+	}
+
+	.page-blog-view .portfolio-cta > a:hover::before {transform:translateY(0);}
+	.page-blog-view .portfolio-cta > a:hover {color:#111;}
+	.page-blog-view .portfolio-cta > a:hover small {color:#111;}
+	.page-blog-view .portfolio-cta > a:hover p {color:rgba(17,17,17,.62);}
+	.page-blog-view .portfolio-cta > a:hover .portfolio-cta-action {
+		color:#fff;
+		background:#111;
+		transform:translateY(-4px);
+	}
+	.page-blog-view .portfolio-cta > a:hover .portfolio-cta-action i {transform:translate(4px,-4px);}
+
 	@media (max-width:900px) {
 		.page-blog-view .view-container {width:min(100% - 32px,1560px);}
-		.page-blog-view .view-hero {min-height:0;padding:145px 0 66px;}
+		.page-blog-view .view-hero {min-height:0;padding:150px 0 75px;}
 		.page-blog-view .view-hero-main {grid-template-columns:1fr;gap:38px;}
 		.page-blog-view .view-hero-copy {max-width:420px;}
-		.page-blog-view .view-content {padding:78px 0 110px;}
+		.page-blog-view .view-content {padding:90px 0 110px;}
+		.page-blog-view .view-content > .view-container {padding:0 14px;}
+		.page-blog-view .portfolio-cta {padding:0 16px 16px;}
+		.page-blog-view .portfolio-cta > a {min-height:300px;padding:42px;}
 		.page-blog-view .farm-A-project-table > tbody > tr:nth-child(2) {
 			grid-template-columns:minmax(0,1fr) minmax(280px,390px);
 			gap:45px;
@@ -419,12 +504,18 @@
 
 	@media (max-width:600px) {
 		.page-blog-view .view-container {width:calc(100% - 24px);}
-		.page-blog-view .view-hero {padding:122px 0 52px;}
+		.page-blog-view .view-hero {padding:125px 0 58px;}
 		.page-blog-view .view-eyebrow {margin-bottom:24px;}
 		.page-blog-view .view-eyebrow strong {display:none;}
-		.page-blog-view .view-hero h1 {font-size:15.5vw;}
+		.page-blog-view .view-hero h1 {font-size:16.5vw;}
 		.page-blog-view .view-hero-copy p {font-size:14px;}
-		.page-blog-view .view-content {padding:54px 0 78px;}
+		.page-blog-view .view-content {padding:68px 0 78px;}
+		.page-blog-view .view-content > .view-container {padding:0 10px;}
+		.page-blog-view .portfolio-cta {padding:0 10px 10px;}
+		.page-blog-view .portfolio-cta > a {min-height:300px;padding:34px 22px;grid-template-columns:1fr;gap:34px;}
+		.page-blog-view .portfolio-cta h2 {font-size:40px;}
+		.page-blog-view .portfolio-cta p {font-size:13px;}
+		.page-blog-view .portfolio-cta-action {width:100%;justify-content:space-between;}
 		.page-blog-view .farm-A-project-table > tbody > tr:first-child {padding-top:38px;}
 		.page-blog-view .farm-A-project-table > tbody > tr:first-child::after {width:42%;}
 		.page-blog-view .farm-A-project-table > tbody > tr:first-child > td {padding:6px;}
@@ -557,6 +648,17 @@
 					</div>
 				</div>
 			</div>
+		</section>
+
+		<section class="portfolio-cta">
+			<a href="/shop_contents/myreg_form.htm?myreg_code=inquiry">
+				<div class="portfolio-cta-copy">
+					<small>START A BLOG PROJECT</small>
+					<h2>브랜드의 첫인상을,<br>더 선명하게 만듭니다.</h2>
+					<p>브랜드의 방향과 필요한 정보를 알려주시면 블로그에 맞는 디자인과 제작 방향을 함께 정리해드립니다.</p>
+				</div>
+				<span class="portfolio-cta-action">블로그 제작 상담하기 <i class="ri-arrow-right-up-line"></i></span>
+			</a>
 		</section>
 	</main>
 </div>
