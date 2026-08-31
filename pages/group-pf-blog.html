@@ -99,7 +99,7 @@
 .page-portfolio .st_mybd_list .portfolio-media img:not([alt="secret"]) { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .75s var(--ease); }
 .page-portfolio .st_mybd_list .portfolio-media img[alt="secret"] { position: absolute; right: 14px; bottom: 14px; z-index: 5; width: auto; height: 12px; object-fit: initial; }
 .page-portfolio .st_mybd_list tbody tr td:first-child { display: flex; order: 2; min-height: 58px; padding: 0 4px; align-items: center; justify-content: space-between; color: #f4f4f1; border-bottom: 1px solid rgba(255,255,255,.14); font-size: 13px; font-weight: 850; }
-.page-portfolio .st_mybd_list tbody tr td:first-child::before { color: #666; content: "PROJECT"; font-size: 9px; font-weight: 900; letter-spacing: .12em; }
+.page-portfolio .st_mybd_list tbody tr td:first-child::before { color: #666; content: "BLOG SKIN"; font-size: 9px; font-weight: 900; letter-spacing: .12em; }
 .page-portfolio .st_mybd_list tbody tr td:nth-child(3),
 .page-portfolio .st_mybd_list tbody tr td:nth-child(4),
 .page-portfolio .st_mybd_list tbody tr td:nth-child(5),
@@ -148,8 +148,8 @@
 .page-portfolio .portfolio-cta a:hover .portfolio-cta-action { color: #fff; background: #111; transform: translateY(-4px); }
 .page-portfolio .portfolio-cta a:hover .portfolio-cta-action i { transform: translate(4px,-4px); }
 
-.page-portfolio .portfolio-pointer-glow { position: fixed; top: 0; left: 0; z-index: 0; width: 560px; height: 560px; border-radius: 50%; opacity: 0; pointer-events: none; background: radial-gradient(circle,rgba(255,104,34,.15) 0,rgba(255,104,34,.055) 38%,transparent 72%); filter: blur(14px); transform: translate(-50%,-50%); }
-.page-portfolio .portfolio-cursor { position: fixed; top: 0; left: 0; z-index: 80; display: grid; width: 82px; height: 82px; place-items: center; color: #111; border-radius: 50%; opacity: 0; pointer-events: none; background: var(--orange); font-size: 9px; font-weight: 950; line-height: 1.15; letter-spacing: .08em; text-align: center; transform: translate(-50%,-50%) scale(.65); will-change: transform,left,top; }
+.page-portfolio .portfolio-pointer-glow { position: fixed; top: 0; left: 0; z-index: 0; width: 560px; height: 560px; border-radius: 50%; opacity: 0; pointer-events: none; background: radial-gradient(circle,rgba(255,104,34,.15) 0,rgba(255,104,34,.055) 38%,transparent 72%); filter: blur(14px); will-change: left,top,opacity; }
+.page-portfolio .portfolio-cursor { position: fixed; top: 0; left: 0; z-index: 80; display: grid; width: 82px; height: 82px; place-items: center; color: #111; border-radius: 50%; opacity: 0; pointer-events: none; background: var(--orange); font-size: 9px; font-weight: 950; line-height: 1.15; letter-spacing: .08em; text-align: center; transform: scale(.65); transform-origin: center; will-change: transform,left,top,opacity; }
 
 @media (max-width: 1200px) {
     .page-portfolio .portfolio-hero-main { grid-template-columns: 1fr 300px; gap: 50px; }
@@ -442,17 +442,24 @@ if(categoryList){
 }
 
 if(!reduceMotion && matchMedia('(pointer:fine)').matches && portfolioCursor && pointerGlow){
-    const cursorX = gsap.quickTo(portfolioCursor, 'x', { duration: .18, ease: 'power3.out' });
-    const cursorY = gsap.quickTo(portfolioCursor, 'y', { duration: .18, ease: 'power3.out' });
-    const glowX = gsap.quickTo(pointerGlow, 'x', { duration: .8, ease: 'power3.out' });
-    const glowY = gsap.quickTo(pointerGlow, 'y', { duration: .8, ease: 'power3.out' });
+    gsap.set(portfolioCursor, { xPercent: -50, yPercent: -50, scale: .65 });
+    gsap.set(pointerGlow, { xPercent: -50, yPercent: -50 });
+
+    const cursorX = gsap.quickTo(portfolioCursor, 'left', { duration: .16, ease: 'power3.out', unit: 'px' });
+    const cursorY = gsap.quickTo(portfolioCursor, 'top', { duration: .16, ease: 'power3.out', unit: 'px' });
+    const glowX = gsap.quickTo(pointerGlow, 'left', { duration: .75, ease: 'power3.out', unit: 'px' });
+    const glowY = gsap.quickTo(pointerGlow, 'top', { duration: .75, ease: 'power3.out', unit: 'px' });
 
     addEventListener('pointermove', event => {
         cursorX(event.clientX);
         cursorY(event.clientY);
         glowX(event.clientX);
         glowY(event.clientY);
-        gsap.to(pointerGlow, { opacity: 1, duration: .5 });
+        gsap.to(pointerGlow, { opacity: 1, duration: .35, overwrite: true });
+    }, { passive: true });
+
+    document.documentElement.addEventListener('mouseleave', () => {
+        gsap.to([portfolioCursor, pointerGlow], { opacity: 0, duration: .2, overwrite: true });
     });
 
     filterWrap?.addEventListener('pointerenter', () => {
