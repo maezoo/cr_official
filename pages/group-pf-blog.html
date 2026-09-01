@@ -98,12 +98,12 @@
 .page-portfolio .st_mybd_list .portfolio-media > a > img,
 .page-portfolio .st_mybd_list .portfolio-media img:not([alt="secret"]) { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .75s var(--ease); }
 .page-portfolio .st_mybd_list .portfolio-media > a { position: relative; display: block; width: 100%; height: 100%; overflow: hidden; cursor: pointer; }
-.page-portfolio .st_mybd_list .portfolio-media > a::before { position: absolute; inset: 0; z-index: 2; opacity: 0; background: rgba(8,7,6,.42); content: ""; pointer-events: none; transition: opacity .38s var(--ease); }
-.page-portfolio .st_mybd_list .portfolio-media > a::after { position: absolute; top: 50%; left: 50%; z-index: 3; display: inline-flex; min-height: 46px; padding: 0 20px; align-items: center; justify-content: center; color: #111; border-radius: 999px; opacity: 0; background: var(--orange); box-shadow: 0 12px 30px rgba(0,0,0,.24); content: "상세보기  ↗"; font-size: 13px; font-weight: 900; letter-spacing: -.01em; white-space: nowrap; pointer-events: none; transform: translate(-50%,-38%) scale(.9); transition: opacity .32s var(--ease),transform .42s var(--ease); }
+.page-portfolio .st_mybd_list .portfolio-media > a::before { position: absolute; inset: 0; z-index: 2; opacity: 0; background: linear-gradient(180deg,rgba(8,7,6,.08),rgba(8,7,6,.38)); content: ""; pointer-events: none; transition: opacity .38s var(--ease); }
+.page-portfolio .st_mybd_list .portfolio-media > a::after { position: absolute; top: 50%; left: 50%; z-index: 3; padding: 0 0 8px; color: #fff; border-bottom: 1px solid rgba(255,255,255,.72); opacity: 0; content: "VIEW PROJECT  ↗"; font-size: 12px; font-weight: 800; letter-spacing: .14em; line-height: 1; white-space: nowrap; text-shadow: 0 2px 16px rgba(0,0,0,.32); pointer-events: none; transform: translate(-50%,-20%); transition: opacity .32s var(--ease),transform .42s var(--ease),border-color .32s; }
 .page-portfolio .st_mybd_list .portfolio-card:hover .portfolio-media > a::before,
 .page-portfolio .st_mybd_list .portfolio-media > a:focus-visible::before { opacity: 1; }
 .page-portfolio .st_mybd_list .portfolio-card:hover .portfolio-media > a::after,
-.page-portfolio .st_mybd_list .portfolio-media > a:focus-visible::after { opacity: 1; transform: translate(-50%,-50%) scale(1); }
+.page-portfolio .st_mybd_list .portfolio-media > a:focus-visible::after { opacity: 1; transform: translate(-50%,-50%); }
 .page-portfolio .st_mybd_list .portfolio-media > a:focus-visible { outline: 2px solid var(--orange); outline-offset: -2px; }
 .page-portfolio .st_mybd_list .portfolio-media img[alt="secret"] { position: absolute; right: 14px; bottom: 14px; z-index: 5; width: auto; height: 12px; object-fit: initial; }
 .page-portfolio .st_mybd_list tbody tr td:first-child { display: flex; order: 2; min-height: 56px; padding: 0 8px; align-items: center; justify-content: space-between; gap: 20px; color: #f4f4f1; border-bottom: 1px solid rgba(255,255,255,.18); font-size: 15px; font-weight: 850; }
@@ -229,8 +229,8 @@
 }
 
 @media (hover: none) {
-    .page-portfolio .st_mybd_list .portfolio-media > a::before { opacity: 1; background: linear-gradient(to top,rgba(8,7,6,.34),transparent 42%); }
-    .page-portfolio .st_mybd_list .portfolio-media > a::after { top: auto; right: 10px; bottom: 10px; left: auto; min-height: 36px; padding: 0 14px; opacity: 1; font-size: 11px; transform: none; }
+    .page-portfolio .st_mybd_list .portfolio-media > a::before { opacity: 1; background: linear-gradient(to top,rgba(8,7,6,.32),transparent 44%); }
+    .page-portfolio .st_mybd_list .portfolio-media > a::after { top: auto; right: 12px; bottom: 12px; left: auto; padding: 0 0 6px; opacity: 1; font-size: 10px; letter-spacing: .1em; transform: none; }
 }
 @media (pointer: coarse) {
     .page-portfolio .portfolio-cursor,
