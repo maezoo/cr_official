@@ -108,11 +108,10 @@
 .page-portfolio .st_mybd_list .portfolio-media > a:focus-visible { outline: 2px solid var(--orange); outline-offset: -2px; }
 .page-portfolio .st_mybd_list .portfolio-media img[alt="secret"] { position: absolute; right: 14px; bottom: 14px; z-index: 5; width: auto; height: 12px; object-fit: initial; }
 .page-portfolio .st_mybd_list tbody tr td:first-child { display: flex; order: 2; min-height: 56px; padding: 0 8px; align-items: center; justify-content: space-between; gap: 20px; color: #f4f4f1; border-bottom: 1px solid rgba(255,255,255,.18); font-size: 15px; font-weight: 850; }
-.page-portfolio .st_mybd_list tbody tr td:first-child::before { flex: 0 0 auto; color: #999791; content: "BLOG SKIN"; font-size: 14px; font-weight: 900; letter-spacing: .07em; }
-.page-portfolio .portfolio-card-info { display: flex; min-width: 0; align-items: center; justify-content: flex-end; gap: 10px; }
-.page-portfolio .portfolio-card-number { flex: 0 0 auto; color: #fff; font-size: 18px; font-weight: 900; }
-.page-portfolio .portfolio-card-category { display: flex; min-width: 0; align-items: center; gap: 10px; overflow: hidden; color: #b8b5ae; font-size: 15px; font-weight: 750; letter-spacing: -.02em; white-space: nowrap; text-overflow: ellipsis; }
-.page-portfolio .portfolio-card-category::before { flex: 0 0 auto; color: var(--orange); content: "·"; font-size: 19px; font-weight: 900; }
+.page-portfolio .portfolio-card-index { display: inline-flex; flex: 0 0 auto; align-items: baseline; gap: 9px; }
+.page-portfolio .portfolio-card-label { color: #999791; font-size: 14px; font-weight: 900; letter-spacing: .07em; }
+.page-portfolio .portfolio-card-number { color: #fff; font-size: 18px; font-weight: 900; }
+.page-portfolio .portfolio-card-category { display: block; min-width: 0; overflow: hidden; color: #b8b5ae; font-size: 15px; font-weight: 750; letter-spacing: -.02em; white-space: nowrap; text-align: right; text-overflow: ellipsis; }
 .page-portfolio .st_mybd_list tbody tr td:nth-child(3),
 .page-portfolio .st_mybd_list tbody tr td:nth-child(4),
 .page-portfolio .st_mybd_list tbody tr td:nth-child(5),
@@ -136,10 +135,10 @@
 @media (max-width: 600px) {
     .page-portfolio .st_mybd_list tbody { grid-template-columns: 1fr; gap: 30px; }
     .page-portfolio .st_mybd_list tbody tr td:first-child { min-height: 54px; padding: 0 6px; }
-    .page-portfolio .st_mybd_list tbody tr td:first-child::before { font-size: 12px; }
-    .page-portfolio .portfolio-card-info { gap: 8px; }
+    .page-portfolio .portfolio-card-index { gap: 7px; }
+    .page-portfolio .portfolio-card-label { font-size: 12px; }
     .page-portfolio .portfolio-card-number { font-size: 17px; }
-    .page-portfolio .portfolio-card-category { max-width: 48vw; gap: 8px; font-size: 13px; }
+    .page-portfolio .portfolio-card-category { max-width: 48vw; font-size: 13px; }
     .page-portfolio .st_mybd_search_form { display: block; padding: 14px; }
     .page-portfolio .st_mybd_search_form select { width: 100%; }
     .page-portfolio .st_mybd_search_form .search_input { width: 100%; margin-top: 8px; }
@@ -315,10 +314,11 @@ $myboard_lan1 = lan('kr', '등록일');
                     <tbody>
                         <tr class="portfolio-card" loop="$myboard_mylist_row as $k => $v">
                             <td>
-                                <span class="portfolio-card-info">
+                                <span class="portfolio-card-index">
+                                    <span class="portfolio-card-label">BLOG SKIN</span>
                                     <strong class="portfolio-card-number">{$v[numbering]}</strong>
-                                    <span class="portfolio-card-category" cond="$v[category_subject]">{$v[category_subject]}</span>
                                 </span>
+                                <span class="portfolio-card-category" cond="$v[category_subject]">{$v[category_subject]}</span>
                             </td>
                             <td class="st_mybd_subject st_mybd_m_show_td">
                                 <span class="st_mybd_m_title portfolio-media"><a href="{$v[read_url]}">{$v[s_v1]} <img src="/img_up/tmp_img/service/board_tpl/8/pc/img/ico_secret.png" height="12" alt="secret" cond="$v[secret]"></a></span>
