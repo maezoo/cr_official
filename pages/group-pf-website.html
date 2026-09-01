@@ -35,7 +35,7 @@
 .page-portfolio .progress { position: fixed; top: 0; left: 0; z-index: 11900; width: 100%; height: 3px; pointer-events: none; }
 .page-portfolio .progress span { display: block; width: 0; height: 100%; background: var(--orange); }
 
-.page-portfolio .portfolio-hero { position: relative; display: flex; min-height: 470px; padding: 158px 0 72px; align-items: flex-end; overflow: hidden; background: var(--portfolio-bg); }
+.page-portfolio .portfolio-hero { position: relative; display: flex; min-height: 470px; padding: 158px 0 72px; align-items: flex-end; overflow: hidden; background: radial-gradient(circle at 78% 24%,rgba(255,146,48,.17),transparent 28%),var(--portfolio-bg); }
 .page-portfolio .portfolio-hero::after { position: absolute; right: 0; bottom: 0; left: 0; height: 1px; background: rgba(255,255,255,.12); content: ""; }
 .page-portfolio .portfolio-hero > .container { position: relative; z-index: 2; }
 .page-portfolio .portfolio-hero-curtain { position: absolute; inset: 0; z-index: 1; background: var(--orange); pointer-events: none; transform-origin: bottom; }
@@ -501,8 +501,8 @@ addEventListener('scroll', syncProgress, { passive: true });
     const orbitOne=root.querySelector('.portfolio-hero-orbit.one');
     const orbitTwo=root.querySelector('.portfolio-hero-orbit.two');
     const outline=root.querySelector('.portfolio-hero-outline');
-    if(orbitOne) gsap.to(orbitOne,{rotation:360,duration:30,repeat:-1,ease:'none'});
-    if(orbitTwo) gsap.to(orbitTwo,{rotation:-360,duration:22,repeat:-1,ease:'none'});
+    if(orbitOne) gsap.to(orbitOne,{rotation:360,duration:27,repeat:-1,ease:'none'});
+    if(orbitTwo) gsap.to(orbitTwo,{rotation:-360,duration:20,repeat:-1,ease:'none'});
     if(hero&&outline&&window.ScrollTrigger){
         gsap.to(outline,{xPercent:-8,ease:'none',scrollTrigger:{trigger:hero,start:'top top',end:'bottom top',scrub:1.2}});
     }
