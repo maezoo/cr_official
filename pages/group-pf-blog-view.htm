@@ -801,6 +801,43 @@
 			scroll-behavior:auto !important;
 		}
 	}
+
+/* HERO AMBIENT MOTION — decorative only */
+.page-blog-view .view-hero-motion-grid{
+  position:absolute;inset:-14%;z-index:0;opacity:.72;pointer-events:none;
+  background-image:linear-gradient(rgba(23,23,23,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(23,23,23,.04) 1px,transparent 1px);
+  background-size:64px 64px;mask-image:linear-gradient(to bottom,#000,transparent 98%);
+  animation:viewHeroGridDrift 18s linear infinite alternate;will-change:transform;
+}
+.page-blog-view .view-hero-motion-lines{position:absolute;inset:0;z-index:0;pointer-events:none}
+.page-blog-view .view-hero-motion-lines span{position:absolute;background:rgba(23,23,23,.075)}
+.page-blog-view .view-hero-motion-lines span:nth-child(1){top:0;bottom:0;left:24%;width:1px}
+.page-blog-view .view-hero-motion-lines span:nth-child(2){top:0;bottom:0;right:24%;width:1px}
+.page-blog-view .view-hero-motion-lines span:nth-child(3){right:0;bottom:72px;left:0;height:1px}
+.page-blog-view .view-hero-orbit{
+  position:absolute;z-index:0;border:1px solid rgba(255,146,48,.38);border-radius:50%;
+  pointer-events:none;will-change:transform;box-shadow:0 0 70px rgba(255,146,48,.07);
+}
+.page-blog-view .view-hero-orbit.one{top:-300px;right:-70px;width:650px;height:650px}
+.page-blog-view .view-hero-orbit.two{top:-164px;right:66px;width:380px;height:380px;border-color:rgba(23,23,23,.15);border-style:dashed}
+.page-blog-view .view-hero-orbit::before{
+  content:"";position:absolute;top:-6px;left:50%;width:12px;height:12px;border-radius:50%;
+  background:var(--orange);box-shadow:0 0 22px var(--orange),0 0 48px rgba(255,146,48,.5);
+}
+.page-blog-view .view-hero-outline{
+  position:absolute;right:-.03em;bottom:-.17em;z-index:0;color:transparent;
+  font-size:clamp(145px,20vw,330px);font-weight:950;line-height:.8;letter-spacing:-.085em;
+  -webkit-text-stroke:1px rgba(23,23,23,.065);white-space:nowrap;pointer-events:none;will-change:transform;
+}
+@keyframes viewHeroGridDrift{from{transform:translate3d(-18px,-12px,0)}to{transform:translate3d(28px,22px,0)}}
+@media(max-width:767px){
+  .page-blog-view .view-hero-orbit.one{right:-260px}
+  .page-blog-view .view-hero-orbit.two{right:-130px}
+  .page-blog-view .view-hero-outline{font-size:42vw}
+}
+@media(prefers-reduced-motion:reduce){
+  .page-blog-view .view-hero-motion-grid{animation:none}
+}
 </style>
 
 <div class="page-blog-view" id="cr-pf-blog-view">
@@ -808,6 +845,11 @@
 
 	<main>
 		<section class="view-hero">
+			<div class="view-hero-motion-grid" aria-hidden="true"></div>
+			<div class="view-hero-motion-lines" aria-hidden="true"><span></span><span></span><span></span></div>
+			<div class="view-hero-orbit one" aria-hidden="true"></div>
+			<div class="view-hero-orbit two" aria-hidden="true"></div>
+			<div class="view-hero-outline" aria-hidden="true">PROJECT</div>
 			<div class="view-container">
 				<div class="view-eyebrow">
 					<span>CREAFIT / BLOG SKIN DETAIL</span>
@@ -1026,5 +1068,24 @@
 			closeImageModal();
 		}
 	});
+})();
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+<script>
+(function(){
+    const root=document.querySelector('.page-blog-view');
+    if(!root||!window.gsap||matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if(window.ScrollTrigger) gsap.registerPlugin(ScrollTrigger);
+    const hero=root.querySelector('.view-hero');
+    const orbitOne=root.querySelector('.view-hero-orbit.one');
+    const orbitTwo=root.querySelector('.view-hero-orbit.two');
+    const outline=root.querySelector('.view-hero-outline');
+    if(orbitOne) gsap.to(orbitOne,{rotation:360,duration:30,repeat:-1,ease:'none'});
+    if(orbitTwo) gsap.to(orbitTwo,{rotation:-360,duration:22,repeat:-1,ease:'none'});
+    if(hero&&outline&&window.ScrollTrigger){
+        gsap.to(outline,{xPercent:-8,ease:'none',scrollTrigger:{trigger:hero,start:'top top',end:'bottom top',scrub:1.2}});
+    }
 })();
 </script>
