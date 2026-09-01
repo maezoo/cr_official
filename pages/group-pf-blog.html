@@ -310,9 +310,7 @@ $myboard_lan1 = lan('kr', '등록일');
                             <td>
                                 <span class="portfolio-card-info">
                                     <strong class="portfolio-card-number">{$v[numbering]}</strong>
-                                    <!--@foreach($myboard_category_row as $ck => $cv)-->
-                                        <span class="portfolio-card-category" cond="$v[category_idx]==$cv[category_idx]">{$cv[subject]}</span>
-                                    <!--@end-->
+                                    <span class="portfolio-card-category" cond="$v[category_subject]">{$v[category_subject]}</span>
                                 </span>
                             </td>
                             <td class="st_mybd_subject st_mybd_m_show_td">
