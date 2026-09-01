@@ -98,8 +98,12 @@
 .page-portfolio .st_mybd_list .portfolio-media > a > img,
 .page-portfolio .st_mybd_list .portfolio-media img:not([alt="secret"]) { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .75s var(--ease); }
 .page-portfolio .st_mybd_list .portfolio-media img[alt="secret"] { position: absolute; right: 14px; bottom: 14px; z-index: 5; width: auto; height: 12px; object-fit: initial; }
-.page-portfolio .st_mybd_list tbody tr td:first-child { display: flex; order: 2; min-height: 58px; padding: 0 4px; align-items: center; justify-content: space-between; color: #f4f4f1; border-bottom: 1px solid rgba(255,255,255,.14); font-size: 13px; font-weight: 850; }
-.page-portfolio .st_mybd_list tbody tr td:first-child::before { color: #666; content: "BLOG SKIN"; font-size: 9px; font-weight: 900; letter-spacing: .12em; }
+.page-portfolio .st_mybd_list tbody tr td:first-child { display: flex; order: 2; min-height: 58px; padding: 0 4px; align-items: center; justify-content: space-between; gap: 18px; color: #f4f4f1; border-bottom: 1px solid rgba(255,255,255,.14); font-size: 13px; font-weight: 850; }
+.page-portfolio .st_mybd_list tbody tr td:first-child::before { flex: 0 0 auto; color: #666; content: "BLOG SKIN"; font-size: 9px; font-weight: 900; letter-spacing: .12em; }
+.page-portfolio .portfolio-card-info { display: flex; min-width: 0; align-items: center; justify-content: flex-end; gap: 8px; }
+.page-portfolio .portfolio-card-number { flex: 0 0 auto; color: #f4f4f1; font-size: 13px; font-weight: 850; }
+.page-portfolio .portfolio-card-category { display: flex; min-width: 0; align-items: center; gap: 8px; overflow: hidden; color: #777; font-size: 10px; font-weight: 700; letter-spacing: -.01em; white-space: nowrap; text-overflow: ellipsis; }
+.page-portfolio .portfolio-card-category::before { flex: 0 0 auto; color: var(--orange); content: "·"; font-size: 13px; font-weight: 900; }
 .page-portfolio .st_mybd_list tbody tr td:nth-child(3),
 .page-portfolio .st_mybd_list tbody tr td:nth-child(4),
 .page-portfolio .st_mybd_list tbody tr td:nth-child(5),
@@ -122,6 +126,8 @@
 }
 @media (max-width: 600px) {
     .page-portfolio .st_mybd_list tbody { grid-template-columns: 1fr; gap: 30px; }
+    .page-portfolio .portfolio-card-info { gap: 6px; }
+    .page-portfolio .portfolio-card-category { max-width: 44vw; font-size: 9px; }
     .page-portfolio .st_mybd_search_form { display: block; padding: 14px; }
     .page-portfolio .st_mybd_search_form select { width: 100%; }
     .page-portfolio .st_mybd_search_form .search_input { width: 100%; margin-top: 8px; }
@@ -301,7 +307,14 @@ $myboard_lan1 = lan('kr', '등록일');
 
                     <tbody>
                         <tr class="portfolio-card" loop="$myboard_mylist_row as $k => $v">
-                            <td>{$v[numbering]}</td>
+                            <td>
+                                <span class="portfolio-card-info">
+                                    <strong class="portfolio-card-number">{$v[numbering]}</strong>
+                                    <!--@foreach($myboard_category_row as $ck => $cv)-->
+                                        <span class="portfolio-card-category" cond="$v[category_idx]==$cv[category_idx]">{$cv[subject]}</span>
+                                    <!--@end-->
+                                </span>
+                            </td>
                             <td class="st_mybd_subject st_mybd_m_show_td">
                                 <span class="st_mybd_m_title portfolio-media"><a href="{$v[read_url]}">{$v[s_v1]} <img src="/img_up/tmp_img/service/board_tpl/8/pc/img/ico_secret.png" height="12" alt="secret" cond="$v[secret]"></a></span>
                                 <span class="st_mybd_m_show" cond="$v[s_v2]">{$s_v2_name} : {$v[s_v2]}</span>
@@ -392,13 +405,12 @@ if(heroCount) heroCount.textContent = projectCards.length;
 if(visibleCount) visibleCount.textContent = projectCards.length;
 
 projectCards.forEach(card => {
-    const numberCell = card.querySelector('td:first-child');
-    const numberNode = numberCell?.firstChild;
+    const numberElement = card.querySelector('.portfolio-card-number');
 
-    if(numberNode && numberNode.nodeType === Node.TEXT_NODE){
-        const number = numberNode.nodeValue.trim();
+    if(numberElement){
+        const number = numberElement.textContent.trim();
         if(/^\d+$/.test(number)){
-            numberNode.nodeValue = number.padStart(3, '0');
+            numberElement.textContent = number.padStart(3, '0');
         }
     }
 
