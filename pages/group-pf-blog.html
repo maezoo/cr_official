@@ -81,6 +81,7 @@
 .page-portfolio .portfolio-card-wipe { position: absolute; inset: -1px; z-index: 4; background: #0b0907; pointer-events: none; will-change: transform; }
 .page-portfolio .portfolio-card-line { display: block; width: 0; height: 1px; margin-top: 15px; background: var(--orange); }
 .page-portfolio .portfolio-card:hover .portfolio-media img { transform: none; }
+.page-portfolio .st_mybd_list .portfolio-card:hover .portfolio-media img:not([alt="secret"]) { transform: scale(1.025); }
 
 
 /* BLOG PORTFOLIO BOARD — 기존 게시판 마크업을 형제 페이지 그리드로 표현 */
@@ -98,8 +99,8 @@
 .page-portfolio .st_mybd_list .portfolio-media > a > img,
 .page-portfolio .st_mybd_list .portfolio-media img:not([alt="secret"]) { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .75s var(--ease); }
 .page-portfolio .st_mybd_list .portfolio-media > a { position: relative; display: block; width: 100%; height: 100%; overflow: hidden; cursor: pointer; }
-.page-portfolio .st_mybd_list .portfolio-media > a::before { position: absolute; inset: 0; z-index: 2; opacity: 0; background: linear-gradient(180deg,rgba(8,7,6,.08),rgba(8,7,6,.38)); content: ""; pointer-events: none; transition: opacity .38s var(--ease); }
-.page-portfolio .st_mybd_list .portfolio-media > a::after { position: absolute; top: 50%; left: 50%; z-index: 3; padding: 0 0 8px; color: #fff; border-bottom: 1px solid rgba(255,255,255,.72); opacity: 0; content: "VIEW PROJECT  ↗"; font-size: 12px; font-weight: 800; letter-spacing: .14em; line-height: 1; white-space: nowrap; text-shadow: 0 2px 16px rgba(0,0,0,.32); pointer-events: none; transform: translate(-50%,-20%); transition: opacity .32s var(--ease),transform .42s var(--ease),border-color .32s; }
+.page-portfolio .st_mybd_list .portfolio-media > a::before { position: absolute; inset: 0; z-index: 2; opacity: 0; background: linear-gradient(180deg,rgba(8,7,6,.16),rgba(8,7,6,.58)); content: ""; pointer-events: none; transition: opacity .38s var(--ease); }
+.page-portfolio .st_mybd_list .portfolio-media > a::after { position: absolute; top: 50%; left: 50%; z-index: 3; padding: 0 0 10px; color: #fff; border-bottom: 2px solid var(--orange); opacity: 0; content: "VIEW PROJECT  ↗"; font-size: 15px; font-weight: 900; letter-spacing: .11em; line-height: 1; white-space: nowrap; text-shadow: 0 3px 18px rgba(0,0,0,.55); pointer-events: none; transform: translate(-50%,-10%); transition: opacity .32s var(--ease),transform .42s var(--ease); }
 .page-portfolio .st_mybd_list .portfolio-card:hover .portfolio-media > a::before,
 .page-portfolio .st_mybd_list .portfolio-media > a:focus-visible::before { opacity: 1; }
 .page-portfolio .st_mybd_list .portfolio-card:hover .portfolio-media > a::after,
@@ -165,9 +166,6 @@
 .page-portfolio .portfolio-cta a:hover .portfolio-cta-action { color: #fff; background: #111; transform: translateY(-4px); }
 .page-portfolio .portfolio-cta a:hover .portfolio-cta-action i { transform: translate(4px,-4px); }
 
-.page-portfolio .portfolio-pointer-glow { position: fixed; top: 0; left: 0; z-index: 0; width: 560px; height: 560px; border-radius: 50%; opacity: 0; pointer-events: none; background: radial-gradient(circle,rgba(255,104,34,.15) 0,rgba(255,104,34,.055) 38%,transparent 72%); filter: blur(14px); will-change: left,top,opacity; }
-.page-portfolio .portfolio-cursor { position: fixed; top: 0; left: 0; z-index: 80; display: grid; width: 82px; height: 82px; place-items: center; color: #111; border-radius: 50%; opacity: 0; pointer-events: none; background: var(--orange); font-size: 9px; font-weight: 950; line-height: 1.15; letter-spacing: .08em; text-align: center; transform: scale(.65); transform-origin: center; will-change: transform,left,top,opacity; }
-
 @media (max-width: 1200px) {
     .page-portfolio .portfolio-hero-main { grid-template-columns: 1fr 300px; gap: 50px; }
 }
@@ -180,8 +178,6 @@
     .page-portfolio .gallery-filter-wrap { top: 69px; width: calc(100% - 28px); padding: 6px 10px; border-radius: 11px; }
     .page-portfolio .portfolio-grid { grid-template-columns: repeat(2,1fr); gap: 38px 10px; }
     .page-portfolio .portfolio-media { aspect-ratio: 12 / 5; }
-    .page-portfolio .portfolio-cursor,
-    .page-portfolio .portfolio-pointer-glow { display: none; }
     .page-portfolio .portfolio-cta { padding: 0 16px 16px; }
     .page-portfolio .portfolio-cta a { min-height: 300px; padding: 42px; }
 }
@@ -230,11 +226,9 @@
 
 @media (hover: none) {
     .page-portfolio .st_mybd_list .portfolio-media > a::before { opacity: 1; background: linear-gradient(to top,rgba(8,7,6,.32),transparent 44%); }
-    .page-portfolio .st_mybd_list .portfolio-media > a::after { top: auto; right: 12px; bottom: 12px; left: auto; padding: 0 0 6px; opacity: 1; font-size: 10px; letter-spacing: .1em; transform: none; }
+    .page-portfolio .st_mybd_list .portfolio-media > a::after { top: auto; right: 12px; bottom: 12px; left: auto; padding: 0 0 7px; opacity: 1; font-size: 12px; letter-spacing: .08em; transform: none; }
 }
 @media (pointer: coarse) {
-    .page-portfolio .portfolio-cursor,
-    .page-portfolio .portfolio-pointer-glow { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {
     .page-portfolio *,
@@ -251,9 +245,6 @@ $myboard_lan1 = lan('kr', '등록일');
 
 <div class="page-portfolio" id="cr-pf-blog">
     <div class="progress"><span></span></div>
-    <div class="portfolio-pointer-glow" aria-hidden="true"></div>
-    <div class="portfolio-cursor" aria-hidden="true">VIEW<br>PROJECT</div>
-
     <main>
         <section class="portfolio-hero">
             <div class="portfolio-hero-curtain" aria-hidden="true"></div>
@@ -399,9 +390,6 @@ const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const projectCards = gsap.utils.toArray('.page-portfolio .portfolio-card');
 const heroCount = portfolioRoot?.querySelector('#heroProjectCount');
 const visibleCount = portfolioRoot?.querySelector('#visibleProjectCount');
-const portfolioCursor = portfolioRoot?.querySelector('.portfolio-cursor');
-const pointerGlow = portfolioRoot?.querySelector('.portfolio-pointer-glow');
-const filterWrap = portfolioRoot?.querySelector('.gallery-filter-wrap');
 const projectFocusKey = 'crPfBlogFocusProjects';
 let focusProjectsAfterLoad = false;
 try {
@@ -477,52 +465,6 @@ if(categoryList){
     addEventListener('resize', () => moveIndicator(activeLink, true));
 }
 
-if(!reduceMotion && matchMedia('(pointer:fine)').matches && portfolioCursor && pointerGlow){
-    gsap.set(portfolioCursor, { xPercent: -50, yPercent: -50, scale: .65 });
-    gsap.set(pointerGlow, { xPercent: -50, yPercent: -50 });
-
-    const cursorX = gsap.quickTo(portfolioCursor, 'left', { duration: .16, ease: 'power3.out', unit: 'px' });
-    const cursorY = gsap.quickTo(portfolioCursor, 'top', { duration: .16, ease: 'power3.out', unit: 'px' });
-    const glowX = gsap.quickTo(pointerGlow, 'left', { duration: .75, ease: 'power3.out', unit: 'px' });
-    const glowY = gsap.quickTo(pointerGlow, 'top', { duration: .75, ease: 'power3.out', unit: 'px' });
-
-    addEventListener('pointermove', event => {
-        cursorX(event.clientX);
-        cursorY(event.clientY);
-        glowX(event.clientX);
-        glowY(event.clientY);
-        gsap.to(pointerGlow, { opacity: 1, duration: .35, overwrite: true });
-    }, { passive: true });
-
-    document.documentElement.addEventListener('mouseleave', () => {
-        gsap.to([portfolioCursor, pointerGlow], { opacity: 0, duration: .2, overwrite: true });
-    });
-
-    filterWrap?.addEventListener('pointerenter', () => {
-        gsap.to(portfolioCursor, { opacity: 0, scale: .65, duration: .18, overwrite: true });
-    });
-
-    projectCards.forEach(card => {
-        const media = card.querySelector('.portfolio-media');
-        const image = media?.querySelector('img');
-        if(!media) return;
-
-        media.addEventListener('pointerenter', () => {
-            gsap.to(portfolioCursor, { opacity: 1, scale: 1, duration: .3, ease: 'back.out(1.8)' });
-        });
-        media.addEventListener('pointerleave', () => {
-            gsap.to(portfolioCursor, { opacity: 0, scale: .65, duration: .22 });
-            if(image) gsap.to(image, { x: 0, y: 0, scale: 1, duration: .7, ease: 'power3.out' });
-        });
-        media.addEventListener('pointermove', event => {
-            if(!image) return;
-            const rect = media.getBoundingClientRect();
-            const x = (event.clientX - rect.left) / rect.width - .5;
-            const y = (event.clientY - rect.top) / rect.height - .5;
-            gsap.to(image, { x: x * 14, y: y * 14, scale: 1.045, duration: .55, ease: 'power3.out' });
-        });
-    });
-}
 
 function revealCards(batch){
     batch.forEach((card, index) => {
