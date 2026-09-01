@@ -315,11 +315,11 @@ $myboard_lan1 = lan('kr', '등록일');
                     <tbody>
                         <tr class="portfolio-card" loop="$myboard_mylist_row as $k => $v">
                             <td>
+                                <span class="portfolio-card-category" cond="$v[category_subject]">{$v[category_subject]}</span>
                                 <span class="portfolio-card-index">
                                     <span class="portfolio-card-label">BLOG SKIN</span>
                                     <strong class="portfolio-card-number">{$v[numbering]}</strong>
                                 </span>
-                                <span class="portfolio-card-category" cond="$v[category_subject]">{$v[category_subject]}</span>
                             </td>
                             <td class="st_mybd_subject st_mybd_m_show_td">
                                 <span class="st_mybd_m_title portfolio-media"><a href="{$v[read_url]}">{$v[s_v1]} <img src="/img_up/tmp_img/service/board_tpl/8/pc/img/ico_secret.png" height="12" alt="secret" cond="$v[secret]"></a></span>
