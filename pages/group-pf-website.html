@@ -171,6 +171,43 @@
     .page-portfolio .portfolio-hero-curtain,
     .page-portfolio .portfolio-card-wipe { display: none; }
 }
+
+/* HERO AMBIENT MOTION — decorative only */
+.page-portfolio .portfolio-hero-motion-grid{
+  position:absolute;inset:-14%;z-index:0;opacity:.55;pointer-events:none;
+  background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);
+  background-size:64px 64px;mask-image:linear-gradient(to bottom,#000,transparent 98%);
+  animation:pfHeroGridDrift 18s linear infinite alternate;will-change:transform;
+}
+.page-portfolio .portfolio-hero-motion-lines{position:absolute;inset:0;z-index:0;pointer-events:none}
+.page-portfolio .portfolio-hero-motion-lines span{position:absolute;background:rgba(255,255,255,.075)}
+.page-portfolio .portfolio-hero-motion-lines span:nth-child(1){top:0;bottom:0;left:24%;width:1px}
+.page-portfolio .portfolio-hero-motion-lines span:nth-child(2){top:0;bottom:0;right:24%;width:1px}
+.page-portfolio .portfolio-hero-motion-lines span:nth-child(3){right:0;bottom:72px;left:0;height:1px}
+.page-portfolio .portfolio-hero-orbit{
+  position:absolute;z-index:0;border:1px solid rgba(255,146,48,.28);border-radius:50%;
+  pointer-events:none;will-change:transform;box-shadow:0 0 70px rgba(255,146,48,.035);
+}
+.page-portfolio .portfolio-hero-orbit.one{top:-300px;right:-70px;width:650px;height:650px}
+.page-portfolio .portfolio-hero-orbit.two{top:-164px;right:66px;width:380px;height:380px;border-color:rgba(255,255,255,.14);border-style:dashed}
+.page-portfolio .portfolio-hero-orbit::before{
+  content:"";position:absolute;top:-6px;left:50%;width:12px;height:12px;border-radius:50%;
+  background:var(--orange);box-shadow:0 0 22px var(--orange),0 0 55px rgba(255,146,48,.62);
+}
+.page-portfolio .portfolio-hero-outline{
+  position:absolute;right:-.03em;bottom:-.17em;z-index:0;color:transparent;
+  font-size:clamp(145px,20vw,330px);font-weight:950;line-height:.8;letter-spacing:-.085em;
+  -webkit-text-stroke:1px rgba(255,255,255,.065);white-space:nowrap;pointer-events:none;will-change:transform;
+}
+@keyframes pfHeroGridDrift{from{transform:translate3d(-18px,-12px,0)}to{transform:translate3d(28px,22px,0)}}
+@media(max-width:767px){
+  .page-portfolio .portfolio-hero-orbit.one{right:-260px}
+  .page-portfolio .portfolio-hero-orbit.two{right:-130px}
+  .page-portfolio .portfolio-hero-outline{font-size:42vw}
+}
+@media(prefers-reduced-motion:reduce){
+  .page-portfolio .portfolio-hero-motion-grid{animation:none}
+}
 </style>
 
 <div class="page-portfolio" id="cr-pf-website">
@@ -181,6 +218,11 @@
     <main>
         <section class="portfolio-hero">
             <div class="portfolio-hero-curtain" aria-hidden="true"></div>
+            <div class="portfolio-hero-motion-grid" aria-hidden="true"></div>
+            <div class="portfolio-hero-motion-lines" aria-hidden="true"><span></span><span></span><span></span></div>
+            <div class="portfolio-hero-orbit one" aria-hidden="true"></div>
+            <div class="portfolio-hero-orbit two" aria-hidden="true"></div>
+            <div class="portfolio-hero-outline" aria-hidden="true">WEBSITE</div>
             <div class="container">
                 <div class="portfolio-eyebrow">
                     <span>CREAFIT / WEBSITE ARCHIVE</span>
@@ -449,4 +491,20 @@ const syncProgress = () => {
 };
 syncProgress();
 addEventListener('scroll', syncProgress, { passive: true });
+</script>
+
+<script>
+(function(){
+    const root=document.querySelector('.page-portfolio');
+    if(!root||!window.gsap||matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const hero=root.querySelector('.portfolio-hero');
+    const orbitOne=root.querySelector('.portfolio-hero-orbit.one');
+    const orbitTwo=root.querySelector('.portfolio-hero-orbit.two');
+    const outline=root.querySelector('.portfolio-hero-outline');
+    if(orbitOne) gsap.to(orbitOne,{rotation:360,duration:30,repeat:-1,ease:'none'});
+    if(orbitTwo) gsap.to(orbitTwo,{rotation:-360,duration:22,repeat:-1,ease:'none'});
+    if(hero&&outline&&window.ScrollTrigger){
+        gsap.to(outline,{xPercent:-8,ease:'none',scrollTrigger:{trigger:hero,start:'top top',end:'bottom top',scrub:1.2}});
+    }
+})();
 </script>
