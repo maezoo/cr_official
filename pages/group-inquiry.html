@@ -1,0 +1,508 @@
+<load target="/img_up/shop_pds/ewebstory/src_css/em_global.css">
+       
+    <style>
+	.glores-A-title {margin:0 0 10px;padding:0;font-size:20px;font-weight:700;color:#000}
+	.glores-A-title:before {content:'';position:relative;top:0;margin-right:8px;border-left:5px solid #FF9230;}
+	.glores-A-title + .glores-A-form {margin-top:15px}
+	.glores-A-form + .glores-A-title {margin-top:30px}
+
+	.glores-A-mgt {margin-top:70px !important}
+
+	.glores-A-form {width:100%;border-top:1px solid #ececec;border-bottom:1px solid #ececec;border-collapse:separate;table-layout:fixed}
+	.glores-A-form > colgroup {display:none}
+	.glores-A-form > tbody > tr > th {display:block;padding:10px 15px;border-top:1px solid #ececec;/*background:#f8f8f8;*/ font-size:12px;color:#6f6f6f;text-align:left;line-height:20px;word-break:break-all}
+	.glores-A-form > tbody > tr:first-child > th,
+	.glores-A-form > tbody > tr:first-child > td {border-top:none}
+	.glores-A-form > tbody > tr > th i {font-style:normal;color:#ff003e}
+	.glores-A-form > tbody > tr > td {display:block;padding:10px 15px;border-top:1px solid #ececec;font-size:12px;color:#6f6f6f;line-height:20px;word-break:break-all}
+	.glores-A-form > tbody > tr > td p {margin:0;padding:0}
+	.glores-A-form > tbody > tr > td ul {margin:0;padding:0;list-style-type:none}
+	.glores-A-form > tbody > tr > td > a {display:inline-block;height:25px;margin:0 0 0 4px;padding:0 10px;border:1px solid #d1d1d1;background:#f6f6f6;font-size:12px;color:#000;text-align:center;line-height:25px;box-sizing:border-box}
+	.glores-A-form > tbody > tr > td * {vertical-align:middle}
+	.glores-A-form input[type=text],
+	.glores-A-form input[type=password],
+	.glores-A-form input[type=number] {width:auto;height:25px;margin:0;padding:0 5px;font-size:13px;border:1px solid #ddd;line-height:normal;box-sizing:border-box}
+	.glores-A-form input[id*=zipcode],
+	.glores-A-form a[id*=zipcode],
+	.glores-A-form button[id*=zipcode] {margin-bottom:5px}
+	.glores-A-form select {height:25px;border:1px solid #ddd;font-size:13px;box-sizing:border-box}
+	.glores-A-form textarea {width:100%;height:200px;padding:5px;border:1px solid #ddd;font-size:13px;vertical-align:top;box-sizing:border-box}
+	.glores-A-form .glores-A-info {margin-left:10px;font-size:12px}
+	.glores-A-form #total_price_str {vertical-align:top}
+
+	.st_myreg_app_form { width: 100%; font-size: 12px; color: #6f6f6f; }
+	.st_myreg_app_form tbody tr th { text-align: left; }
+	.st_myreg_app_form tbody tr th, .st_myreg_app_form tbody tr td { padding: 10px; }
+	.st_myreg_app_form tbody tr th, .st_myreg_app_form tbody tr td { border: 0; }
+	.st_myreg_app_form tbody tr th:after { height: 100%; }
+	.st_myreg_app_form .app_cnt_list { position: relative; width: 60px; }
+	.st_myreg_app_form .app_cnt_list .app-cnt-btn { position: absolute; right: 0; width: 0; height: 0; text-indent: -9999px; border: 4px solid }
+	.st_myreg_app_form .app_cnt_list .app-cnt-btn.app-cnt-up { top: 0px; border-color: transparent transparent #000 transparent; }
+	.st_myreg_app_form .app_cnt_list .app-cnt-btn.app-cnt-down { bottom: 0px; border-color: #000 transparent transparent transparent }
+	.st_myreg_app_form .app_cnt_list input[type="text"] { width: 40px; }
+	.st_myreg_app_form .app_cnt_tr { border-top: 1px solid #ddd; }
+	.glores-A-form.myreg_cnt_use > tbody > tr:not(:last-child) > td { padding: 0; }
+	.glores-A-form.myreg_cnt_use > tbody > tr > td:not(:has(.st_myreg_app_form)) { padding: 10px; }
+
+	.glores-A-agree-wrap > div {margin:30px 0}
+	.glores-A-agree-wrap > div.glores-A-agree {margin-top:0}
+	.glores-A-agree-wrap .glores-A-agree-box {display:block;overflow:auto;height:100px;margin-top:15px;padding:10px;border:1px solid #ccc;border-radius:3px;-webkit-overflow-scrolling:touch}
+	.glores-A-agree-wrap .glores-A-agree-box h5 {margin:40px 0 0;padding:0;font-size:15px;font-weight:600;color:#000}
+	.glores-A-agree-wrap .glores-A-agree-box h5:first-child {margin-top:0}
+	.glores-A-agree-wrap .glores-A-agree-box p,
+	.glores-A-agree-wrap .glores-A-agree-box ul,
+	.glores-A-agree-wrap .glores-A-agree-box ol {margin:15px 0 0;padding:0;font-size:13px;list-style-type:none}
+	.glores-A-agree-wrap .glores-A-agree-box li {margin-top:10px;padding-left:10px}
+	.glores-A-agree-wrap .glores-A-agree-box p {padding-left:10px}
+	.glores-A-agree-wrap .agree-check-box {margin:15px 0}
+	.glores-A-agree-wrap .agree-check-box:after {content:'';display:block;clear:both}
+	.glores-A-agree-wrap .agree-check-box span {display:inline-block}
+	.glores-A-agree-wrap .agree-check-box input {float:left}
+	.glores-A-agree-wrap .agree-check-box label {float:left;margin-right:10px;margin-left:4px;font-size:13px;color:#333}
+	.glores-A-agree-wrap .agree-check-box input[type=checkbox] {display:none}
+
+	.glores-A-payment-type {margin:20px 0}
+	.glores-A-payment-type:first-child {margin-left:0}
+	.glores-A-payment-type input {margin-left:15px}
+	.glores-A-payment-type label {font-size:13px}
+	.glores-A-payment-type font {position:relative;top:-2px;margin-left:6px}
+	.glores-A-payment-type * {vertical-align:middle}
+	.glores-A-payment-type br {display:none}
+
+	.glores-A-btn-wrap {margin:70px 0 0;padding:0;text-align:center}
+	.glores-A-btn-wrap a,
+	.glores-A-btn-wrap button {margin:2px 0}
+	.glores-A-btn-wrap * {vertical-align:top}
+
+	.glores-A-btn-type1 {display:inline-block;margin:0;padding:0;border:1px solid #bbb;border-radius:3px;background:#ccc;box-shadow:inset 1px 1px 0 rgba(255,255,255,0.3);font-size:12px;font-weight:bold;color:#333;text-align:center;line-height:35px;box-sizing:border-box}
+	.glores-A-btn-type1:hover {border-color:#bbb;background:#bbb;color:#333}
+	.glores-A-btn-type1.glores-A-small {width:auto;height:25px;padding:0 10px;line-height:23px}
+	.glores-A-btn-type1.glores-A-medium {height:35px;padding:0 20px;line-height:33px}
+	.glores-A-btn-type1.glores-A-big {width:auto;height:70px;padding:0 30px;line-height:68px;font-size:14px}
+	/* .glores-A-btn-type1.glores-A-highlight {border:1px solid #373737;background:#3d3d3d;color:#fff}
+	.glores-A-btn-type1.glores-A-highlight:hover {border-color:#373737;background:#373737;color:#fff}*/
+      
+      	.glores-A-btn-type1.glores-A-highlight {background: #000; color:#fff; border-radius: 60px; font-size:22px; padding: 0 60px; transition: all .3s ease;}
+      .glores-A-btn-type1.glores-A-highlight:hover { background: #333; transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); color: #fff; box-shadow: 0 10px 20px rgba(0,0,0,0.2);}
+.glores-A-btn-type1.glores-A-highlight:active { transform: scale(0.95); }
+
+
+      
+
+	.captcha_img_code {margin-bottom:5px;}
+	.captcha_img_code .captcha_str {display:inline-block;padding:4px 10px 5px;border:1px solid #333;background:#fff;vertical-align:top;}
+	.captcha_img_code .captcha_str img {vertical-align:top;}
+	.captcha_img_code .captcha_input {margin:0;vertical-align:top;}
+	.captcha_img_code .captcha_input input[type='text'] {box-sizing:border-box;width:100px;height:31px;margin-left:2px;}
+	.captcha_img_code .captcha_refresh { display: inline-flex; align-items: center; height: 33px; padding: 5px; background: #efefef; border-radius: 5px; box-sizing: border-box; cursor: pointer ;}
+    .captcha_img_code .captcha_refresh:hover { background: #e8e7e7; }
+    .captcha_img_code .captcha_refresh span { margin-left: 5px; }
+
+	.captcha_help_text {margin:5px 0 0;padding:0;}
+
+	@media (min-width:768px){
+		.glores-A-form > colgroup {display:table-column-group}
+		.glores-A-form > tbody > tr > th {display:table-cell;padding:10px 0;font-size:14px;text-align:center}
+		.glores-A-form > tbody > tr > td {display:table-cell;padding:10px;font-size:14px}
+
+		.glores-A-agree-wrap > div {margin:50px 0}
+		.glores-A-agree-wrap .glores-A-agree-box {height:250px;padding:20px}
+
+		.st_myreg_app_form { font-size: 13px; color: #6f6f6f; }
+		.st_myreg_app_form tbody tr th { text-align: center; }
+	}
+</style>
+
+<style>
+  .main-inquiry {
+    background: linear-gradient(to bottom,var(--bg-soft),#fff);
+}
+  	.main-inquiry h1 { font-size: clamp(30px,5vw,42px); font-weight: 900; letter-spacing: -1px; }
+  .main-inquiry .inq-inner { max-width: 1100px; margin: 0 auto; padding: 120px 20px 100px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 50px; }
+  
+  [id^="s_v9_"] { margin: 0 4px 0 10px; }
+#s_v9_0 { margin-left: 0; }
+
+  [id^="s_v10_"] { margin: 0 4px 0 10px; }
+  #s_v10_0 { margin-left: 0; }
+
+
+  
+</style>
+
+<style>
+/* CREAFIT PROJECT INQUIRY — visual layer only */
+.main-inquiry {
+  --inq-orange:#ff9230;
+  --inq-black:#050505;
+  --inq-ink:#121212;
+  --inq-paper:#f2efe8;
+  --inq-white:#fff;
+  --inq-muted:#747474;
+  --inq-line:rgba(0,0,0,.14);
+  --inq-wline:rgba(255,255,255,.14);
+  --inq-ease:cubic-bezier(.16,1,.3,1);
+  position:relative;
+  left:50%;
+  width:100vw;
+  max-width:none;
+  margin-left:-50vw;
+  overflow:hidden;
+  background:var(--inq-paper);
+  color:var(--inq-ink);
+  font-family:"Pretendard Variable","Pretendard",sans-serif;
+  word-break:keep-all;
+  -webkit-font-smoothing:antialiased;
+}
+.main-inquiry *,
+.main-inquiry *::before,
+.main-inquiry *::after {box-sizing:border-box}
+.main-inquiry .inquiry-hero {position:relative;min-height:560px;padding:164px 0 82px;display:flex;align-items:flex-end;overflow:hidden;background:var(--inq-black);color:#fff}
+.main-inquiry .inquiry-hero::before {content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:64px 64px;mask-image:linear-gradient(to bottom,#000,transparent 96%)}
+.main-inquiry .inquiry-hero::after {content:"";position:absolute;right:-160px;top:-240px;width:720px;height:720px;border:1px solid rgba(255,146,48,.24);border-radius:50%;box-shadow:0 0 120px rgba(255,146,48,.08),inset 0 0 100px rgba(255,146,48,.04)}
+.main-inquiry .inquiry-hero-inner {position:relative;z-index:2;width:min(calc(100% - 56px),1560px);margin:0 auto}
+.main-inquiry .inquiry-eyebrow {display:flex;padding-bottom:21px;margin-bottom:36px;align-items:center;justify-content:space-between;gap:25px;border-bottom:1px solid var(--inq-wline);color:#7d7d7d;font-size:10px;font-weight:900;letter-spacing:.17em}
+.main-inquiry .inquiry-eyebrow strong {color:var(--inq-orange);font-weight:900}
+.main-inquiry .inquiry-hero-grid {display:grid;grid-template-columns:minmax(0,1fr) 410px;gap:80px;align-items:end}
+.main-inquiry .inquiry-hero h1 {margin:0;font-size:clamp(58px,7.4vw,112px);font-weight:950;line-height:.92;letter-spacing:-.075em}
+.main-inquiry .inquiry-hero h1 span {color:var(--inq-orange)}
+.main-inquiry .inquiry-hero-copy {padding-bottom:5px}
+.main-inquiry .inquiry-hero-copy small {display:block;margin-bottom:16px;color:var(--inq-orange);font-size:10px;font-weight:900;letter-spacing:.14em}
+.main-inquiry .inquiry-hero-copy p {margin:0;color:#999;font-size:16px;line-height:1.8}
+.main-inquiry .inquiry-scroll {display:inline-flex;margin-top:25px;align-items:center;gap:9px;color:#fff;font-size:10px;font-weight:900;letter-spacing:.14em;text-decoration:none}
+.main-inquiry .inquiry-scroll i {color:var(--inq-orange);font-size:14px}
+
+.main-inquiry .inquiry-body {padding:130px 0 150px;background:var(--inq-paper)}
+.main-inquiry .inq-inner {width:min(calc(100% - 56px),1560px);max-width:none;margin:0 auto;padding:0;display:grid;grid-template-columns:310px minmax(0,1fr);align-items:start;gap:clamp(60px,8vw,135px)}
+.main-inquiry .inquiry-guide {position:sticky;top:130px}
+.main-inquiry .inquiry-guide-label {display:inline-flex;align-items:center;gap:11px;color:var(--inq-orange);font-size:10px;font-weight:900;letter-spacing:.17em}
+.main-inquiry .inquiry-guide-label::before {content:"";width:30px;height:1px;background:currentColor}
+.main-inquiry .inquiry-guide h2 {margin:25px 0 0;font-size:clamp(34px,3.2vw,50px);font-weight:930;line-height:1.12;letter-spacing:-.055em}
+.main-inquiry .inquiry-guide>p {margin:22px 0 0;color:#6e6e6e;font-size:14px;line-height:1.8}
+.main-inquiry .inquiry-process {margin:48px 0 0;padding:0;border-top:1px solid var(--inq-line);list-style:none}
+.main-inquiry .inquiry-process li {display:grid;grid-template-columns:42px 1fr;gap:12px;padding:19px 0;border-bottom:1px solid var(--inq-line);align-items:center}
+.main-inquiry .inquiry-process small {color:var(--inq-orange);font-size:10px;font-weight:900;letter-spacing:.08em}
+.main-inquiry .inquiry-process strong {font-size:14px;font-weight:800}
+.main-inquiry .inquiry-form-panel {position:relative;min-width:0;padding:clamp(36px,5vw,72px);border:1px solid rgba(0,0,0,.11);background:var(--inq-white);box-shadow:0 28px 80px rgba(45,37,29,.07)}
+.main-inquiry .inquiry-form-panel::before {content:"";position:absolute;top:-1px;right:-1px;left:-1px;height:4px;background:var(--inq-orange)}
+.main-inquiry .glores-A-customize-form {width:100%}
+.main-inquiry .glores-A-title {position:relative;margin:0 0 30px;padding:0 0 24px;color:var(--inq-ink);border-bottom:1px solid var(--inq-line);font-size:clamp(27px,2.5vw,38px);font-weight:900;line-height:1.15;letter-spacing:-.045em}
+.main-inquiry .glores-A-title::before {content:"FORM";position:static;display:block;margin:0 0 12px;border:0;color:var(--inq-orange);font-size:9px;font-weight:950;letter-spacing:.18em}
+.main-inquiry .glores-A-title+.glores-A-form {margin-top:0}
+.main-inquiry .glores-A-form+.glores-A-title {margin-top:70px}
+.main-inquiry .glores-A-form {display:block;width:100%;border:0;background:transparent}
+.main-inquiry .glores-A-form>colgroup {display:none}
+.main-inquiry .glores-A-form>tbody {display:block;width:100%}
+.main-inquiry .glores-A-form>tbody>tr {display:grid;grid-template-columns:180px minmax(0,1fr);width:100%;border-bottom:1px solid var(--inq-line)}
+.main-inquiry .glores-A-form>tbody>tr:first-child>th,
+.main-inquiry .glores-A-form>tbody>tr:first-child>td {border-top:0}
+.main-inquiry .glores-A-form>tbody>tr>th {display:block;padding:28px 24px 28px 0;border:0;color:#292929;font-size:14px;font-weight:800;line-height:1.5;text-align:left;word-break:keep-all}
+.main-inquiry .glores-A-form>tbody>tr>th i {margin-left:4px;color:var(--inq-orange)}
+.main-inquiry .glores-A-form>tbody>tr>td {display:block;min-width:0;padding:18px 0;border:0;color:#555;font-size:14px;line-height:1.6;word-break:keep-all}
+.main-inquiry .glores-A-form>tbody>tr>td p {margin:0}
+.main-inquiry .glores-A-form input[type=text],
+.main-inquiry .glores-A-form input[type=password],
+.main-inquiry .glores-A-form input[type=number],
+.main-inquiry .glores-A-form select {height:52px;padding:0 16px;border:1px solid #d8d5cf;border-radius:0;outline:0;background:#faf9f6;color:#222;font:inherit;transition:border-color .25s,background .25s,box-shadow .25s}
+.main-inquiry .glores-A-form>tbody>tr>td>input[type=text]:only-of-type,
+.main-inquiry .glores-A-form>tbody>tr>td>input[type=password]:only-of-type,
+.main-inquiry .glores-A-form>tbody>tr>td>input[type=number]:only-of-type {width:100%;max-width:720px}
+.main-inquiry .glores-A-form input[type=text]:focus,
+.main-inquiry .glores-A-form input[type=password]:focus,
+.main-inquiry .glores-A-form input[type=number]:focus,
+.main-inquiry .glores-A-form select:focus,
+.main-inquiry .glores-A-form textarea:focus {border-color:var(--inq-orange);background:#fff;box-shadow:0 0 0 3px rgba(255,146,48,.11)}
+.main-inquiry .glores-A-form select {min-width:190px}
+.main-inquiry .glores-A-form textarea {width:100%;height:220px;padding:16px;border:1px solid #d8d5cf;border-radius:0;outline:0;background:#faf9f6;color:#222;font:inherit;line-height:1.7;resize:vertical;transition:border-color .25s,background .25s,box-shadow .25s}
+.main-inquiry .glores-A-form input[type=radio],
+.main-inquiry .glores-A-form input[type=checkbox] {width:18px;height:18px;accent-color:var(--inq-orange)}
+.main-inquiry [id^="s_v9_"],
+.main-inquiry [id^="s_v10_"] {margin:0 5px 0 16px}
+.main-inquiry #s_v9_0,
+.main-inquiry #s_v10_0 {margin-left:0}
+.main-inquiry .glores-A-info {display:inline-block;margin:7px 0 0 10px;color:#888;font-size:12px}
+
+.main-inquiry .captcha_img_code {display:flex;align-items:center;flex-wrap:wrap;gap:7px;margin:0}
+.main-inquiry .captcha_img_code .captcha_str {height:52px;padding:9px 12px;border:1px solid #d8d5cf;background:#fff}
+.main-inquiry .captcha_img_code .captcha_input input[type=text] {width:130px;height:52px;margin:0}
+.main-inquiry .captcha_img_code .captcha_refresh {height:52px;padding:0 15px;border:1px solid #d8d5cf;border-radius:0;background:#f0eee9}
+.main-inquiry .captcha_help_text {margin-top:9px;color:#888;font-size:12px}
+
+.main-inquiry .glores-A-agree-wrap.glores-A-mgt {margin-top:78px!important}
+.main-inquiry .glores-A-agree-wrap>div,
+.main-inquiry .glores-A-agree-wrap>div.glores-A-agree {margin:0}
+.main-inquiry .glores-A-agree-wrap .glores-A-agree-box {height:150px;margin-top:0;padding:22px;border:1px solid #d8d5cf;border-radius:0;background:#faf9f6;color:#666;line-height:1.7}
+.main-inquiry .glores-A-agree-wrap .glores-A-agree-box h5 {color:#222}
+.main-inquiry .glores-A-agree-wrap .agree-check-box {display:flex;flex-wrap:wrap;gap:8px;margin:15px 0 0}
+.main-inquiry .glores-A-agree-wrap .agree-check-box span {position:relative;display:block}
+.main-inquiry .glores-A-agree-wrap .agree-check-box input[type=radio] {position:absolute;opacity:0;pointer-events:none}
+.main-inquiry .glores-A-agree-wrap .agree-check-box label {float:none;display:flex;min-height:45px;margin:0;padding:0 15px;align-items:center;border:1px solid #d8d5cf;background:#fff;color:#555;font-size:13px;cursor:pointer;transition:.25s}
+.main-inquiry .glores-A-agree-wrap .agree-check-box input[type=radio]:checked+label {border-color:var(--inq-orange);background:var(--inq-orange);color:#111;font-weight:800}
+
+.main-inquiry .glores-A-btn-wrap {margin:58px 0 0;text-align:left}
+.main-inquiry .glores-A-btn-type1.glores-A-highlight {display:inline-flex;width:100%;min-height:68px;height:auto;padding:0 28px;align-items:center;justify-content:space-between;border:1px solid var(--inq-orange);border-radius:0;background:var(--inq-orange);box-shadow:none;color:#111;font-size:16px;font-weight:900;line-height:1;transition:background .35s,color .35s,transform .35s}
+.main-inquiry .glores-A-btn-type1.glores-A-highlight::after {content:"↗";font-size:24px;font-weight:500}
+.main-inquiry .glores-A-btn-type1.glores-A-highlight:hover {border-color:#111;background:#111;box-shadow:none;color:#fff;transform:translateY(-4px)}
+.main-inquiry .glores-A-btn-type1.glores-A-highlight:active {transform:scale(.985)}
+
+@media(max-width:1000px){
+  .main-inquiry .inquiry-hero-grid {grid-template-columns:1fr 330px;gap:45px}
+  .main-inquiry .inq-inner {grid-template-columns:250px minmax(0,1fr);gap:55px}
+  .main-inquiry .glores-A-form>tbody>tr {grid-template-columns:150px minmax(0,1fr)}
+}
+@media(max-width:767px){
+  .main-inquiry .inquiry-hero {min-height:0;padding:132px 0 64px}
+  .main-inquiry .inquiry-hero-inner {width:calc(100% - 32px)}
+  .main-inquiry .inquiry-eyebrow {margin-bottom:29px}
+  .main-inquiry .inquiry-hero-grid {grid-template-columns:1fr;gap:35px}
+  .main-inquiry .inquiry-hero h1 {font-size:clamp(48px,13vw,72px)}
+  .main-inquiry .inquiry-hero-copy {max-width:470px}
+  .main-inquiry .inquiry-body {padding:80px 0 95px}
+  .main-inquiry .inq-inner {width:calc(100% - 32px);grid-template-columns:1fr;gap:48px}
+  .main-inquiry .inquiry-guide {position:static}
+  .main-inquiry .inquiry-process {margin-top:32px}
+  .main-inquiry .inquiry-form-panel {padding:38px 25px}
+  .main-inquiry .glores-A-title {margin-bottom:17px;padding-bottom:20px}
+  .main-inquiry .glores-A-form>tbody>tr {display:block;padding:20px 0}
+  .main-inquiry .glores-A-form>tbody>tr>th {padding:0 0 10px;font-size:13px}
+  .main-inquiry .glores-A-form>tbody>tr>td {padding:0}
+  .main-inquiry .glores-A-form input[type=text],
+  .main-inquiry .glores-A-form input[type=password],
+  .main-inquiry .glores-A-form input[type=number] {max-width:100%}
+  .main-inquiry .glores-A-info {display:block;margin:8px 0 0}
+  .main-inquiry .glores-A-agree-wrap.glores-A-mgt {margin-top:62px!important}
+}
+@media(max-width:480px){
+  .main-inquiry .inquiry-hero-inner,
+  .main-inquiry .inq-inner {width:calc(100% - 24px)}
+  .main-inquiry .inquiry-eyebrow {align-items:flex-start;flex-direction:column;gap:8px}
+  .main-inquiry .inquiry-hero h1 {font-size:46px}
+  .main-inquiry .inquiry-hero-copy p {font-size:14px}
+  .main-inquiry .inquiry-form-panel {padding:34px 18px}
+  .main-inquiry .glores-A-agree-wrap .agree-check-box {display:block}
+  .main-inquiry .glores-A-agree-wrap .agree-check-box span+span {margin-top:7px}
+  .main-inquiry .glores-A-agree-wrap .agree-check-box label {width:100%}
+}
+@media(prefers-reduced-motion:reduce){
+  .main-inquiry *,
+  .main-inquiry *::before,
+  .main-inquiry *::after {animation:none!important;transition:none!important;scroll-behavior:auto!important}
+}
+</style>
+	<section class="main-inquiry">
+		<div class="inquiry-hero">
+			<div class="inquiry-hero-inner">
+				<div class="inquiry-eyebrow">
+					<span>CREAFIT / PROJECT INQUIRY</span>
+					<strong>START A PROJECT</strong>
+				</div>
+				<div class="inquiry-hero-grid">
+					<h1>간편<br>문의하기<span>.</span></h1>
+					<div class="inquiry-hero-copy">
+						<small>LET'S WORK TOGETHER</small>
+						<p>필요한 서비스와 현재 고민을 알려주시면<br>확인 후 알맞은 방향을 안내해드립니다.</p>
+						<a class="inquiry-scroll" href="#inquiryForm">START INQUIRY <i class="ri-arrow-down-line"></i></a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="inquiry-body" id="inquiryForm">
+			<div class="inq-inner">
+				<aside class="inquiry-guide">
+					<span class="inquiry-guide-label">PROJECT GUIDE</span>
+					<h2>프로젝트의 방향을<br>함께 정리합니다.</h2>
+					<p>문의 내용을 남겨주시면 필요한 작업 범위를 확인한 후 담당자가 순차적으로 안내드립니다.</p>
+					<ol class="inquiry-process">
+						<li><small>01</small><strong>문의 접수</strong></li>
+						<li><small>02</small><strong>내용 확인</strong></li>
+						<li><small>03</small><strong>상담 및 안내</strong></li>
+					</ol>
+				</aside>
+				<div class="inquiry-form-panel">
+
+<div class="glores-A-customize-form">
+	{$s_write_form}
+		<!--@foreach($myreg_form_row as $k => $v)-->
+			<h4 class="glores-A-title">문의 정보 입력</h4>
+			<table class="glores-A-form">
+				<colgroup>
+					<col style="width:20%">
+					<col style="width:80%">
+				</colgroup>
+				<tbody>
+					<tr loop="$v[fields] as $k2 => $v2">
+						<th>{$v2[fieldName]} <i cond="$v2[fieldImportant]==1">*</i></th>
+						<td>{$v2[fieldTag]} <span class="glores-A-info" cond="$v2[fieldComment]">{$v2[fieldComment]}</span></td>
+					</tr>
+
+					<tr cond="($captcha_use_yn || $recaptcha_use_yn) && $k==count($myreg_form_row)-1">
+						<th><span data-lan="kr">자동등록 방지</span> <i>*</i></th>
+						<td>
+                            <!--@if($recaptcha_use_yn)-->
+                            <div class="g-recaptcha" data-sitekey="{$recaptcha_site_key}"></div>
+                            <!--@else-->
+							<div class="captcha_img_code">
+								<span class="captcha_str"><img src="{$captcha_img_url}" alt="captcha_str"/></span>
+								<span class="captcha_input">
+									<input type="text" name="captcha_str" maxlength="12" size="10">
+								</span>
+								<div class="captcha_refresh" onclick="captcha_refresh()" cond="$captcha_refresh_yn">
+									<img src="/img_up/shop_pds/aram1/design/img/captcha_refresh.png">
+									<span data-lan="kr">새로고침</span>
+								</div>
+							</div>
+							<p class="captcha_help_text" data-lan="kr">자동등록 방지를 위해 이미지에 있는 문자를 순서대로 입력해 주세요.</p>
+                            <!--@end-->
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		<!--@end-->
+		<!--@if($myreg_app_yn)-->
+			{@
+			$app_cnt_str = $app_cnt_use_yn ? "myreg_cnt_use" : "";
+			@}
+			<h4 class="glores-A-title" data-lan="kr">결제 정보</h4>
+			<table class="glores-A-form {$app_cnt_str}">
+				<colgroup>
+					<col style="width:20%">
+					<col style="width:80%">
+				</colgroup>
+				<tbody>
+					<tr cond="$myreg_price_name1">
+						<th>{$myreg_price_name1}</th>
+						<td>{$myreg_price_table1}</td>
+					</tr>
+					<tr cond="$myreg_price_name2">
+						<th>{$myreg_price_name2}</th>
+						<td>{$myreg_price_table2}</td>
+					</tr>
+					<tr cond="$myreg_price_name3">
+						<th>{$myreg_price_name3}</th>
+						<td>{$myreg_price_table3}</td>
+					</tr>
+					<tr cond="$app_emoney_yn">
+						<th data-lan="kr">할인혜택</th>
+						<td>
+							<input type="text" name="use_emoney" id="use_emoney" value="0" size="5" onchange="total_price_chk()"> <span data-lan="kr">사용</span>
+							(
+								{@
+									$emoney_arr = array();
+									$emoney_arr[] = $emoney_name;
+									$emoney_arr[] = number_format($app_emoney);
+									echo lan('kr', '총 사용 가능한 [0] : [1]', $emoney_arr);
+								@}
+							)
+							<span id="span_use_emoney_info" style="position:relative; z-index:0;"></span>
+						</td>
+					</tr>
+					<tr>
+						<th data-lan="kr">총 금액</th>
+						<td>
+							<input type="hidden" name="total_price" id="total_price" value="0">
+							<span id="total_price_str">0</span>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<h4 class="glores-A-title" data-lan="kr">결제 방법</h4>
+			<div class="glores-A-payment-type">
+				{$app_mode}
+			</div>
+			<div id="online_span">
+				<table class="glores-A-form">
+					<colgroup>
+						<col style="width:200px">
+						<col>
+					</colgroup>
+					<tbody>
+						<tr>
+							<th data-lan="kr">결제은행</th>
+							<td>
+								<select name="admin_bank" id="admin_bank" class="glores-A-select">
+									{$admin_bank_op}
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<th data-lan="kr">입금자명</th>
+							<td>
+								<input type="text" name="bank_name" id="bank_name" size="16" class="glores-A-input-txt">
+								<span class="glores-A-info" data-lan="kr">반드시 입금자명을 써주세요.</span>
+							</td>
+						</tr>
+						<tr>
+							<th data-lan="kr">입금 예정일</th>
+							<td>
+								<select name="bank_date" id="bank_date" class="glores-A-select">
+									{$bank_date_op}
+								</select>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		<!--@end-->
+		<div class="glores-A-agree-wrap glores-A-mgt" cond="!$_SESSION[mem_id]">
+			<div class="glores-A-agree">
+				<h4 class="glores-A-title" data-lan="kr">개인정보 수집·이용 동의</h4>
+				<div class="glores-A-agree-box">
+					<h5 data-lan="kr">수집하는 개인정보의 항목</h5>
+					<p data-lan="kr">회사는 회원가입, 상담, 서비스 신청 등등을 위해 아래와 같은 개인정보를 수집하고 있습니다.</p>
+					<ul>
+						<li>
+							<strong>- <span data-lan="kr">수집항목</span></strong> : {$privacy_column_list}
+						</li>
+						<li>
+							<strong>- <span data-lan="kr">개인정보 수집방법</span></strong> : <span data-lan="kr">홈페이지</span>(<span data-lan="kr">회원가입</span>)
+						</li>
+					</ul>
+					<h5 data-lan="kr">개인정보의 수집 및 이용목적</h5>
+					<p data-lan="kr">회사는 수집한 개인정보를 다음의 목적을 위해 활용합니다.</p>
+					<ul>
+						<li>
+							<strong>- <span data-lan="kr">서비스 제공에 관한 계약 이행 및 서비스 제공에 따른 요금정산</span></strong>
+							<p><span data-lan="kr">구매 및 요금 결제, 물품배송 또는 청구지 등 발송</span></p>
+						</li>
+						<li>
+							<strong>- <span data-lan="kr">회원 관리</span></strong>
+							<p data-lan="kr">회원제 서비스 이용에 따른 본인확인, 개인 식별, 불량회원의 부정 이용 방지와 비인가 사용 방지, 가입 의사 확인, 연령확인</p>
+						</li>
+					</ul>
+					<h5 data-lan="kr">개인정보의 보유 및 이용기간</h5>
+					<p data-lan="kr">회사는 개인정보 수집 및 이용목적이 달성된 후에는 예외 없이 해당 정보를 지체 없이 파기합니다.</p>
+				</div>
+				<div class="agree-check-box">
+					<input type="checkbox" name="myreg_privacy_chk" id="myreg_privacy_chk" value="1">
+					<span>
+						<input type="radio" name="myreg_privacy_radio" id="myreg_privacy_radio1">
+						<label for="myreg_privacy_radio1" data-lan="kr">개인정보 수집·이용에 동의합니다.</label>
+					</span>
+					<span>
+						<input type="radio" name="myreg_privacy_radio" id="myreg_privacy_radio2">
+						<label for="myreg_privacy_radio2" data-lan="kr">개인정보 수집·이용에 동의하지 않습니다.</label>
+					</span>
+				</div>
+			</div>
+		</div>
+	{$e_write_form}
+	<div class="glores-A-btn-wrap">
+		<a href="{$myreg_submit_url}" class="glores-A-btn-type1 glores-A-big glores-A-highlight" data-lan="kr">문의 접수하기</a>
+	</div>
+</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+<script>
+	jQuery(function($){
+		$('#myreg_privacy_radio1').on('click',function(){
+			$('#myreg_privacy_chk').prop('checked',true);
+		})
+		$('#myreg_privacy_radio2').on('click',function(){
+			$('#myreg_privacy_chk').prop('checked',false);
+		})
+	})
+</script>
