@@ -137,7 +137,7 @@
 	/* 프로젝트 본문 */
 	.page-blog-view .view-content {
 		position:relative;
-		padding:106px 0 140px;
+		padding:84px 0 140px;
 		background:var(--view-bg);
 	}
 
@@ -163,7 +163,7 @@
 		visibility:visible !important;
 		opacity:1 !important;
 		width:100% !important;
-		margin:0 0 84px !important;
+		margin:0 0 54px !important;
 		border:0;
 		background:transparent;
 	}
@@ -191,50 +191,40 @@
 
 	.page-blog-view .view-category-content {
 		display:flex;
-		position:relative;
-		min-height:104px;
-		padding:28px 34px;
+		min-height:70px;
+		padding:0 4px;
 		align-items:center;
 		justify-content:space-between;
-		gap:30px;
-		overflow:hidden;
-		color:#fff;
-		background:var(--view-text);
-	}
-
-	.page-blog-view .view-category-content::before {
-		position:absolute;
-		top:0;
-		left:0;
-		width:100%;
-		height:3px;
-		background:var(--orange);
-		content:"";
+		gap:24px;
+		color:var(--view-text);
+		border-top:1px solid var(--view-text);
+		border-bottom:1px solid var(--view-line);
+		background:transparent;
 	}
 
 	.page-blog-view .view-category-label {
 		display:flex;
+		flex:0 0 auto;
 		align-items:center;
-		gap:10px;
-		color:var(--orange);
-		font-size:10px;
-		font-weight:900;
-		letter-spacing:.16em;
+		gap:12px;
+		color:var(--view-muted);
+		font-size:9px;
+		font-weight:850;
+		letter-spacing:.15em;
 	}
 
 	.page-blog-view .view-category-label::before {
-		width:6px;
-		height:6px;
-		border-radius:50%;
+		width:28px;
+		height:1px;
 		background:var(--orange);
 		content:"";
 	}
 
 	.page-blog-view .view-category-content strong {
-		color:#fff;
-		font-size:22px;
-		font-weight:800;
-		letter-spacing:-.035em;
+		color:var(--view-text);
+		font-size:17px;
+		font-weight:750;
+		letter-spacing:-.025em;
 		text-align:right;
 	}
 
@@ -680,7 +670,7 @@
 		.page-blog-view .view-hero {min-height:0;padding:140px 0 68px;}
 		.page-blog-view .view-hero-main {grid-template-columns:1fr;gap:34px;}
 		.page-blog-view .view-hero-copy {max-width:520px;}
-		.page-blog-view .view-content {padding:78px 0 96px;}
+		.page-blog-view .view-content {padding:64px 0 96px;}
 		.page-blog-view .view-content > .view-container {width:calc(100% - 32px) !important;max-width:1560px !important;padding:0 !important;}
 		.page-blog-view .portfolio-cta {padding:0 16px 16px;}
 		.page-blog-view .portfolio-cta > a {min-height:300px;padding:42px;}
@@ -712,7 +702,7 @@
 		.page-blog-view .view-hero h1 {font-size:clamp(52px,16.5vw,76px);line-height:.82;}
 		.page-blog-view .view-hero-copy p {font-size:14px;line-height:1.65;}
 		.page-blog-view .view-hero-copy p br {display:none;}
-		.page-blog-view .view-content {padding:60px 0 72px;}
+		.page-blog-view .view-content {padding:48px 0 72px;}
 		.page-blog-view .view-content > .view-container {width:calc(100% - 24px) !important;max-width:1560px !important;padding:0 !important;}
 		.page-blog-view .portfolio-cta {padding:0 10px 10px;}
 		.page-blog-view .portfolio-cta > a {min-height:300px;padding:34px 22px;grid-template-columns:1fr;gap:34px;}
@@ -720,21 +710,20 @@
 		.page-blog-view .portfolio-cta p {font-size:13px;}
 		.page-blog-view .portfolio-cta-action {width:100%;justify-content:space-between;}
 		.page-blog-view .farm-A-project-table tbody {gap:68px;}
-		.page-blog-view .farm-A-category-table {margin-bottom:52px !important;}
+		.page-blog-view .farm-A-category-table {margin-bottom:40px !important;}
 		.page-blog-view .view-category-content {
-			min-height:94px;
-			padding:24px 20px;
-			align-items:flex-start;
-			flex-direction:column;
-			gap:12px;
+			min-height:64px;
+			padding:0 2px;
+			gap:14px;
 		}
 		.page-blog-view .view-category-label {
-			font-size:9px;
-			letter-spacing:.12em;
+			font-size:8px;
+			letter-spacing:.11em;
 		}
+		.page-blog-view .view-category-label::before {width:18px;}
 		.page-blog-view .view-category-content strong {
-			font-size:18px;
-			text-align:left;
+			font-size:15px;
+			text-align:right;
 		}
 		.page-blog-view .view-project-notice {
 			grid-template-columns:1fr;
@@ -783,8 +772,17 @@
 		}
 		.page-blog-view .view-hero {padding:108px 0 48px;}
 		.page-blog-view .view-hero h1 {font-size:15.8vw;}
-		.page-blog-view .view-category-content {padding:22px 17px;}
-		.page-blog-view .view-category-content strong {font-size:17px;}
+		.page-blog-view .view-category-content {
+			min-height:0;
+			padding:15px 2px;
+			align-items:flex-start;
+			flex-direction:column;
+			gap:7px;
+		}
+		.page-blog-view .view-category-content strong {
+			font-size:15px;
+			text-align:left;
+		}
 		.page-blog-view .farm-A-project-table > tbody > tr:first-child::after,
 		.page-blog-view .farm-A-project-table > tbody > tr:nth-child(2)::after {display:none;}
 		.page-blog-view .view-project-notice {padding:22px 17px;}
