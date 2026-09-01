@@ -74,6 +74,7 @@
 	}
 
 	.page-blog-view .view-hero > .view-container {position:relative;z-index:2;}
+	.page-blog-view .view-hero-curtain {position:absolute;inset:0;z-index:4;background:var(--orange);pointer-events:none;transform-origin:bottom;}
 
 	.page-blog-view .view-eyebrow {
 		display:flex;
@@ -800,14 +801,14 @@
 			transition:none !important;
 			scroll-behavior:auto !important;
 		}
+		.page-blog-view .view-hero-curtain {display:none;}
 	}
 
 /* HERO AMBIENT MOTION — decorative only */
 .page-blog-view .view-hero-motion-grid{
-  position:absolute;inset:-14%;z-index:0;opacity:.72;pointer-events:none;
+  position:absolute;inset:0;z-index:0;opacity:.72;pointer-events:none;
   background-image:linear-gradient(rgba(23,23,23,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(23,23,23,.04) 1px,transparent 1px);
   background-size:64px 64px;mask-image:linear-gradient(to bottom,#000,transparent 98%);
-  animation:viewHeroGridDrift 18s linear infinite alternate;will-change:transform;
 }
 .page-blog-view .view-hero-motion-lines{position:absolute;inset:0;z-index:0;pointer-events:none}
 .page-blog-view .view-hero-motion-lines span{position:absolute;background:rgba(23,23,23,.075)}
@@ -829,14 +830,10 @@
   font-size:clamp(145px,20vw,330px);font-weight:950;line-height:.8;letter-spacing:-.085em;
   -webkit-text-stroke:1px rgba(23,23,23,.065);white-space:nowrap;pointer-events:none;will-change:transform;
 }
-@keyframes viewHeroGridDrift{from{transform:translate3d(-18px,-12px,0)}to{transform:translate3d(28px,22px,0)}}
 @media(max-width:767px){
   .page-blog-view .view-hero-orbit.one{right:-260px}
   .page-blog-view .view-hero-orbit.two{right:-130px}
   .page-blog-view .view-hero-outline{font-size:42vw}
-}
-@media(prefers-reduced-motion:reduce){
-  .page-blog-view .view-hero-motion-grid{animation:none}
 }
 </style>
 
@@ -845,6 +842,7 @@
 
 	<main>
 		<section class="view-hero">
+			<div class="view-hero-curtain" aria-hidden="true"></div>
 			<div class="view-hero-motion-grid" aria-hidden="true"></div>
 			<div class="view-hero-motion-lines" aria-hidden="true"><span></span><span></span><span></span></div>
 			<div class="view-hero-orbit one" aria-hidden="true"></div>
@@ -1079,9 +1077,24 @@
     if(!root||!window.gsap||matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     if(window.ScrollTrigger) gsap.registerPlugin(ScrollTrigger);
     const hero=root.querySelector('.view-hero');
+    const curtain=root.querySelector('.view-hero-curtain');
     const orbitOne=root.querySelector('.view-hero-orbit.one');
     const orbitTwo=root.querySelector('.view-hero-orbit.two');
     const outline=root.querySelector('.view-hero-outline');
+    const eyebrow=root.querySelector('.view-eyebrow');
+    const title=root.querySelector('.view-hero h1');
+    const copy=root.querySelector('.view-hero-copy');
+
+    if(eyebrow) gsap.set(eyebrow,{y:18,opacity:0});
+    if(title) gsap.set(title,{yPercent:105,opacity:0});
+    if(copy) gsap.set(copy,{y:25,opacity:0});
+    if(curtain) gsap.to(curtain,{yPercent:-101,duration:.9,ease:'power4.inOut'});
+
+    const heroTimeline=gsap.timeline({delay:.12});
+    if(eyebrow) heroTimeline.to(eyebrow,{y:0,opacity:1,duration:.6,ease:'power3.out'});
+    if(title) heroTimeline.to(title,{yPercent:0,opacity:1,duration:.95,ease:'power4.out'},'-=.25');
+    if(copy) heroTimeline.to(copy,{y:0,opacity:1,duration:.65,ease:'power3.out'},'-=.55');
+
     if(orbitOne) gsap.to(orbitOne,{rotation:360,duration:30,repeat:-1,ease:'none'});
     if(orbitTwo) gsap.to(orbitTwo,{rotation:-360,duration:22,repeat:-1,ease:'none'});
     if(hero&&outline&&window.ScrollTrigger){
