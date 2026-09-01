@@ -396,8 +396,9 @@
 		display:grid;
 		grid-template-columns:180px minmax(0,1fr);
 		gap:40px;
-		padding:32px 0;
+		padding:32px 28px;
 		margin-top:96px;
+		align-items:center;
 		border-top:1px solid var(--view-text);
 		border-bottom:1px solid var(--view-line);
 	}
@@ -601,26 +602,117 @@
 	}
 	.page-blog-view .portfolio-cta > a:hover .portfolio-cta-action i {transform:translate(4px,-4px);}
 
+	/* 모바일 데스크톱 스킨 확대 보기 */
+	.page-blog-view .view-image-modal {
+		position:fixed;
+		inset:0;
+		z-index:20000;
+		display:none;
+		background:rgba(10,10,10,.96);
+	}
+
+	.page-blog-view .view-image-modal.is-open {display:block;}
+
+	.page-blog-view .view-image-modal-stage {
+		position:absolute;
+		inset:0;
+		overflow:auto;
+		padding:76px 14px 36px;
+		overscroll-behavior:contain;
+		-webkit-overflow-scrolling:touch;
+	}
+
+	.page-blog-view .view-image-modal-image {
+		display:block;
+		width:calc(100vw - 28px);
+		max-width:1200px;
+		height:auto;
+		margin:0 auto;
+		background:#fff;
+		cursor:zoom-in;
+		transform-origin:top left;
+	}
+
+	.page-blog-view .view-image-modal-image.is-zoomed {
+		width:auto;
+		min-width:1200px;
+		max-width:none;
+		margin:0;
+		cursor:zoom-out;
+	}
+
+	.page-blog-view .view-image-modal-close {
+		position:fixed;
+		top:18px;
+		right:18px;
+		z-index:2;
+		dis:grid;
+		width:44px;
+		height:44px;
+		padding:0;
+		place-items:center;
+		color:#fff;
+		border:1px solid rgba(255,255,255,.3);
+		border-radius:50%;
+		background:rgba(0,0,0,.72);
+		font-size:22px;
+		line-height:1;
+		cursor:pointer;
+	}
+
+	.page-blog-view .view-image-modal-guide {
+		position:fixed;
+		top:30px;
+		left:18px;
+		z-index:2;
+		margin:0;
+		color:rgba(255,255,255,.76);
+		font-size:11px;
+		font-weight:700;
+		letter-spacing:.02em;
+		pointer-events:none;
+	}
+
+	body.view-image-modal-open {overflow:hidden !important;}
+
 	@media (max-width:900px) {
 		.page-blog-view .view-container {width:min(100% - 32px,1560px);}
-		.page-blog-view .view-hero {min-height:0;padding:150px 0 75px;}
-		.page-blog-view .view-hero-main {grid-template-columns:1fr;gap:38px;}
-		.page-blog-view .view-hero-copy {max-width:420px;}
-		.page-blog-view .view-content {padding:90px 0 110px;}
+		.page-blog-view .view-hero {min-height:0;padding:140px 0 68px;}
+		.page-blog-view .view-hero-main {grid-template-columns:1fr;gap:34px;}
+		.page-blog-view .view-hero-copy {max-width:520px;}
+		.page-blog-view .view-content {padding:78px 0 96px;}
 		.page-blog-view .view-content > .view-container {width:calc(100% - 32px) !important;max-width:1560px !important;padding:0 !important;}
 		.page-blog-view .portfolio-cta {padding:0 16px 16px;}
 		.page-blog-view .portfolio-cta > a {min-height:300px;padding:42px;}
-		.page-blog-view .farm-A-project-table tbody {gap:90px;}
+		.page-blog-view .farm-A-project-table tbody {gap:82px;}
+		.page-blog-view .farm-A-project-table > tbody > tr:first-child > td {cursor:zoom-in;}
+		.page-blog-view .farm-A-project-table > tbody > tr:first-child > td::after {
+			position:absolute;
+			top:12px;
+			right:12px;
+			z-index:3;
+			padding:8px 11px;
+			color:#fff;
+			border-radius:999px;
+			background:rgba(17,17,17,.78);
+			box-shadow:0 5px 16px rgba(0,0,0,.18);
+			content:"탭하여 확대";
+			font-size:10px;
+			font-weight:800;
+			line-height:1;
+			pointer-events:none;
+		}
 	}
 
 	@media (max-width:600px) {
 		.page-blog-view .view-container {width:calc(100% - 24px);}
-		.page-blog-view .view-hero {padding:125px 0 58px;}
-		.page-blog-view .view-eyebrow {margin-bottom:24px;}
+		.page-blog-view .view-hero {padding:118px 0 54px;}
+		.page-blog-view .view-eyebrow {padding-bottom:16px;margin-bottom:24px;}
 		.page-blog-view .view-eyebrow strong {display:none;}
-		.page-blog-view .view-hero h1 {font-size:16.5vw;}
-		.page-blog-view .view-hero-copy p {font-size:14px;}
-		.page-blog-view .view-content {padding:68px 0 78px;}
+		.page-blog-view .view-hero h1 {font-size:clamp(52px,16.5vw,76px);line-height:.82;}
+		.page-blog-view .view-hero-copy p {font-size:14px;line-height:1.65;}
+		.page-blog-view .view-hero-copy p br {display:none;}
+		.page-blog-view .view-content {padding:60px 0 72px;}
 		.page-blog-view .view-content > .view-container {width:calc(100% - 24px) !important;max-width:1560px !important;padding:0 !important;}
 		.page-blog-view .portfolio-cta {padding:0 10px 10px;}
 		.page-blog-view .portfolio-cta > a {min-height:300px;padding:34px 22px;grid-template-columns:1fr;gap:34px;}
@@ -628,7 +720,7 @@
 		.page-blog-view .portfolio-cta p {font-size:13px;}
 		.page-blog-view .portfolio-cta-action {width:100%;justify-content:space-between;}
 		.page-blog-view .farm-A-project-table tbody {gap:68px;}
-		.page-blog-view .farm-A-category-table {margin-bottom:58px !important;}
+		.page-blog-view .farm-A-category-table {margin-bottom:52px !important;}
 		.page-blog-view .view-category-content {
 			min-height:94px;
 			padding:24px 20px;
@@ -647,8 +739,9 @@
 		.page-blog-view .view-project-notice {
 			grid-template-columns:1fr;
 			gap:13px;
-			padding:24px 0;
-			margin-top:68px;
+			padding:24px 20px;
+			margin-top:60px;
+			align-items:start;
 		}
 		.page-blog-view .view-project-notice p {font-size:14px;}
 		.page-blog-view .farm-A-project-table > tbody > tr:first-child,
@@ -669,7 +762,8 @@
 		}
 		.page-blog-view .farm-A-btn-wrap {
 			grid-template-columns:1fr 1fr;
-			margin-top:72px;
+			padding-top:24px;
+			margin-top:64px;
 		}
 		.page-blog-view .farm-A-btn-type1 {
 			width:100%;
@@ -680,6 +774,24 @@
 		.page-blog-view .farm-A-btn-type1:nth-child(2) {grid-column:2;grid-row:2;}
 		.page-blog-view .farm-A-btn-type1:nth-child(3) {grid-column:1 / -1;grid-row:1;}
 		.page-blog-view .farm-A-btn-type1:nth-child(n+4) {display:none;}
+	}
+
+	@media (max-width:390px) {
+		.page-blog-view .view-container,
+		.page-blog-view .view-content > .view-container {
+			width:calc(100% - 20px) !important;
+		}
+		.page-blog-view .view-hero {padding:108px 0 48px;}
+		.page-blog-view .view-hero h1 {font-size:15.8vw;}
+		.page-blog-view .view-category-content {padding:22px 17px;}
+		.page-blog-view .view-category-content strong {font-size:17px;}
+		.page-blog-view .farm-A-project-table > tbody > tr:first-child::after,
+		.page-blog-view .farm-A-project-table > tbody > tr:nth-child(2)::after {display:none;}
+		.page-blog-view .view-project-notice {padding:22px 17px;}
+		.page-blog-view .portfolio-cta > a {padding:30px 18px;}
+		.page-blog-view .portfolio-cta h2 {font-size:34px;}
+		.page-blog-view .portfolio-cta-action {min-height:52px;padding:0 17px;font-size:10px;}
+		.page-blog-view .view-image-modal-guide {max-width:210px;font-size:10px;}
 	}
 
 	@media (prefers-reduced-motion:reduce) {
@@ -805,6 +917,16 @@
 			</a>
 		</section>
 	</main>
+
+	<div class="view-image-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="데스크톱 스킨 확대 보기">
+		<p class="view-image-modal-guide">이미지를 누르면 원본 크기로 확대됩니다.</p>
+		<button type="button" class="view-image-modal-close" aria-label="확대 화면 닫기">
+			<i class="ri-close-line" aria-hidden="true"></i>
+		</button>
+		<div class="view-image-modal-stage">
+			<img class="view-image-modal-image" src="" alt="">
+		</div>
+	</div>
 </div>
 
 <script>
@@ -822,14 +944,89 @@
 	syncProgress();
 	window.addEventListener('scroll',syncProgress,{passive:true});
 
-	root.querySelector('.view-hero-copy a')?.addEventListener('click',function(event){
-		const target=root.querySelector('#projectDetail');
-		if(!target) return;
-		event.preventDefault();
-		target.scrollIntoView({
-			behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',
-			block:'start'
+	const projectLink=root.querySelector('.view-hero-copy a');
+	if(projectLink){
+		projectLink.addEventListener('click',function(event){
+			const target=root.querySelector('#projectDetail');
+			if(!target) return;
+			event.preventDefault();
+			target.scrollIntoView({
+				behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',
+				block:'start'
+			});
 		});
+	}
+
+	const modal=root.querySelector('.view-image-modal');
+	const modalStage=root.querySelector('.view-image-modal-stage');
+	const modalImage=root.querySelector('.view-image-modal-image');
+	const modalClose=root.querySelector('.view-image-modal-close');
+	const mobileView=window.matchMedia('(max-width:900px)');
+	let lastFocused=null;
+
+	const closeImageModal=function(){
+		if(!modal||!modalImage) return;
+		modal.classList.remove('is-open');
+		modal.setAttribute('aria-hidden','true');
+		modalImage.classList.remove('is-zoomed');
+		modalImage.removeAttribute('src');
+		document.body.classList.remove('view-image-modal-open');
+		if(lastFocused&&typeof lastFocused.focus==='function') lastFocused.focus();
+	};
+
+	const openImageModal=function(image){
+		if(!modal||!modalImage||!mobileView.matches) return;
+		lastFocused=image;
+		modalImage.src=image.currentSrc||image.src;
+		modalImage.alt=image.alt||'데스크톱 스킨 확대 이미지';
+		modalImage.classList.remove('is-zoomed');
+		modal.classList.add('is-open');
+		modal.setAttribute('aria-hidden','false');
+		document.body.classList.add('view-image-modal-open');
+		if(modalStage){
+			modalStage.scrollTop=0;
+			modalStage.scrollLeft=0;
+		}
+		if(modalClose) modalClose.focus();
+	};
+
+	root.addEventListener('click',function(event){
+		const image=event.target.closest('.farm-A-project-table > tbody > tr:first-child > td img');
+		if(!image||!mobileView.matches) return;
+		event.preventDefault();
+		event.stopPropagation();
+		openImageModal(image);
+	});
+
+	if(modalImage){
+		modalImage.addEventListener('click',function(event){
+			event.stopPropagation();
+			modalImage.classList.toggle('is-zoomed');
+			if(modalStage){
+				modalStage.scrollTop=0;
+				modalStage.scrollLeft=0;
+			}
+		});
+	}
+
+	if(modalClose) modalClose.addEventListener('click',closeImageModal);
+
+	if(modalStage){
+		modalStage.addEventListener('click',function(event){
+			if(event.target===modalStage) closeImageModal();
+		});
+	}
+
+	document.addEventListener('keydown',function(event){
+		if(event.key==='Escape'&&modal&&modal.classList.contains('is-open')){
+			closeImageModal();
+		}
+	});
+
+	window.addEventListener('resize',function(){
+		if(!mobileView.matches&&modal&&modal.classList.contains('is-open')){
+			closeImageModal();
+		}
 	});
 })();
 </script>
