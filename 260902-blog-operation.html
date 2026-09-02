@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>블로그 운영 | CREAFIT</title>
+<meta name="description" content="회사의 경험과 전문성을 검색되는 콘텐츠로 쌓는 크레아핏 블로그 운영 서비스">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+<style>
+:root{
+  --orange:#ff9230;
+  --black:#070707;
+  --deep:#0c0c0c;
+  --paper:#f2efe8;
+  --white:#fff;
+  --ink:#111;
+  --gray:#77716a;
+  --line:rgba(0,0,0,.14);
+  --wline:rgba(255,255,255,.14);
+  --container:1560px;
+  --wide:1780px;
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:120px}
+body{margin:0;font-family:"Pretendard Variable","Pretendard",sans-serif;background:var(--paper);color:var(--ink);overflow-x:hidden;word-break:keep-all}
+a{color:inherit;text-decoration:none}
+button{font:inherit}
+img{display:block;width:100%}
+.container{width:min(calc(100% - 56px),var(--container));margin:auto}
+.wide{width:min(calc(100% - 56px),var(--wide));margin:auto}
+.accent{color:var(--orange)}
+.kicker{display:inline-flex;align-items:center;gap:11px;font-size:10px;font-weight:900;letter-spacing:.18em;text-transform:uppercase}
+.kicker:before{content:"";width:34px;height:1px;background:var(--orange)}
+.reveal{opacity:0;transform:translateY(34px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.reveal.on{opacity:1;transform:none}
+
+.progress{position:fixed;left:0;top:0;width:100%;height:3px;z-index:9999;pointer-events:none}
+.progress span{display:block;width:0;height:100%;background:var(--orange)}
+
+/* header */
+.site-header{position:fixed;left:0;right:0;top:0;z-index:1000;color:#111;transition:.35s var(--ease)}
+.site-header.is-scrolled{color:#fff;background:rgba(5,5,5,.9);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.1)}
+.header-shell{width:min(calc(100% - 56px),1780px);height:92px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:30px}
+.logo{font-size:25px;font-weight:950;letter-spacing:-.045em}.logo span{color:var(--orange)}
+.main-nav{display:flex;align-items:center;gap:34px;font-size:13px;font-weight:800}
+.main-nav a{opacity:.7;transition:.25s}.main-nav a:hover,.main-nav a.active{opacity:1}
+.header-cta{display:inline-flex;align-items:center;gap:8px;padding:12px 16px;border:1px solid rgba(0,0,0,.2);font-size:10px;font-weight:900;letter-spacing:.11em;transition:.3s}
+.is-scrolled .header-cta{border-color:rgba(255,255,255,.2)}
+.header-cta:hover{background:var(--orange);border-color:var(--orange);color:#111}
+
+/* hero */
+.hero{min-height:100svh;padding:154px 0 72px;background:var(--paper);position:relative;overflow:hidden;display:flex;align-items:center}
+.hero:before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(0,0,0,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(0,0,0,.045) 1px,transparent 1px);background-size:64px 64px;mask-image:linear-gradient(to bottom,#000 0%,#000 78%,transparent 100%)}
+.hero:after{content:"CONTENT";position:absolute;left:-.03em;bottom:-.23em;color:transparent;-webkit-text-stroke:1px rgba(0,0,0,.07);font-size:clamp(180px,23vw,380px);font-weight:950;line-height:1;letter-spacing:-.09em;white-space:nowrap}
+.hero-inner{position:relative;z-index:2}
+.hero-eyebrow{display:flex;justify-content:space-between;gap:30px;padding-bottom:20px;border-bottom:1px solid rgba(0,0,0,.17);color:#77716a;font-size:10px;font-weight:900;letter-spacing:.16em}
+.hero-eyebrow strong{color:var(--orange)}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(540px,.92fr);gap:clamp(70px,8vw,145px);align-items:center;margin-top:58px}
+.hero-copy h1{margin:0;font-size:clamp(64px,7vw,112px);font-weight:950;line-height:.91;letter-spacing:-.077em}
+.hero-copy p{max-width:660px;margin:30px 0 0;color:#6f6961;font-size:17px;line-height:1.8}
+.hero-copy p strong{color:#111}
+.hero-scroll{display:inline-flex;align-items:center;gap:10px;margin-top:38px;padding-bottom:8px;border-bottom:1px solid var(--orange);font-size:10px;font-weight:900;letter-spacing:.13em}
+.hero-scroll i{transition:.35s}.hero-scroll:hover i{transform:translateY(5px)}
+.hero-stage{height:600px;position:relative}
+.hero-orbit{position:absolute;inset:4%;border:1px solid rgba(0,0,0,.1);border-radius:50%;animation:spin 24s linear infinite}
+.hero-orbit:before,.hero-orbit:after{content:"";position:absolute;border:1px solid rgba(0,0,0,.08);border-radius:50%}.hero-orbit:before{inset:15%}.hero-orbit:after{inset:32%}
+.orbit-dot{position:absolute;width:14px;height:14px;border-radius:50%;background:var(--orange);box-shadow:0 0 30px rgba(255,146,48,.5);left:50%;top:-7px}
+.feed{position:absolute;background:#fff;border:1px solid rgba(0,0,0,.09);box-shadow:0 28px 70px rgba(54,45,35,.15);padding:22px;display:flex;flex-direction:column;justify-content:space-between;transition:.45s var(--ease)}
+.feed:hover{transform:translateY(-10px) rotate(0)!important;box-shadow:0 38px 95px rgba(54,45,35,.23)}
+.feed small{color:var(--orange);font-size:8px;font-weight:900;letter-spacing:.15em}
+.feed strong{font-size:23px;line-height:1.25;letter-spacing:-.04em}
+.feed span{color:#96918a;font-size:9px;font-weight:800;letter-spacing:.08em}
+.feed.one{width:49%;height:245px;left:4%;top:4%;transform:rotate(-4deg);z-index:3}
+.feed.two{width:48%;height:260px;right:0;top:23%;transform:rotate(4deg);z-index:4;background:#101010;color:#fff;border-color:#101010}
+.feed.three{width:50%;height:230px;left:11%;bottom:3%;transform:rotate(3deg);z-index:2}
+.hero-badge{position:absolute;left:44%;top:44%;z-index:6;width:150px;height:150px;border-radius:50%;background:var(--orange);display:grid;place-items:center;text-align:center;font-size:11px;font-weight:950;letter-spacing:.09em;animation:float 4s ease-in-out infinite;box-shadow:0 24px 50px rgba(255,146,48,.26)}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes float{50%{transform:translateY(-10px) rotate(4deg)}}
+
+/* sub nav */
+.sub-nav{position:sticky;top:92px;z-index:100;padding:8px 0;background:transparent}
+.sub-nav .wide{display:flex;padding:0 10px;border:1px solid rgba(0,0,0,.12);border-radius:14px;background:rgba(242,239,232,.94);backdrop-filter:blur(15px);box-shadow:0 16px 36px rgba(66,55,42,.11);overflow-x:auto;scrollbar-width:none}
+.sub-nav .wide::-webkit-scrollbar{display:none}
+.sub-nav a{flex:0 0 auto;padding:16px 14px;color:#111;font-size:11px;font-weight:850;opacity:.52;position:relative}
+.sub-nav a:after{content:"";position:absolute;left:14px;right:14px;bottom:0;height:2px;background:var(--orange);transform:scaleX(0);transition:.3s var(--ease)}
+.sub-nav a:hover,.sub-nav a.active{opacity:1}.sub-nav a:hover:after,.sub-nav a.active:after{transform:scaleX(1)}
+
+/* common heads */
+.section-head{display:grid;grid-template-columns:220px minmax(0,1fr);gap:clamp(60px,8vw,135px);align-items:start}
+.section-head h2{margin:0;font-size:clamp(48px,5.6vw,84px);font-weight:950;line-height:1.02;letter-spacing:-.067em}
+.section-head p{max-width:700px;margin:25px 0 0;color:#736d66;font-size:15px;line-height:1.82}
+.dark .section-head p{color:#858585}
+
+/* pains */
+.pains{padding:145px 0 155px;background:#fff;position:relative;overflow:hidden}
+.pains:after{content:"WHY";position:absolute;right:-.03em;bottom:-.2em;font-size:clamp(170px,24vw,390px);font-weight:950;color:transparent;-webkit-text-stroke:1px rgba(0,0,0,.055);line-height:1;letter-spacing:-.09em}
+.pain-list{position:relative;z-index:2;margin-top:78px;border-top:1px solid var(--line)}
+.pain-item{min-height:175px;padding:30px 20px;display:grid;grid-template-columns:120px minmax(0,1fr) 260px;gap:38px;align-items:center;border-bottom:1px solid var(--line);position:relative;overflow:hidden;transition:.5s var(--ease)}
+.pain-item:before{content:"";position:absolute;inset:0;background:var(--orange);transform:scaleX(0);transform-origin:left;transition:.55s var(--ease)}
+.pain-item>*{position:relative;z-index:2}
+.pain-item:hover{padding-left:38px;padding-right:38px}.pain-item:hover:before{transform:scaleX(1)}
+.pain-item small{font-size:10px;font-weight:900;letter-spacing:.16em;color:#98918a;transition:.3s}.pain-item:hover small{color:#111}
+.pain-item h3{margin:0;font-size:clamp(26px,3vw,43px);letter-spacing:-.047em}
+.pain-item p{margin:0;color:#777;font-size:13px;line-height:1.72;transition:.3s}.pain-item:hover p{color:rgba(0,0,0,.68)}
+
+/* content universe */
+.contents{padding:145px 0 160px;background:#080808;color:#fff;overflow:hidden}
+.content-stage{margin-top:88px;display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:120px;gap:14px}
+.content-card{position:relative;padding:28px;border:1px solid rgba(255,255,255,.14);background:#0d0d0d;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;transition:.5s var(--ease)}
+.content-card:before{content:"";position:absolute;width:240px;height:240px;border-radius:50%;right:-100px;bottom:-120px;background:radial-gradient(circle,rgba(255,146,48,.28),transparent 68%);transition:.55s var(--ease)}
+.content-card:hover{transform:translateY(-8px);border-color:rgba(255,146,48,.48);background:#111}
+.content-card:hover:before{transform:scale(1.35)}
+.content-card>*{position:relative;z-index:2}
+.content-card small{color:var(--orange);font-size:9px;font-weight:900;letter-spacing:.15em}
+.content-card h3{margin:0;font-size:clamp(31px,3.5vw,58px);line-height:1;letter-spacing:-.06em}
+.content-card p{max-width:430px;margin:0;color:#838383;font-size:13px;line-height:1.75}
+.content-card.case{grid-column:span 7;grid-row:span 3}.content-card.expert{grid-column:span 5;grid-row:span 3}.content-card.service{grid-column:span 5;grid-row:span 3}.content-card.trust{grid-column:span 7;grid-row:span 3}
+.content-keywords{display:flex;gap:7px;flex-wrap:wrap;margin-top:18px}.content-keywords span{padding:7px 9px;border:1px solid rgba(255,255,255,.14);font-size:8px;font-weight:850;color:#8d8d8d}
+
+/* planning */
+.planning{padding:155px 0;background:var(--paper);position:relative}
+.plan-layout{display:grid;grid-template-columns:.72fr 1.28fr;gap:clamp(80px,9vw,155px);align-items:start}
+.plan-intro{position:sticky;top:150px}
+.plan-intro h2{margin:24px 0 0;font-size:clamp(47px,5.4vw,78px);line-height:1.03;letter-spacing:-.064em}
+.plan-intro p{max-width:520px;margin:24px 0 0;color:#736d66;line-height:1.8}
+.plan-flow{border-top:1px solid var(--line)}
+.plan-step{position:relative;min-height:235px;padding:40px 0 40px 84px;border-bottom:1px solid var(--line);transition:.45s var(--ease)}
+.plan-step:hover{padding-left:105px}
+.plan-no{position:absolute;left:0;top:38px;width:48px;height:48px;border:1px solid rgba(0,0,0,.2);border-radius:50%;display:grid;place-items:center;color:#888;font-size:10px;font-weight:950;transition:.35s}
+.plan-step:hover .plan-no{background:var(--orange);border-color:var(--orange);color:#111}
+.plan-step small{font-size:9px;color:var(--orange);font-weight:900;letter-spacing:.15em}
+.plan-step h3{margin:12px 0 0;font-size:clamp(27px,2.6vw,40px);letter-spacing:-.045em}
+.plan-step p{max-width:670px;margin:13px 0 0;color:#777;font-size:14px;line-height:1.75}
+
+/* proof */
+.proof{padding:150px 0 165px;background:#090909;color:#fff;position:relative;overflow:hidden}
+.proof:before{content:"SEARCH";position:absolute;left:-.04em;top:.03em;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.055);font-size:clamp(160px,22vw,350px);font-weight:950;line-height:1;letter-spacing:-.09em;pointer-events:none}
+.proof-head{position:relative;z-index:2;display:grid;grid-template-columns:220px 1fr;gap:clamp(60px,8vw,135px)}
+.proof-head h2{margin:0;font-size:clamp(48px,5.6vw,84px);line-height:1.02;letter-spacing:-.068em}
+.proof-head p{max-width:720px;margin:24px 0 0;color:#8a8a8a;line-height:1.8}
+.proof-gallery{position:relative;z-index:2;margin-top:84px;display:grid;grid-template-columns:1.08fr .92fr;gap:18px;align-items:stretch}
+.proof-main,.proof-side{border:1px solid rgba(255,255,255,.14);background:#101010}
+.proof-main{padding:20px;min-height:620px;display:flex;flex-direction:column}
+.proof-side{display:grid;grid-template-rows:1fr 1fr;gap:1px;background:rgba(255,255,255,.14)}
+.proof-mini{background:#101010;padding:18px;display:flex;flex-direction:column}
+.search-shot{position:relative;flex:1;min-height:430px;background:#f3f3f3;border-radius:8px;overflow:hidden;color:#111;padding:18px}
+.search-shot:before{content:"";position:absolute;left:0;right:0;top:0;height:54px;background:#fff;border-bottom:1px solid #ddd}
+.search-shot:after{content:"검색 1페이지 노출 자료 이미지 영역";position:absolute;inset:0;display:grid;place-items:center;padding-top:54px;color:#999;font-size:20px;font-weight:850;text-align:center;background:linear-gradient(180deg,transparent 0 54px,rgba(245,245,245,.96) 54px)}
+.proof-mini .search-shot{min-height:230px}
+.proof-meta{display:flex;justify-content:space-between;gap:20px;align-items:end;padding-top:20px}
+.proof-meta small{color:var(--orange);font-size:9px;font-weight:900;letter-spacing:.14em}.proof-meta strong{font-size:23px;letter-spacing:-.035em}.proof-meta span{color:#777;font-size:10px}
+.proof-note{position:relative;z-index:2;margin-top:24px;padding-top:18px;border-top:1px solid rgba(255,255,255,.12);color:#747474;font-size:11px;line-height:1.7}
+
+/* production */
+.production{padding:145px 0 150px;background:var(--orange);color:#111;overflow:hidden}
+.production-head{display:grid;grid-template-columns:220px minmax(0,1fr);gap:clamp(60px,8vw,135px)}
+.production-head h2{margin:0;font-size:clamp(48px,5.5vw,82px);line-height:1.02;letter-spacing:-.067em}
+.production-track{margin-top:82px;border-top:1px solid rgba(0,0,0,.25);border-bottom:1px solid rgba(0,0,0,.25);display:grid;grid-template-columns:repeat(6,1fr)}
+.production-step{min-height:310px;padding:26px 22px;border-right:1px solid rgba(0,0,0,.22);display:flex;flex-direction:column;position:relative;transition:.4s var(--ease)}
+.production-step:last-child{border-right:0}.production-step:hover{background:rgba(255,255,255,.18);padding-top:36px}
+.production-step small{font-size:9px;font-weight:950;letter-spacing:.13em}.production-step i{margin-top:24px;font-size:24px}.production-step strong{margin-top:auto;font-size:22px;letter-spacing:-.04em}.production-step p{margin:12px 0 0;color:rgba(0,0,0,.62);font-size:12px;line-height:1.7}
+
+/* materials */
+.materials{padding:150px 0;background:#fff}
+.material-layout{margin-top:80px;display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.material{min-height:300px;padding:28px 24px;border-right:1px solid var(--line);display:flex;flex-direction:column;transition:.4s var(--ease)}
+.material:last-child{border-right:0}.material:hover{background:#f5f1e9}
+.material small{color:var(--orange);font-size:9px;font-weight:900}.material i{margin-top:28px;font-size:27px;color:#8d867d}.material strong{margin-top:auto;font-size:24px;letter-spacing:-.04em}.material p{margin:10px 0 0;color:#777;font-size:12px;line-height:1.72}
+.material-guide{margin-top:34px;padding:25px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);display:grid;grid-template-columns:220px 1fr;gap:clamp(60px,8vw,135px)}
+.material-guide strong{font-size:11px;letter-spacing:.12em}.material-guide p{max-width:800px;margin:0;color:#777;font-size:13px;line-height:1.76}
+
+/* examples */
+.examples{padding:145px 0 155px;background:#0a0a0a;color:#fff}
+.example-list{margin-top:75px;border-top:1px solid rgba(255,255,255,.14)}
+.example{min-height:205px;padding:32px 18px;display:grid;grid-template-columns:150px 1fr 240px;gap:35px;align-items:center;border-bottom:1px solid rgba(255,255,255,.14);position:relative;overflow:hidden;transition:.45s var(--ease)}
+.example:before{content:"";position:absolute;inset:0;background:#fff;transform:translateY(102%);transition:.5s var(--ease)}
+.example>*{position:relative;z-index:2}.example:hover:before{transform:none}.example:hover{color:#111;padding-left:34px;padding-right:34px}
+.example small{color:var(--orange);font-size:9px;font-weight:900;letter-spacing:.14em}.example h3{margin:0;font-size:clamp(26px,3vw,45px);letter-spacing:-.05em;line-height:1.16}.example p{margin:0;color:#777;font-size:13px;line-height:1.72}.example:hover p{color:#666}
+
+/* archive */
+.archive{padding:145px 0 155px;background:var(--paper);overflow:hidden}
+.archive-visual{margin-top:80px;position:relative;min-height:620px}
+.archive-line{position:absolute;left:8%;right:8%;top:50%;height:1px;background:rgba(0,0,0,.18)}
+.archive-line span{display:block;width:0;height:100%;background:var(--orange);transition:width 1.6s var(--ease)}
+.archive-visual.on .archive-line span{width:100%}
+.archive-month{position:absolute;width:250px;min-height:245px;padding:24px;background:#fff;border:1px solid rgba(0,0,0,.11);box-shadow:0 22px 55px rgba(63,52,39,.09);display:flex;flex-direction:column;transition:.45s var(--ease)}
+.archive-month:hover{transform:translateY(-10px)!important;box-shadow:0 32px 75px rgba(63,52,39,.15)}
+.archive-month:nth-child(2){left:5%;top:205px;transform:rotate(-4deg)}
+.archive-month:nth-child(3){left:29%;top:70px;transform:rotate(3deg)}
+.archive-month:nth-child(4){right:29%;top:250px;transform:rotate(-2deg)}
+.archive-month:nth-child(5){right:5%;top:95px;transform:rotate(5deg)}
+.archive-month small{color:var(--orange);font-size:9px;font-weight:900}.archive-month strong{margin-top:auto;font-size:27px;letter-spacing:-.045em}.archive-month p{margin:10px 0 0;color:#777;font-size:12px;line-height:1.7}
+
+/* faq */
+.faq{padding:130px 0;background:#fff}
+.faq-layout{display:grid;grid-template-columns:310px 1fr;gap:100px}.faq-title h2{margin:22px 0 0;font-size:clamp(40px,4.8vw,66px);line-height:1.05;letter-spacing:-.055em}
+.faq-list{border-top:1px solid var(--line)}.faq-list details{border-bottom:1px solid var(--line)}.faq-list summary{list-style:none;cursor:pointer;padding:28px 2px;display:flex;justify-content:space-between;gap:20px;font-size:19px;font-weight:820}.faq-list summary::-webkit-details-marker{display:none}.faq-list summary:after{content:"+";color:var(--orange);font-size:26px;font-weight:400}.faq-list details[open] summary:after{content:"−"}.faq-list p{padding:0 2px 29px;margin:0;color:#707070;font-size:14px;line-height:1.78}
+
+/* cta */
+.cta{min-height:680px;background:radial-gradient(circle at 74% 20%,rgba(255,146,48,.2),transparent 30%),linear-gradient(135deg,#050505 0%,#111 55%,#060606 100%);color:#fff;position:relative;overflow:hidden;display:grid;place-items:center;isolation:isolate}
+.cta:before{content:"";position:absolute;inset:-18%;background-image:linear-gradient(rgba(255,255,255,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.055) 1px,transparent 1px);background-size:72px 72px;transform:rotate(-8deg);animation:gridmove 16s linear infinite}
+.cta:after{content:"GROW";position:absolute;left:50%;bottom:-.23em;transform:translateX(-50%);font-size:clamp(190px,27vw,440px);font-weight:950;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.12);line-height:1;letter-spacing:-.08em}
+.cta-orb{position:absolute;width:480px;height:480px;border-radius:50%;background:var(--orange);opacity:.95;left:50%;top:50%;transform:translate(-50%,-50%);box-shadow:0 0 110px rgba(255,146,48,.24);mix-blend-mode:screen;pointer-events:none}
+.cta-inner{position:relative;z-index:3;text-align:center;padding:110px 0}.cta-inner small{font-size:10px;font-weight:900;letter-spacing:.17em}.cta-inner h2{margin:28px 0 0;font-size:clamp(52px,7.2vw,110px);line-height:.95;letter-spacing:-.072em}.cta-inner p{margin:25px 0 0;color:rgba(255,255,255,.66)}.cta-btn{display:inline-flex;align-items:center;gap:9px;margin-top:38px;padding:17px 25px;border-radius:99px;background:#fff;color:#111;font-size:11px;font-weight:900;letter-spacing:.08em;transition:.35s}.cta-btn:hover{background:var(--orange);transform:translateY(-4px)}
+@keyframes gridmove{to{transform:rotate(-8deg) translate3d(72px,72px,0)}}
+
+footer{padding:46px 0;background:#050505;color:#777;border-top:1px solid rgba(255,255,255,.1)}
+.footer-inner{display:flex;justify-content:space-between;gap:30px;font-size:11px}.footer-inner strong{color:#fff;font-size:18px}.footer-inner strong span{color:var(--orange)}
+
+@media(max-width:1200px){
+  .hero-grid{grid-template-columns:1fr .9fr}.hero-stage{height:520px}.content-stage{grid-auto-rows:110px}
+  .production-track{grid-template-columns:repeat(3,1fr)}.production-step{border-bottom:1px solid rgba(0,0,0,.22)}
+  .materials .material-layout{grid-template-columns:repeat(3,1fr)}.material{border-bottom:1px solid var(--line)}
+}
+@media(max-width:960px){
+  .main-nav{display:none}.header-shell{height:78px}.site-header{background:rgba(242,239,232,.93);backdrop-filter:blur(12px)}.site-header.is-scrolled{background:rgba(5,5,5,.92)}
+  .hero{padding-top:125px}.hero-grid,.plan-layout,.proof-gallery{grid-template-columns:1fr}.hero-stage{height:560px;margin-top:20px}.sub-nav{top:78px}
+  .section-head,.proof-head,.production-head{grid-template-columns:1fr;gap:30px}.pain-item{grid-template-columns:90px 1fr}.pain-item p{grid-column:2}
+  .content-stage{grid-template-columns:1fr;grid-auto-rows:auto}.content-card.case,.content-card.expert,.content-card.service,.content-card.trust{grid-column:auto;grid-row:auto;min-height:320px}
+  .plan-intro{position:static}.proof-main{min-height:560px}.materials .material-layout{grid-template-columns:repeat(2,1fr)}.material-guide{grid-template-columns:1fr;gap:20px}
+  .example{grid-template-columns:110px 1fr}.example p{grid-column:2}.archive-visual{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;min-height:0}.archive-line{display:none}.archive-month:nth-child(n){position:relative;inset:auto;width:auto;min-height:230px;transform:none}
+  .faq-layout{grid-template-columns:1fr;gap:45px}
+}
+@media(max-width:640px){
+  .container,.wide,.header-shell{width:min(calc(100% - 32px),var(--container))}.header-cta{display:none}.logo{font-size:21px}
+  .hero{min-height:auto;padding:118px 0 68px}.hero-eyebrow{font-size:8px}.hero-grid{margin-top:42px}.hero-copy h1{font-size:52px}.hero-copy p{font-size:15px}.hero-stage{height:440px}.feed{padding:15px}.feed strong{font-size:18px}.hero-badge{width:105px;height:105px;font-size:8px}
+  .sub-nav{display:none}.pains,.contents,.planning,.proof,.production,.materials,.examples,.archive,.faq{padding:92px 0}.section-head h2,.proof-head h2,.production-head h2,.plan-intro h2{font-size:41px}.pain-item{grid-template-columns:1fr;gap:14px;min-height:0;padding:28px 4px}.pain-item p{grid-column:auto}.pain-item:hover{padding:28px 14px}
+  .content-card{padding:24px;min-height:270px!important}.plan-step{padding-left:67px}.plan-step:hover{padding-left:72px}.plan-no{width:40px;height:40px}
+  .proof-main{padding:12px;min-height:480px}.search-shot{min-height:330px}.proof-side{grid-template-rows:auto}.proof-mini .search-shot{min-height:250px}.proof-meta{display:block}.proof-meta span{display:block;margin-top:5px}
+  .production-track{grid-template-columns:1fr}.production-step{min-height:220px;border-right:0}.materials .material-layout{grid-template-columns:1fr}.material{min-height:220px;border-right:0}
+  .example{grid-template-columns:1fr;gap:13px;padding:26px 2px}.example p{grid-column:auto}.example:hover{padding:26px 10px}.archive-visual{grid-template-columns:1fr}.faq-list summary{font-size:17px}
+  .cta{min-height:580px}.cta-orb{width:330px;height:330px}.cta-inner{padding:85px 0}.cta-inner h2{font-size:48px}.footer-inner{display:block}.footer-inner div:last-child{margin-top:16px}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div class="progress"><span></span></div>
+<header class="site-header" id="siteHeader">
+  <div class="header-shell">
+    <a class="logo" href="creafit_main_custom_why_060_0055_auto_portfolio_drag.html">CREAFIT<span>.</span></a>
+    <nav class="main-nav">
+      <a href="creafit_main_custom_why_060_0055_auto_portfolio_drag.html">회사소개</a>
+      <a href="website.html">홈페이지</a>
+      <a href="brand-blog.html" class="active">블로그</a>
+      <a href="marketing.html">마케팅</a>
+      <a href="portfolio.html">포트폴리오</a>
+    </nav>
+    <a class="header-cta" href="/shop_contents/myreg_form.htm?myreg_code=inquiry">PROJECT REQUEST <i class="ri-arrow-right-up-line"></i></a>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="top">
+  <div class="container hero-inner">
+    <div class="hero-eyebrow reveal"><span>CREAFIT / BLOG OPERATION</span><strong>CONTENT GROWTH SERVICE</strong></div>
+    <div class="hero-grid">
+      <div class="hero-copy reveal">
+        <h1>회사의 경험을<br><span class="accent">검색되는 콘텐츠로.</span></h1>
+        <p><strong>일은 계속 쌓이는데, 보여줄 콘텐츠가 없다면.</strong><br>후기, 기술력, 실제 작업 사례처럼 회사 안에 이미 있는 이야기를 고객이 찾고 이해할 수 있는 콘텐츠로 기획하고 발행합니다.</p>
+        <a class="hero-scroll" href="#need">SCROLL TO EXPLORE <i class="ri-arrow-down-line"></i></a>
+      </div>
+      <div class="hero-stage reveal" aria-hidden="true">
+        <div class="hero-orbit"><span class="orbit-dot"></span></div>
+        <article class="feed one"><small>CASE STORY</small><strong>실제 작업 사례를<br>콘텐츠로 정리</strong><span>PROJECT / EXPERIENCE</span></article>
+        <article class="feed two"><small>EXPERTISE</small><strong>전문성을 설명하는<br>정보 콘텐츠</strong><span>KNOWLEDGE / TRUST</span></article>
+        <article class="feed three"><small>SERVICE</small><strong>고객이 궁금해하는<br>서비스 안내</strong><span>INFORMATION / FAQ</span></article>
+        <div class="hero-badge">PLAN<br>WRITE<br>PUBLISH</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<nav class="sub-nav" id="subNav">
+  <div class="wide">
+    <a href="#need">운영이 필요한 상황</a>
+    <a href="#content">콘텐츠 유형</a>
+    <a href="#planning">기획 방식</a>
+    <a href="#proof">검색 노출 사례</a>
+    <a href="#process">운영 과정</a>
+    <a href="#materials">필요 자료</a>
+    <a href="#examples">콘텐츠 예시</a>
+    <a href="#faq">FAQ</a>
+  </div>
+</nav>
+
+<section class="pains" id="need">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="kicker">DOES THIS SOUND FAMILIAR?</span>
+      <div><h2>블로그는 있는데,<br><span class="accent">운영이 멈춰 있나요?</span></h2><p>꾸준히 글을 올리는 것보다 더 어려운 건 무엇을 보여줘야 하는지 정하는 일입니다. 업체 안에 이미 있는 경험과 정보를 콘텐츠로 바꾸는 것부터 시작합니다.</p></div>
+    </div>
+    <div class="pain-list">
+      <article class="pain-item reveal"><small>01 / TOPIC</small><h3>무엇을 올려야 할지 모르겠어요.</h3><p>서비스와 고객 관심사를 기준으로 콘텐츠 주제를 정리합니다.</p></article>
+      <article class="pain-item reveal"><small>02 / RECORD</small><h3>일은 계속 하는데 보여줄 자료가 없어요.</h3><p>실제 업무와 사례를 고객이 이해할 수 있는 기록으로 남깁니다.</p></article>
+      <article class="pain-item reveal"><small>03 / EXPERTISE</small><h3>전문성은 있는데 설명하기 어려워요.</h3><p>기술과 노하우를 읽기 쉬운 정보 콘텐츠로 바꿉니다.</p></article>
+      <article class="pain-item reveal"><small>04 / TIME</small><h3>꾸준히 운영할 시간이 부족해요.</h3><p>주제 기획부터 원고, 이미지 구성, 발행까지 운영 흐름을 이어갑니다.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="contents dark" id="content">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="kicker">WHAT WE CREATE</span>
+      <div><h2>새로운 이야기를 만들기보다,<br><span class="accent">이미 있는 강점을 꺼냅니다.</span></h2><p>업체마다 쌓아야 할 콘텐츠는 다릅니다. 실제 업무와 고객이 궁금해하는 내용을 기준으로 필요한 콘텐츠를 구성합니다.</p></div>
+    </div>
+    <div class="content-stage">
+      <article class="content-card case reveal"><small>01 / CASE</small><div><h3>실제 작업과<br>프로젝트 사례</h3><div class="content-keywords"><span>시공 사례</span><span>작업 과정</span><span>전후 비교</span></div></div><p>현장과 프로젝트 경험을 기록해 업체의 실력과 실제 업무 범위를 보여줍니다.</p></article>
+      <article class="content-card expert reveal"><small>02 / EXPERTISE</small><div><h3>기술력과<br>전문 정보</h3><div class="content-keywords"><span>노하우</span><span>전문 기준</span><span>실무 정보</span></div></div><p>전문적인 내용을 고객이 이해할 수 있는 언어로 정리합니다.</p></article>
+      <article class="content-card service reveal"><small>03 / SERVICE</small><div><h3>제품과<br>서비스 안내</h3><div class="content-keywords"><span>서비스 소개</span><span>이용 안내</span><span>제품 정보</span></div></div><p>고객이 문의 전에 알아야 할 핵심 정보를 콘텐츠로 안내합니다.</p></article>
+      <article class="content-card trust reveal"><small>04 / TRUST</small><div><h3>후기와 FAQ,<br>신뢰를 만드는 이야기</h3><div class="content-keywords"><span>고객 후기</span><span>자주 묻는 질문</span><span>회사 소식</span></div></div><p>고객이 선택 전에 확인할 수 있는 경험과 근거를 계속 축적합니다.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="planning" id="planning">
+  <div class="container plan-layout">
+    <div class="plan-intro reveal">
+      <span class="kicker">CONTENT PLANNING</span>
+      <h2>포스팅을 채우기보다,<br><span class="accent">보여줄 이야기를 찾습니다.</span></h2>
+      <p>주제를 무작정 늘리는 대신 업체의 강점과 고객이 실제로 궁금해하는 지점을 연결해 콘텐츠 방향을 정합니다.</p>
+    </div>
+    <div class="plan-flow">
+      <article class="plan-step reveal"><span class="plan-no">01</span><small>BRAND CHECK</small><h3>업체와 서비스를 먼저 이해합니다.</h3><p>무엇을 제공하고 어떤 경험과 강점을 가지고 있는지 확인해 콘텐츠의 중심을 잡습니다.</p></article>
+      <article class="plan-step reveal"><span class="plan-no">02</span><small>AUDIENCE QUESTION</small><h3>고객이 무엇을 궁금해하는지 찾습니다.</h3><p>문의 전에 확인하는 정보, 자주 묻는 질문, 선택 기준을 실제 콘텐츠 주제로 연결합니다.</p></article>
+      <article class="plan-step reveal"><span class="plan-no">03</span><small>REAL MATERIAL</small><h3>실제 자료에서 업체만의 이야기를 꺼냅니다.</h3><p>현장 사진, 작업 내용, 서비스 정보, 후기 등 실제 자료가 많을수록 더 구체적이고 설득력 있는 콘텐츠를 만들 수 있습니다.</p></article>
+      <article class="plan-step reveal"><span class="plan-no">04</span><small>CONTENT STRUCTURE</small><h3>읽히는 흐름으로 다시 구성합니다.</h3><p>전문적인 내용도 고객 입장에서 이해하기 쉬운 순서와 표현으로 정리해 하나의 콘텐츠로 완성합니다.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="proof" id="proof">
+  <div class="container">
+    <div class="proof-head reveal">
+      <span class="kicker">SEARCH RESULT</span>
+      <div><h2>쌓인 콘텐츠가<br><span class="accent">검색에서 발견됩니다.</span></h2><p>실제 운영 콘텐츠 중 네이버 검색 결과 1페이지에 노출된 사례를 보여드립니다. 현재 보유한 증거 이미지를 아래 영역에 교체해서 사용할 수 있도록 구성했습니다.</p></div>
+    </div>
+    <div class="proof-gallery">
+      <article class="proof-main reveal">
+        <div class="search-shot"></div>
+        <div class="proof-meta"><div><small>01 / SEARCH RESULT</small><br><strong>검색 노출 사례</strong></div><span>업종 / 키워드 / 콘텐츠 유형 입력</span></div>
+      </article>
+      <div class="proof-side reveal">
+        <article class="proof-mini"><div class="search-shot"></div><div class="proof-meta"><div><small>02 / SEARCH RESULT</small><br><strong>검색 노출 사례</strong></div><span>자료 교체 영역</span></div></article>
+        <article class="proof-mini"><div class="search-shot"></div><div class="proof-meta"><div><small>03 / SEARCH RESULT</small><br><strong>검색 노출 사례</strong></div><span>자료 교체 영역</span></div></article>
+      </div>
+    </div>
+    <p class="proof-note">※ 검색 노출 위치는 검색 시점, 키워드, 검색 환경 및 플랫폼 정책 등에 따라 달라질 수 있으며 특정 순위 노출을 보장하지 않습니다.</p>
+  </div>
+</section>
+
+<section class="production" id="process">
+  <div class="container">
+    <div class="production-head reveal"><span class="kicker">OUR PROCESS</span><div><h2>자료에서 콘텐츠로,<br>그리고 실제 발행까지.</h2></div></div>
+    <div class="production-track">
+      <article class="production-step reveal"><small>01 / CHECK</small><i class="ri-file-search-line"></i><strong>주제·자료 확인</strong><p>서비스 정보와 사진, 전문 내용 등 콘텐츠에 필요한 자료를 확인합니다.</p></article>
+      <article class="production-step reveal"><small>02 / PLAN</small><i class="ri-route-line"></i><strong>콘텐츠 기획</strong><p>전달할 핵심 내용과 독자가 이해하기 좋은 흐름을 정리합니다.</p></article>
+      <article class="production-step reveal"><small>03 / WRITE</small><i class="ri-edit-line"></i><strong>원고 작성</strong><p>업체의 실제 정보와 제공 자료를 바탕으로 읽기 쉬운 원고를 구성합니다.</p></article>
+      <article class="production-step reveal"><small>04 / VISUAL</small><i class="ri-image-line"></i><strong>이미지 구성</strong><p>전달받은 사진을 우선 활용하고 콘텐츠 이해를 돕는 이미지를 구성합니다.</p></article>
+      <article class="production-step reveal"><small>05 / PUBLISH</small><i class="ri-send-plane-line"></i><strong>블로그 발행</strong><p>완성된 콘텐츠를 블로그에 등록하고 실제 게시 화면을 확인합니다.</p></article>
+      <article class="production-step reveal"><small>06 / REVIEW</small><i class="ri-checkbox-circle-line"></i><strong>결과 공유</strong><p>게시 링크를 공유하고 확인이 필요한 내용이 있으면 의견을 반영합니다.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="materials" id="materials">
+  <div class="container">
+    <div class="section-head reveal"><span class="kicker">WHAT WE NEED</span><div><h2>좋은 콘텐츠는<br><span class="accent">실제 이야기가 있을수록 강합니다.</span></h2><p>모든 자료를 완벽하게 준비할 필요는 없습니다. 보유하고 있는 자료에서 시작해 필요한 내용을 정리해 나갑니다.</p></div></div>
+    <div class="material-layout">
+      <article class="material reveal"><small>01</small><i class="ri-camera-line"></i><strong>현장·서비스 사진</strong><p>실제 업무와 공간, 제품, 작업 과정을 보여줄 수 있는 이미지</p></article>
+      <article class="material reveal"><small>02</small><i class="ri-briefcase-4-line"></i><strong>작업·프로젝트 사례</strong><p>진행 배경과 과정, 결과 등 실제 경험을 설명할 수 있는 내용</p></article>
+      <article class="material reveal"><small>03</small><i class="ri-information-line"></i><strong>서비스 정보</strong><p>고객에게 안내해야 하는 주요 서비스, 제품, 이용 방법</p></article>
+      <article class="material reveal"><small>04</small><i class="ri-book-open-line"></i><strong>전문 참고자료</strong><p>세무·노무·법률 등 사실 확인이 중요한 전문 분야의 참고 내용</p></article>
+      <article class="material reveal"><small>05</small><i class="ri-chat-smile-2-line"></i><strong>후기·질문</strong><p>실제 고객 후기, 상담 과정에서 자주 나오는 질문과 답변</p></article>
+    </div>
+    <div class="material-guide reveal"><strong>PROFESSIONAL CONTENT</strong><p>세무·회계·노무·법률 등 전문적인 사실 확인이 필요한 콘텐츠는 업체에서 제공한 주제, 참고자료 및 핵심 내용을 바탕으로 제작합니다.</p></div>
+  </div>
+</section>
+
+<section class="examples dark" id="examples">
+  <div class="container">
+    <div class="section-head reveal"><span class="kicker">CONTENT EXAMPLES</span><div><h2>실제 업무가<br><span class="accent">이런 콘텐츠가 됩니다.</span></h2><p>업종에 따라 고객이 궁금해하는 질문과 업체가 보여줘야 할 내용을 중심으로 주제를 구성합니다.</p></div></div>
+    <div class="example-list">
+      <article class="example reveal"><small>CONSTRUCTION</small><h3>“김포 ○○공장 창호 교체 현장,<br>시공 과정부터 완료까지”</h3><p>현장 사진과 실제 작업 내용을 활용해 시공 경험과 기술력을 보여주는 사례형 콘텐츠</p></article>
+      <article class="example reveal"><small>PROFESSIONAL</small><h3>“사업주가 근로계약서 작성 전<br>확인해야 할 5가지”</h3><p>제공받은 전문 자료를 기반으로 고객이 이해하기 쉽게 정리한 정보형 콘텐츠</p></article>
+      <article class="example reveal"><small>MEDICAL / BEAUTY</small><h3>“처음 방문하시는 분들이<br>가장 많이 묻는 질문”</h3><p>상담 전 고객의 불안과 궁금증을 줄여주는 FAQ 중심 콘텐츠</p></article>
+      <article class="example reveal"><small>MANUFACTURING</small><h3>“제품 선택 전 확인해야 하는<br>규격과 제작 방식”</h3><p>제품과 제작 방식에 대한 전문성을 보여주면서 구매 판단을 돕는 서비스 콘텐츠</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="archive" id="archive">
+  <div class="container">
+    <div class="section-head reveal"><span class="kicker">CONTENT ARCHIVE</span><div><h2>한 건의 포스팅보다,<br><span class="accent">회사를 설명하는 자료가 남습니다.</span></h2><p>콘텐츠가 쌓일수록 고객이 검색하거나 상담 전에 확인할 수 있는 정보와 사례가 계속 늘어납니다.</p></div></div>
+    <div class="archive-visual reveal" id="archiveVisual">
+      <div class="archive-line"><span></span></div>
+      <article class="archive-month"><small>01 / START</small><strong>서비스 소개</strong><p>업체가 무엇을 하는지 설명하는 기본 콘텐츠부터 시작합니다.</p></article>
+      <article class="archive-month"><small>02 / EXPERIENCE</small><strong>작업 사례</strong><p>실제 현장과 프로젝트 경험을 하나씩 기록합니다.</p></article>
+      <article class="archive-month"><small>03 / TRUST</small><strong>후기 · FAQ</strong><p>고객이 선택 전에 확인할 수 있는 신뢰 자료를 쌓습니다.</p></article>
+      <article class="archive-month"><small>04 / EXPERTISE</small><strong>전문 정보</strong><p>업체만의 기준과 노하우를 설명하는 콘텐츠를 확장합니다.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="faq" id="faq">
+  <div class="container faq-layout">
+    <div class="faq-title reveal"><span class="kicker">FAQ</span><h2>운영 전에<br>궁금한 점.</h2></div>
+    <div class="faq-list reveal">
+      <details><summary>주제는 업체에서 직접 정해야 하나요?</summary><p>아닙니다. 업체의 서비스와 보유 자료, 고객이 궁금해할 내용을 기준으로 운영 방향과 콘텐츠 주제를 함께 정리합니다.</p></details>
+      <details><summary>사진이나 자료는 누가 준비하나요?</summary><p>실제 현장이나 서비스 특성을 보여주는 사진과 업무 정보는 업체에서 제공해주시는 것이 가장 좋습니다. 전달받은 자료를 바탕으로 콘텐츠에 적합하게 정리합니다.</p></details>
+      <details><summary>전문 분야 콘텐츠도 작성할 수 있나요?</summary><p>가능합니다. 다만 세무·회계·노무·법률 등 전문적인 사실 확인이 필요한 내용은 업체에서 제공한 자료와 핵심 내용을 바탕으로 구성합니다.</p></details>
+      <details><summary>검색 1페이지 노출을 보장하나요?</summary><p>특정 검색 순위는 보장하지 않습니다. 검색 결과는 키워드, 시점, 경쟁 상황, 플랫폼 정책 등 다양한 요인에 따라 달라질 수 있습니다.</p></details>
+      <details><summary>블로그 스킨 제작 없이 운영만 진행할 수 있나요?</summary><p>가능합니다. 현재 블로그 상태와 필요한 운영 범위를 확인한 뒤 콘텐츠 운영만 별도로 진행할 수 있습니다.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <div class="cta-orb" aria-hidden="true"></div>
+  <div class="container cta-inner">
+    <small>START YOUR CONTENT GROWTH</small>
+    <h2>쌓아둔 경험이 있다면,<br><span class="accent">이제 발견되게 만드세요.</span></h2>
+    <p>회사의 실제 경험과 전문성을 고객이 찾을 수 있는 콘텐츠로 바꿉니다.</p>
+    <a class="cta-btn" href="/shop_contents/myreg_form.htm?myreg_code=inquiry">블로그 운영 상담하기 <i class="ri-arrow-right-up-line"></i></a>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container footer-inner"><div><strong>CREAFIT<span>.</span></strong></div><div>BLOG OPERATION CONCEPT / 2026.09.02</div></div>
+</footer>
+
+<script>
+const progress=document.querySelector('.progress span');
+const header=document.getElementById('siteHeader');
+const reveals=[...document.querySelectorAll('.reveal')];
+const subLinks=[...document.querySelectorAll('.sub-nav a')];
+const archiveVisual=document.getElementById('archiveVisual');
+
+function onScroll(){
+  const y=window.scrollY;
+  const max=document.documentElement.scrollHeight-window.innerHeight;
+  progress.style.width=(max?y/max*100:0)+'%';
+  header.classList.toggle('is-scrolled',y>40);
+
+  let current='';
+  document.querySelectorAll('main section[id]').forEach(sec=>{
+    const r=sec.getBoundingClientRect();
+    if(r.top<170 && r.bottom>170) current=sec.id;
+  });
+  subLinks.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+current));
+}
+
+const io=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('on');
+      if(e.target===archiveVisual) archiveVisual.classList.add('on');
+      io.unobserve(e.target);
+    }
+  });
+},{threshold:.12});
+reveals.forEach(el=>io.observe(el));
+
+window.addEventListener('scroll',onScroll,{passive:true});
+onScroll();
+</script>
+</body>
+</html>
