@@ -84,6 +84,37 @@ footer{padding:46px 0;background:#050505;color:#777;border-top:1px solid rgba(25
 @media(max-width:700px){.why-cross{display:grid;grid-template-columns:1fr;grid-template-rows:none;gap:12px;min-height:0}.q-intent,.q-seo,.q-original,.q-compliance{grid-column:1;grid-row:auto;min-height:300px;padding:30px 24px}.why-center-mark{display:none}.archive-wall{overflow:hidden;padding:28px 0 46px}.archive-track{gap:14px}.archive-card{flex-basis:82%;min-height:230px!important}.archive-controls{grid-template-columns:auto 1fr;gap:14px}.archive-progress{grid-column:1/-1;grid-row:2}.archive-nav button{width:44px;height:44px}.archive-hint{text-align:left}.archive-summary{display:block}.archive-summary span{display:block;margin-top:8px}}
 @media(prefers-reduced-motion:reduce){.archive-track{transition:none}.archive-card,.proof-archive.is-live .archive-card{opacity:1;transform:none;filter:none}}
 </style>
+<style id="operation-motion-v3">
+/* WHY CREAFIT: automatic sequential hover state. */
+.why-quadrant.is-auto-active{transform:translateY(-7px);box-shadow:0 34px 82px rgba(65,55,45,.16)}
+.why-quadrant.is-auto-active:before{opacity:1}
+.why-quadrant.is-auto-active p{color:#e0e0e0}
+.why-quadrant.is-auto-active .quad-visual{opacity:1;transform:translateY(-45%) scale(1.05)}
+.q-seo.is-auto-active .quad-visual span:before{transform:scaleX(1)}
+.q-original.is-auto-active .quad-visual span:nth-child(1){transform:rotate(-11deg) translate(-6px,-5px)}
+.q-original.is-auto-active .quad-visual span:nth-child(2){transform:rotate(8deg) translate(5px,-4px)}
+.q-compliance.is-auto-active .quad-visual{transform:translateY(-45%) rotate(0) scale(1.03)}
+
+/* SEARCH RESULT 02: full-bleed, larger, faster visual stage. */
+.proof-archive .archive-wall{width:100vw;margin-left:calc(50% - 50vw);padding:54px 0 72px}
+.proof-archive .archive-track{gap:28px;padding:26px clamp(28px,4vw,86px) 36px;transition:transform .48s var(--ease)}
+.proof-archive .archive-card{flex:0 0 clamp(340px,29vw,460px);min-height:330px!important}
+.proof-archive .archive-card:after{inset:34px 0 38px;font-size:14px}
+
+/* WHAT WE NEED: moving scan line + pointer-responsive glow. */
+.material-layout{isolation:isolate;overflow:visible}
+.material-layout:after{content:"";position:absolute;z-index:8;left:-18%;top:-2px;width:180px;height:3px;background:linear-gradient(90deg,transparent,rgba(255,146,48,.25),var(--orange),rgba(255,146,48,.25),transparent);filter:drop-shadow(0 0 9px rgba(255,146,48,.5));pointer-events:none;animation:materialScan 5.2s linear infinite}
+.material{--mx:50%;--my:50%;isolation:isolate;transition:transform .45s var(--ease),background .45s var(--ease),box-shadow .45s var(--ease)}
+.material>*{position:relative;z-index:2}
+.material:hover{background:radial-gradient(circle 150px at var(--mx) var(--my),rgba(255,146,48,.15),transparent 72%),#f5f1e9;box-shadow:0 22px 46px rgba(72,62,50,.09);transform:translateY(-10px)}
+.material:hover i{box-shadow:0 0 0 10px rgba(255,146,48,.12)}
+.material-layout:has(.material:hover) .material:not(:hover){opacity:.62}
+@keyframes materialScan{0%{left:-18%}100%{left:100%}}
+
+@media(max-width:960px){.proof-archive .archive-card{flex-basis:clamp(300px,44vw,390px);min-height:300px!important}.proof-archive .archive-track{padding-left:28px;padding-right:28px}.material-layout:after{display:none}}
+@media(max-width:700px){.proof-archive .archive-wall{width:100vw;margin-left:calc(50% - 50vw);padding:32px 0 52px}.proof-archive .archive-track{gap:16px;padding:18px 18px 28px}.proof-archive .archive-card{flex-basis:86vw;min-height:255px!important}.material-layout:has(.material:hover) .material:not(:hover){opacity:1}.material:hover{transform:none}}
+@media(prefers-reduced-motion:reduce){.material-layout:after{display:none}.why-quadrant.is-auto-active{transform:none}}
+</style>
 </head>
 <body>
 <div class="progress"><span></span></div>
@@ -164,6 +195,46 @@ addEventListener('scroll',onScroll,{passive:true});addEventListener('resize',onS
   viewport.addEventListener('mouseenter',stop);viewport.addEventListener('mouseleave',()=>{if(!dragging)start()});
   const liveObserver=new MutationObserver(()=>{if(section.classList.contains('is-live')){update();start()}});liveObserver.observe(section,{attributes:true,attributeFilter:['class']});
   addEventListener('resize',measure,{passive:true});measure();update(false);if(section.classList.contains('is-live'))start();
+})();
+</script>
+<script id="motion-enhancements-v3">
+(()=>{
+  const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* WHY CREAFIT sequential hover simulation */
+  const why=document.getElementById('why-creafit'),whyStage=why?.querySelector('.why-cross'),whyItems=whyStage?[...whyStage.querySelectorAll('.why-quadrant')]:[];
+  let whyIndex=0,whyTimer=null,whyVisible=false;
+  const clearWhy=()=>whyItems.forEach(item=>item.classList.remove('is-auto-active'));
+  const stepWhy=()=>{if(!whyItems.length)return;clearWhy();whyItems[whyIndex%whyItems.length].classList.add('is-auto-active');whyIndex=(whyIndex+1)%whyItems.length};
+  const startWhy=()=>{if(reduced||whyTimer||!whyVisible||whyStage?.matches(':hover'))return;stepWhy();whyTimer=setInterval(stepWhy,1450)};
+  const stopWhy=()=>{if(whyTimer){clearInterval(whyTimer);whyTimer=null}clearWhy()};
+  if(whyStage&&whyItems.length){
+    const whyObserver=new IntersectionObserver(entries=>{entries.forEach(entry=>{whyVisible=entry.isIntersecting;if(whyVisible)startWhy();else stopWhy()})},{threshold:.28});
+    whyObserver.observe(whyStage);
+    whyStage.addEventListener('mouseenter',stopWhy);
+    whyStage.addEventListener('mouseleave',startWhy);
+  }
+
+  /* SEARCH RESULT 02 faster autoplay while keeping the existing slider logic. */
+  const proof2=document.getElementById('proof2'),viewport=document.getElementById('archiveWall'),fastNext=proof2?.querySelector('.archive-next'),fastPrev=proof2?.querySelector('.archive-prev');
+  let fastTimer=null;
+  const stopFast=()=>{if(fastTimer){clearInterval(fastTimer);fastTimer=null}};
+  const stopOriginal=()=>{if(viewport)viewport.dispatchEvent(new Event('mouseenter'))};
+  const startFast=()=>{if(reduced||!proof2?.classList.contains('is-live')||viewport?.matches(':hover')||fastTimer||!fastNext)return;fastTimer=setInterval(()=>{fastNext.click();stopOriginal()},2200)};
+  if(viewport&&fastNext){
+    viewport.addEventListener('mouseenter',e=>{if(e.isTrusted)stopFast()});
+    viewport.addEventListener('mouseleave',e=>{if(!e.isTrusted)return;stopOriginal();startFast()});
+    [fastNext,fastPrev].filter(Boolean).forEach(btn=>btn.addEventListener('click',e=>{if(e.isTrusted)setTimeout(stopOriginal,0)}));
+    const fastObserver=new MutationObserver(()=>{if(proof2.classList.contains('is-live')){stopOriginal();startFast()}else stopFast()});
+    fastObserver.observe(proof2,{attributes:true,attributeFilter:['class']});
+    if(proof2.classList.contains('is-live')){stopOriginal();startFast()}
+  }
+
+  /* WHAT WE NEED pointer-responsive light */
+  document.querySelectorAll('.material').forEach(item=>{
+    item.addEventListener('pointermove',e=>{const r=item.getBoundingClientRect();item.style.setProperty('--mx',((e.clientX-r.left)/r.width*100)+'%');item.style.setProperty('--my',((e.clientY-r.top)/r.height*100)+'%')});
+    item.addEventListener('pointerleave',()=>{item.style.setProperty('--mx','50%');item.style.setProperty('--my','50%')});
+  });
 })();
 </script>
 </body>
