@@ -144,6 +144,7 @@ footer{padding:46px 0;background:#050505;color:#777;border-top:1px solid rgba(25
 .materials{background:radial-gradient(circle at 86% 18%,rgba(255,146,48,.12),transparent 26%),radial-gradient(circle at 10% 86%,rgba(255,146,48,.05),transparent 30%),linear-gradient(180deg,#fff 0%,#fbf8f2 100%)}
 .materials:before{-webkit-text-stroke:1px rgba(0,0,0,.09)}
 .materials:after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(rgba(17,17,17,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(17,17,17,.035) 1px,transparent 1px);background-size:72px 72px;mask-image:linear-gradient(to bottom,transparent 0%,#000 16%,#000 82%,transparent 100%);-webkit-mask-image:linear-gradient(to bottom,transparent 0%,#000 16%,#000 82%,transparent 100%)}
+.proof-archive .archive-card{transition:opacity .3s var(--ease),transform .4s var(--ease),filter .3s var(--ease),box-shadow .35s var(--ease)}
 @media(max-width:700px){.manage-node p{font-size:16px}.materials:after{background-size:54px 54px;opacity:.7}}
 </style>
 </head>
@@ -300,11 +301,11 @@ addEventListener('scroll',onScroll,{passive:true});addEventListener('resize',onS
     assembleObserver.observe(whyStage);
   }
 
-  /* SEARCH RESULT 02 prepares before the user reaches the section. */
+  /* SEARCH RESULT prepares before the user reaches the section. */
   const proof2Early=document.getElementById('proof2'),searchTypeEarly=document.getElementById('searchType2');
   if(proof2Early&&searchTypeEarly&&!proof2Early.dataset.earlyObserver){
     proof2Early.dataset.earlyObserver='1';
-    const earlyObserver=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){typeSearch(proof2Early,searchTypeEarly);earlyObserver.disconnect()}})},{threshold:.01,rootMargin:'0px 0px 42% 0px'});
+    const earlyObserver=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){proof2Early.classList.add('is-searching');setTimeout(()=>proof2Early.classList.add('is-live'),120);typeSearch(proof2Early,searchTypeEarly);earlyObserver.disconnect()}})},{threshold:.01,rootMargin:'0px 0px 80% 0px'});
     earlyObserver.observe(proof2Early);
   }
 
