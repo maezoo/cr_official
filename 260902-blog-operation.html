@@ -125,17 +125,17 @@ footer{padding:46px 0;background:#050505;color:#777;border-top:1px solid rgba(25
 .why-cross:not(.is-assembling):not(.is-assembled) .q-original{transform:translate3d(-190px,150px,0) rotate(4deg) scale(.9)!important}
 .why-cross:not(.is-assembling):not(.is-assembled) .q-compliance{transform:translate3d(190px,150px,0) rotate(-4deg) scale(.9)!important}
 .why-cross:not(.is-assembling):not(.is-assembled) .why-center-mark{opacity:0;filter:blur(12px);transform:translate(-50%,-34%) scale(.7)}
-.why-cross.is-assembling .q-intent{animation:whyAssembleTL .96s var(--ease) both}
-.why-cross.is-assembling .q-seo{animation:whyAssembleTR .96s .08s var(--ease) both}
-.why-cross.is-assembling .q-original{animation:whyAssembleBL .96s .14s var(--ease) both}
-.why-cross.is-assembling .q-compliance{animation:whyAssembleBR .96s .2s var(--ease) both}
-.why-cross.is-assembling .why-center-mark{animation:whyCenterRise .88s .44s var(--ease) both}
+.why-cross.is-assembling .q-intent{animation:whyAssembleTL 1.65s var(--ease) both}
+.why-cross.is-assembling .q-seo{animation:whyAssembleTR 1.65s .12s var(--ease) both}
+.why-cross.is-assembling .q-original{animation:whyAssembleBL 1.65s .24s var(--ease) both}
+.why-cross.is-assembling .q-compliance{animation:whyAssembleBR 1.65s .36s var(--ease) both}
+.why-cross.is-assembling .why-center-mark{animation:whyCenterRise 1.3s .72s var(--ease) both}
 @keyframes whyAssembleTL{0%{opacity:0;filter:blur(10px);transform:translate3d(-190px,-150px,0) rotate(-5deg) scale(.9)}65%{opacity:1;filter:blur(0);transform:translate3d(10px,8px,0) rotate(.7deg) scale(1.012)}100%{opacity:1;filter:blur(0);transform:none}}
 @keyframes whyAssembleTR{0%{opacity:0;filter:blur(10px);transform:translate3d(190px,-150px,0) rotate(5deg) scale(.9)}65%{opacity:1;filter:blur(0);transform:translate3d(-10px,8px,0) rotate(-.7deg) scale(1.012)}100%{opacity:1;filter:blur(0);transform:none}}
 @keyframes whyAssembleBL{0%{opacity:0;filter:blur(10px);transform:translate3d(-190px,150px,0) rotate(4deg) scale(.9)}65%{opacity:1;filter:blur(0);transform:translate3d(10px,-8px,0) rotate(-.7deg) scale(1.012)}100%{opacity:1;filter:blur(0);transform:none}}
 @keyframes whyAssembleBR{0%{opacity:0;filter:blur(10px);transform:translate3d(190px,150px,0) rotate(-4deg) scale(.9)}65%{opacity:1;filter:blur(0);transform:translate3d(-10px,-8px,0) rotate(.7deg) scale(1.012)}100%{opacity:1;filter:blur(0);transform:none}}
 @keyframes whyCenterRise{0%{opacity:0;filter:blur(12px);transform:translate(-50%,-32%) scale(.68)}65%{opacity:1;filter:blur(0);transform:translate(-50%,-55%) scale(1.07)}100%{opacity:1;filter:blur(0);transform:translate(-50%,-50%) scale(1)}}
-@media(max-width:700px){.why-cross:not(.is-assembling):not(.is-assembled) .why-quadrant{transform:translateY(46px) scale(.96)!important}.why-cross.is-assembling .q-intent,.why-cross.is-assembling .q-seo,.why-cross.is-assembling .q-original,.why-cross.is-assembling .q-compliance{animation:whyAssembleMobile .72s var(--ease) both}@keyframes whyAssembleMobile{from{opacity:0;filter:blur(7px);transform:translateY(46px) scale(.96)}to{opacity:1;filter:blur(0);transform:none}}}
+@media(max-width:700px){.why-cross:not(.is-assembling):not(.is-assembled) .why-quadrant{transform:translateY(46px) scale(.96)!important}.why-cross.is-assembling .q-intent,.why-cross.is-assembling .q-seo,.why-cross.is-assembling .q-original,.why-cross.is-assembling .q-compliance{animation:whyAssembleMobile 1.05s var(--ease) both}@keyframes whyAssembleMobile{from{opacity:0;filter:blur(7px);transform:translateY(46px) scale(.96)}to{opacity:1;filter:blur(0);transform:none}}}
 @media(prefers-reduced-motion:reduce){.why-cross:not(.is-assembling):not(.is-assembled) .why-quadrant,.why-cross:not(.is-assembling):not(.is-assembled) .why-center-mark{opacity:1!important;filter:none!important;transform:none!important}}
 </style>
 </head>
@@ -286,7 +286,7 @@ addEventListener('scroll',onScroll,{passive:true});addEventListener('resize',onS
       whyCards.forEach(card=>card.classList.add('on'));
       if(reduced){whyStage.classList.add('is-assembled');return}
       whyStage.classList.add('is-assembling');
-      setTimeout(()=>{whyStage.classList.remove('is-assembling');whyStage.classList.add('is-assembled')},1250);
+      setTimeout(()=>{whyStage.classList.remove('is-assembling');whyStage.classList.add('is-assembled')},2200);
     };
     const assembleObserver=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){assemble();assembleObserver.disconnect()}})},{threshold:.01,rootMargin:'0px 0px 10% 0px'});
     assembleObserver.observe(whyStage);
@@ -307,13 +307,17 @@ addEventListener('scroll',onScroll,{passive:true});addEventListener('resize',onS
     nextButton.click=()=>{};
     let timer=null;
     const stop=()=>{if(timer){clearInterval(timer);timer=null}};
-    const fire=()=>nextButton.dispatchEvent(new MouseEvent('click',{bubbles:true,cancelable:true,view:window}));
+    const fire=()=>{
+      if(archiveViewport.classList.contains('is-dragging'))return;
+      nextButton.dispatchEvent(new MouseEvent('click',{bubbles:true,cancelable:true,view:window}));
+    };
     const start=()=>{
-      if(reduced||timer||!proof2Early?.classList.contains('is-live')||archiveViewport.matches(':hover'))return;
+      if(reduced||timer||!proof2Early?.classList.contains('is-live'))return;
       timer=setInterval(fire,1900);
     };
-    archiveViewport.addEventListener('mouseenter',stop);
-    archiveViewport.addEventListener('mouseleave',start);
+    archiveViewport.addEventListener('pointerdown',stop);
+    archiveViewport.addEventListener('pointerup',start);
+    archiveViewport.addEventListener('pointercancel',start);
     const timingObserver=new MutationObserver(()=>{if(proof2Early.classList.contains('is-live'))start();else stop()});
     timingObserver.observe(proof2Early,{attributes:true,attributeFilter:['class']});
     if(proof2Early.classList.contains('is-live'))start();
