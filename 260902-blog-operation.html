@@ -117,6 +117,27 @@ footer{padding:46px 0;background:#050505;color:#777;border-top:1px solid rgba(25
 @media(max-width:700px){.proof-archive .archive-wall{width:100vw;margin-left:calc(50% - 50vw);padding:34px 0 54px}.proof-archive .archive-track{gap:18px;padding:20px 18px 30px}.proof-archive .archive-card{flex-basis:90vw;min-height:280px!important}.material-layout:has(.material:hover) .material:not(:hover),.material-layout.is-auto-running .material:not(.is-auto-active){opacity:1}.material:hover,.material.is-auto-active{transform:none}.material-guide{padding:24px 18px}}
 @media(prefers-reduced-motion:reduce){.material-layout:after{display:none}.why-quadrant.is-auto-active,.material.is-auto-active{transform:none}}
 </style>
+<style id="operation-entry-v4">
+/* WHY CREAFIT: four-corner assembly entrance + center badge rise. */
+.why-cross:not(.is-assembling):not(.is-assembled) .why-quadrant{opacity:0!important;filter:blur(10px);pointer-events:none}
+.why-cross:not(.is-assembling):not(.is-assembled) .q-intent{transform:translate3d(-190px,-150px,0) rotate(-5deg) scale(.9)!important}
+.why-cross:not(.is-assembling):not(.is-assembled) .q-seo{transform:translate3d(190px,-150px,0) rotate(5deg) scale(.9)!important}
+.why-cross:not(.is-assembling):not(.is-assembled) .q-original{transform:translate3d(-190px,150px,0) rotate(4deg) scale(.9)!important}
+.why-cross:not(.is-assembling):not(.is-assembled) .q-compliance{transform:translate3d(190px,150px,0) rotate(-4deg) scale(.9)!important}
+.why-cross:not(.is-assembling):not(.is-assembled) .why-center-mark{opacity:0;filter:blur(12px);transform:translate(-50%,-34%) scale(.7)}
+.why-cross.is-assembling .q-intent{animation:whyAssembleTL .96s var(--ease) both}
+.why-cross.is-assembling .q-seo{animation:whyAssembleTR .96s .08s var(--ease) both}
+.why-cross.is-assembling .q-original{animation:whyAssembleBL .96s .14s var(--ease) both}
+.why-cross.is-assembling .q-compliance{animation:whyAssembleBR .96s .2s var(--ease) both}
+.why-cross.is-assembling .why-center-mark{animation:whyCenterRise .88s .44s var(--ease) both}
+@keyframes whyAssembleTL{0%{opacity:0;filter:blur(10px);transform:translate3d(-190px,-150px,0) rotate(-5deg) scale(.9)}65%{opacity:1;filter:blur(0);transform:translate3d(10px,8px,0) rotate(.7deg) scale(1.012)}100%{opacity:1;filter:blur(0);transform:none}}
+@keyframes whyAssembleTR{0%{opacity:0;filter:blur(10px);transform:translate3d(190px,-150px,0) rotate(5deg) scale(.9)}65%{opacity:1;filter:blur(0);transform:translate3d(-10px,8px,0) rotate(-.7deg) scale(1.012)}100%{opacity:1;filter:blur(0);transform:none}}
+@keyframes whyAssembleBL{0%{opacity:0;filter:blur(10px);transform:translate3d(-190px,150px,0) rotate(4deg) scale(.9)}65%{opacity:1;filter:blur(0);transform:translate3d(10px,-8px,0) rotate(-.7deg) scale(1.012)}100%{opacity:1;filter:blur(0);transform:none}}
+@keyframes whyAssembleBR{0%{opacity:0;filter:blur(10px);transform:translate3d(190px,150px,0) rotate(-4deg) scale(.9)}65%{opacity:1;filter:blur(0);transform:translate3d(-10px,-8px,0) rotate(.7deg) scale(1.012)}100%{opacity:1;filter:blur(0);transform:none}}
+@keyframes whyCenterRise{0%{opacity:0;filter:blur(12px);transform:translate(-50%,-32%) scale(.68)}65%{opacity:1;filter:blur(0);transform:translate(-50%,-55%) scale(1.07)}100%{opacity:1;filter:blur(0);transform:translate(-50%,-50%) scale(1)}}
+@media(max-width:700px){.why-cross:not(.is-assembling):not(.is-assembled) .why-quadrant{transform:translateY(46px) scale(.96)!important}.why-cross.is-assembling .q-intent,.why-cross.is-assembling .q-seo,.why-cross.is-assembling .q-original,.why-cross.is-assembling .q-compliance{animation:whyAssembleMobile .72s var(--ease) both}@keyframes whyAssembleMobile{from{opacity:0;filter:blur(7px);transform:translateY(46px) scale(.96)}to{opacity:1;filter:blur(0);transform:none}}}
+@media(prefers-reduced-motion:reduce){.why-cross:not(.is-assembling):not(.is-assembled) .why-quadrant,.why-cross:not(.is-assembling):not(.is-assembled) .why-center-mark{opacity:1!important;filter:none!important;transform:none!important}}
+</style>
 </head>
 <body>
 <div class="progress"><span></span></div>
@@ -248,6 +269,54 @@ addEventListener('scroll',onScroll,{passive:true});addEventListener('resize',onS
     materialsObserver.observe(materialsStage);
     materialsStage.addEventListener('mouseenter',stopMaterials);
     materialsStage.addEventListener('mouseleave',startMaterials);
+  }
+})();
+</script>
+<script id="entry-and-archive-timing-v4">
+(()=>{
+  const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* WHY CREAFIT assembles once as the section approaches. */
+  const whyStage=document.querySelector('#why-creafit .why-cross');
+  if(whyStage&&!whyStage.dataset.entryReady){
+    whyStage.dataset.entryReady='1';
+    const whyCards=[...whyStage.querySelectorAll('.why-quadrant')];
+    const assemble=()=>{
+      if(whyStage.classList.contains('is-assembled')||whyStage.classList.contains('is-assembling'))return;
+      whyCards.forEach(card=>card.classList.add('on'));
+      if(reduced){whyStage.classList.add('is-assembled');return}
+      whyStage.classList.add('is-assembling');
+      setTimeout(()=>{whyStage.classList.remove('is-assembling');whyStage.classList.add('is-assembled')},1250);
+    };
+    const assembleObserver=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){assemble();assembleObserver.disconnect()}})},{threshold:.01,rootMargin:'0px 0px 10% 0px'});
+    assembleObserver.observe(whyStage);
+  }
+
+  /* SEARCH RESULT 02 prepares before the user reaches the section. */
+  const proof2Early=document.getElementById('proof2'),searchTypeEarly=document.getElementById('searchType2');
+  if(proof2Early&&searchTypeEarly&&!proof2Early.dataset.earlyObserver){
+    proof2Early.dataset.earlyObserver='1';
+    const earlyObserver=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){typeSearch(proof2Early,searchTypeEarly);earlyObserver.disconnect()}})},{threshold:.01,rootMargin:'0px 0px 42% 0px'});
+    earlyObserver.observe(proof2Early);
+  }
+
+  /* Override the previous fast autoplay to 1.9 seconds without changing manual controls. */
+  const archiveViewport=document.getElementById('archiveWall'),nextButton=document.querySelector('#proof2 .archive-next');
+  if(archiveViewport&&nextButton&&!nextButton.dataset.timing1900){
+    nextButton.dataset.timing1900='1';
+    nextButton.click=()=>{};
+    let timer=null;
+    const stop=()=>{if(timer){clearInterval(timer);timer=null}};
+    const fire=()=>nextButton.dispatchEvent(new MouseEvent('click',{bubbles:true,cancelable:true,view:window}));
+    const start=()=>{
+      if(reduced||timer||!proof2Early?.classList.contains('is-live')||archiveViewport.matches(':hover'))return;
+      timer=setInterval(fire,1900);
+    };
+    archiveViewport.addEventListener('mouseenter',stop);
+    archiveViewport.addEventListener('mouseleave',start);
+    const timingObserver=new MutationObserver(()=>{if(proof2Early.classList.contains('is-live'))start();else stop()});
+    timingObserver.observe(proof2Early,{attributes:true,attributeFilter:['class']});
+    if(proof2Early.classList.contains('is-live'))start();
   }
 })();
 </script>
