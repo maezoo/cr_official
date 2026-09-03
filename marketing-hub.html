@@ -74,6 +74,70 @@
 @media(max-width:700px){.hub-problem{padding:95px 0}.problem-title h2{font-size:40px;line-height:1.02}.problem-title p{font-size:14px}.problem-layout{width:calc(100% - 28px)}.problem-item{grid-template-columns:42px 1fr;gap:10px 14px;min-height:0;padding:28px 14px}.problem-item .route{grid-column:2;justify-self:start;font-size:10px}.problem-item h3{font-size:22px}}
 @media(max-width:420px){.problem-title h2{font-size:36px}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}.page-intro{display:none}.cta-follow{display:none}.reveal-line{opacity:1;transform:none}}
+
+/* requested visual refinements */
+.marketing-hero{
+ background:
+ radial-gradient(circle at 78% 14%,rgba(224,255,241,.42) 0,rgba(224,255,241,.13) 19%,transparent 40%),
+ radial-gradient(ellipse at 5% 100%,rgba(0,32,25,.72) 0,rgba(0,69,45,.35) 30%,transparent 58%),
+ linear-gradient(124deg,#021d18 0%,#016b42 25%,#03c75a 52%,#069c54 73%,#031c17 100%);
+ color:#fff
+}
+.marketing-hero:before{
+ opacity:.92;
+ background-image:
+ linear-gradient(112deg,transparent 18%,rgba(231,255,244,.04) 31%,rgba(255,255,255,.24) 44%,rgba(197,255,229,.06) 53%,transparent 69%),
+ radial-gradient(circle at 76% 27%,rgba(255,255,255,.2),transparent 28%),
+ linear-gradient(rgba(255,255,255,.065) 1px,transparent 1px),
+ linear-gradient(90deg,rgba(255,255,255,.065) 1px,transparent 1px);
+ background-size:180% 100%,100% 100%,64px 64px,64px 64px;
+ background-position:100% 0,0 0,0 0,0 0;
+ mask-image:linear-gradient(to bottom,#000,transparent 97%);
+ -webkit-mask-image:linear-gradient(to bottom,#000,transparent 97%);
+ animation:heroMetalFlow 12s ease-in-out infinite alternate
+}
+.marketing-hero:after{-webkit-text-stroke-color:rgba(229,255,241,.13);filter:drop-shadow(0 0 24px rgba(188,255,221,.08))}
+.marketing-copy small{color:rgba(255,255,255,.58)}
+.marketing-copy h1{font-size:clamp(52px,4.25vw,68px);line-height:1.02;letter-spacing:-.067em;text-shadow:0 8px 34px rgba(0,35,24,.2)}
+.marketing-copy h1 .accent{display:inline-block;margin-top:.08em;font-size:1.36em;letter-spacing:-.07em;color:#fff}
+.marketing-copy p{color:rgba(255,255,255,.72)}
+.marketing-copy p strong{color:#fff}
+.marketing-copy a{color:#fff;border-bottom-color:#fff}
+.marketing-copy a i{color:#fff}
+.search-orbit{border-color:rgba(223,255,239,.26)}
+.search-orbit:before,.search-orbit:after{border-color:rgba(223,255,239,.15)}
+.search-orbit i{background:#fff;box-shadow:0 0 28px rgba(222,255,239,.55)}
+@keyframes heroMetalFlow{0%{background-position:115% 0,0 0,0 0,0 0}100%{background-position:-45% 0,0 0,18px 10px,18px 10px}}
+
+.diagnosis-stage{background:transparent;box-shadow:none}
+.diagnosis-stage:before{
+ inset:0;
+ background-color:#080808;
+ background-image:
+ radial-gradient(circle at 76% 42%,rgba(255,146,48,.11),transparent 28%),
+ linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),
+ linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);
+ background-size:100% 100%,58px 58px,58px 58px;
+ mask-image:radial-gradient(ellipse 96% 94% at 50% 50%,#000 55%,rgba(0,0,0,.92) 72%,transparent 100%);
+ -webkit-mask-image:radial-gradient(ellipse 96% 94% at 50% 50%,#000 55%,rgba(0,0,0,.92) 72%,transparent 100%)
+}
+.diagnosis-stage:after{left:2%;top:-.07em}
+
+.split-panel.place .split-meta span,.split-panel.search .split-meta span,
+.split-panel.place .split-copy>small,.split-panel.search .split-copy>small{color:rgba(0,0,0,.68)}
+.split-panel.place .split-meta b,.split-panel.search .split-meta b{color:rgba(0,0,0,.2)}
+.split-panel.place .split-copy h3,.split-panel.search .split-copy h3{color:#000}
+.split-panel.place .split-copy p,.split-panel.search .split-copy p{color:rgba(0,0,0,.66)}
+.split-panel.place .split-role,.split-panel.search .split-role{color:#111}
+.split-panel.place .split-link,.split-panel.search .split-link{color:#111;border-color:#fff}
+.split-panel.place .split-link i,.split-panel.search .split-link i{color:#111}
+
+@media(max-width:700px){
+ .marketing-copy h1{font-size:clamp(45px,12.2vw,61px)}
+ .marketing-copy h1 .accent{font-size:1.25em}
+ .diagnosis-stage:before{mask-image:linear-gradient(to bottom,transparent 0,#000 7%,#000 94%,transparent 100%);-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 7%,#000 94%,transparent 100%)}
+}
+
 </style>
 </head>
 <body>
@@ -84,7 +148,7 @@
   <div class="container marketing-hero-grid">
     <div class="marketing-copy">
       <small>CREAFIT / ONLINE MARKETING</small>
-      <h1>SEARCH.<br>CONNECT.<br><span class="accent">GROW.</span></h1>
+      <h1>검색되는 순간,<br>고객과 연결됩니다.<br><span class="accent">CONNECT.</span></h1>
       <p><strong>고객이 찾는 자리에서 먼저 발견되는 것.</strong><br>네이버 플레이스 최적화와 네이버 파워링크를 통해 검색 의도가 실제 방문과 문의로 이어지도록 설계합니다.</p>
       <a href="#services">FIND YOUR MARKETING <i class="ri-arrow-down-line"></i></a>
     </div>
@@ -218,7 +282,7 @@ const progressBar=document.querySelector('.progress span');const syncProgress=()
 const marketingSubNav=document.querySelector("#marketingSubNav");if(marketingSubNav){const marker=marketingSubNav.offsetTop;const syncSubNav=()=>marketingSubNav.classList.toggle("is-stuck",scrollY>=marker-92);syncSubNav();addEventListener("scroll",syncSubNav,{passive:true})}
 const revealObserver=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-visible');revealObserver.unobserve(entry.target)}})},{threshold:.15,rootMargin:'0px 0px -7% 0px'});document.querySelectorAll('.reveal-line').forEach(el=>revealObserver.observe(el));
 if(!matchMedia('(prefers-reduced-motion: reduce)').matches){gsap.from('.marketing-copy>*',{y:60,opacity:0,stagger:.1,duration:.85,delay:.55,ease:'power4.out'});gsap.from('.search-window',{x:100,opacity:0,scale:.95,duration:1.1,delay:1,ease:'power4.out'});gsap.from('.float-tag',{opacity:0,scale:.7,stagger:.14,duration:.55,delay:1.35,ease:'back.out(1.7)'})}
-if(!matchMedia('(prefers-reduced-motion: reduce)').matches&&window.gsap&&window.ScrollTrigger){gsap.registerPlugin(ScrollTrigger);const systemSection=document.querySelector('.marketing-system'),systemCards=[...(systemSection?.querySelectorAll('.system-card')||[])],systemTargets=systemSection?.querySelectorAll('.system-head .kicker,.system-head h2,.system-intro,.system-card');if(systemSection&&systemTargets?.length&&systemCards.length){gsap.set(systemTargets,{opacity:0,y:80,rotateX:6,transformOrigin:'50% 100%'});gsap.timeline({scrollTrigger:{trigger:systemSection,start:'top 72%',once:true}}).to(systemTargets,{opacity:1,y:0,rotateX:0,duration:1,stagger:.11,ease:'power4.out'});gsap.fromTo(systemSection,{'--system-shift':'-80px'},{'--system-shift':'100px',ease:'none',scrollTrigger:{trigger:systemSection,start:'top bottom',end:'bottom top',scrub:1}});const internalTimelines=[];systemCards.forEach(card=>{const motion=card.dataset.motion;let tl;if(motion==='analyze'){tl=gsap.timeline({paused:true,repeat:-1,repeatDelay:.35});tl.fromTo(card.querySelector('.visual-scan'),{y:0,opacity:.35},{y:190,opacity:1,duration:1.65,ease:'power1.inOut'}).fromTo(card.querySelectorAll('.visual-keyword'),{opacity:.25,x:-10},{opacity:1,x:0,duration:.45,stagger:.13,ease:'power2.out'},.15).to(card.querySelector('.visual-focus'),{scale:1.12,duration:.55,yoyo:true,repeat:1,ease:'power2.inOut'},.5)}else if(motion==='execute'){tl=gsap.timeline({paused:true,repeat:-1,repeatDelay:.15});tl.fromTo(card.querySelectorAll('.target-ring'),{scale:.7,opacity:.75},{scale:1.28,opacity:.08,duration:1.8,stagger:.22,ease:'power1.out'}).to(card.querySelectorAll('.target-node'),{scale:1.65,opacity:.35,duration:.6,stagger:.1,yoyo:true,repeat:1},0).to(card.querySelector('.target-core'),{scale:1.08,duration:.7,yoyo:true,repeat:1},0)}else{tl=gsap.timeline({paused:true,repeat:-1,repeatDelay:.45});tl.fromTo(card.querySelectorAll('.metric-bar'),{scaleY:.16,opacity:.4},{scaleY:1,opacity:1,duration:.85,stagger:.11,ease:'power3.out'}).to(card.querySelectorAll('.metric-bar'),{scaleY:(i)=>[.55,.82,.64,.94,.72,1][i],duration:.7,stagger:.08,ease:'power2.inOut'}).to(card.querySelector('.metric-live'),{opacity:.35,duration:.35,yoyo:true,repeat:1},0)}internalTimelines.push(tl)});const playInternal=()=>internalTimelines.forEach(tl=>tl.play()),pauseInternal=()=>internalTimelines.forEach(tl=>tl.pause());ScrollTrigger.create({trigger:systemSection,start:'top 85%',end:'bottom 15%',onEnter:playInternal,onEnterBack:playInternal,onLeave:pauseInternal,onLeaveBack:pauseInternal})}}
+if(!matchMedia('(prefers-reduced-motion: reduce)').matches&&window.gsap&&window.ScrollTrigger){gsap.registerPlugin(ScrollTrigger);const systemSection=document.querySelector('.marketing-system'),systemCards=[...(systemSection?.querySelectorAll('.system-card')||[])],systemHeadTargets=systemSection?.querySelectorAll('.system-head .kicker,.system-head h2,.system-intro');if(systemSection&&systemHeadTargets?.length&&systemCards.length){gsap.set(systemHeadTargets,{opacity:0,y:64,rotateX:5,transformOrigin:'50% 100%'});gsap.timeline({scrollTrigger:{trigger:systemSection,start:'top 74%',once:true}}).to(systemHeadTargets,{opacity:1,y:0,rotateX:0,duration:.9,stagger:.12,ease:'power4.out'});gsap.fromTo(systemSection,{'--system-shift':'-80px'},{'--system-shift':'100px',ease:'none',scrollTrigger:{trigger:systemSection,start:'top bottom',end:'bottom top',scrub:1}});systemCards.forEach((card,index)=>{gsap.set(card,{opacity:0,y:92,rotateX:8,scale:.965,transformOrigin:'50% 100%'});const motion=card.dataset.motion;let tl;if(motion==='analyze'){tl=gsap.timeline({paused:true,repeat:-1,repeatDelay:.35});tl.fromTo(card.querySelector('.visual-scan'),{y:0,opacity:.35},{y:190,opacity:1,duration:1.65,ease:'power1.inOut'}).fromTo(card.querySelectorAll('.visual-keyword'),{opacity:.25,x:-10},{opacity:1,x:0,duration:.45,stagger:.13,ease:'power2.out'},.15).to(card.querySelector('.visual-focus'),{scale:1.12,duration:.55,yoyo:true,repeat:1,ease:'power2.inOut'},.5)}else if(motion==='execute'){tl=gsap.timeline({paused:true,repeat:-1,repeatDelay:.15});tl.fromTo(card.querySelectorAll('.target-ring'),{scale:.7,opacity:.75},{scale:1.28,opacity:.08,duration:1.8,stagger:.22,ease:'power1.out'}).to(card.querySelectorAll('.target-node'),{scale:1.65,opacity:.35,duration:.6,stagger:.1,yoyo:true,repeat:1},0).to(card.querySelector('.target-core'),{scale:1.08,duration:.7,yoyo:true,repeat:1},0)}else{tl=gsap.timeline({paused:true,repeat:-1,repeatDelay:.45});tl.fromTo(card.querySelectorAll('.metric-bar'),{scaleY:.16,opacity:.4},{scaleY:1,opacity:1,duration:.85,stagger:.11,ease:'power3.out'}).to(card.querySelectorAll('.metric-bar'),{scaleY:(i)=>[.55,.82,.64,.94,.72,1][i],duration:.7,stagger:.08,ease:'power2.inOut'}).to(card.querySelector('.metric-live'),{opacity:.35,duration:.35,yoyo:true,repeat:1},0)}gsap.to(card,{opacity:1,y:0,rotateX:0,scale:1,duration:1.05,delay:index*.05,ease:'power4.out',scrollTrigger:{trigger:card,start:'top 86%',once:true}});ScrollTrigger.create({trigger:card,start:'top 90%',end:'bottom 10%',onEnter:()=>tl.play(),onEnterBack:()=>tl.play(),onLeave:()=>tl.pause(),onLeaveBack:()=>tl.pause()})})}}
 const cta=document.querySelector('.web-contact-cta'),follow=cta?.querySelector('.cta-follow');if(cta&&follow){gsap.set(follow,{xPercent:-50,yPercent:-50});const place=(x,y)=>gsap.to(follow,{x,y,duration:.65,ease:'power3.out'});cta.addEventListener('pointermove',e=>{const r=cta.getBoundingClientRect();place(e.clientX-r.left,e.clientY-r.top)});cta.addEventListener('pointerenter',e=>{const r=cta.getBoundingClientRect();place(e.clientX-r.left,e.clientY-r.top)})}
 </script>
 </body>
