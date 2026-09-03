@@ -230,11 +230,25 @@
 .marketing-sub-nav.is-stuck{padding:0;background:transparent;border:0;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none}
 @media(max-width:960px){.marketing-sub-nav{display:none;margin-top:0}}
 
+
+/* preserve the original marketing sub navigation design while sticky */
+.marketing-sub-nav{margin-top:-27px;padding:0;background:transparent;border:0;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none}
+.marketing-sub-nav .container,
+.marketing-sub-nav.is-stuck .container{width:min(calc(100% - 88px),1780px);max-width:none;min-height:0;margin:0 auto;padding:0 8px;background:rgba(244,240,232,.94);border:1px solid rgba(0,0,0,.12);border-radius:14px;box-shadow:0 16px 34px rgba(72,62,50,.13);backdrop-filter:blur(15px);-webkit-backdrop-filter:blur(15px)}
+.marketing-sub-nav a,
+.marketing-sub-nav.is-stuck a{padding:16px 17px;color:#111;opacity:.52;text-shadow:none}
+.marketing-sub-nav a:hover,
+.marketing-sub-nav.is-stuck a:hover{opacity:1}
+.marketing-sub-nav a:after,
+.marketing-sub-nav.is-stuck a:after{background:var(--orange)}
+.marketing-sub-nav.is-stuck{margin-top:-27px;padding:0;background:transparent;border:0;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none}
+@media(max-width:960px){.marketing-sub-nav{display:none;margin-top:0}.marketing-sub-nav.is-stuck{margin-top:0}}
+
 </style>
 </head>
 <body>
 <div class="progress"><span></span></div>
-<div class="page-intro" aria-hidden="true"><span>ONLINE MARKETING<i>.</i></span></div>
+<div class="page-intro" aria-hidden="true"><span>MARKETING<i>.</i></span></div>
 <main>
 <section class="marketing-hero">
   <div class="container marketing-hero-grid">
@@ -255,8 +269,8 @@
         </svg>
         <span class="network-junction"></span>
         <div class="network-origin">
-          <small>SEARCH INTENT</small>
-          <strong>고객의<br>검색 의도</strong>
+          <small>DATA-DRIVEN MARKETING</small>
+          <strong>SEARCH<br>INTELLIGENCE</strong>
           <em>KEYWORD SIGNAL / LIVE</em>
         </div>
         <div class="network-service powerlink">
