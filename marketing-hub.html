@@ -10,7 +10,7 @@
 :root{--orange:#ff9230;--naver:#03c75a;--black:#050505;--ink:#121212;--paper:#f2efe8;--white:#fff;--gray:#747474;--line:rgba(0,0,0,.14);--wline:rgba(255,255,255,.13);--container:1560px;--wide:1780px;--ease:cubic-bezier(.16,1,.3,1)}
 *,*:before,*:after{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:"Pretendard Variable","Pretendard",sans-serif;background:var(--black);color:#fff;overflow-x:hidden;word-break:keep-all}a{text-decoration:none;color:inherit}button{font:inherit}.container{width:min(calc(100% - 56px),var(--container));margin:auto}.kicker{display:inline-flex;align-items:center;gap:11px;font-size:10px;font-weight:900;letter-spacing:.18em;text-transform:uppercase}.kicker:before{content:"";width:32px;height:1px;background:currentColor}.accent{color:var(--orange)}
 .progress{position:fixed;left:0;top:0;width:100%;height:3px;z-index:10000}.progress span{display:block;width:0;height:100%;background:var(--orange)}
-.page-intro{position:fixed;inset:0;z-index:12000;display:grid;place-items:center;pointer-events:none;overflow:hidden;animation:introRemove .1s 1.1s forwards}.page-intro:before,.page-intro:after{content:"";position:absolute;inset:0;background:var(--orange);transform-origin:top;animation:introPanel 1.05s var(--ease) forwards}.page-intro:after{background:#080808;clip-path:inset(0 0 50% 0)}.page-intro span{position:relative;z-index:2;font-size:clamp(38px,7vw,100px);font-weight:950;letter-spacing:-.06em;animation:introTextOut .25s .58s ease forwards}.page-intro i{color:var(--orange);font-style:normal}@keyframes introPanel{0%,60%{transform:scaleY(1)}100%{transform:scaleY(0)}}@keyframes introRemove{to{visibility:hidden}}@keyframes introTextOut{to{opacity:0;transform:translateY(-18px)}}
+.page-intro{position:fixed;inset:0;z-index:12000;display:grid;place-items:center;pointer-events:none;overflow:hidden;animation:introRemove .1s 1.1s forwards}.page-intro:before,.page-intro:after{content:"";position:absolute;inset:0;background:var(--orange);transform-origin:top;animation:introPanel 1.05s var(--ease) forwards}.page-intro:after{background:#080808;clip-path:inset(0 0 50% 0)}.page-intro span{color:#fff!important;position:relative;z-index:2;font-size:clamp(38px,7vw,100px);font-weight:950;letter-spacing:-.06em;animation:introWord .92s var(--ease) forwards}.page-intro i{color:var(--orange);font-style:normal}@keyframes introWord{0%{transform:translateY(100%);opacity:0}28%,62%{transform:none;opacity:1}100%{transform:translateY(-100%);opacity:0}}@keyframes introPanel{0%,60%{transform:scaleY(1)}100%{transform:scaleY(0)}}@keyframes introRemove{to{visibility:hidden}}
 
 /* HERO */
 .marketing-hero{min-height:104svh;padding:150px 0 80px;background:#050505;position:relative;overflow:hidden;display:flex;align-items:center}.marketing-hero:before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:64px 64px;mask-image:linear-gradient(to bottom,#000,transparent 96%)}.marketing-hero:after{content:"MARKETING";position:absolute;left:-.04em;bottom:-.15em;font-size:clamp(160px,25vw,410px);font-weight:950;line-height:1;letter-spacing:-.09em;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.055);pointer-events:none}.marketing-hero-grid{display:grid;grid-template-columns:.78fr 1.22fr;gap:clamp(52px,5vw,88px);align-items:center;position:relative;width:min(calc(100% - 56px),1560px);z-index:2}.marketing-copy small{font-size:10px;color:#777;letter-spacing:.18em;font-weight:850}.marketing-copy h1{margin:38px 0 0;font-size:clamp(58px,6.8vw,104px);font-weight:950;line-height:.93;letter-spacing:-.071em}.marketing-copy p{max-width:630px;margin:30px 0 0;color:#969696;font-size:18px;line-height:1.78}.marketing-copy p strong{color:#fff}.marketing-copy a{display:inline-flex;align-items:center;gap:9px;margin-top:40px;padding-bottom:9px;border-bottom:1px solid var(--orange);font-size:10px;font-weight:900;letter-spacing:.14em}.marketing-copy a i{color:var(--orange)}
@@ -192,13 +192,13 @@
 .network-flow{stroke-width:2;stroke-dasharray:7 20;opacity:0}
 .network-flow.power{stroke:#ff9230;filter:drop-shadow(0 0 8px rgba(255,146,48,.72))}
 .network-flow.place{stroke:#c9ffe0;filter:drop-shadow(0 0 8px rgba(201,255,224,.65))}
-.network-origin{position:absolute;left:3%;top:50%;width:230px;padding:30px 0 30px 26px;border-left:4px solid #fff;transform:translateY(-50%);color:#fff}
+.network-origin{position:absolute;left:0;top:50%;width:230px;padding:30px 0 30px 26px;border-left:4px solid #fff;transform:translateY(-50%);color:#fff}
 .network-origin:before{content:"";position:absolute;left:-12px;top:50%;width:20px;height:1px;background:#fff;box-shadow:0 0 16px rgba(255,255,255,.8)}
 .network-origin small{display:block;color:rgba(255,255,255,.62);font-size:9px;font-weight:900;letter-spacing:.18em}
 .network-origin strong{display:block;margin-top:15px;font-size:clamp(38px,3.5vw,56px);line-height:1.02;letter-spacing:-.055em}
 .network-origin em{display:block;margin-top:17px;color:#ff9230;font-size:8px;font-style:normal;font-weight:900;letter-spacing:.14em}
 .network-junction{position:absolute;left:27.25%;top:50%;width:13px;height:13px;border:2px solid #fff;border-radius:50%;background:#05482f;translate:-50% -50%;box-shadow:0 0 0 8px rgba(255,255,255,.07),0 0 28px rgba(255,255,255,.28)}
-.network-service{position:absolute;right:2%;width:40%;min-width:300px;padding:27px 30px;background:linear-gradient(90deg,rgba(3,38,28,.72),rgba(3,38,28,.2));border-left:3px solid rgba(255,255,255,.65);backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);color:#fff}
+.network-service{position:absolute;right:-1%;width:40%;min-width:300px;padding:27px 30px;background:linear-gradient(90deg,rgba(3,38,28,.72),rgba(3,38,28,.2));border-left:3px solid rgba(255,255,255,.65);backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);color:#fff}
 .network-service.powerlink{top:15%;border-left-color:#ff9230}
 .network-service.place{bottom:14%;border-left-color:#c9ffe0}
 .network-service span{display:block;font-size:8px;font-weight:900;letter-spacing:.15em;color:rgba(255,255,255,.56)}
@@ -213,12 +213,12 @@
 .network-live{position:absolute;left:34%;top:48%;display:flex;align-items:center;gap:9px;color:rgba(255,255,255,.72);font-size:9px;font-weight:900;letter-spacing:.15em}
 .network-live i{width:7px;height:7px;border-radius:50%;background:#ff9230;box-shadow:0 0 12px rgba(255,146,48,.9);animation:networkLive 1.3s ease-in-out infinite}
 .network-coordinate{position:absolute;color:rgba(255,255,255,.36);font-size:8px;font-weight:800;letter-spacing:.14em}
-.network-coordinate.c1{left:34%;top:8%}.network-coordinate.c2{right:2%;bottom:5%}
+.network-coordinate.c1{left:34%;top:8%}.network-coordinate.c2{right:0;bottom:5%}
 @keyframes networkPointPulse{0%{scale:.25;opacity:.8}85%,100%{scale:1.9;opacity:0}}
 @keyframes networkLive{50%{opacity:.35;scale:.72}}
 @media(max-width:1200px){.network-origin{width:205px}.network-service{min-width:260px;width:41%;padding:22px}}
 
-@media(max-width:700px){.network-origin{left:1%;width:155px;padding-left:16px}.network-origin strong{font-size:30px}.network-origin em{font-size:7px}.network-junction{left:27.5%}.network-service{right:0;width:49%;min-width:0;padding:18px 16px}.network-service strong{font-size:24px}.network-service small{font-size:9px}.network-live{left:31%;font-size:7px}.network-coordinate{display:none}}
+@media(max-width:700px){.network-origin{left:0;width:155px;padding-left:16px}.network-origin strong{font-size:30px}.network-origin em{font-size:7px}.network-junction{left:27.5%}.network-service{right:0;width:49%;min-width:0;padding:18px 16px}.network-service strong{font-size:24px}.network-service small{font-size:9px}.network-live{left:31%;font-size:7px}.network-coordinate{display:none}}
 
 
 
@@ -241,7 +241,7 @@
 </head>
 <body>
 <div class="progress"><span></span></div>
-<div class="page-intro" aria-hidden="true"><span>MARKETING.</span></div>
+<div class="page-intro" aria-hidden="true"><span>MARKETING<i>.</i></span></div>
 <main>
 <section class="marketing-hero">
   <div class="container marketing-hero-grid">
@@ -254,11 +254,11 @@
     <div class="search-stage marketing-network-stage" aria-hidden="true">
       <div class="marketing-network">
         <svg class="network-map" viewBox="0 0 760 580" preserveAspectRatio="none">
-          <path class="network-path trunk" d="M28 290 H214"></path>
-          <path class="network-path power" d="M214 290 C334 290 338 145 480 145 H728"></path>
-          <path class="network-path place" d="M214 290 C334 290 338 435 480 435 H728"></path>
-          <path class="network-flow power" d="M214 290 C334 290 338 145 480 145 H728"></path>
-          <path class="network-flow place" d="M214 290 C334 290 338 435 480 435 H728"></path>
+          <path class="network-path trunk" d="M4 290 H214"></path>
+          <path class="network-path power" d="M214 290 C334 290 338 145 480 145 H756"></path>
+          <path class="network-path place" d="M214 290 C334 290 338 435 480 435 H756"></path>
+          <path class="network-flow power" d="M214 290 C334 290 338 145 480 145 H756"></path>
+          <path class="network-flow place" d="M214 290 C334 290 338 435 480 435 H756"></path>
         </svg>
         <span class="network-junction"></span>
         <div class="network-origin">
