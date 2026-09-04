@@ -366,28 +366,38 @@
 
 /* COMPARISON TABLE RESPONSIVE FIX */
 @media(max-width:960px){
-  .place-approach .comparison{width:100%;max-width:100%;padding:32px 22px;overflow:visible}
+  .place-approach .comparison{width:100%;max-width:100%;padding:32px 22px;overflow:hidden}
   .place-approach .comparison-head{grid-template-columns:1fr;gap:18px;margin-bottom:30px}
-  .place-approach .comparison-table{display:grid;width:100%;min-width:0;gap:13px;overflow:visible}
-  .place-approach .compare-label{display:none}
-  .place-approach .compare-row,.place-approach .compare-row:hover{display:grid;width:100%;min-width:0;max-width:100%;grid-template-columns:minmax(0,1fr);padding:17px 15px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.035);transform:none}
-  .place-approach .compare-row>*{display:block;width:100%;min-width:0;max-width:100%;min-height:0;padding:0;border:0;white-space:normal;overflow:visible;overflow-wrap:anywhere;word-break:keep-all}
-  .place-approach .compare-row b{grid-row:auto;margin-bottom:15px;padding:0;color:#ff9230;font-size:10px;letter-spacing:.14em}
-  .place-approach .compare-row strong{font-size:14px!important;line-height:1.55}
-  .place-approach .compare-row strong:before{display:block;margin-bottom:6px;font-size:8px;letter-spacing:.12em}
-  .place-approach .compare-row strong:not(.ours){padding:0 0 14px;color:rgba(255,255,255,.58);font-weight:400}
-  .place-approach .compare-row .ours{padding:14px 0 0;border-top:1px solid rgba(255,255,255,.12);background:transparent;color:#fff;font-size:17px!important;font-weight:750;text-underline-offset:4px}
+  .place-approach .comparison-table{display:block;width:100%;min-width:0;overflow:visible}
+  .place-approach .compare-label,.place-approach .compare-row,.place-approach .compare-row:hover{display:grid;width:100%;min-width:0;max-width:100%;grid-template-columns:44px minmax(0,.9fr) minmax(0,1.1fr);padding:0;transform:none}
+  .place-approach .compare-label{border-bottom:1px solid rgba(255,255,255,.16)}
+  .place-approach .compare-label span{display:block;min-width:0;padding:15px 12px;font-size:9px;line-height:1.4;white-space:normal;overflow-wrap:anywhere}
+  .place-approach .compare-row{border:0;border-top:1px solid rgba(255,255,255,.16);background:transparent}
+  .place-approach .compare-row>*{display:flex;width:auto;min-width:0;max-width:none;min-height:78px;align-items:center;padding:17px 12px;border:0;border-right:1px solid rgba(255,255,255,.13);white-space:normal;overflow:visible;overflow-wrap:anywhere;word-break:keep-all}
+  .place-approach .compare-row>*:last-child{border-right:0}
+  .place-approach .compare-row b{grid-row:auto;justify-content:center;margin:0;color:#858c88;font-size:11px;letter-spacing:0}
+  .place-approach .compare-row strong:before{display:none!important}
+  .place-approach .compare-row strong:not(.ours){color:rgba(255,255,255,.62);font-size:15px!important;font-weight:400;line-height:1.5}
+  .place-approach .compare-row .ours{padding:17px 12px;border-top:0;background:rgba(3,194,88,.07);color:#fff;font-size:18px!important;font-weight:750;line-height:1.45;text-underline-offset:4px}
 }
 @media(max-width:700px){
-  .place-approach .comparison{padding:28px 16px}
+  .place-approach .comparison{padding:28px 14px}
   .place-approach .comparison-head h3{font-size:clamp(32px,9.5vw,40px)}
-  .place-approach .compare-row{padding:16px 13px}
+  .place-approach .compare-label,.place-approach .compare-row,.place-approach .compare-row:hover{grid-template-columns:34px minmax(0,.88fr) minmax(0,1.12fr)}
+  .place-approach .compare-label span{padding:12px 7px;font-size:8px;letter-spacing:.07em}
+  .place-approach .compare-row>*{min-height:88px;padding:14px 8px}
+  .place-approach .compare-row b{padding:14px 5px;font-size:9px}
+  .place-approach .compare-row strong:not(.ours){font-size:12.5px!important;line-height:1.48}
+  .place-approach .compare-row .ours{padding:14px 8px;font-size:14.5px!important;line-height:1.42}
 }
 @media(max-width:480px){
-  .place-approach .comparison{padding:24px 12px}
-  .place-approach .compare-row{padding:15px 11px}
-  .place-approach .compare-row strong{font-size:13px!important}
-  .place-approach .compare-row .ours{font-size:16px!important}
+  .place-approach .comparison{padding:24px 8px}
+  .place-approach .compare-label,.place-approach .compare-row,.place-approach .compare-row:hover{grid-template-columns:28px minmax(0,.84fr) minmax(0,1.16fr)}
+  .place-approach .compare-label span{padding:10px 5px;font-size:7px;letter-spacing:.04em}
+  .place-approach .compare-row>*{min-height:92px;padding:12px 6px}
+  .place-approach .compare-row b{padding:12px 3px;font-size:8px}
+  .place-approach .compare-row strong:not(.ours){font-size:11.5px!important}
+  .place-approach .compare-row .ours{padding:12px 6px;font-size:13px!important}
 }
 </style>
 <div class="progress"><span></span></div>
