@@ -125,8 +125,15 @@
 .compare-row .ours{font-weight:750}
 
 /* CUSTOMER SEARCH JOURNEY */
-.place-why .where-flow-caption{margin:28px 0 13px;color:rgba(255,255,255,.68);font-size:13px;font-weight:700;letter-spacing:-.015em}
-.place-why .where-flow-caption+.where-flow{margin-top:0}
+
+/* WHY SEARCH JOURNEY HEADLINE */
+.place-why .where-caption{display:grid;grid-template-columns:220px minmax(0,1fr) auto;gap:clamp(34px,6vw,100px);align-items:end;margin:76px 0 28px;padding:30px 0;border-top:1px solid rgba(255,255,255,.24);border-bottom:1px solid rgba(255,255,255,.12)}
+.place-why .where-caption span{align-self:start;padding-top:9px;color:#03c75a;font-size:10px;font-weight:950;letter-spacing:.16em}
+.place-why .where-caption strong{color:#fff;font-size:clamp(34px,4.2vw,62px);font-weight:750;line-height:1.04;letter-spacing:-.055em}
+.place-why .where-caption strong em{color:#03c75a;font-style:normal}
+.place-why .where-caption small{padding-bottom:8px;color:rgba(255,255,255,.46);font-size:9px;font-weight:900;letter-spacing:.15em;white-space:nowrap}
+@media(max-width:960px){.place-why .where-caption{grid-template-columns:1fr;gap:14px;margin-top:58px;padding:24px 0}.place-why .where-caption span{padding-top:0}.place-why .where-caption small{padding-bottom:0}.place-why .where-caption strong{font-size:clamp(34px,7vw,52px)}}
+@media(max-width:700px){.place-why .where-caption{margin-top:42px}.place-why .where-caption strong{font-size:34px}.place-why .where-caption small{display:none}}
 </style>
 <div class="progress"><span></span></div>
 <div class="page-intro" aria-hidden="true"><span>NAVER PLACE<i>.</i></span></div>
@@ -149,7 +156,7 @@
 <section class="section place-why" id="why">
   <div class="container">
     <div class="section-head reveal"><span class="kicker">WHY NAVER PLACE</span><div><h2>검색 결과의 지도 영역,<br><span class="accent">고객이 매장을 고르는 자리입니다.</span></h2><p><strong>네이버 플레이스는 지역명과 업종을 검색했을 때 지도와 함께 나타나는 매장 정보입니다.</strong><br>고객은 한 화면에서 주변 업체를 비교하고, 매장 정보를 확인한 뒤 저장·전화·길찾기·예약 같은 다음 행동을 선택합니다.</p></div></div>
-    <div class="where-caption reveal"><span>WHERE CUSTOMERS FIND YOU</span><strong>고객이 매장을 발견하고 선택하는 실제 검색 화면</strong></div>
+    <div class="where-caption reveal"><span>WHERE CUSTOMERS FIND YOU</span><strong>고객이 검색에서 매장을 발견하고<br><em>방문하기까지.</em></strong><small>SEARCH JOURNEY / 01—05</small></div>
     <div class="result-browser reveal"><span class="result-area-label">NAVER PLACE / MAP RESULTS</span>
       <div class="result-map"><i class="result-pin p1">2</i><i class="result-pin main">MY</i><i class="result-pin p2">1</i><i class="result-pin p3">3</i></div>
       <div class="result-list">
@@ -159,7 +166,7 @@
         <div class="place-row"><span class="rank">03</span><div><strong>경쟁 매장 B</strong><small>음식점 · 리뷰 · 업체 정보</small></div><span class="actions"><i class="ri-calendar-check-line"></i><i class="ri-phone-line"></i></span></div>
       </div>
     </div>
-    <p class="where-flow-caption reveal">고객이 검색에서 매장을 발견하고 방문하기까지</p><div class="where-flow reveal"><div><i class="ri-search-line"></i>지역명·업종 검색</div><div><i class="ri-map-pin-line"></i>지도에서 매장 발견</div><div><i class="ri-scales-3-line"></i>사진·리뷰·정보 비교</div><div><i class="ri-cursor-line"></i>저장·전화·길찾기·예약</div><div><i class="ri-store-2-line"></i>문의·실제 방문으로 연결</div></div>
+    <div class="where-flow reveal"><div><i class="ri-search-line"></i>지역명·업종 검색</div><div><i class="ri-map-pin-line"></i>지도에서 매장 발견</div><div><i class="ri-scales-3-line"></i>사진·리뷰·정보 비교</div><div><i class="ri-cursor-line"></i>저장·전화·길찾기·예약</div><div><i class="ri-store-2-line"></i>문의·실제 방문으로 연결</div></div>
   </div>
 </section>
 
