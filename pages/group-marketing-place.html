@@ -365,16 +365,21 @@
 }
 
 /* COMPARISON TABLE RESPONSIVE FIX */
+@media(min-width:961px){
+  .place-approach .compare-label span:first-child{grid-column:2}
+  .place-approach .compare-label span:last-child{grid-column:3}
+}
+
 @media(max-width:960px){
   .place-approach .comparison{width:100%;max-width:100%;padding:32px 22px;overflow:hidden}
   .place-approach .comparison-head{grid-template-columns:1fr;gap:18px;margin-bottom:30px}
   .place-approach .comparison-table{display:block;width:100%;min-width:0;overflow:visible}
   .place-approach .compare-label,.place-approach .compare-row,.place-approach .compare-row:hover{display:grid;width:100%;min-width:0;max-width:100%;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);padding:0;transform:none}
   .place-approach .compare-label{border-bottom:1px solid rgba(255,255,255,.16)}
-  .place-approach .compare-label span:first-child,.place-approach .compare-row b{display:none!important}
-  .place-approach .compare-label span:nth-child(2),.place-approach .compare-row>strong:not(.ours){grid-column:1}
-  .place-approach .compare-label span:nth-child(3),.place-approach .compare-row>strong.ours{grid-column:2}
-  .place-approach .compare-label span:nth-child(2){border-right:1px solid rgba(255,255,255,.13)}
+  .place-approach .compare-row b{display:none!important}
+  .place-approach .compare-label span:first-child,.place-approach .compare-row>strong:not(.ours){grid-column:1}
+  .place-approach .compare-label span:last-child,.place-approach .compare-row>strong.ours{grid-column:2}
+  .place-approach .compare-label span:first-child{border-right:1px solid rgba(255,255,255,.13)}
   .place-approach .compare-label span{display:flex;min-width:0;min-height:48px;align-items:center;justify-content:flex-start;padding:15px 12px;font-size:9px;line-height:1.4;white-space:normal;overflow-wrap:anywhere}
   .place-approach .compare-row{border:0;border-top:1px solid rgba(255,255,255,.16);background:transparent}
   .place-approach .compare-row>*{display:flex;width:auto;min-width:0;max-width:none;min-height:78px;align-items:center;padding:17px 12px;border:0;border-right:1px solid rgba(255,255,255,.13);white-space:normal;overflow:visible;overflow-wrap:anywhere;word-break:keep-all}
@@ -480,7 +485,7 @@
     <div class="comparison reveal">
       <span class="comparison-scan" aria-hidden="true"></span>
       <div class="comparison-head"><h3>같은 플레이스 관리라도,<br><span class="accent">기준은 다릅니다.</span></h3><p>등록과 노출 확인에 머무르지 않고 검색 환경을 분석한 뒤 고객 행동까지 이어지는 운영 구조를 만듭니다.</p></div>
-      <div class="comparison-table"><div class="compare-label"><span></span><span>일반적인 관리</span><span class="ours">CREAFIT APPROACH</span></div>
+      <div class="comparison-table"><div class="compare-label"><span>일반적인 관리</span><span class="ours">CREAFIT APPROACH</span></div>
       <div class="compare-row"><b>01</b><strong data-label="일반적인 관리">업체 정보 등록 중심</strong><strong class="ours" data-label="CREAFIT APPROACH">지역·업종·검색 키워드 분석</strong></div>
       <div class="compare-row"><b>02</b><strong data-label="일반적인 관리">현재 노출 여부만 확인</strong><strong class="ours" data-label="CREAFIT APPROACH">경쟁업체와 노출 환경 비교</strong></div>
       <div class="compare-row"><b>03</b><strong data-label="일반적인 관리">일회성 설정과 노출 순위 중심</strong><strong class="ours" data-label="CREAFIT APPROACH">고객 행동과 노출 변화를 지속적으로 관리</strong></div></div>
