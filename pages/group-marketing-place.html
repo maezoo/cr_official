@@ -87,7 +87,7 @@
 .place-why .section-head .kicker:before{background:#fff}
 .place-why .result-browser{border-color:rgba(255,255,255,.18);box-shadow:0 35px 90px rgba(0,0,0,.48)}
 
-.place-approach{background:radial-gradient(circle at 72% 18%,rgba(3,194,88,.26) 0,rgba(3,194,88,.11) 24%,transparent 46%),radial-gradient(circle at 88% 10%,rgba(3,199,90,.2),transparent 32%),radial-gradient(circle at 7% 70%,rgba(3,199,90,.16),transparent 36%),linear-gradient(135deg,#f9fdfb 0%,#e7f4eb 48%,#dceee3 100%);color:#111}
+.place-approach{background:radial-gradient(circle at 72% 18%,rgba(3,194,88,.16) 0,rgba(3,194,88,.055) 24%,transparent 44%),linear-gradient(135deg,#fbfdfc 0%,#edf6f0 54%,#e5f1e9 100%);color:#111}
 .place-approach:after{-webkit-text-stroke-color:rgba(17,17,17,.13)}
 .place-approach .approach-atmosphere:before{background-image:linear-gradient(rgba(3,194,88,.075) 1px,transparent 1px),linear-gradient(90deg,rgba(3,194,88,.075) 1px,transparent 1px)}
 .place-approach .approach-orbit:before,.place-approach .approach-orbit:after{border-color:rgba(17,17,17,.11)}
@@ -149,7 +149,7 @@
 @media(max-width:700px){.place-why .journey-head{align-items:flex-start;flex-direction:column;gap:8px}.place-why .journey-head strong{font-size:17px}.place-why .journey-wrap .where-flow{grid-template-columns:1fr}.place-why .where-flow .journey-step:nth-child(n){display:grid;grid-template-columns:54px minmax(0,1fr);grid-template-areas:"no title" "icon copy";column-gap:18px;min-height:0;padding:24px 0;border-right:0}.place-why .journey-step b{grid-area:no;align-self:center}.place-why .journey-step>i{grid-area:icon;width:44px;height:44px;margin:12px 0 0;box-shadow:none}.place-why .journey-step strong{grid-area:title;align-self:center}.place-why .journey-step small{grid-area:copy;margin-top:12px}}
 
 /* WHY VISUAL + JOURNEY SPLIT */
-.place-why .why-detail-layout{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(360px,.5fr);gap:clamp(28px,3vw,52px);align-items:start;margin-top:72px}
+.place-why .why-detail-layout{display:grid;grid-template-columns:minmax(360px,.5fr) minmax(0,1.5fr);gap:clamp(28px,3vw,52px);align-items:start;margin-top:72px}
 .place-why .where-visual .where-caption{margin:0 0 24px}
 .place-why .why-detail-layout .journey-wrap{margin:0;padding:24px 0 0;border-top:1px solid rgba(255,255,255,.2)}
 .place-why .why-detail-layout .journey-head{align-items:flex-start;flex-direction:column;gap:8px}
@@ -168,6 +168,9 @@
 .compare-row .ours{font-size:22px;color:#fff}
 .compare-row strong:not(.ours){font-size:15px}
 .compare-row>*{padding:0 28px}
+
+/* MAP LABEL POSITION */
+.place-why .result-map .result-area-label{left:20px;right:auto;top:20px}
 </style>
 <div class="progress"><span></span></div>
 <div class="page-intro" aria-hidden="true"><span>NAVER PLACE<i>.</i></span></div>
@@ -191,18 +194,6 @@
   <div class="container">
     <div class="section-head reveal"><span class="kicker">WHY NAVER PLACE</span><div><h2>검색 결과의 지도 영역,<br><span class="accent">고객이 매장을 고르는 자리입니다.</span></h2><p><strong>네이버 플레이스는 지역명과 업종을 검색했을 때 지도와 함께 나타나는 매장 정보입니다.</strong><br>고객은 한 화면에서 주변 업체를 비교하고, 매장 정보를 확인한 뒤 저장·전화·길찾기·예약 같은 다음 행동을 선택합니다.</p></div></div>
     <div class="why-detail-layout">
-      <div class="where-visual">
-        <div class="where-caption reveal"><span>WHERE CUSTOMERS FIND YOU</span><strong>고객이 매장을 발견하고 선택하는 실제 검색 화면</strong></div>
-    <div class="result-browser reveal"><span class="result-area-label">NAVER PLACE / MAP RESULTS</span>
-      <div class="result-map"><i class="result-pin p1">2</i><i class="result-pin main">MY</i><i class="result-pin p2">1</i><i class="result-pin p3">3</i></div>
-      <div class="result-list">
-        <div class="result-search"><strong>김포 고깃집</strong><i class="ri-search-line"></i></div>
-        <div class="place-row"><span class="rank">01</span><div><strong>경쟁 매장 A</strong><small>음식점 · 리뷰 · 업체 정보</small></div><span class="actions"><i class="ri-bookmark-line"></i><i class="ri-phone-line"></i></span></div>
-        <div class="place-row is-target"><span class="rank">MY</span><div><strong>우리 매장 플레이스</strong><small>고객이 확인하고 선택하는 핵심 정보</small></div><span class="actions"><i class="ri-bookmark-line"></i><i class="ri-route-line"></i></span></div>
-        <div class="place-row"><span class="rank">03</span><div><strong>경쟁 매장 B</strong><small>음식점 · 리뷰 · 업체 정보</small></div><span class="actions"><i class="ri-calendar-check-line"></i><i class="ri-phone-line"></i></span></div>
-      </div>
-    </div>
-      </div>
       <div class="journey-wrap reveal">
       <div class="journey-head"><span>SEARCH JOURNEY</span><strong>고객이 검색에서 매장을 발견하고 방문하기까지</strong></div>
       <div class="where-flow">
@@ -213,6 +204,18 @@
         <div class="journey-step"><b>05</b><i class="ri-store-2-line"></i><strong>문의·방문 연결</strong><small>온라인에서의 관심이 실제 문의와 방문으로 이어집니다.</small></div>
       </div>
     </div>
+      <div class="where-visual">
+        <div class="where-caption reveal"><span>WHERE CUSTOMERS FIND YOU</span><strong>고객이 매장을 발견하고 선택하는 실제 검색 화면</strong></div>
+    <div class="result-browser reveal">
+      <div class="result-map"><span class="result-area-label">MAP RESULTS / NAVER PLACE</span><i class="result-pin p1">2</i><i class="result-pin main">MY</i><i class="result-pin p2">1</i><i class="result-pin p3">3</i></div>
+      <div class="result-list">
+        <div class="result-search"><strong>김포 고깃집</strong><i class="ri-search-line"></i></div>
+        <div class="place-row"><span class="rank">01</span><div><strong>경쟁 매장 A</strong><small>음식점 · 리뷰 · 업체 정보</small></div><span class="actions"><i class="ri-bookmark-line"></i><i class="ri-phone-line"></i></span></div>
+        <div class="place-row is-target"><span class="rank">MY</span><div><strong>우리 매장 플레이스</strong><small>고객이 확인하고 선택하는 핵심 정보</small></div><span class="actions"><i class="ri-bookmark-line"></i><i class="ri-route-line"></i></span></div>
+        <div class="place-row"><span class="rank">03</span><div><strong>경쟁 매장 B</strong><small>음식점 · 리뷰 · 업체 정보</small></div><span class="actions"><i class="ri-calendar-check-line"></i><i class="ri-phone-line"></i></span></div>
+      </div>
+    </div>
+      </div>
     </div>
   </div>
 </section>
