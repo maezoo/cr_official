@@ -175,13 +175,6 @@
 /* WHY SECTION COPY WIDTH */
 .place-why .section-head p{max-width:none}
 
-/* DIAGNOSIS AUTO FOCUS */
-.diagnosis-card:before{transition:color .45s var(--ease),transform .45s var(--ease)}
-.diagnosis-card:is(:hover,.is-auto-active){background:#111;color:#fff;transform:translateY(-8px);box-shadow:0 24px 55px rgba(17,17,17,.16)}
-.diagnosis-card:is(:hover,.is-auto-active):before{color:rgba(255,255,255,.09);transform:translateX(-8px)}
-.diagnosis-card:is(:hover,.is-auto-active) .icon{color:#03c75a;border-color:#03c75a;transform:rotate(-8deg) scale(1.08);box-shadow:0 0 24px rgba(3,199,90,.22)}
-.diagnosis-card:is(:hover,.is-auto-active) p{color:rgba(255,255,255,.7)}
-
 /* MOBILE DETAIL PASS */
 @media(max-width:960px){
   .section{padding:92px 0}
@@ -270,6 +263,18 @@
   .place-process .process-step h3{font-size:20px}
   .web-cta-inner h2{font-size:38px}
 }
+
+/* WHY SPLIT ENTRY + DIAGNOSIS SCAN */
+.place-why{overflow:hidden}
+.diagnosis-grid{position:relative;overflow:hidden;isolation:isolate}
+.diagnosis-scan{position:absolute;left:-24%;top:-38%;z-index:4;width:24%;height:176%;opacity:0;transform:rotate(-11deg);background:linear-gradient(90deg,transparent,rgba(3,199,90,.2),rgba(255,255,255,.72),rgba(3,199,90,.2),transparent);filter:blur(2px);mix-blend-mode:multiply;pointer-events:none}
+.diagnosis-card{z-index:1}
+.diagnosis-card:before{transition:color .45s var(--ease),transform .45s var(--ease)}
+.diagnosis-card.is-scanning{background:rgba(3,199,90,.075);transform:translateY(-6px)}
+.diagnosis-card.is-scanning:before{color:rgba(3,199,90,.14);transform:translateX(-8px)}
+.diagnosis-card.is-scanning .icon{color:#03c75a;border-color:#03c75a;box-shadow:0 0 0 7px rgba(3,199,90,.08),0 0 28px rgba(3,199,90,.23)}
+.diagnosis-card.is-scanning h3{color:#07140b}
+@media(max-width:700px){.diagnosis-scan{display:none}}
 </style>
 <div class="progress"><span></span></div>
 <div class="page-intro" aria-hidden="true"><span>NAVER PLACE<i>.</i></span></div>
@@ -293,7 +298,7 @@
   <div class="container">
     <div class="section-head reveal"><span class="kicker">WHY NAVER PLACE</span><div><h2>검색 결과의 지도 영역,<br><span class="accent">고객이 매장을 고르는 자리입니다.</span></h2><p><strong>네이버 플레이스는 지역명과 업종을 검색했을 때 지도와 함께 나타나는 매장 정보입니다.</strong><br>고객은 한 화면에서 주변 업체를 비교하고, 매장 정보를 확인한 뒤 저장·전화·길찾기·예약 같은 다음 행동을 선택합니다.</p></div></div>
     <div class="why-detail-layout">
-      <div class="journey-wrap reveal">
+      <div class="journey-wrap">
       <div class="journey-head"><span>SEARCH JOURNEY</span><strong>고객이 검색에서 매장을 발견하고 방문하기까지</strong></div>
       <div class="where-flow">
         <div class="journey-step"><b>01</b><i class="ri-search-line"></i><strong>지역명·업종 검색</strong><small>고객이 원하는 지역과 업종을 검색합니다.</small></div>
@@ -304,8 +309,8 @@
       </div>
     </div>
       <div class="where-visual">
-        <div class="where-caption reveal"><span>WHERE CUSTOMERS FIND YOU</span><strong>고객이 매장을 발견하고 선택하는 실제 검색 화면</strong></div>
-    <div class="result-browser reveal">
+        <div class="where-caption"><span>WHERE CUSTOMERS FIND YOU</span><strong>고객이 매장을 발견하고 선택하는 실제 검색 화면</strong></div>
+    <div class="result-browser">
       <div class="result-map"><span class="result-area-label">MAP RESULTS / NAVER PLACE</span><i class="result-pin p1">2</i><i class="result-pin main">MY</i><i class="result-pin p2">1</i><i class="result-pin p3">3</i></div>
       <div class="result-list">
         <div class="result-search"><strong>김포 고깃집</strong><i class="ri-search-line"></i></div>
@@ -324,11 +329,11 @@
 <section class="section place-diagnosis" id="diagnosis">
   <div class="container">
     <div class="section-head reveal"><span class="kicker">DOES THIS SOUND FAMILIAR?</span><div><h2>이런 고민이 있다면,<br><span class="place-highlight">플레이스 최적화</span>가 필요합니다.</h2><p>검색해도 우리 업체가 잘 보이지 않거나 노출되어도 고객 반응이 없다면, 키워드와 업체 정보, 경쟁 환경이 제대로 연결되어 있는지 확인해야 합니다.</p></div></div>
-    <div class="diagnosis-grid">
-      <article class="diagnosis-card reveal" data-no="01"><span class="icon"><i class="ri-key-2-line"></i></span><h3>핵심 키워드와 업체 정보가 맞지 않습니다.</h3><p>업체가 강조하는 단어와 실제 고객이 지역에서 검색하는 표현이 다르면 원하는 검색 결과에 나타나기 어렵습니다.</p></article>
-      <article class="diagnosis-card reveal" data-no="02"><span class="icon"><i class="ri-radar-line"></i></span><h3>경쟁업체의 노출 환경을 반영하지 못했습니다.</h3><p>지역과 업종에 따라 경쟁 강도가 다르기 때문에 현재 상단 업체의 상태를 함께 분석해야 합니다.</p></article>
-      <article class="diagnosis-card reveal" data-no="03"><span class="icon"><i class="ri-file-list-3-line"></i></span><h3>고객이 확인할 정보와 콘텐츠가 부족합니다.</h3><p>대표 이미지와 업체 정보가 충분하지 않으면 노출되더라도 고객의 비교와 선택으로 이어지기 어렵습니다.</p></article>
-      <article class="diagnosis-card reveal" data-no="04"><span class="icon"><i class="ri-cursor-line"></i></span><h3>저장·전화·길찾기 같은 반응이 부족합니다.</h3><p>단순한 화면 노출을 넘어 실제 고객 행동이 이어질 수 있도록 플레이스의 전체 흐름을 점검해야 합니다.</p></article>
+    <div class="diagnosis-grid"><span class="diagnosis-scan" aria-hidden="true"></span>
+      <article class="diagnosis-card" data-no="01"><span class="icon"><i class="ri-key-2-line"></i></span><h3>핵심 키워드와 업체 정보가 맞지 않습니다.</h3><p>업체가 강조하는 단어와 실제 고객이 지역에서 검색하는 표현이 다르면 원하는 검색 결과에 나타나기 어렵습니다.</p></article>
+      <article class="diagnosis-card" data-no="02"><span class="icon"><i class="ri-radar-line"></i></span><h3>경쟁업체의 노출 환경을 반영하지 못했습니다.</h3><p>지역과 업종에 따라 경쟁 강도가 다르기 때문에 현재 상단 업체의 상태를 함께 분석해야 합니다.</p></article>
+      <article class="diagnosis-card" data-no="03"><span class="icon"><i class="ri-file-list-3-line"></i></span><h3>고객이 확인할 정보와 콘텐츠가 부족합니다.</h3><p>대표 이미지와 업체 정보가 충분하지 않으면 노출되더라도 고객의 비교와 선택으로 이어지기 어렵습니다.</p></article>
+      <article class="diagnosis-card" data-no="04"><span class="icon"><i class="ri-cursor-line"></i></span><h3>저장·전화·길찾기 같은 반응이 부족합니다.</h3><p>단순한 화면 노출을 넘어 실제 고객 행동이 이어질 수 있도록 플레이스의 전체 흐름을 점검해야 합니다.</p></article>
     </div>
   </div>
 </section>
@@ -364,13 +369,12 @@
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
 <script>
-const progress=document.querySelector('.progress span'),subNav=document.getElementById('placeSubNav'),subLinks=[...document.querySelectorAll('.place-sub-nav a')],reveals=[...document.querySelectorAll('.reveal')],hero=document.querySelector('.place-hero'),heroGlow=document.getElementById('heroCursorGlow'),diagnosisSection=document.querySelector('.place-diagnosis'),diagnosisCards=[...document.querySelectorAll('.diagnosis-card')],approachCards=[...document.querySelectorAll('.approach-card')],processRail=document.getElementById('processRail'),cta=document.querySelector('.web-contact-cta'),ctaFollow=document.getElementById('ctaFollow');
+const progress=document.querySelector('.progress span'),subNav=document.getElementById('placeSubNav'),subLinks=[...document.querySelectorAll('.place-sub-nav a')],reveals=[...document.querySelectorAll('.reveal')],hero=document.querySelector('.place-hero'),heroGlow=document.getElementById('heroCursorGlow'),diagnosisCards=[...document.querySelectorAll('.diagnosis-card')],approachCards=[...document.querySelectorAll('.approach-card')],processRail=document.getElementById('processRail'),cta=document.querySelector('.web-contact-cta'),ctaFollow=document.getElementById('ctaFollow');
 function onScroll(){const y=scrollY,max=document.documentElement.scrollHeight-innerHeight;if(progress)progress.style.width=(max?y/max*100:0)+'%';if(subNav)subNav.classList.toggle('is-stuck',subNav.getBoundingClientRect().top<=93&&y>0);let current='';document.querySelectorAll('main section[id]').forEach(sec=>{const r=sec.getBoundingClientRect();if(r.top<170&&r.bottom>170)current=sec.id});subLinks.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+current))}
 const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('is-visible');e.target.classList.add('on');io.unobserve(e.target)}}),{threshold:.12});reveals.forEach(el=>io.observe(el));
-if(diagnosisSection&&diagnosisCards.length&&!matchMedia('(prefers-reduced-motion: reduce)').matches){let diagnosisTimer=null,diagnosisIndex=0,diagnosisVisible=false;const clearDiagnosis=()=>diagnosisCards.forEach(card=>card.classList.remove('is-auto-active'));const showDiagnosis=()=>{clearDiagnosis();diagnosisCards[diagnosisIndex].classList.add('is-auto-active');diagnosisIndex=(diagnosisIndex+1)%diagnosisCards.length};const startDiagnosis=()=>{if(diagnosisTimer||!diagnosisVisible)return;showDiagnosis();diagnosisTimer=setInterval(showDiagnosis,1250)};const stopDiagnosis=()=>{if(diagnosisTimer){clearInterval(diagnosisTimer);diagnosisTimer=null}clearDiagnosis()};new IntersectionObserver(entries=>entries.forEach(entry=>{diagnosisVisible=entry.isIntersecting;if(diagnosisVisible)startDiagnosis();else stopDiagnosis()}),{threshold:.28}).observe(diagnosisSection);if(matchMedia('(hover:hover)').matches){diagnosisSection.addEventListener('pointerenter',stopDiagnosis);diagnosisSection.addEventListener('pointerleave',()=>{if(diagnosisVisible)startDiagnosis()})}}
-
+ 
 if(hero&&heroGlow&&!matchMedia('(prefers-reduced-motion: reduce)').matches){hero.addEventListener('pointermove',e=>{const r=hero.getBoundingClientRect(),x=e.clientX-r.left-r.width/2,y=e.clientY-r.top-r.height/2;heroGlow.style.transform='translate3d('+(x*.12)+'px,'+(y*.12)+'px,0)'});hero.addEventListener('pointerleave',()=>heroGlow.style.transform='translate3d(0,0,0)')}
 if(cta&&ctaFollow&&!matchMedia('(prefers-reduced-motion: reduce)').matches){cta.addEventListener('pointermove',e=>{const r=cta.getBoundingClientRect();ctaFollow.style.left=(e.clientX-r.left)+'px';ctaFollow.style.top=(e.clientY-r.top)+'px'})}
-if(window.gsap&&window.ScrollTrigger&&!matchMedia('(prefers-reduced-motion: reduce)').matches){gsap.registerPlugin(ScrollTrigger);gsap.from('.hero-eyebrow',{y:18,autoAlpha:0,duration:.58,ease:'power3.out',delay:.18});gsap.from('.hero-title-mask h1',{yPercent:110,duration:.98,ease:'power4.out',delay:.26});gsap.from('.hero-copy>*',{y:24,autoAlpha:0,stagger:.08,duration:.62,ease:'power3.out',delay:.44});gsap.from('.hero-service-rail span',{y:18,autoAlpha:0,stagger:.07,duration:.52,ease:'power3.out',delay:.55});gsap.from('.hero-accent-edge',{scaleY:0,transformOrigin:'top',duration:.82,ease:'power3.out',delay:.22});gsap.from('.approach-head>.kicker',{x:-48,autoAlpha:0,duration:.8,ease:'power3.out',scrollTrigger:{trigger:'.approach-head',start:'top 80%'}});gsap.from('.approach-head>div>*',{x:48,autoAlpha:0,stagger:.1,duration:.8,ease:'power3.out',scrollTrigger:{trigger:'.approach-head',start:'top 80%'}});approachCards.forEach((card,i)=>{const meta=[card.querySelector('.no'),card.querySelector('i')],copy=[card.querySelector('h3'),card.querySelector('p')];gsap.from(meta,{y:34,autoAlpha:0,stagger:.1,duration:.68,ease:'power3.out',scrollTrigger:{trigger:card,start:'top 88%',once:true}});gsap.from(copy,{y:64,autoAlpha:0,stagger:.12,duration:.9,delay:.12,ease:'power4.out',scrollTrigger:{trigger:card,start:'top 88%',once:true}})});gsap.fromTo('.comparison-scan',{xPercent:0},{xPercent:1050,ease:'none',scrollTrigger:{trigger:'.comparison',start:'top 90%',end:'bottom 35%',scrub:1.1}});gsap.from('.compare-row',{x:55,autoAlpha:0,stagger:.12,duration:.72,ease:'power3.out',scrollTrigger:{trigger:'.comparison-table',start:'top 85%'}});gsap.to('.place-process .process-line span',{scaleX:1,duration:1.2,ease:'power2.out',scrollTrigger:{trigger:'.place-process .process-rail',start:'top 80%'}});gsap.utils.toArray('.place-process .process-step').forEach((el,i)=>{gsap.from(el,{y:i%2===0?-26:26,autoAlpha:0,duration:.62,delay:.12+i*.1,ease:'power3.out',scrollTrigger:{trigger:'.place-process .process-rail',start:'top 80%'}});ScrollTrigger.create({trigger:el,start:'top 72%',onEnter:()=>el.classList.add('is-active'),onLeaveBack:()=>el.classList.remove('is-active')})})}
+if(window.gsap&&window.ScrollTrigger&&!matchMedia('(prefers-reduced-motion: reduce)').matches){gsap.registerPlugin(ScrollTrigger);gsap.from('.hero-eyebrow',{y:18,autoAlpha:0,duration:.58,ease:'power3.out',delay:.18});gsap.from('.hero-title-mask h1',{yPercent:110,duration:.98,ease:'power4.out',delay:.26});gsap.from('.hero-copy>*',{y:24,autoAlpha:0,stagger:.08,duration:.62,ease:'power3.out',delay:.44});gsap.from('.hero-service-rail span',{y:18,autoAlpha:0,stagger:.07,duration:.52,ease:'power3.out',delay:.55});gsap.from('.hero-accent-edge',{scaleY:0,transformOrigin:'top',duration:.82,ease:'power3.out',delay:.22});const whyEntryTl=gsap.timeline({scrollTrigger:{trigger:'.why-detail-layout',start:'top 82%',once:true}});whyEntryTl.from('.journey-wrap',{x:-130,autoAlpha:0,filter:'blur(10px)',duration:1,ease:'power4.out'},0).from('.where-visual',{x:130,autoAlpha:0,filter:'blur(10px)',duration:1,ease:'power4.out'},.12);if(diagnosisCards.length){const diagnosisScan=document.querySelector('.diagnosis-scan'),diagnosisTl=gsap.timeline({scrollTrigger:{trigger:'.diagnosis-grid',start:'top 78%',once:true}});if(diagnosisScan)diagnosisTl.fromTo(diagnosisScan,{xPercent:-170,autoAlpha:0},{xPercent:540,autoAlpha:1,duration:1.9,ease:'power2.inOut'},0).to(diagnosisScan,{autoAlpha:0,duration:.28},1.72);diagnosisCards.forEach((card,i)=>{const at=.14+i*.24;diagnosisTl.from(card,{y:48,autoAlpha:0,duration:.68,ease:'power3.out'},at);diagnosisTl.call(()=>card.classList.add('is-scanning'),null,at+.08);diagnosisTl.from(card.querySelector('.icon'),{scale:.55,rotation:-16,autoAlpha:0,duration:.5,ease:'back.out(1.8)'},at+.12);diagnosisTl.from([card.querySelector('h3'),card.querySelector('p')],{y:24,autoAlpha:0,stagger:.08,duration:.55,ease:'power3.out'},at+.18);diagnosisTl.call(()=>card.classList.remove('is-scanning'),null,at+.82)})}gsap.from('.approach-head>.kicker',{x:-48,autoAlpha:0,duration:.8,ease:'power3.out',scrollTrigger:{trigger:'.approach-head',start:'top 80%'}});gsap.from('.approach-head>div>*',{x:48,autoAlpha:0,stagger:.1,duration:.8,ease:'power3.out',scrollTrigger:{trigger:'.approach-head',start:'top 80%'}});approachCards.forEach((card,i)=>{const meta=[card.querySelector('.no'),card.querySelector('i')],copy=[card.querySelector('h3'),card.querySelector('p')];gsap.from(meta,{y:34,autoAlpha:0,stagger:.1,duration:.68,ease:'power3.out',scrollTrigger:{trigger:card,start:'top 88%',once:true}});gsap.from(copy,{y:64,autoAlpha:0,stagger:.12,duration:.9,delay:.12,ease:'power4.out',scrollTrigger:{trigger:card,start:'top 88%',once:true}})});gsap.fromTo('.comparison-scan',{xPercent:0},{xPercent:1050,ease:'none',scrollTrigger:{trigger:'.comparison',start:'top 90%',end:'bottom 35%',scrub:1.1}});gsap.from('.compare-row',{x:55,autoAlpha:0,stagger:.12,duration:.72,ease:'power3.out',scrollTrigger:{trigger:'.comparison-table',start:'top 85%'}});gsap.to('.place-process .process-line span',{scaleX:1,duration:1.2,ease:'power2.out',scrollTrigger:{trigger:'.place-process .process-rail',start:'top 80%'}});gsap.utils.toArray('.place-process .process-step').forEach((el,i)=>{gsap.from(el,{y:i%2===0?-26:26,autoAlpha:0,duration:.62,delay:.12+i*.1,ease:'power3.out',scrollTrigger:{trigger:'.place-process .process-rail',start:'top 80%'}});ScrollTrigger.create({trigger:el,start:'top 72%',onEnter:()=>el.classList.add('is-active'),onLeaveBack:()=>el.classList.remove('is-active')})})}
 addEventListener('scroll',onScroll,{passive:true});addEventListener('resize',onScroll);onScroll();
 </script>
