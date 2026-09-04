@@ -86,6 +86,57 @@
 @media(max-width:640px){.place-hero{min-height:500px;padding:112px 0 50px}.place-hero .hero-inner{width:calc(100% - 40px)}.hero-accent-edge{width:6px;top:70px}.hero-eyebrow{padding-bottom:15px;margin-bottom:26px;font-size:8px;gap:16px;align-items:flex-start;flex-direction:column}.hero-main h1{font-size:clamp(42px,11vw,50px);line-height:.95}.hero-copy{padding-top:18px}.hero-copy p{font-size:14px;line-height:1.72}.hero-service-rail{display:none}.hero-motion-ring.r2,.hero-motion-ring.r3,.hero-float-tag.t2,.hero-float-tag.t3{display:none}.creation-process.place-process,.faq.place-faq{padding:82px 0}.place-process .process-head{gap:22px}.place-process .process-head h2{font-size:clamp(35px,10vw,39px)}.place-process .process-head p{font-size:14px;line-height:1.72}.place-process .process-rail{margin-top:40px}.place-process .process-step,.place-process .process-step:not(:first-child){padding:22px 0 22px 34px}.place-process .process-step h3{margin-top:20px}.place-faq .faq-layout{gap:34px}.place-faq .faq-list summary{padding:22px 2px;font-size:16px;line-height:1.45}.place-faq .faq-list p{padding-bottom:24px;font-size:14px}.web-contact-cta{min-height:560px}.cta-follow{width:330px;height:330px}.cta-aurora{width:150vw;right:-70%;top:-25%}.cta-grid-label{left:18px;top:42px}.web-contact-cta:before{background-size:46px 46px}.web-cta-inner{padding:85px 0}.web-cta-inner h2{font-size:clamp(40px,11vw,46px)}.web-cta-inner p{font-size:14px;line-height:1.65}}
 @media(max-width:420px){.place-hero .hero-inner{width:calc(100% - 32px)}.hero-main h1{font-size:40px}.hero-service-rail span{letter-spacing:.08em}.creation-process.place-process,.faq.place-faq{padding:72px 0}.web-cta-inner h2{font-size:40px}}
 
+
+/* NAVER PLACE HERO COLOR + INDUSTRY EXPERIENCE */
+.place-hero{background:radial-gradient(circle at 78% 18%,rgba(213,255,231,.33),transparent 30%),radial-gradient(ellipse at 5% 100%,rgba(0,37,24,.78),transparent 58%),linear-gradient(124deg,#021d18 0%,#016b42 27%,#03c75a 55%,#078c50 78%,#031c17 100%);color:#fff}
+.place-hero:before{background-image:linear-gradient(112deg,transparent 18%,rgba(255,255,255,.03) 31%,rgba(255,255,255,.18) 44%,transparent 69%),linear-gradient(rgba(255,255,255,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.055) 1px,transparent 1px);background-size:180% 100%,72px 72px,72px 72px;animation:placeMetalFlow 12s ease-in-out infinite alternate}
+.place-hero:after{background:rgba(255,255,255,.17)}
+.place-hero .hero-eyebrow{color:rgba(255,255,255,.62);border-bottom-color:rgba(255,255,255,.2)}
+.place-hero .hero-copy{border-left-color:rgba(255,255,255,.2)}
+.place-hero .hero-copy-label{color:rgba(255,255,255,.57)}
+.place-hero .hero-copy p{color:rgba(255,255,255,.7)}
+.place-hero .hero-copy p strong{color:#fff}
+.place-hero .hero-scroll{color:#fff}
+.place-hero .hero-service-rail{border-color:rgba(255,255,255,.2)}
+.place-hero .hero-service-rail span{color:rgba(255,255,255,.69);border-right-color:rgba(255,255,255,.16)}
+.place-hero .hero-motion-grid{background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px)}
+.place-hero .hero-motion-ring{border-color:rgba(255,255,255,.14)}
+.place-hero .hero-motion-ring.r2{border-color:rgba(255,146,48,.34)}
+.place-hero .hero-motion-ring.r2 i{background:#fff}
+.place-hero .hero-float-tag{color:rgba(255,255,255,.72);border-color:rgba(255,255,255,.16);background:rgba(1,45,28,.58)}
+.place-hero .hero-float-tag.t4{color:var(--orange)}
+.place-hero .hero-cursor-glow{background:radial-gradient(circle,rgba(214,255,232,.17),rgba(3,199,90,.055) 38%,transparent 70%)}
+@keyframes placeMetalFlow{to{background-position:0 0,0 0,0 0}}
+
+.industry-experience{position:relative;padding:145px 0 135px;background:#080a09;color:#fff;overflow:hidden}
+.industry-watermark{position:absolute;left:-.04em;top:-.18em;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.055);font-size:clamp(130px,20vw,320px);font-weight:950;line-height:1;letter-spacing:-.085em;white-space:nowrap;pointer-events:none}
+.industry-head{position:relative;z-index:2;display:grid;grid-template-columns:220px minmax(0,1fr);gap:clamp(55px,8vw,130px);align-items:center}
+.industry-head h2{margin:0;max-width:1080px;font-size:clamp(48px,5.6vw,84px);font-weight:700;line-height:1.02;letter-spacing:-.067em}
+.industry-head p{max-width:760px;margin:25px 0 0;color:#8c918e;font-size:15px;line-height:1.82}
+.industry-marquee{position:relative;z-index:2;margin-top:82px;border-top:1px solid rgba(255,255,255,.15);border-bottom:1px solid rgba(255,255,255,.15);overflow:hidden}
+.industry-line{overflow:hidden;border-bottom:1px solid rgba(255,255,255,.11)}
+.industry-line:last-child{border-bottom:0}
+.industry-track{display:flex;width:max-content;will-change:transform;animation:industryFlow 34s linear infinite}
+.industry-line.reverse .industry-track{animation-direction:reverse;animation-duration:39s}
+.industry-track.slow{animation-duration:44s}
+.industry-group{display:flex;flex:none}
+.industry-group span{flex:none;padding:25px 34px;border-right:1px solid rgba(255,255,255,.11);color:#8a8f8c;font-size:clamp(22px,2.2vw,38px);font-weight:800;letter-spacing:-.04em;transition:color .3s,background .3s}
+.industry-group span:hover{color:#07140b;background:var(--naver)}
+.industry-line:nth-child(2) .industry-group span:hover{background:var(--orange)}
+.industry-marquee:hover .industry-track{animation-play-state:paused}
+.industry-signals{display:grid;grid-template-columns:repeat(3,1fr);margin-top:70px;border-top:1px solid rgba(255,255,255,.14);border-bottom:1px solid rgba(255,255,255,.14)}
+.industry-signals div{padding:28px 30px;border-right:1px solid rgba(255,255,255,.14)}
+.industry-signals div:last-child{border-right:0}
+.industry-signals small{display:block;color:var(--naver);font-size:9px;font-weight:900;letter-spacing:.15em}
+.industry-signals strong{display:block;margin-top:13px;font-size:17px}
+.industry-closing{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;margin-top:58px}
+.industry-closing strong{font-size:clamp(28px,3.2vw,48px);line-height:1.12;letter-spacing:-.05em}
+.industry-closing p{max-width:630px;margin:0;color:#858a87;font-size:15px;line-height:1.8}
+@keyframes industryFlow{to{transform:translateX(-50%)}}
+@media(max-width:960px){.industry-experience{padding:110px 0}.industry-head{grid-template-columns:1fr;gap:28px}.industry-signals{grid-template-columns:1fr}.industry-signals div{border-right:0;border-bottom:1px solid rgba(255,255,255,.14)}.industry-signals div:last-child{border-bottom:0}.industry-closing{grid-template-columns:1fr;gap:24px}}
+@media(max-width:640px){.place-hero .hero-copy{border-top-color:rgba(255,255,255,.18)}.place-hero .hero-service-rail span:nth-child(-n+2){border-bottom-color:rgba(255,255,255,.14)}.industry-experience{padding:82px 0}.industry-head h2{font-size:clamp(35px,10vw,40px)}.industry-head p{font-size:14px;line-height:1.72}.industry-marquee{margin-top:52px}.industry-group span{padding:20px 23px;font-size:24px}.industry-signals{margin-top:48px}.industry-signals div{padding:23px 0}.industry-closing{margin-top:42px}.industry-closing strong{font-size:30px}.industry-closing p{font-size:14px}}
+@media(prefers-reduced-motion:reduce){.industry-track{animation:none}}
+
 </style>
 <div class="progress"><span></span></div>
 <div class="page-intro" aria-hidden="true"><span>NAVER PLACE<i>.</i></span></div>
@@ -96,7 +147,7 @@
   <div class="container hero-inner">
     <div class="hero-eyebrow"><span>CREAFIT / NAVER PLACE</span><strong>PLACE OPTIMIZATION SERVICE</strong></div>
     <div class="hero-main-grid">
-      <div class="hero-main"><div class="hero-title-mask"><h1>고객이 검색하는 순간,<br><span class="accent">가장 먼저 보이는 매장을 만듭니다.</span></h1></div></div>
+      <div class="hero-main"><div class="hero-title-mask"><h1>고객이 검색하는 순간,<br><span class="accent">가장 먼저 보이게.</span></h1></div></div>
       <div class="hero-copy"><span class="hero-copy-label">NAVER PLACE OPTIMIZATION</span><p><strong>검색 결과의 지도 영역에서 먼저 발견되는 매장.</strong><br>지역과 업종에 맞는 핵심 키워드를 분석하고, 실제 방문 가능성이 높은 고객의 유입 경로를 확보합니다.</p><a class="hero-scroll" href="#why">SCROLL TO EXPLORE <i class="ri-arrow-down-line"></i></a></div>
     </div>
     <div class="hero-service-rail"><span>LOCAL KEYWORD</span><span>COMPETITOR ANALYSIS</span><span>PLACE OPTIMIZATION</span><span>CUSTOMER ACTION</span></div>
@@ -164,13 +215,19 @@
   </div>
 </section>
 
-<section class="section place-results" id="results">
+<section class="industry-experience" id="results">
+  <span class="industry-watermark" aria-hidden="true">VARIOUS INDUSTRIES</span>
   <div class="container">
-    <div class="section-head reveal"><span class="kicker">LIVE RESULTS</span><div><h2>말보다 분명한,<br><span class="accent">실제 노출 결과.</span></h2><p>키워드와 지도 영역을 함께 확인할 수 있는 실제 검색 결과 화면으로 플레이스 운영 성과를 보여드립니다.</p></div></div>
-    <div class="results-grid">
-      <article class="result-proof reveal"><div class="proof-top"><small>PLACE RESULT / 01</small><b>LIVE CAPTURE</b></div><div class="proof-placeholder"><div><i class="ri-image-add-line"></i><strong>실제 노출 성과 이미지 영역</strong><span>검색 키워드와 지도 영역이 함께 보이는 캡처로 교체</span></div></div></article>
-      <div class="proof-side"><article class="result-proof small reveal"><div class="proof-top"><small>PLACE RESULT / 02</small><b>LIVE CAPTURE</b></div><div class="proof-placeholder"><div><i class="ri-map-pin-add-line"></i><strong>성과 이미지 준비 영역</strong></div></div></article><article class="result-proof small reveal"><div class="proof-top"><small>PLACE RESULT / 03</small><b>LIVE CAPTURE</b></div><div class="proof-placeholder"><div><i class="ri-line-chart-line"></i><strong>성과 이미지 준비 영역</strong></div></div></article></div>
-    </div>
+    <div class="industry-head reveal"><span class="kicker">INDUSTRY EXPERIENCE</span><div><h2>업종은 달라도,<br><span class="accent">발견되어야 하는 목표는 같습니다.</span></h2><p>지역과 업종에 따라 검색 키워드와 경쟁 환경은 달라집니다. 크레아핏은 다양한 업종의 플레이스를 분석하고 각 업체에 필요한 노출 방향을 설계합니다.</p></div></div>
+  </div>
+  <div class="industry-marquee reveal" aria-label="크레아핏이 함께한 업종">
+    <div class="industry-line"><div class="industry-track"><div class="industry-group"><span>교육·키즈</span><span>건강·뷰티</span><span>건축·인테리어</span><span>반려동물</span><span>병원</span><span>숙박·여행</span></div><div class="industry-group" aria-hidden="true"><span>교육·키즈</span><span>건강·뷰티</span><span>건축·인테리어</span><span>반려동물</span><span>병원</span><span>숙박·여행</span></div></div></div>
+    <div class="industry-line reverse"><div class="industry-track"><div class="industry-group"><span>세무·법무·행정</span><span>카페·음식</span><span>사진·스튜디오</span><span>안경·렌즈</span><span>부동산</span><span>도소매</span></div><div class="industry-group" aria-hidden="true"><span>세무·법무·행정</span><span>카페·음식</span><span>사진·스튜디오</span><span>안경·렌즈</span><span>부동산</span><span>도소매</span></div></div></div>
+    <div class="industry-line"><div class="industry-track slow"><div class="industry-group"><span>제조·산업</span><span>자동차</span><span>설비·공조</span><span>용역·서비스</span><span>중장비</span><span>지역 서비스</span></div><div class="industry-group" aria-hidden="true"><span>제조·산업</span><span>자동차</span><span>설비·공조</span><span>용역·서비스</span><span>중장비</span><span>지역 서비스</span></div></div></div>
+  </div>
+  <div class="container">
+    <div class="industry-signals reveal"><div><small>LOCAL SEARCH</small><strong>지역 고객이 검색하는 방식</strong></div><div><small>BUSINESS CATEGORY</small><strong>업종별로 달라지는 경쟁 환경</strong></div><div><small>PLACE DATA</small><strong>업체에 맞는 노출 방향 분석</strong></div></div>
+    <div class="industry-closing reveal"><strong>같은 방식으로 모든 업체를 관리하지 않습니다.</strong><p>업종과 지역, 고객의 검색 목적에 따라 분석 기준과 최적화 방향도 달라집니다.</p></div>
   </div>
 </section>
 
