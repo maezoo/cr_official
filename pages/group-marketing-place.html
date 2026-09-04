@@ -278,6 +278,91 @@
 
 /* DIAGNOSIS VISIBILITY SAFETY */
 .diagnosis-card,.diagnosis-card .icon,.diagnosis-card h3,.diagnosis-card p{visibility:visible;opacity:1}
+
+/* REFERENCE-MATCHED RESPONSIVE REFINEMENT */
+@media(max-width:1100px){
+  .place-process .process-rail{padding:0!important;margin-top:50px!important}
+  .place-process .process-line{display:none!important}
+  .place-process .process-track{display:grid!important;grid-template-columns:repeat(6,minmax(0,1fr))!important;gap:30px 0!important}
+  .place-process .process-step,.place-process .process-step:not(:first-child){min-height:190px!important;padding:38px 16px 18px 0!important;border:0!important;border-top:1px solid var(--line)!important;border-radius:0!important;background:transparent!important}
+  .place-process .process-step:nth-child(1){grid-column:1/span 2!important}
+  .place-process .process-step:nth-child(2){grid-column:3/span 2!important;padding-left:16px!important}
+  .place-process .process-step:nth-child(3){grid-column:5/span 2!important;padding-left:16px!important}
+  .place-process .process-step:nth-child(4){grid-column:1/span 3!important}
+  .place-process .process-step:nth-child(5){grid-column:4/span 3!important;padding-left:16px!important}
+  .place-process .process-step:before{left:0!important;right:auto!important;top:-7px!important;width:11px!important;height:11px!important;background:var(--paper)!important}
+  .place-process .process-step.is-active:before{background:var(--orange)!important}
+  .place-process .process-step h3{margin-top:24px!important;font-size:22px!important}
+  .place-process .process-step p{margin-top:9px!important;font-size:13px!important;line-height:1.65!important}
+  .place-process .process-step:after{display:none!important}
+}
+@media(max-width:700px){
+  .place-why .why-detail-layout,.place-why .where-visual,.place-why .result-browser,.place-why .result-map,.place-why .result-list{min-width:0;width:100%}
+  .place-why .where-visual{overflow:hidden}
+  .place-why .where-visual .where-caption{align-items:flex-start;gap:7px;margin-top:0;padding-top:18px}
+  .place-why .where-visual .where-caption span{font-size:8px;line-height:1.4}
+  .place-why .where-visual .where-caption strong{max-width:100%;font-size:13px;line-height:1.55}
+  .place-why .result-browser{display:grid;grid-template-columns:1fr;min-height:0;overflow:hidden}
+  .place-why .result-map{height:280px;min-height:280px}
+  .place-why .result-map .result-area-label{left:12px;top:12px;padding:7px 9px;font-size:7px;letter-spacing:.1em}
+  .place-why .result-pin{width:39px;height:39px;font-size:10px}
+  .place-why .result-pin.main{width:52px;height:52px;box-shadow:0 0 0 9px rgba(3,199,90,.16),0 15px 32px rgba(0,0,0,.3)}
+  .place-why .result-list{padding:15px}
+  .place-why .result-search{min-width:0;padding:14px}
+  .place-why .result-search strong{min-width:0;font-size:14px}
+  .place-why .place-row{grid-template-columns:40px minmax(0,1fr);gap:10px;padding:18px 0}
+  .place-why .place-row>div{min-width:0}
+  .place-why .place-row>div strong{display:block;overflow-wrap:anywhere;font-size:14px;line-height:1.35}
+  .place-why .place-row small{font-size:10.5px;line-height:1.45}
+  .place-why .place-row.is-target{margin:4px -6px;padding:17px 6px}
+  .place-why .place-row .rank{width:38px;height:38px;font-size:13px}
+  .place-why .place-row .actions{display:none}
+
+  .place-approach .approach-card:before{display:none}
+  .place-approach .comparison{overflow:hidden}
+  .place-approach .comparison-table{display:grid;gap:13px;overflow:visible}
+  .place-approach .compare-label{display:none}
+  .place-approach .compare-row{display:grid;grid-template-columns:1fr;min-width:0;padding:17px 15px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.035);transform:none}
+  .place-approach .compare-row:hover{transform:none}
+  .place-approach .compare-row>*{display:block;min-width:0;min-height:0;padding:0;border:0}
+  .place-approach .compare-row b{margin-bottom:15px;color:#ff9230;font-size:10px;letter-spacing:.14em}
+  .place-approach .compare-row strong{font-size:14px!important;line-height:1.55}
+  .place-approach .compare-row strong:before{display:block;margin-bottom:6px;font-size:8px;letter-spacing:.12em}
+  .place-approach .compare-row strong:not(.ours){padding:0 0 14px;color:rgba(255,255,255,.58);font-weight:400}
+  .place-approach .compare-row .ours{padding:14px 0 0;border-top:1px solid rgba(255,255,255,.12);background:transparent;color:#fff;font-size:17px!important;font-weight:750;text-underline-offset:4px}
+  
+  .place-process .process-rail{margin-top:36px!important}
+  .place-process .process-track{gap:26px 0!important}
+  .place-process .process-step,.place-process .process-step:not(:first-child){min-height:175px!important;padding:34px 10px 14px 0!important}
+  .place-process .process-step:nth-child(2),.place-process .process-step:nth-child(3),.place-process .process-step:nth-child(5){padding-left:10px!important}
+  .place-process .process-step small{font-size:8px!important;letter-spacing:.09em!important}
+  .place-process .process-step h3{margin-top:18px!important;font-size:18px!important;line-height:1.25!important}
+  .place-process .process-step p{font-size:12px!important;line-height:1.58!important}
+}
+@media(max-width:480px){
+  .place-why .result-map{height:235px;min-height:235px}
+  .place-why .result-map:before{left:42%;width:18%}
+  .place-why .result-pin{width:35px;height:35px}
+  .place-why .result-pin.main{width:47px;height:47px}
+  .place-why .result-list{padding:12px}
+  .place-why .result-search{padding:12px}
+  .place-why .place-row{grid-template-columns:36px minmax(0,1fr);gap:9px;padding:16px 0}
+  .place-why .place-row .rank{width:34px;height:34px;font-size:12px}
+  .place-why .place-row>div strong{font-size:13px}
+  .place-why .place-row small{font-size:10px}
+
+  .place-approach .approach-card:before{display:none}
+  .place-approach .comparison{padding:24px 12px}
+  .place-approach .compare-row{padding:15px 12px}
+  .place-approach .compare-row .ours{font-size:16px!important}
+
+  .place-process .process-track{gap:22px 0!important}
+  .place-process .process-step,.place-process .process-step:not(:first-child){min-height:165px!important;padding:31px 8px 12px 0!important}
+  .place-process .process-step:nth-child(2),.place-process .process-step:nth-child(3),.place-process .process-step:nth-child(5){padding-left:8px!important}
+  .place-process .process-step small{font-size:7.5px!important;letter-spacing:.06em!important}
+  .place-process .process-step h3{font-size:16.5px!important}
+  .place-process .process-step p{font-size:11.5px!important;line-height:1.55!important}
+}
 </style>
 <div class="progress"><span></span></div>
 <div class="page-intro" aria-hidden="true"><span>NAVER PLACE<i>.</i></span></div>
