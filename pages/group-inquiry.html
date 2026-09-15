@@ -136,60 +136,45 @@
 .main-inquiry a{color:inherit;text-decoration:none}
 .main-inquiry .inquiry-progress{position:fixed;top:0;left:0;z-index:11900;width:100%;height:3px;pointer-events:none}
 .main-inquiry .inquiry-progress span{display:block;width:0;height:100%;background:var(--inq-orange)}
-.main-inquiry .inquiry-curtain{position:absolute;inset:0;z-index:12;background:var(--inq-orange);pointer-events:none;transform-origin:top}
 
-/* HERO */
-.main-inquiry .inquiry-hero{
-  position:relative;display:flex;width:100%;height:520px;min-height:520px;padding:150px 0 72px;
-  align-items:flex-end;overflow:hidden;background:var(--inq-black);color:#fff;
+/* COMPACT PAGE INTRO — shared corporate-page direction */
+.main-inquiry .inquiry-intro{
+  position:relative;min-height:390px;padding:142px 0 68px;overflow:hidden;
+  border-bottom:1px solid rgba(17,17,17,.14);
+  background:radial-gradient(circle at 84% 12%,rgba(255,146,48,.12),transparent 24%),linear-gradient(135deg,#f5f1e9 0%,#fff 58%,#ece7de 100%);
+  color:var(--inq-ink);
 }
-.main-inquiry .inquiry-hero::before{
-  content:"";position:absolute;inset:0;
-  background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);
-  background-size:72px 72px;mask-image:linear-gradient(to bottom,#000,transparent 96%);
-}
-.main-inquiry .inquiry-hero::after{
+.main-inquiry .inquiry-intro::before{
   content:"";position:absolute;inset:0;pointer-events:none;
-  background:radial-gradient(circle at 78% 18%,rgba(255,146,48,.2),transparent 27%),linear-gradient(90deg,rgba(5,5,5,.08),transparent 60%);
+  background-image:linear-gradient(rgba(17,17,17,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(17,17,17,.035) 1px,transparent 1px);
+  background-size:80px 80px;mask-image:linear-gradient(to bottom,#000,transparent 92%);
 }
-.main-inquiry .inquiry-hero-lines{position:absolute;inset:0;z-index:1;pointer-events:none}
-.main-inquiry .inquiry-hero-lines span{position:absolute;background:rgba(255,255,255,.075)}
-.main-inquiry .inquiry-hero-lines span:nth-child(1){top:0;bottom:0;left:24%;width:1px}
-.main-inquiry .inquiry-hero-lines span:nth-child(2){top:0;bottom:0;right:24%;width:1px}
-.main-inquiry .inquiry-hero-lines span:nth-child(3){right:0;bottom:72px;left:0;height:1px}
-.main-inquiry .inquiry-orbit{position:absolute;z-index:1;border:1px solid rgba(255,146,48,.22);border-radius:50%;pointer-events:none;will-change:transform}
-.main-inquiry .inquiry-orbit.one{top:-310px;right:-80px;width:680px;height:680px}
-.main-inquiry .inquiry-orbit.two{top:-164px;right:66px;width:390px;height:390px;border-color:rgba(255,255,255,.12);border-style:dashed}
-.main-inquiry .inquiry-orbit::before{content:"";position:absolute;top:-5px;left:50%;width:10px;height:10px;border-radius:50%;background:var(--inq-orange);box-shadow:0 0 24px var(--inq-orange),0 0 54px rgba(255,146,48,.5)}
-.main-inquiry .inquiry-outline{
-  position:absolute;right:-.03em;bottom:-.18em;z-index:1;color:transparent;
-  font-size:clamp(150px,21vw,340px);font-weight:950;line-height:.8;letter-spacing:-.085em;
-  -webkit-text-stroke:1px rgba(255,255,255,.065);white-space:nowrap;pointer-events:none;
+.main-inquiry .inquiry-intro::after{content:"";position:absolute;top:92px;right:0;bottom:0;width:9px;background:var(--inq-orange)}
+.main-inquiry .inquiry-intro-outline{
+  position:absolute;right:-.03em;bottom:-.2em;color:transparent;pointer-events:none;
+  font-size:clamp(150px,22vw,350px);font-weight:950;line-height:.8;letter-spacing:-.085em;
+  -webkit-text-stroke:1px rgba(17,17,17,.06);
 }
-.main-inquiry .inquiry-hero-inner{position:relative;z-index:3;width:min(1560px,calc(100% - 64px));margin:0 auto}
-.main-inquiry .inquiry-eyebrow{
-  display:flex;padding-bottom:16px;margin-bottom:30px;align-items:center;justify-content:space-between;gap:24px;
-  border-bottom:1px solid var(--inq-wline);color:#858585;font-size:10px;font-weight:850;letter-spacing:.17em;
+.main-inquiry .inquiry-intro-inner{position:relative;z-index:2;width:min(1400px,calc(100% - 64px));margin:0 auto}
+.main-inquiry .inquiry-intro-top{
+  display:flex;padding-bottom:16px;margin-bottom:40px;align-items:center;justify-content:space-between;gap:24px;
+  border-bottom:1px solid rgba(17,17,17,.17);color:#7c7770;font-size:10px;font-weight:850;letter-spacing:.17em;
 }
-.main-inquiry .inquiry-eyebrow strong{color:var(--inq-orange);font-weight:900}
-.main-inquiry .inquiry-hero-grid{display:grid;grid-template-columns:minmax(0,1fr) 420px;gap:clamp(60px,7vw,120px);align-items:end}
-.main-inquiry .inquiry-title-mask{overflow:hidden}
-.main-inquiry .inquiry-hero h1{
-  margin:0;color:#fff;font-size:clamp(62px,7.2vw,112px);font-weight:950;line-height:.8;letter-spacing:-.082em;
+.main-inquiry .inquiry-intro-top strong{color:var(--inq-orange);font-weight:950}
+.main-inquiry .inquiry-intro-layout{
+  display:grid;grid-template-columns:150px minmax(0,1fr) 390px;gap:clamp(40px,5vw,82px);align-items:end;
 }
-.main-inquiry .inquiry-hero h1 span{color:var(--inq-orange)}
-.main-inquiry .inquiry-hero-copy{padding:0 0 3px 28px;border-left:1px solid var(--inq-wline)}
-.main-inquiry .inquiry-hero-copy small{display:block;margin-bottom:13px;color:var(--inq-orange);font-size:9px;font-weight:950;letter-spacing:.16em}
-.main-inquiry .inquiry-hero-copy p{margin:0;color:#a3a3a3;font-size:15px;line-height:1.75}
-.main-inquiry .inquiry-scroll{display:inline-flex;margin-top:20px;align-items:center;gap:9px;color:#fff;font-size:9px;font-weight:900;letter-spacing:.14em}
-.main-inquiry .inquiry-scroll i{color:var(--inq-orange);font-size:14px;transition:transform .3s var(--inq-ease)}
-.main-inquiry .inquiry-scroll:hover i{transform:translateY(4px)}
-.main-inquiry .inquiry-service-rail{
-  display:flex;margin-top:30px;padding-top:15px;align-items:center;gap:clamp(24px,4vw,66px);
-  border-top:1px solid rgba(255,255,255,.1);color:#777;font-size:8px;font-weight:900;letter-spacing:.16em;
+.main-inquiry .inquiry-intro-kicker{
+  align-self:start;padding-top:8px;color:#77716a;font-size:9px;font-weight:950;line-height:1.6;letter-spacing:.15em;
 }
-.main-inquiry .inquiry-service-rail span{display:flex;align-items:center;gap:8px;white-space:nowrap}
-.main-inquiry .inquiry-service-rail span::before{content:"";width:4px;height:4px;border-radius:50%;background:var(--inq-orange)}
+.main-inquiry .inquiry-intro-title{overflow:hidden}
+.main-inquiry .inquiry-intro h1{
+  margin:0;font-size:clamp(58px,6vw,92px);font-weight:950;line-height:.93;letter-spacing:-.073em;
+}
+.main-inquiry .inquiry-intro h1 span{color:var(--inq-orange)}
+.main-inquiry .inquiry-intro-copy{padding:21px 0 4px;border-top:1px solid rgba(17,17,17,.18)}
+.main-inquiry .inquiry-intro-copy strong{display:block;margin-bottom:10px;color:#111;font-size:14px;font-weight:850}
+.main-inquiry .inquiry-intro-copy p{margin:0;color:#716d66;font-size:14px;line-height:1.78}
 
 /* BODY AND GUIDE */
 .main-inquiry .inquiry-body{
@@ -397,15 +382,12 @@
 
 /* RESPONSIVE */
 @media(max-width:1100px){
-  .main-inquiry .inquiry-hero-grid{grid-template-columns:minmax(0,1fr) 340px;gap:48px}
   .main-inquiry .inq-inner{grid-template-columns:270px minmax(0,1fr);gap:46px}
   .main-inquiry .glores-A-form>tbody>tr{grid-template-columns:160px minmax(0,1fr)}
 }
 @media(max-width:900px){
-  .main-inquiry .inquiry-hero{height:auto;min-height:500px}
-  .main-inquiry .inquiry-hero-grid{grid-template-columns:1fr;gap:25px}
-  .main-inquiry .inquiry-hero-copy{max-width:600px;padding:20px 0 0;border-top:1px solid var(--inq-wline);border-left:0}
-  .main-inquiry .inquiry-service-rail{overflow-x:auto;scrollbar-width:none}
+  .main-inquiry .inquiry-intro-layout{grid-template-columns:120px minmax(0,1fr);gap:26px 42px}
+  .main-inquiry .inquiry-intro-copy{grid-column:2;max-width:620px}
   .main-inquiry .inq-inner{grid-template-columns:1fr;gap:54px}
   .main-inquiry .inquiry-guide{position:static;display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:24px 44px}
   .main-inquiry .inquiry-guide-label,.main-inquiry .inquiry-guide h2{grid-column:1/-1}
@@ -416,14 +398,15 @@
   .main-inquiry .inquiry-process li+li{border-left:1px solid var(--inq-line)}
 }
 @media(max-width:767px){
-  .main-inquiry .inquiry-hero{height:auto;min-height:0;padding:118px 0 54px}
-  .main-inquiry .inquiry-hero-inner,.main-inquiry .inq-inner{width:calc(100% - 32px)}
-  .main-inquiry .inquiry-eyebrow{margin-bottom:25px;align-items:flex-start;flex-direction:column;gap:7px}
-  .main-inquiry .inquiry-hero h1{font-size:clamp(50px,15vw,72px)}
-  .main-inquiry .inquiry-outline{font-size:42vw}
-  .main-inquiry .inquiry-orbit.one{right:-280px}
-  .main-inquiry .inquiry-orbit.two{right:-150px}
-  .main-inquiry .inquiry-service-rail{margin-top:24px;gap:24px}
+  .main-inquiry .inquiry-intro{min-height:0;padding:108px 0 58px}
+  .main-inquiry .inquiry-intro-inner,.main-inquiry .inq-inner{width:calc(100% - 32px)}
+  .main-inquiry .inquiry-intro::after{top:70px;width:6px}
+  .main-inquiry .inquiry-intro-top{margin-bottom:30px;align-items:flex-start;flex-direction:column;gap:7px}
+  .main-inquiry .inquiry-intro-layout{grid-template-columns:1fr;gap:22px}
+  .main-inquiry .inquiry-intro-kicker{padding-top:0}
+  .main-inquiry .inquiry-intro h1{font-size:clamp(45px,12.5vw,62px)}
+  .main-inquiry .inquiry-intro-copy{grid-column:auto;max-width:none;padding-top:18px}
+  .main-inquiry .inquiry-intro-outline{font-size:42vw}
   .main-inquiry .inquiry-body{padding:88px 0 104px}
   .main-inquiry .inquiry-guide{display:block}
   .main-inquiry .inquiry-guide h2{font-size:clamp(43px,12vw,59px)}
@@ -452,11 +435,10 @@
   .main-inquiry .glores-A-btn-type1.glores-A-highlight{min-height:70px;font-size:17px}
 }
 @media(max-width:480px){
-  .main-inquiry .inquiry-hero-inner,.main-inquiry .inq-inner{width:calc(100% - 24px)}
-  .main-inquiry .inquiry-hero{padding-top:106px}
-  .main-inquiry .inquiry-hero h1{font-size:47px}
-  .main-inquiry .inquiry-hero-copy p{font-size:13px}
-  .main-inquiry .inquiry-service-rail{margin-top:20px}
+  .main-inquiry .inquiry-intro-inner,.main-inquiry .inq-inner{width:calc(100% - 24px)}
+  .main-inquiry .inquiry-intro{padding-top:100px}
+  .main-inquiry .inquiry-intro h1{font-size:43px}
+  .main-inquiry .inquiry-intro-copy p{font-size:13px}
   .main-inquiry .inquiry-guide h2{font-size:40px}
   .main-inquiry .inquiry-form-head{padding:30px 19px}
   .main-inquiry .inquiry-form-status{align-items:flex-start;flex-direction:column;gap:8px}
@@ -466,36 +448,28 @@
 }
 @media(prefers-reduced-motion:reduce){
   .main-inquiry *,.main-inquiry *::before,.main-inquiry *::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
-  .main-inquiry .inquiry-curtain{display:none}
 }
 </style>
 
 <section class="main-inquiry">
 		<div class="inquiry-progress" aria-hidden="true"><span></span></div>
-		<div class="inquiry-hero">
-			<div class="inquiry-curtain" aria-hidden="true"></div>
-			<div class="inquiry-hero-lines" aria-hidden="true"><span></span><span></span><span></span></div>
-			<div class="inquiry-orbit one" aria-hidden="true"></div>
-			<div class="inquiry-orbit two" aria-hidden="true"></div>
-			<div class="inquiry-outline" aria-hidden="true">INQUIRY</div>
-			<div class="inquiry-hero-inner">
-				<div class="inquiry-eyebrow">
+		<header class="inquiry-intro">
+			<div class="inquiry-intro-outline" aria-hidden="true">INQUIRY</div>
+			<div class="inquiry-intro-inner">
+				<div class="inquiry-intro-top">
 					<span>CREAFIT / PROJECT INQUIRY</span>
 					<strong>START A PROJECT</strong>
 				</div>
-				<div class="inquiry-hero-grid">
-					<div class="inquiry-title-mask"><h1>PROJECT<br>INQUIRY<span>.</span></h1></div>
-					<div class="inquiry-hero-copy">
-						<small>LET'S BUILD SOMETHING CLEAR</small>
-						<p>홈페이지부터 블로그, 마케팅까지.<br>목표와 현재 상황을 알려주시면 필요한 방향을 함께 설계합니다.</p>
-						<a class="inquiry-scroll" href="#inquiryForm">START INQUIRY <i class="ri-arrow-down-line"></i></a>
+				<div class="inquiry-intro-layout">
+					<span class="inquiry-intro-kicker">PROJECT<br>REQUEST</span>
+					<div class="inquiry-intro-title"><h1>프로젝트의 시작을,<br><span>더 명확하게.</span></h1></div>
+					<div class="inquiry-intro-copy">
+						<strong>아직 정리되지 않은 상태여도 괜찮습니다.</strong>
+						<p>홈페이지부터 블로그, 마케팅까지. 목표와 현재 상황을 남겨주시면 필요한 범위와 진행 방향부터 함께 정리해드립니다.</p>
 					</div>
 				</div>
-				<div class="inquiry-service-rail" aria-label="문의 가능 서비스">
-					<span>WEBSITE</span><span>BLOG DESIGN</span><span>MARKETING</span><span>MAINTENANCE</span>
-				</div>
 			</div>
-		</div>
+		</header>
 
 		<div class="inquiry-body" id="inquiryForm">
 			<div class="inquiry-body-grid" aria-hidden="true"></div>
@@ -728,23 +702,15 @@
 	syncProgress();
 	window.addEventListener('scroll',syncProgress,{passive:true});
 
-	if(reduced){
-		var curtain=root.querySelector('.inquiry-curtain');
-		if(curtain)curtain.remove();
-		return;
-	}
+	if(reduced)return;
 
-	gsap.to('.main-inquiry .inquiry-curtain',{yPercent:-101,duration:.92,ease:'power4.inOut'});
-	var hero=gsap.timeline({delay:.12});
-	hero
-		.fromTo('.main-inquiry .inquiry-eyebrow',{y:18,autoAlpha:0},{y:0,autoAlpha:1,duration:.58,ease:'power3.out'})
-		.fromTo('.main-inquiry .inquiry-title-mask h1',{yPercent:110},{yPercent:0,duration:1.02,ease:'power4.out'},'-=.25')
-		.fromTo('.main-inquiry .inquiry-hero-copy>*',{y:24,autoAlpha:0},{y:0,autoAlpha:1,stagger:.09,duration:.58,ease:'power3.out'},'-=.62')
-		.fromTo('.main-inquiry .inquiry-service-rail span',{y:16,autoAlpha:0},{y:0,autoAlpha:1,stagger:.07,duration:.48,ease:'power3.out'},'-=.34');
+	var intro=gsap.timeline({delay:.08});
+	intro
+		.fromTo('.main-inquiry .inquiry-intro-top',{y:16,autoAlpha:0},{y:0,autoAlpha:1,duration:.56,ease:'power3.out'})
+		.fromTo('.main-inquiry .inquiry-intro-kicker',{x:-24,autoAlpha:0},{x:0,autoAlpha:1,duration:.55,ease:'power3.out'},'-=.28')
+		.fromTo('.main-inquiry .inquiry-intro-title h1',{yPercent:108},{yPercent:0,duration:.9,ease:'power4.out'},'-=.42')
+		.fromTo('.main-inquiry .inquiry-intro-copy>*',{y:20,autoAlpha:0},{y:0,autoAlpha:1,stagger:.08,duration:.55,ease:'power3.out'},'-=.5');
 
-	gsap.to('.main-inquiry .inquiry-orbit.one',{rotation:360,duration:30,repeat:-1,ease:'none'});
-	gsap.to('.main-inquiry .inquiry-orbit.two',{rotation:-360,duration:22,repeat:-1,ease:'none'});
-	gsap.to('.main-inquiry .inquiry-outline',{xPercent:-7,ease:'none',scrollTrigger:{trigger:'.main-inquiry .inquiry-hero',start:'top top',end:'bottom top',scrub:1.2}});
 	gsap.to('.main-inquiry .inquiry-body-grid',{y:-70,ease:'none',scrollTrigger:{trigger:'.main-inquiry .inquiry-body',start:'top bottom',end:'bottom top',scrub:1.4}});
 
 	gsap.fromTo('.main-inquiry .inquiry-guide',{x:-65,autoAlpha:0},{x:0,autoAlpha:1,duration:.82,ease:'power3.out',scrollTrigger:{trigger:'.main-inquiry .inquiry-body',start:'top 78%',once:true}});
