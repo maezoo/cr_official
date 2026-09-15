@@ -137,48 +137,9 @@
 .main-inquiry .inquiry-progress{position:fixed;top:0;left:0;z-index:11900;width:100%;height:3px;pointer-events:none}
 .main-inquiry .inquiry-progress span{display:block;width:0;height:100%;background:var(--inq-orange)}
 
-/* COMPACT PAGE INTRO — shared corporate-page direction */
-.main-inquiry .inquiry-intro{
-  position:relative;min-height:390px;padding:142px 0 68px;overflow:hidden;
-  border-bottom:1px solid rgba(17,17,17,.14);
-  background:radial-gradient(circle at 84% 12%,rgba(255,146,48,.12),transparent 24%),linear-gradient(135deg,#f5f1e9 0%,#fff 58%,#ece7de 100%);
-  color:var(--inq-ink);
-}
-.main-inquiry .inquiry-intro::before{
-  content:"";position:absolute;inset:0;pointer-events:none;
-  background-image:linear-gradient(rgba(17,17,17,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(17,17,17,.035) 1px,transparent 1px);
-  background-size:80px 80px;mask-image:linear-gradient(to bottom,#000,transparent 92%);
-}
-.main-inquiry .inquiry-intro::after{content:"";position:absolute;top:92px;right:0;bottom:0;width:9px;background:var(--inq-orange)}
-.main-inquiry .inquiry-intro-outline{
-  position:absolute;right:-.03em;bottom:-.2em;color:transparent;pointer-events:none;
-  font-size:clamp(150px,22vw,350px);font-weight:950;line-height:.8;letter-spacing:-.085em;
-  -webkit-text-stroke:1px rgba(17,17,17,.06);
-}
-.main-inquiry .inquiry-intro-inner{position:relative;z-index:2;width:min(1400px,calc(100% - 64px));margin:0 auto}
-.main-inquiry .inquiry-intro-top{
-  display:flex;padding-bottom:16px;margin-bottom:40px;align-items:center;justify-content:space-between;gap:24px;
-  border-bottom:1px solid rgba(17,17,17,.17);color:#7c7770;font-size:10px;font-weight:850;letter-spacing:.17em;
-}
-.main-inquiry .inquiry-intro-top strong{color:var(--inq-orange);font-weight:950}
-.main-inquiry .inquiry-intro-layout{
-  display:grid;grid-template-columns:150px minmax(0,1fr) 390px;gap:clamp(40px,5vw,82px);align-items:end;
-}
-.main-inquiry .inquiry-intro-kicker{
-  align-self:start;padding-top:8px;color:#77716a;font-size:9px;font-weight:950;line-height:1.6;letter-spacing:.15em;
-}
-.main-inquiry .inquiry-intro-title{overflow:hidden}
-.main-inquiry .inquiry-intro h1{
-  margin:0;font-size:clamp(58px,6vw,92px);font-weight:950;line-height:.93;letter-spacing:-.073em;
-}
-.main-inquiry .inquiry-intro h1 span{color:var(--inq-orange)}
-.main-inquiry .inquiry-intro-copy{padding:21px 0 4px;border-top:1px solid rgba(17,17,17,.18)}
-.main-inquiry .inquiry-intro-copy strong{display:block;margin-bottom:10px;color:#111;font-size:14px;font-weight:850}
-.main-inquiry .inquiry-intro-copy p{margin:0;color:#716d66;font-size:14px;line-height:1.78}
-
 /* BODY AND GUIDE */
 .main-inquiry .inquiry-body{
-  position:relative;padding:138px 0 160px;overflow:hidden;
+  position:relative;padding:170px 0 160px;overflow:hidden;
   background:radial-gradient(circle at 92% 8%,rgba(255,146,48,.08),transparent 23%),linear-gradient(135deg,#f6f3ed 0%,#fff 52%,#eee9df 100%);
 }
 .main-inquiry .inquiry-body::before{
@@ -386,8 +347,6 @@
   .main-inquiry .glores-A-form>tbody>tr{grid-template-columns:160px minmax(0,1fr)}
 }
 @media(max-width:900px){
-  .main-inquiry .inquiry-intro-layout{grid-template-columns:120px minmax(0,1fr);gap:26px 42px}
-  .main-inquiry .inquiry-intro-copy{grid-column:2;max-width:620px}
   .main-inquiry .inq-inner{grid-template-columns:1fr;gap:54px}
   .main-inquiry .inquiry-guide{position:static;display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:24px 44px}
   .main-inquiry .inquiry-guide-label,.main-inquiry .inquiry-guide h2{grid-column:1/-1}
@@ -398,16 +357,8 @@
   .main-inquiry .inquiry-process li+li{border-left:1px solid var(--inq-line)}
 }
 @media(max-width:767px){
-  .main-inquiry .inquiry-intro{min-height:0;padding:108px 0 58px}
-  .main-inquiry .inquiry-intro-inner,.main-inquiry .inq-inner{width:calc(100% - 32px)}
-  .main-inquiry .inquiry-intro::after{top:70px;width:6px}
-  .main-inquiry .inquiry-intro-top{margin-bottom:30px;align-items:flex-start;flex-direction:column;gap:7px}
-  .main-inquiry .inquiry-intro-layout{grid-template-columns:1fr;gap:22px}
-  .main-inquiry .inquiry-intro-kicker{padding-top:0}
-  .main-inquiry .inquiry-intro h1{font-size:clamp(45px,12.5vw,62px)}
-  .main-inquiry .inquiry-intro-copy{grid-column:auto;max-width:none;padding-top:18px}
-  .main-inquiry .inquiry-intro-outline{font-size:42vw}
-  .main-inquiry .inquiry-body{padding:88px 0 104px}
+  .main-inquiry .inq-inner{width:calc(100% - 32px)}
+  .main-inquiry .inquiry-body{padding:118px 0 104px}
   .main-inquiry .inquiry-guide{display:block}
   .main-inquiry .inquiry-guide h2{font-size:clamp(43px,12vw,59px)}
   .main-inquiry .inquiry-guide>p{margin-top:22px}
@@ -435,10 +386,7 @@
   .main-inquiry .glores-A-btn-type1.glores-A-highlight{min-height:70px;font-size:17px}
 }
 @media(max-width:480px){
-  .main-inquiry .inquiry-intro-inner,.main-inquiry .inq-inner{width:calc(100% - 24px)}
-  .main-inquiry .inquiry-intro{padding-top:100px}
-  .main-inquiry .inquiry-intro h1{font-size:43px}
-  .main-inquiry .inquiry-intro-copy p{font-size:13px}
+  .main-inquiry .inq-inner{width:calc(100% - 24px)}
   .main-inquiry .inquiry-guide h2{font-size:40px}
   .main-inquiry .inquiry-form-head{padding:30px 19px}
   .main-inquiry .inquiry-form-status{align-items:flex-start;flex-direction:column;gap:8px}
@@ -453,24 +401,6 @@
 
 <section class="main-inquiry">
 		<div class="inquiry-progress" aria-hidden="true"><span></span></div>
-		<header class="inquiry-intro">
-			<div class="inquiry-intro-outline" aria-hidden="true">INQUIRY</div>
-			<div class="inquiry-intro-inner">
-				<div class="inquiry-intro-top">
-					<span>CREAFIT / PROJECT INQUIRY</span>
-					<strong>START A PROJECT</strong>
-				</div>
-				<div class="inquiry-intro-layout">
-					<span class="inquiry-intro-kicker">PROJECT<br>REQUEST</span>
-					<div class="inquiry-intro-title"><h1>프로젝트의 시작을,<br><span>더 명확하게.</span></h1></div>
-					<div class="inquiry-intro-copy">
-						<strong>아직 정리되지 않은 상태여도 괜찮습니다.</strong>
-						<p>홈페이지부터 블로그, 마케팅까지. 목표와 현재 상황을 남겨주시면 필요한 범위와 진행 방향부터 함께 정리해드립니다.</p>
-					</div>
-				</div>
-			</div>
-		</header>
-
 		<div class="inquiry-body" id="inquiryForm">
 			<div class="inquiry-body-grid" aria-hidden="true"></div>
 			<div class="inq-inner">
@@ -703,13 +633,6 @@
 	window.addEventListener('scroll',syncProgress,{passive:true});
 
 	if(reduced)return;
-
-	var intro=gsap.timeline({delay:.08});
-	intro
-		.fromTo('.main-inquiry .inquiry-intro-top',{y:16,autoAlpha:0},{y:0,autoAlpha:1,duration:.56,ease:'power3.out'})
-		.fromTo('.main-inquiry .inquiry-intro-kicker',{x:-24,autoAlpha:0},{x:0,autoAlpha:1,duration:.55,ease:'power3.out'},'-=.28')
-		.fromTo('.main-inquiry .inquiry-intro-title h1',{yPercent:108},{yPercent:0,duration:.9,ease:'power4.out'},'-=.42')
-		.fromTo('.main-inquiry .inquiry-intro-copy>*',{y:20,autoAlpha:0},{y:0,autoAlpha:1,stagger:.08,duration:.55,ease:'power3.out'},'-=.5');
 
 	gsap.to('.main-inquiry .inquiry-body-grid',{y:-70,ease:'none',scrollTrigger:{trigger:'.main-inquiry .inquiry-body',start:'top bottom',end:'bottom top',scrub:1.4}});
 
