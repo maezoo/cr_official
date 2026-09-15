@@ -138,16 +138,16 @@
 /* BODY AND GUIDE */
 .main-inquiry .inquiry-body{
   position:relative;padding:170px 0 160px;overflow:hidden;
-  background:radial-gradient(circle at 92% 8%,rgba(255,146,48,.08),transparent 23%),linear-gradient(135deg,#f6f3ed 0%,#fff 52%,#eee9df 100%);
+  background:radial-gradient(circle at 82% 5%,rgba(255,146,48,.19),transparent 22%),radial-gradient(circle at 7% 43%,rgba(255,146,48,.075),transparent 19%),radial-gradient(circle at 92% 84%,rgba(255,146,48,.1),transparent 21%),#0b0b0b;
 }
 .main-inquiry .inquiry-body::before{
   content:"BRIEF";position:absolute;right:-.04em;top:-.15em;color:transparent;
   font-size:clamp(160px,27vw,430px);font-weight:950;line-height:1;letter-spacing:-.08em;
-  -webkit-text-stroke:1px rgba(17,17,17,.05);pointer-events:none;
+  -webkit-text-stroke:1px rgba(255,255,255,.055);pointer-events:none;
 }
 .main-inquiry .inquiry-body-grid{
-  position:absolute;inset:0;opacity:.34;pointer-events:none;
-  background-image:linear-gradient(rgba(0,0,0,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,0,0,.03) 1px,transparent 1px);
+  position:absolute;inset:0;opacity:.42;pointer-events:none;
+  background-image:linear-gradient(rgba(255,255,255,.032) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.032) 1px,transparent 1px);
   background-size:84px 84px;mask-image:linear-gradient(to bottom,#000,transparent 70%);
 }
 .main-inquiry .inq-inner{
@@ -157,24 +157,24 @@
 .main-inquiry .inquiry-guide{position:sticky;top:126px}
 .main-inquiry .inquiry-guide-label{display:inline-flex;align-items:center;gap:11px;color:var(--inq-orange);font-size:10px;font-weight:950;letter-spacing:.18em}
 .main-inquiry .inquiry-guide-label::before{content:"";width:32px;height:1px;background:currentColor}
-.main-inquiry .inquiry-guide h2{margin:28px 0 0;font-size:clamp(45px,4vw,62px);font-weight:950;line-height:.98;letter-spacing:-.065em}
-.main-inquiry .inquiry-guide>p{margin:24px 0 0;color:var(--inq-muted);font-size:15px;line-height:1.78}
-.main-inquiry .inquiry-guide-meta{display:grid;grid-template-columns:repeat(2,1fr);margin-top:32px;border-top:1px solid var(--inq-line);border-bottom:1px solid var(--inq-line)}
+.main-inquiry .inquiry-guide h2{margin:28px 0 0;color:#f5f2ec;font-size:clamp(45px,4vw,62px);font-weight:950;line-height:.98;letter-spacing:-.065em}
+.main-inquiry .inquiry-guide>p{margin:24px 0 0;color:#a09c95;font-size:15px;line-height:1.78}
+.main-inquiry .inquiry-guide-meta{display:grid;grid-template-columns:repeat(2,1fr);margin-top:32px;border-top:1px solid rgba(255,255,255,.17);border-bottom:1px solid rgba(255,255,255,.17)}
 .main-inquiry .inquiry-guide-meta div{min-height:80px;padding:15px 10px;display:flex;flex-direction:column;justify-content:space-between}
-.main-inquiry .inquiry-guide-meta div+div{border-left:1px solid var(--inq-line)}
+.main-inquiry .inquiry-guide-meta div+div{border-left:1px solid rgba(255,255,255,.17)}
 .main-inquiry .inquiry-guide-meta small{color:#888;font-size:8px;font-weight:900;letter-spacing:.12em}
-.main-inquiry .inquiry-guide-meta strong{font-size:14px}
+.main-inquiry .inquiry-guide-meta strong{color:#f3f0ea;font-size:14px}
 .main-inquiry .inquiry-process{margin:34px 0 0;padding:0;list-style:none}
 .main-inquiry .inquiry-process li{
   position:relative;display:grid;grid-template-columns:40px minmax(0,1fr);gap:13px;padding:18px 0;
-  align-items:center;border-bottom:1px solid var(--inq-line);
+  align-items:center;border-bottom:1px solid rgba(255,255,255,.16);
 }
-.main-inquiry .inquiry-process li:first-child{border-top:1px solid var(--inq-line)}
+.main-inquiry .inquiry-process li:first-child{border-top:1px solid rgba(255,255,255,.16)}
 .main-inquiry .inquiry-process small{
-  display:grid;width:31px;height:31px;place-items:center;border:1px solid rgba(17,17,17,.22);border-radius:50%;
-  color:#555;font-size:9px;font-weight:900;
+  display:grid;width:31px;height:31px;place-items:center;border:1px solid rgba(255,255,255,.25);border-radius:50%;
+  color:var(--inq-orange);font-size:9px;font-weight:900;
 }
-.main-inquiry .inquiry-process strong{font-size:14px;font-weight:800}
+.main-inquiry .inquiry-process strong{color:#f4f1eb;font-size:14px;font-weight:800}
 .main-inquiry .inquiry-process li::before{content:none}
 
 /* FORM PANEL */
@@ -185,7 +185,7 @@
 .main-inquiry .inquiry-form-panel::before{content:none}
 .main-inquiry .inquiry-form-head{
   position:relative;min-height:240px;padding:46px clamp(34px,5vw,64px);display:flex;flex-direction:column;justify-content:space-between;
-  overflow:hidden;background:#0b0b0b;color:#fff;
+  overflow:hidden;border-bottom:1px solid rgba(255,146,48,.42);background:#131313;color:#fff;
 }
 .main-inquiry .inquiry-form-head::before{
   content:"";position:absolute;width:430px;height:430px;right:-115px;top:-245px;border-radius:50%;
@@ -201,12 +201,12 @@
 .main-inquiry .inquiry-form-status b{color:var(--inq-orange);font-size:9px;letter-spacing:.14em}
 .main-inquiry .inquiry-form-head h3{position:relative;z-index:2;margin:0;color:#fff;font-size:clamp(38px,4.2vw,62px);font-weight:930;line-height:1.03;letter-spacing:-.06em}
 .main-inquiry .inquiry-form-head h3 span{color:var(--inq-orange)}
-.main-inquiry .inquiry-form-scan{
-  position:absolute;z-index:3;right:0;left:0;top:0;height:1px;pointer-events:none;
-  background:linear-gradient(90deg,transparent,var(--inq-orange),transparent);
-  box-shadow:0 0 16px rgba(255,146,48,.65);animation:inqScan 5.2s ease-in-out infinite;
+.main-inquiry .inquiry-body-scan{
+  position:absolute;left:0;right:0;top:0;z-index:1;height:1px;opacity:0;pointer-events:none;
+  background:linear-gradient(90deg,transparent 5%,rgba(255,146,48,.18) 24%,var(--inq-orange) 50%,rgba(255,146,48,.18) 76%,transparent 95%);
+  box-shadow:0 0 18px rgba(255,146,48,.65),0 0 46px rgba(255,146,48,.2);
+  will-change:transform,opacity;
 }
-@keyframes inqScan{0%,18%{transform:translateY(0);opacity:0}35%,72%{opacity:1}88%,100%{transform:translateY(240px);opacity:0}}
 
 .main-inquiry .glores-A-customize-form{width:100%;padding:clamp(42px,5vw,72px)}
 .main-inquiry .glores-A-title{
@@ -357,6 +357,7 @@
 @media(max-width:767px){
   .main-inquiry .inq-inner{width:calc(100% - 32px)}
   .main-inquiry .inquiry-body{padding:118px 0 104px}
+  .main-inquiry .inquiry-body-scan{background:linear-gradient(90deg,transparent,rgba(255,146,48,.42),transparent);box-shadow:0 0 14px rgba(255,146,48,.38)}
   .main-inquiry .inquiry-guide{display:block}
   .main-inquiry .inquiry-guide h2{font-size:clamp(43px,12vw,59px)}
   .main-inquiry .inquiry-guide>p{margin-top:22px}
@@ -394,6 +395,7 @@
 }
 @media(prefers-reduced-motion:reduce){
   .main-inquiry *,.main-inquiry *::before,.main-inquiry *::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .main-inquiry .inquiry-body-scan{display:none}
 }
 </style>
 
@@ -401,6 +403,7 @@
 		<div class="inquiry-progress" aria-hidden="true"><span></span></div>
 		<div class="inquiry-body" id="inquiryForm">
 			<div class="inquiry-body-grid" aria-hidden="true"></div>
+			<span class="inquiry-body-scan" aria-hidden="true"></span>
 			<div class="inq-inner">
 				<aside class="inquiry-guide">
 					<span class="inquiry-guide-label">PROJECT GUIDE</span>
@@ -418,7 +421,6 @@
 				</aside>
 				<div class="inquiry-form-panel">
 					<div class="inquiry-form-head">
-						<div class="inquiry-form-scan" aria-hidden="true"></div>
 						<div class="inquiry-form-status">
 							<span>PROJECT REQUEST FORM / ONLINE</span>
 							<b>REQUIRED *</b>
@@ -633,6 +635,17 @@
 	if(reduced)return;
 
 	gsap.to('.main-inquiry .inquiry-body-grid',{y:-70,ease:'none',scrollTrigger:{trigger:'.main-inquiry .inquiry-body',start:'top bottom',end:'bottom top',scrub:1.4}});
+
+	var inquiryBody=root.querySelector('.inquiry-body');
+	var bodyScan=root.querySelector('.inquiry-body-scan');
+	if(inquiryBody&&bodyScan){
+		var scanTimeline=gsap.timeline({repeat:-1,repeatDelay:1.2,repeatRefresh:true});
+		scanTimeline
+			.set(bodyScan,{y:0,autoAlpha:0})
+			.to(bodyScan,{autoAlpha:.72,duration:.7,ease:'power1.out'})
+			.to(bodyScan,{y:function(){return Math.max(0,inquiryBody.offsetHeight-2)},duration:10.5,ease:'none'},0)
+			.to(bodyScan,{autoAlpha:0,duration:.9,ease:'power1.in'},9.6);
+	}
 
 	gsap.fromTo('.main-inquiry .inquiry-guide',{x:-65,autoAlpha:0},{x:0,autoAlpha:1,duration:.82,ease:'power3.out',scrollTrigger:{trigger:'.main-inquiry .inquiry-body',start:'top 78%',once:true}});
 	gsap.fromTo('.main-inquiry .inquiry-form-panel',{clipPath:'inset(0 0 100% 0)',y:60},{clipPath:'inset(0 0 0% 0)',y:0,duration:1.08,ease:'power4.out',scrollTrigger:{trigger:'.main-inquiry .inquiry-form-panel',start:'top 83%',once:true}});
